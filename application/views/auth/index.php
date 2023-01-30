@@ -1,4 +1,4 @@
-<body class="bg-gradient-success">
+<body>
     <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
         <div class="container">
             <!-- Outer Row -->
@@ -12,8 +12,8 @@
                                     <div class="p-5">
                                         <div class="text-center">
 
-                                            <img src="<?= base_url('assets/pemda-tapin.png') ?>" width="100px">
-                                            <h3>Pemerintahan Daerah Kabupaten Tapin</h3>
+                                            <img src="<?= base_url('assets/logo.png') ?>" width="100px">
+
                                             <hr>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
                                         </div>
