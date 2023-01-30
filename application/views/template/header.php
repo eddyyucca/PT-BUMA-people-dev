@@ -16,6 +16,7 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
     <link href="<?= base_url('assets') ?>/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets') ?>/css/profil.css" rel="stylesheet">
 
     <style>
         .file {
@@ -35,9 +36,9 @@
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
+                <a class="sidebar-brand d-flex bg-gradient-warning align-items-center justify-content-center" href="<?= base_url('admin') ?>">
                     <div class="sidebar-brand-icon">
-                        <img src="<?= base_url('assets/logo.png'); ?>" width="50" height="50" alt="Logo Pemda-Tapin">
+                        <img src="<?= base_url('assets/logo.png'); ?>" width="100" height="50" alt="Logo Pemda-Tapin">
                     </div>
                     <div class="sidebar-brand-text mx-3"></div>
                 </a>
@@ -73,10 +74,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-comments-question-check"></i>
+                        <i class="fas fa-sort-amount-up-alt"></i>
                         <span>Suggestion System</span></a>
                 </li>
-                <li class="nav-item">
+                <li class=" nav-item">
                     <a class="nav-link" href="charts.html">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Cont. Improvement</span></a>
@@ -178,9 +179,7 @@
                                     </a>
                                 </div>
                             </li>
-
                         </ul>
-
                     </nav>
                     <!-- End of Topbar -->
 
