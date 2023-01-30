@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon.ico">
-    <title><?= $judul; ?></title>
+    <link rel="shortcut icon" href=" <?= base_url('assets') ?>/logo.ico">
+    <title>BUMA SITE IPR</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets') ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -55,9 +55,41 @@
                 <!-- Nav Item - Utilities Collapse Menu -->
 
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('admin/data_karyawan') ?>">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>Karyawan</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <i class="fas fa-fw fa-thumbs-up"></i>
+                        <span>Asesor</span></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="charts.html">
                         <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
+                        <span>Training</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <i class="fas fa-fw fa-comments-question-check"></i>
+                        <span>Suggestion System</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Cont. Improvement</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Kompetensi</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Assessment</span></a>
                 </li>
 
                 <!-- Divider -->

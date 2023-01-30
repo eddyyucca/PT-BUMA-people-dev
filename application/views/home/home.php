@@ -36,7 +36,14 @@
                                 <div class="row no-gutters align-items-center">
                                     <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dash-1.png" alt="" width="210" height="160"></span>
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Departement</div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <h6>
+                                                <b>
+                                                    Departement
+                                                </b>
+
+                                            </h6>
+                                        </div>
                                     </div>
                                     <div class="col-auto">
                                         <b>60</b>
@@ -51,7 +58,15 @@
                                 <div class="row no-gutters align-items-center">
                                     <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dash-1.png" alt="" width="210" height="160"></span>
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Section</div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <h6>
+                                                <b>
+                                                    Section
+                                                </b>
+
+                                            </h6>
+
+                                        </div>
                                     </div>
                                     <div class="col-auto">
                                         <b>60</b>
@@ -66,7 +81,13 @@
                                 <div class="row no-gutters align-items-center">
                                     <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dash-1.png" alt="" width="210" height="160"></span>
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">jabatan</div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <h6>
+                                                <b>
+                                                    jabatan
+                                                </b>
+                                            </h6>
+                                        </div>
                                     </div>
                                     <div class="col-auto">
                                         <b>60</b>
