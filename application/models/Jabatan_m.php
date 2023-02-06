@@ -6,13 +6,13 @@ class Jabatan_m extends CI_Model
 
     public function get_all_jab()
     {
-        $query = $this->db->get('section');
+        $query = $this->db->get('jabatan');
         return $query->result();
     }
     public function get_row_jab($id_jab)
     {
         $this->db->where('id_jab', $id_jab);
-        $query = $this->db->get('section');
+        $query = $this->db->get('jabatan');
         return $query->row();
     }
 }

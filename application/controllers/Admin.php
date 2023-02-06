@@ -157,7 +157,7 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Data jabatan';
 		$data['nama'] = $this->session->userdata('nama');
 
-		$data['data'] = $this->jabatan_m->get_all_sec();
+		$data['data'] = $this->jabatan_m->get_all_jab();
 		$this->load->view('template/header', $data);
 		$this->load->view('jabatan/data_jabatan', $data);
 		$this->load->view('template/footer');
@@ -171,12 +171,12 @@ class Admin extends CI_Controller
 		$this->load->view('jabatan/create_jabatan', $data);
 		$this->load->view('template/footer');
 	}
-	public function edit_jabatan($id_sec)
+	public function edit_jabatan($id_jab)
 	{
 		$data['judul'] = 'Update jabatan';
 		$data['nama'] = $this->session->userdata('nama');
 
-		$data['data'] = $this->jabatan_m->get_row_sec($id_sec);
+		$data['data'] = $this->jabatan_m->get_row_jab($id_jab);
 		$this->load->view('template/header', $data);
 		$this->load->view('jabatan/edit_jabatan', $data);
 		$this->load->view('template/footer');
@@ -184,7 +184,7 @@ class Admin extends CI_Controller
 	public function proses_tambah_jab()
 	{
 		$data = array(
-			'nama_jabatan' => $this->input->post('nama_jabatan')
+			'nama_jab' => $this->input->post('nama_jab')
 		);
 		$this->db->insert('jabatan', $data);
 		return redirect('admin/jabatan');
@@ -192,10 +192,10 @@ class Admin extends CI_Controller
 	public function proses_edit_jab($id_jab)
 	{
 		$data = array(
-			'nama_jabatan' => $this->input->post('nama_jabatan')
+			'nama_jab' => $this->input->post('nama_jab')
 		);
 		$this->db->where('id_jab', $id_jab);
-		$this->db->update('section', $data);
+		$this->db->update('jabatan', $data);
 		return redirect('admin/jabatan');
 	}
 	public function delete_jab($id_jab)

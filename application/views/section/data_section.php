@@ -22,23 +22,18 @@
                     <tbody>
                         <?php
                         $nomor = 1;
-                        foreach ($data as $x) {
-                            if ($x->status_dep == 0) { ?>
+                        foreach ($data as $x) { ?>
+                            <tr>
+                                <td><?= $nomor++; ?></td>
+                                <td><?= $x->nama_sec; ?></td>
+                                <td align="center">
 
-                            <?php
-                            } else { ?>
-                                <tr>
-                                    <td><?= $nomor++; ?></td>
-                                    <td><?= $x->nama_sec; ?></td>
-                                    <td align="center">
-
-                                        <button class="second">Second Alert</button>
-                                        <a href="<?= base_url('admin/delete_section/') . $x->id_sec; ?>" class="btn btn-danger">Hapus</a>
-                                        <a href="<?= base_url('admin/edit_section/') . $x->id_sec; ?>" class="btn btn-primary">Edit</a>
-                                    </td>
-                                </tr>
-                        <?php   }
-                        } ?>
+                                    <button class="second">Second Alert</button>
+                                    <a href="<?= base_url('admin/delete_section/') . $x->id_sec; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_section/') . $x->id_sec; ?>" class="btn btn-primary">Edit</a>
+                                </td>
+                            </tr>
+                        <?php   } ?>
                     </tbody>
                 </table>
             </div>

@@ -12,9 +12,9 @@
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
                     <div class="container">
-                        <a href="" class="btn btn-success">Add Karyawan</a>
-                        <a href="" class="btn btn-success">Export Excel</a>
-                        <a href="" class="btn btn-success">Inport PDF</a>
+                        <a href="" class="btn btn-success"><i class="fas fa-user-plus"></i> Add Karyawan</a>
+                        <a href="" class="btn btn-success"><i class="fas fa-file-excel"></i> Export Excel</a>
+                        <a href="" class="btn btn-success"><i class="fas fa-file-pdf"></i> Inport PDF</a>
                         <hr>
                         <nav class="navbar ">
                             <form class="form-inline">
@@ -106,6 +106,24 @@
                         </div>
                     </div>
                 </div>
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active">
+                            <span class="page-link">
+                                2
+                                <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
