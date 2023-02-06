@@ -18,7 +18,7 @@
     <link href="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/css/profil.css" rel="stylesheet">
     <!-- pop up -->
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+    <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
     <style>
         .file {
             visibility: hidden;
@@ -37,9 +37,10 @@
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex bg-gradient-warning align-items-center justify-content-center" href="<?= base_url('admin') ?>">
+                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> -->
+                <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('admin') ?>">
                     <div class="sidebar-brand-icon">
-                        <img src="<?= base_url('assets/logo.png'); ?>" width="100" height="50" alt="Logo Pemda-Tapin">
+                        <img src="<?= base_url('assets/logo.png'); ?>" width="100" height="50" alt="BUMA">
                     </div>
                     <div class="sidebar-brand-text mx-3"></div>
                 </a>
