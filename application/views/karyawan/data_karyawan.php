@@ -12,6 +12,10 @@
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
                     <div class="container">
+                        <a href="" class="btn btn-success">Add Karyawan</a>
+                        <a href="" class="btn btn-success">Export Excel</a>
+                        <a href="" class="btn btn-success">Inport PDF</a>
+                        <hr>
                         <nav class="navbar ">
                             <form class="form-inline">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

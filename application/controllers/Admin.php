@@ -21,7 +21,7 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		$data['judul'] = 'PT. BUMA';
+		$data['judul'] = 'PT. BUMA - SITE IPR';
 		$data['nama'] = $this->session->userdata('nama');
 		$this->load->view('template/header', $data);
 		$this->load->view('home/home');

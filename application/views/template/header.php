@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href=" <?= base_url('assets') ?>/logo.ico">
-    <title>BUMA SITE IPR</title>
+    <title><?= $judul ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets') ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -86,12 +86,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fad fa-chalkboard-teacher"></i>
                         <span>Kompetensi</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fas fa-tasks"></i>
                         <span>Assessment</span></a>
                 </li>
 
@@ -170,6 +170,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600">
                                         <!-- <?= $nama; ?> -->
+                                        Kambing
                                     </span>
                                     <i class="fas fa-user-circle"></i>
                                 </a>
@@ -178,6 +179,10 @@
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Keluar
+                                    </a>
+                                    <a class="dropdown-item" href="<?= base_url('') ?>" data-toggle="modal" data-target="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i></i>
+                                        Setting
                                     </a>
                                 </div>
                             </li>
