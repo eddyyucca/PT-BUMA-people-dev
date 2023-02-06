@@ -8,7 +8,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('departement_m');
-		// $this->load->model('lowongan_m');
+		$this->load->model('section_m');
 		// $this->load->model('admin_m');
 		// $this->load->model('alumni_m');
 
@@ -31,6 +31,8 @@ class Admin extends CI_Controller
 		$this->load->view('karyawan/data_karyawan');
 		$this->load->view('template/footer');
 	}
+
+	// departement
 	public function departement()
 	{
 		$data['judul'] = 'Data Departement';
@@ -85,4 +87,38 @@ class Admin extends CI_Controller
 		$this->db->delete('departement');
 		return redirect('admin/departement');
 	}
+
+	// end departement
+
+	// section
+	public function section()
+	{
+		$data['judul'] = 'Data Section';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->section_m->get_all_sec();
+		$this->load->view('template/header', $data);
+		$this->load->view('section/data_section', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_section()
+	{
+		$data['judul'] = 'Data Section';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$this->load->view('template/header', $data, $data);
+		$this->load->view('section/create_section', $data, $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_section($id_sec)
+	{
+		$data['judul'] = 'Data Section';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->section_m->get_row_sec($id_sec);
+		$this->load->view('template/header', $data);
+		$this->load->view('section/edit_section', $data);
+		$this->load->view('template/footer');
+	}
+	// end section
 }
