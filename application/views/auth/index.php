@@ -11,9 +11,7 @@
                                 <div class="col-lg">
                                     <div class="p-5">
                                         <div class="text-center">
-
-                                            <img src="<?= base_url('assets/logo.png') ?>" width="100px">
-
+                                            <img src="<?= base_url('assets/logo.png') ?>" width="30%">
                                             <hr>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
                                         </div>

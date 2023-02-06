@@ -88,24 +88,10 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <a href="<?= base_url('home') ?>">
-                                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <!-- Team Thumb-->
-                                        <div class="advisor_thumb"><img src="<?= base_url('assets') ?>/img/pp2.jpeg" class="rounded" width="185" height="200" alt="">
-                                        </div>
-                                        <!-- Team Details-->
-                                        <div class="text-secondary single_advisor_details_info">
-                                            <h6>Samantha Sarah</h6>
-                                            <p class="designation">Founder &amp; CEO</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
+                <!-- footer -->
                 <nav aria-label="...">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
