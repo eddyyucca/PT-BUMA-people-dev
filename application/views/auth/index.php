@@ -32,17 +32,11 @@
                                             <div class="form-group mb-4">
                                                 <input type="password" class="form-control" name="password" placeholder="Password">
                                             </div>
-
+                                            <hr>
                                             <button type="submit" class="btn btn-success btn-user btn-block">
-                                                Masuk
+                                                <i class="fas fa-sign-in-alt"></i> Masuk
                                             </button>
-                                            <div class="d-flex justify-content-center mb-4 mt-3">
-                                                <small>
-                                                    <a href="<?= base_url('auth/user_login') ?>">Masuk Sebagai Pegawai</a>
-                                            </div>
-                                            </small>
                                         </form>
-                                        <hr>
                                     </div>
                                 </div>
                             </div>

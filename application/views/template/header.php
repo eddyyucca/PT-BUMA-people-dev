@@ -17,7 +17,8 @@
     <link href="<?= base_url('assets') ?>/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/css/profil.css" rel="stylesheet">
-
+    <!-- pop up -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
     <style>
         .file {
             visibility: hidden;
@@ -102,9 +103,9 @@
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Data Jabatan</a>
-                            <a class="collapse-item" href="<?= base_url('admin/bidang') ?>">Data Bidang</a>
-                            <a class="collapse-item" href="<?= base_url('atk/view_data') ?>">Data ATK</a>
+                            <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
+                            <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
+                            <a class="collapse-item" href="<?= base_url('atk/jabatan') ?>">Jabatan</a>
                         </div>
                     </div>
                 </li>

@@ -60,8 +60,9 @@
    <!-- Page level plugins -->
    <script src="<?= base_url('assets') ?>/vendor/chart.js/Chart.min.js"></script>
 
-   <!-- Page level custom scripts -->
-
+   <!-- Page pop up -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+   <script src="<?= base_url('assets') ?>/js/popup.js"></script>
    <script>
      $(document).on("click", ".browse", function() {
        var file = $(this).parents().find(".file");
@@ -195,6 +196,7 @@
        }
      });
    </script>
+
    </body>
 
    </html>
