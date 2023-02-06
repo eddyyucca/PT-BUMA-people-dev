@@ -8,8 +8,8 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('departement_m');
+		$this->load->model('jabatan_m');
 		$this->load->model('section_m');
-		// $this->load->model('admin_m');
 		// $this->load->model('alumni_m');
 
 		// $level_akun = $this->session->userdata('level');
@@ -121,4 +121,36 @@ class Admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 	// end section
+
+	// jabatan
+	public function jabatan()
+	{
+		$data['judul'] = 'Data jabatan';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->jabatan_m->get_all_sec();
+		$this->load->view('template/header', $data);
+		$this->load->view('jabatan/data_jabatan', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_jabatan()
+	{
+		$data['judul'] = 'Data jabatan';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$this->load->view('template/header', $data, $data);
+		$this->load->view('jabatan/create_jabatan', $data, $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_jabatan($id_sec)
+	{
+		$data['judul'] = 'Data jabatan';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->jabatan_m->get_row_sec($id_sec);
+		$this->load->view('template/header', $data);
+		$this->load->view('jabatan/edit_jabatan', $data);
+		$this->load->view('template/footer');
+	}
+	//end jabatan
 }

@@ -105,7 +105,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
                             <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
-                            <a class="collapse-item" href="<?= base_url('atk/jabatan') ?>">Jabatan</a>
+                            <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Jabatan</a>
                         </div>
                     </div>
                 </li>
