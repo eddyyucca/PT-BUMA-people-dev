@@ -64,7 +64,7 @@
                             </tr>
                             <tr>
                                 <td>Departement</td>
-                                <td><select name="departement" class="form-control">
+                                <td><select name="departement" class="form-control selectpicker" data-live-search="true">
                                         <option value="">--PILIH BIDANG--</option>
                                         <?php foreach ($departement as $dep) { ?>
                                             <option value="<?= $dep->id_dep ?>"><?= $dep->nama_departement ?></option>
@@ -73,7 +73,7 @@
                             </tr>
                             <tr>
                                 <td>Section</td>
-                                <td><select name="section" class="form-control">
+                                <td><select name="section" class="form-control  selectpicker" data-live-search="true">
                                         <option value="">--PILIH SECTION--</option>
                                         <?php foreach ($section as $section) { ?>
                                             <option value="<?= $section->id_sec ?>"><?= $section->nama_sec ?></option>
@@ -82,7 +82,7 @@
                             </tr>
                             <tr>
                                 <td>Jabatan</td>
-                                <td><select name="jabatan" class="form-control">
+                                <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
                                         <option value="">--PILIH JABATAN--</option>
                                         <?php foreach ($jabatan as $jabatan) { ?>
                                             <option value="<?= $jabatan->id_jab ?>"><?= $jabatan->nama_jab ?></option>

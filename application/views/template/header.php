@@ -18,6 +18,8 @@
     <link href="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/css/profil.css" rel="stylesheet">
     <!-- pop up -->
+    <!-- select -->
+    <link href="<?= base_url('assets') ?>/select/css/bootstrap-select.min.css" rel="stylesheet">
     <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
     <style>
         .file {
