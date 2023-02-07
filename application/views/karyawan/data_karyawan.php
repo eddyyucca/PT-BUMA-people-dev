@@ -12,7 +12,7 @@
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
                     <div class="container">
-                        <a href="" class="btn btn-success"><i class="fas fa-user-plus"></i> Add Karyawan</a>
+                        <a href="<?= base_url('admin/add_karyawan/') ?>" class="btn btn-success"><i class="fas fa-user-plus"></i> Add Karyawan</a>
                         <a href="" class="btn btn-success"><i class="fas fa-file-excel"></i> Export Excel</a>
                         <a href="" class="btn btn-success"><i class="fas fa-file-pdf"></i> Inport PDF</a>
                         <hr>

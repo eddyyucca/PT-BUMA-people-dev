@@ -36,6 +36,14 @@ class Admin extends CI_Controller
 		$this->load->view('karyawan/data_karyawan');
 		$this->load->view('template/footer');
 	}
+	public function add_karyawan()
+	{
+		$data['judul'] = 'Add Karyawan';
+		$data['nama'] = $this->session->userdata('nama');
+		$this->load->view('template/header', $data);
+		$this->load->view('karyawan/input_karyawan');
+		$this->load->view('template/footer');
+	}
 
 
 	// end karyawan
