@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="container-fluid">
                     <?= validation_errors() ?>
-                    <form action="<?= base_url('admin/tambah_pegawai_baru')  ?>" method="POST" enctype="multipart/form-data">
+                    <form action="<?= base_url('admin/proses_tambah_karyawan')  ?>" method="POST" enctype="multipart/form-data">
                         <table class="table">
                             <tr>
                                 <td width=20%>NIK</td>
@@ -58,7 +58,7 @@
                                 <td>Telpon</td>
                                 <td><input type="text" name="no_telp" class="form-control" required placeholder="Telpon"></td>
                             </tr>
-                           
+
                             <tr>
                                 <td>Departement</td>
                                 <td><select name="departement" class="form-control selectpicker" data-live-search="true">
