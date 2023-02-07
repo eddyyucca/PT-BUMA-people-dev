@@ -17,4 +17,4 @@ class Departement_m extends CI_Model
     }
 }
 
-/* End of file Auth_m.php */
+/* End of file departement_m.php */

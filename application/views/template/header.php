@@ -20,6 +20,7 @@
     <!-- pop up -->
     <!-- select -->
     <link href="<?= base_url('assets') ?>/select/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets') ?>/loading/loading.css" rel="stylesheet">
     <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
     <style>
         .file {
@@ -29,8 +30,12 @@
     </style>
 
 </head>
+<!-- Loading Page -->
 
-<body id="page-top">
+<body id="page-top" onload="myFunction()" style="margin:0;">
+    <div id="loader"></div>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+  
     <!-- menu -->
 
     <body id="page-top">
@@ -190,6 +195,7 @@
                             </li>
                         </ul>
                     </nav>
+
                     <!-- End of Topbar -->
 
                     <!-- end menu -->

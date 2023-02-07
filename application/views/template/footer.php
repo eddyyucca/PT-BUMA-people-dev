@@ -1,8 +1,9 @@
    <!-- Footer -->
+   </div>
    <footer class="sticky-footer bg-white">
      <div class="container my-auto">
        <div class="copyright text-center my-auto">
-         <span>Copyright &copy; BUMA SITE IPR - 2023</span>
+         <span>Copyright &copy; TEAM IT - BUMA SITE IPR - 2023</span>
        </div>
      </div>
    </footer>
@@ -63,6 +64,30 @@
    <!-- Page pop up -->
    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
    <script src="<?= base_url('assets') ?>/js/popup.js"></script> -->
+
+   <script>
+     // Loading Page
+
+     var myVar;
+
+
+
+     function myFunction() {
+
+       myVar = setTimeout(showPage, 500);
+
+     }
+
+
+
+     function showPage() {
+
+       document.getElementById("loader").style.display = "none";
+
+       document.getElementById("myDiv").style.display = "block";
+
+     }
+   </script>
    <script>
      $(document).on("click", ".browse", function() {
        var file = $(this).parents().find(".file");
@@ -82,7 +107,7 @@
      });
    </script>
 
-   <script>
+   <!-- <script>
      // Set new default font family and font color to mimic Bootstrap's default styling
      Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
      Chart.defaults.global.defaultFontColor = '#858796';
@@ -195,11 +220,47 @@
          },
        }
      });
-   </script>
+   </script> -->
 
    <!-- Page level custom scripts -->
    <script src="<?= base_url('assets') ?>/js/demo/chart-area-demo.js"></script>
-   <script src="<?= base_url('assets') ?>/js/demo/chart-pie-demo.js"></script>
+   <script>
+     // Set new default font family and font color to mimic Bootstrap's default styling
+     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+     Chart.defaults.global.defaultFontColor = '#858796';
+
+     // Pie Chart Example
+     var ctx = document.getElementById("myPieChart");
+     var myPieChart = new Chart(ctx, {
+       type: 'doughnut',
+       data: {
+         labels: ["IT", "PRODUKSI", "MEKANIK"],
+         datasets: [{
+           data: [70, 80, 120],
+           backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+           hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+           hoverBorderColor: "rgba(234, 236, 244, 1)",
+         }],
+       },
+       options: {
+         maintainAspectRatio: false,
+         tooltips: {
+           backgroundColor: "rgb(255,255,255)",
+           bodyFontColor: "#858796",
+           borderColor: '#dddfeb',
+           borderWidth: 1,
+           xPadding: 15,
+           yPadding: 15,
+           displayColors: false,
+           caretPadding: 10,
+         },
+         legend: {
+           display: false
+         },
+         cutoutPercentage: 80,
+       },
+     });
+   </script>
    <!-- select -->
    <script src="<?= base_url('assets') ?>/select/js/bootstrap-select.min.js"></script>
 

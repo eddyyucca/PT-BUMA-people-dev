@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_jabatan') ?>" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Tambah Jabatan</a>
+                    <a href="<?= base_url('admin/create_jabatan') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Jabatan</a>
                     <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

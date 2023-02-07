@@ -1,9 +1,9 @@
 <!-- Begin Page Content -->
-<div class="container col-8">
+<div class="container col-8 mb-3">
     <!-- Page Heading -->
     <div class="card">
         <div class="card-header">
-            <a href="<?= base_url('admin/pegawai') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+            <a href="<?= base_url('admin/data_karyawan') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
         </div>
         <div class="card-body">
             <div class="row">
@@ -58,16 +58,13 @@
                                 <td>Telpon</td>
                                 <td><input type="text" name="no_telp" class="form-control" required placeholder="Telpon"></td>
                             </tr>
-                            <tr>
-                                <td>Mulai Bekerja</td>
-                                <td><input type="date" name="mulai_bekerja" class="form-control" required placeholder="Mulai Bekerja"></td>
-                            </tr>
+                           
                             <tr>
                                 <td>Departement</td>
                                 <td><select name="departement" class="form-control selectpicker" data-live-search="true">
-                                        <option value="">--PILIH BIDANG--</option>
-                                        <?php foreach ($departement as $dep) { ?>
-                                            <option value="<?= $dep->id_dep ?>"><?= $dep->nama_departement ?></option>
+                                        <option value="">--PILIH Departement--</option>
+                                        <?php foreach ($dep as $departement) { ?>
+                                            <option value="<?= $departement->id_dep ?>"><?= $departement->nama_dep ?></option>
                                         <?php } ?>
                                     </select></td>
                             </tr>
@@ -75,7 +72,7 @@
                                 <td>Section</td>
                                 <td><select name="section" class="form-control  selectpicker" data-live-search="true">
                                         <option value="">--PILIH SECTION--</option>
-                                        <?php foreach ($section as $section) { ?>
+                                        <?php foreach ($sec as $section) { ?>
                                             <option value="<?= $section->id_sec ?>"><?= $section->nama_sec ?></option>
                                         <?php } ?>
                                     </select></td>
@@ -84,7 +81,7 @@
                                 <td>Jabatan</td>
                                 <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
                                         <option value="">--PILIH JABATAN--</option>
-                                        <?php foreach ($jabatan as $jabatan) { ?>
+                                        <?php foreach ($jab as $jabatan) { ?>
                                             <option value="<?= $jabatan->id_jab ?>"><?= $jabatan->nama_jab ?></option>
                                         <?php } ?>
                                     </select></td>
@@ -100,7 +97,7 @@
                                         </div>
                                     </div>
                                     <div class="ml-2 col-sm-6">
-                                        <img src="<?= base_url("assets/images/default.png") ?>" width="100" height="100" id="preview" class="img-thumbnail">
+                                        <img src="<?= base_url("assets/profil_default.png") ?>" width="100" height="100" id="preview" class="img-thumbnail">
                                     </div>
                                 </td>
                             </tr>

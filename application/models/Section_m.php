@@ -17,4 +17,4 @@ class Section_m extends CI_Model
     }
 }
 
-/* End of file Auth_m.php */
+/* End of file section_m.php */

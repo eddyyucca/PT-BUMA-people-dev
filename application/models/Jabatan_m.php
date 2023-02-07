@@ -17,4 +17,4 @@ class Jabatan_m extends CI_Model
     }
 }
 
-/* End of file Auth_m.php */
+/* End of file jabatan_m.php */

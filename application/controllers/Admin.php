@@ -10,6 +10,7 @@ class Admin extends CI_Controller
 		$this->load->model('departement_m');
 		$this->load->model('jabatan_m');
 		$this->load->model('section_m');
+		$this->load->model('karyawan_m');
 		// $this->load->model('alumni_m');
 
 		// $level_akun = $this->session->userdata('level');
@@ -38,11 +39,53 @@ class Admin extends CI_Controller
 	}
 	public function add_karyawan()
 	{
+		// dep,sec,jab
+		$data['dep'] = $this->departement_m->get_all_dep();
+		$data['sec'] = $this->section_m->get_all_sec();
+		$data['jab'] = $this->jabatan_m->get_all_jab();
+
 		$data['judul'] = 'Add Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/input_karyawan');
 		$this->load->view('template/footer');
+	}
+	public function edit_karyawan()
+	{
+		$data['judul'] = 'Update Karyawan';
+		$data['nama'] = $this->session->userdata('nama');
+		$this->load->view('template/header', $data);
+		$this->load->view('karyawan/input_karyawan');
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_karyawan()
+	{
+		$data = array(
+			'nik' => $this->input->post('nik'),
+			'nama_lengkap' => $this->input->post('nama_lengkap'),
+			'jk' => $this->input->post('jk'),
+			'tempat' => $this->input->post('tempat'),
+			'ttl' => $this->input->post('ttl'),
+			'alamat' => $this->input->post('alamat'),
+			'agama' => $this->input->post('agama'),
+			'email' => $this->input->post('email'),
+			'telpon' => $this->input->post('telpon'),
+			'section' => $this->input->post('section'),
+			'jabatan' => $this->input->post('jabatan'),
+			'departement' => $this->input->post('departement'),
+			'foto' => $this->input->post('foto'),
+		);
+		$this->db->insert('karyawan', $data);
+		return redirect('admin/karyawan');
+	}
+	public function proses_edit_karyawan()
+	{
+		$data = array(
+			'nama_dep' => $this->input->post('nama_dep')
+		);
+		$this->db->where('id_dep', $id_dep);
+		$this->db->update('departement', $data);
+		return redirect('admin/karyawan');
 	}
 
 
