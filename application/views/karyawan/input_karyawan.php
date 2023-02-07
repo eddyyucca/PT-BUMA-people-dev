@@ -36,7 +36,7 @@
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><textarea name="Alamat" class="form-control"></textarea></td>
+                                <td><textarea name="alamat" class="form-control"></textarea></td>
                             </tr>
 
                             <tr>
@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <td>Telpon</td>
-                                <td><input type="text" name="no_telp" class="form-control" required placeholder="Telpon"></td>
+                                <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon"></td>
                             </tr>
 
                             <tr>
@@ -66,7 +66,8 @@
                                         <?php foreach ($dep as $departement) { ?>
                                             <option value="<?= $departement->id_dep ?>"><?= $departement->nama_dep ?></option>
                                         <?php } ?>
-                                    </select></td>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Section</td>

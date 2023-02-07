@@ -13,8 +13,41 @@
 
                     <div class="container">
                         <a href="<?= base_url('admin/add_karyawan/') ?>" class="btn btn-success"><i class="fas fa-user-plus"></i> Add Karyawan</a>
-                        <a href="" class="btn btn-success"><i class="fas fa-file-excel"></i> Export Excel</a>
-                        <a href="" class="btn btn-success"><i class="fas fa-file-pdf"></i> Inport PDF</a>
+                        <a href="" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                            <i class="fas fa-file-excel"></i> Import Excel</a>
+                        <!-- excel trigger -->
+                        <!-- Button trigger modal -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Upload Data Karyawan</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="POST" action="<?= site_url('admin/upload_excel_karyawan') ?>" enctype="multipart/form-data">
+
+                                        <div class="modal-body">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <input type="file" class="form-control" name="file" accept=".xls, .xlsx" required>
+                                                    <div class="mt-1">
+                                                        <span class="text-secondary">File yang harus diupload : .xls, xlsx</span>
+                                                    </div>
+                                                    <?= form_error('file', '<div class="text-danger">', '</div>') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-success">Upload</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <hr>
                         <nav class="navbar ">
                             <form class="form-inline">
@@ -31,63 +64,30 @@
                         </div>
                         <div class="row">
                             <!-- Single Advisor-->
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <a href="<?= base_url('home') ?>">
-                                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <!-- Team Thumb-->
-                                        <div class="advisor_thumb"><img src="<?= base_url('assets') ?>/img/pp1.jpeg" class="rounded" width="185" height="200" alt="Foto Profil">
+                            <?php foreach ($karyawan as $kar) { ?>
+
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <a href="<?= base_url('home') ?>">
+                                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                            <!-- Team Thumb-->
+                                            <div class="advisor_thumb">
+                                                <?php if ($kar->foto == false) { ?>
+                                                    <img src="<?= base_url('assets') ?>/profil_default.png" class="rounded" width="185" height="183" alt="Foto Profil">
+                                                <?php  } else { ?>
+                                                    <img src="<?= base_url('assets/profil_default/ ') . $kar->foto ?>" class="rounded" width="185" height="200" alt="Foto Profil">
+                                                <?php  } ?>
+                                            </div>
+                                            <!-- Team Details-->
+                                            <div class=" text-secondary single_advisor_details_info">
+                                                <h6><?= $kar->nama ?></h6>
+                                                <p class="designation"><?= $kar->nama_jab ?></p>
+                                            </div>
                                         </div>
-                                        <!-- Team Details-->
-                                        <div class=" text-secondary single_advisor_details_info">
-                                            <h6>Samantha Sarah</h6>
-                                            <p class="designation">Founder &amp; CEO</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            <?php
+                            } ?>
                             <!-- Single Advisor-->
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <a href="<?= base_url('home') ?>">
-                                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <!-- Team Thumb-->
-                                        <div class="advisor_thumb"><img src="<?= base_url('assets') ?>/img/pp2.jpeg" class="rounded" width="185" height="200" alt="">
-                                        </div>
-                                        <!-- Team Details-->
-                                        <div class="text-secondary single_advisor_details_info">
-                                            <h6>Samantha Sarah</h6>
-                                            <p class="designation">Founder &amp; CEO</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <a href="<?= base_url('home') ?>">
-                                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <!-- Team Thumb-->
-                                        <div class="advisor_thumb"><img src="<?= base_url('assets') ?>/img/pp2.jpeg" class="rounded" width="185" height="200" alt="">
-                                        </div>
-                                        <!-- Team Details-->
-                                        <div class="text-secondary single_advisor_details_info">
-                                            <h6>Samantha Sarah</h6>
-                                            <p class="designation">Founder &amp; CEO</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <a href="<?= base_url('home') ?>">
-                                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                        <!-- Team Thumb-->
-                                        <div class="advisor_thumb"><img src="<?= base_url('assets') ?>/img/pp2.jpeg" class="rounded" width="185" height="200" alt="">
-                                        </div>
-                                        <!-- Team Details-->
-                                        <div class="text-secondary single_advisor_details_info">
-                                            <h6>Samantha Sarah</h6>
-                                            <p class="designation">Founder &amp; CEO</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>

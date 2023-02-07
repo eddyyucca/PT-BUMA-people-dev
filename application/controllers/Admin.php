@@ -33,6 +33,8 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['karyawan'] = $this->karyawan_m->get_all_kar();
+
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/data_karyawan');
 		$this->load->view('template/footer');
@@ -43,6 +45,18 @@ class Admin extends CI_Controller
 		$data['dep'] = $this->departement_m->get_all_dep();
 		$data['sec'] = $this->section_m->get_all_sec();
 		$data['jab'] = $this->jabatan_m->get_all_jab();
+
+		$data['judul'] = 'Add Karyawan';
+		$data['nama'] = $this->session->userdata('nama');
+		$this->load->view('template/header', $data);
+		$this->load->view('karyawan/input_karyawan');
+		$this->load->view('template/footer');
+	}
+	public function view_karyawan($id_kar)
+	{
+		// dep,sec,jab
+
+		$data['karyawan'] = $this->jabatan_m->get_view_kar($id_kar);
 
 		$data['judul'] = 'Add Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
@@ -62,10 +76,10 @@ class Admin extends CI_Controller
 	{
 		$data = array(
 			'nik' => $this->input->post('nik'),
-			'nama_lengkap' => $this->input->post('nama_lengkap'),
+			'nama' => $this->input->post('nama_lengkap'),
 			'jk' => $this->input->post('jk'),
 			'tempat' => $this->input->post('tempat'),
-			'ttl' => $this->input->post('ttl'),
+			'tanggal_lahir' => $this->input->post('ttl'),
 			'alamat' => $this->input->post('alamat'),
 			'agama' => $this->input->post('agama'),
 			'email' => $this->input->post('email'),
@@ -73,7 +87,8 @@ class Admin extends CI_Controller
 			'section' => $this->input->post('section'),
 			'jabatan' => $this->input->post('jabatan'),
 			'departement' => $this->input->post('departement'),
-			'foto' => $this->input->post('foto'),
+			// 'foto' => $this->input->post('foto'),
+			'level' => "user",
 		);
 		$this->db->insert('karyawan', $data);
 		return redirect('admin/karyawan');
