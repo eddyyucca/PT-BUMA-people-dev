@@ -27,8 +27,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form method="POST" action="<?= site_url('admin/upload_excel_karyawan') ?>" enctype="multipart/form-data">
-
+                                    <form action="<?= base_url('admin/import')  ?>" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group row">
                                                 <div class="col-md-12">
@@ -41,8 +40,9 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-success">Upload</button>
+                                            <button class="btn btn-primary">Simpan</button>
+                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success">Upload</button> -->
                                         </div>
                                     </form>
                                 </div>

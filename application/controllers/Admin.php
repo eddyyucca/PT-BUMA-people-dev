@@ -1,5 +1,11 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 class Admin extends CI_Controller
 {
@@ -102,6 +108,58 @@ class Admin extends CI_Controller
 		$this->db->update('departement', $data);
 		return redirect('admin/karyawan');
 	}
+	public function import()
+	{
+
+		$file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+		if (isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mimes)) {
+			$arr_file = explode('.', $_FILES['file']['name']);
+			$extension = end($arr_file);
+			if ('csv' == $extension) {
+				$reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+			} elseif ('xls' == $extension) {
+				$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+			} else {
+				$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+			}
+
+			$spreadsheet = $reader->load($_FILES['file']['tmp_name']);
+			$sheetData = $spreadsheet->getActiveSheet()->toArray();
+			if (!empty($sheetData)) {
+				for ($i = 1; $i < count($sheetData); $i++) {
+					$cek = $this->karyawan_m->cek_nik(($sheetData[$i][0]));
+					if ($sheetData[$i][0] == $cek) {
+						$data = false;
+					} else {
+						$nik = $sheetData[$i][0];
+						$nama = $sheetData[$i][1];
+						// looping insert data
+						$data = array(
+							'nik' => $nik,
+							'nama' => $nama,
+							'password' => md5('12345678'),
+							'level' => 'user',
+						);
+						$this->db->insert('karyawan', $data);
+					}
+				}
+			}
+		}
+		return redirect('admin/data_karyawan');
+	}
+	public function upload_config($path)
+	{
+		if (!is_dir($path))
+			mkdir($path, 0777, TRUE);
+		$config['upload_path'] 		= './' . $path;
+		$config['allowed_types'] 	= 'csv|CSV|xlsx|XLSX|xls|XLS';
+		$config['max_filename']	 	= '255';
+		$config['encrypt_name'] 	= TRUE;
+		$config['max_size'] 		= 4096;
+		$this->load->library('upload', $config);
+	}
+
 
 
 	// end karyawan

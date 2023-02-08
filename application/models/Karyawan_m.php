@@ -26,6 +26,20 @@ class Karyawan_m extends CI_Model
         $this->db->order_by('jabatan', 'DESC');
         return   $this->db->get('karyawan')->result();
     }
+
+    // cek user saat upload data excel
+    public function cek_nik($nik)
+    {
+
+        $this->db->where('nik', $nik);
+        $query = $this->db->get('karyawan');
+        $row = $query->row();
+        if ($query->num_rows > 0) {
+            return $row->username;
+        } else {
+            return "";
+        }
+    }
 }
 
 /* End of file karyawan_m.php */
