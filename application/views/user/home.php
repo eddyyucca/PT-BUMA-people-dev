@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <b><?= $total_karyawan ?></b>
+                                        <b>15</b>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <b><?= $total_departement ?></b>
+                                        <b>60</b>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <b><?= $total_section ?></b>
+                                        <b>60</b>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <b><?= $total_jabatan ?></b>
+                                        <b>60</b>
                                     </div>
                                 </div>
                             </div>

@@ -15,6 +15,15 @@ class Departement_m extends CI_Model
         $query = $this->db->get('departement');
         return $query->row();
     }
+    public function jumlah_departement()
+    {
+        $query = $this->db->get('departement');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
 
 /* End of file departement_m.php */

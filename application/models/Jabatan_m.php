@@ -15,6 +15,15 @@ class Jabatan_m extends CI_Model
         $query = $this->db->get('jabatan');
         return $query->row();
     }
+    public function jumlah_jabatan()
+    {
+        $query = $this->db->get('jabatan');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
 
 /* End of file jabatan_m.php */

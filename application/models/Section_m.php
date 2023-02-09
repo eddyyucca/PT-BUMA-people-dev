@@ -15,6 +15,15 @@ class Section_m extends CI_Model
         $query = $this->db->get('section');
         return $query->row();
     }
+    public function jumlah_section()
+    {
+        $query = $this->db->get('section');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
 
 /* End of file section_m.php */

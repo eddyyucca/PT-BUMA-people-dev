@@ -17,7 +17,6 @@ class Admin extends CI_Controller
 		$this->load->model('jabatan_m');
 		$this->load->model('section_m');
 		$this->load->model('karyawan_m');
-		// $this->load->model('alumni_m');
 
 		// $level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -30,16 +29,94 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'PT. BUMA - SITE IPR';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['total_karyawan'] = $this->karyawan_m->jumlah_karyawan();
+		$data['total_section'] = $this->section_m->jumlah_section();
+		$data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
+		$data['total_departement'] = $this->departement_m->jumlah_departement();
 		$this->load->view('template/header', $data);
 		$this->load->view('home/home');
 		$this->load->view('template/footer');
 	}
 	// karyawan
-	public function data_karyawan()
+	public function data_karyawan($num = '')
 	{
+		$perpage = 8;
+		$offset = $this->uri->segment(1);
+		$data['data'] = $this->karyawan_m->get_data($perpage, $offset)->result();
+
+		$config['base_url'] = site_url();
+		$config['total_rows'] = $this->karyawan_m->getAll()->num_rows();
+		$config['per_page'] = $perpage;
+		// Membuat Style pagination untuk BootStrap v4
+		$config['first_link']       = 'First';
+		$config['last_link']        = 'Last';
+		$config['next_link']        = 'Next';
+		$config['prev_link']        = 'Prev';
+		$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+		$config['full_tag_close']   = '</ul></nav></div>';
+		$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+		$config['num_tag_close']    = '</span></li>';
+		$config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+		$config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+		$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+		$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+		$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+		$config['prev_tagl_close']  = '</span>Next</li>';
+		$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+		$config['first_tagl_close'] = '</span></li>';
+		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+		$config['last_tagl_close']  = '</span></li>';
+
+		$this->pagination->initialize($config);
+
+		//end
+
 		$data['judul'] = 'Data Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['karyawan'] = $this->karyawan_m->get_all_kar();
+
+		$this->load->view('template/header', $data);
+		$this->load->view('karyawan/data_karyawan');
+		$this->load->view('template/footer');
+	}
+
+	public function search_data_karyawan()
+	{
+		$perpage = 8;
+		$offset = $this->uri->segment(1);
+
+		$cari = $this->input->post('cari');
+
+		$data['data'] = $this->karyawan_m->cari_data($perpage, $offset, $cari)->result();
+
+		$config['base_url'] = site_url();
+		$config['total_rows'] = $this->karyawan_m->getRow($cari)->num_rows();
+		$config['per_page'] = $perpage;
+		// Membuat Style pagination untuk BootStrap v4
+		$config['first_link']       = 'First';
+		$config['last_link']        = 'Last';
+		$config['next_link']        = 'Next';
+		$config['prev_link']        = 'Prev';
+		$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+		$config['full_tag_close']   = '</ul></nav></div>';
+		$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+		$config['num_tag_close']    = '</span></li>';
+		$config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+		$config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+		$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+		$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+		$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+		$config['prev_tagl_close']  = '</span>Next</li>';
+		$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+		$config['first_tagl_close'] = '</span></li>';
+		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+		$config['last_tagl_close']  = '</span></li>';
+
+		$this->pagination->initialize($config);
+
+		//end
+
+		$data['judul'] = 'Data Karyawan';
+		$data['nama'] = $this->session->userdata('nama');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/data_karyawan');
@@ -97,7 +174,7 @@ class Admin extends CI_Controller
 			'level' => "user",
 		);
 		$this->db->insert('karyawan', $data);
-		return redirect('admin/karyawan');
+		return redirect('admin/data_karyawan');
 	}
 	public function proses_edit_karyawan()
 	{
@@ -128,21 +205,26 @@ class Admin extends CI_Controller
 			$sheetData = $spreadsheet->getActiveSheet()->toArray();
 			if (!empty($sheetData)) {
 				for ($i = 1; $i < count($sheetData); $i++) {
-					$cek = $this->karyawan_m->cek_nik(($sheetData[$i][0]));
-					if ($sheetData[$i][0] == $cek) {
-						$data = false;
-					} else {
-						$nik = $sheetData[$i][0];
-						$nama = $sheetData[$i][1];
-						// looping insert data
-						$data = array(
-							'nik' => $nik,
-							'nama' => $nama,
-							'password' => md5('12345678'),
-							'level' => 'user',
-						);
-						$this->db->insert('karyawan', $data);
-					}
+					// $cek = $this->karyawan_m->cek_nik(115);
+					// $cek = $this->karyawan_m->cek_nik(($sheetData[$i][0]));
+
+					$nik = $sheetData[$i][0];
+					$nama = $sheetData[$i][1];
+					$section = $sheetData[$i][3];
+					$jabatan = $sheetData[$i][5];
+					$departement = $sheetData[$i][7];
+					// looping insert data
+					$data = array(
+						'nik' => $nik,
+						'nama' => $nama,
+						'section' => $section,
+						'jabatan' => $jabatan,
+						'departement' => $departement,
+						'password' => md5('12345678'),
+						'level' => 'user',
+					);
+
+					$this->db->insert('karyawan', $data);
 				}
 			}
 		}
@@ -252,7 +334,7 @@ class Admin extends CI_Controller
 	public function proses_tambah_section()
 	{
 		$data = array(
-			'nama_section' => $this->input->post('nama_section')
+			'nama_sec' => $this->input->post('nama_sec')
 		);
 		$this->db->insert('section', $data);
 		return redirect('admin/section');

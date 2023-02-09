@@ -26,17 +26,7 @@
         .file {
             visibility: hidden;
             position: absolute;
-
         }
-
-        .example .pagination>li>a,
-        .example .pagination>li>span {
-            border: 1px solid purple;
-        }
-
-        .pagination>li.active>a {
-            background: purple;
-            color: #fff;
     </style>
 
 </head>
@@ -71,16 +61,7 @@
                     <div class="sidebar-heading">
                         Interface
                     </div>
-                    <!-- Nav Item - Pages Collapse Menu -->
-                    <!-- Nav Item - Utilities Collapse Menu -->
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('admin/data_karyawan') ?>">
-                            <i class="fas fa-fw fa-users"></i>
-                            <span>Karyawan</span>
-                        </a>
-
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="charts.html">
                             <i class="fas fa-fw fa-thumbs-up"></i>
@@ -113,20 +94,7 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-none d-md-block">
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                            <i class="fas fa-database"></i>
-                            <span>Data Master</span>
-                        </a>
-                        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
-                                <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
-                                <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Jabatan</a>
-                            </div>
-                        </div>
-                    </li>
+
                     <!-- Divider -->
                     <hr class="sidebar-divider d-none d-md-block">
 

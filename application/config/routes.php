@@ -52,3 +52,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'admin';
 $route['404_override'] = 'not_found';
 $route['translate_uri_dashes'] = FALSE;
+$route['(:any)'] = 'admin/data_karyawan/$1';

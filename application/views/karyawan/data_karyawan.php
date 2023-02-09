@@ -50,8 +50,8 @@
                         </div>
                         <hr>
                         <nav class="navbar ">
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <form action="<?= base_url('admin/search_data_karyawan')  ?>" method="POST">
+                                <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                         </nav>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="row">
                             <!-- Single Advisor-->
-                            <?php foreach ($karyawan as $kar) { ?>
+                            <?php foreach ($data as $kar) : ?>
 
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <a href="<?= base_url('home') ?>">
@@ -80,36 +80,23 @@
                                             <!-- Team Details-->
                                             <div class=" text-secondary single_advisor_details_info">
                                                 <h6><?= $kar->nama ?></h6>
-                                                <p class="designation"><?= $kar->nama_jab ?></p>
+                                                <p class="designation"><?= $kar->nama_jab  ?> - <?= $kar->nama_dep ?></p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             <?php
-                            } ?>
+                            endforeach; ?>
                             <!-- Single Advisor-->
                         </div>
                     </div>
                 </div>
                 <!-- footer -->
-                <nav aria-label="...">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <span class="page-link">Previous</span>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active">
-                            <span class="page-link">
-                                2
-                                <span class="sr-only">(current)</span>
-                            </span>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="row">
+                    <div class="col">
+                        <?php echo $this->pagination->create_links(); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
