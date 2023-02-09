@@ -50,7 +50,7 @@
                         </div>
                         <hr>
                         <nav class="navbar ">
-                            <form action="<?= base_url('admin/search_data_karyawan')  ?>" method="POST">
+                            <form class="form-inline" action="<?= base_url('admin/search_data_karyawan')  ?>" method="POST">
                                 <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
@@ -67,7 +67,7 @@
                             <?php foreach ($data as $kar) : ?>
 
                                 <div class="col-12 col-sm-6 col-lg-3">
-                                    <a href="<?= base_url('home') ?>">
+                                    <a href="<?= base_url('admin/view_karyawan/') . $kar->nik ?>">
                                         <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                             <!-- Team Thumb-->
                                             <div class="advisor_thumb">

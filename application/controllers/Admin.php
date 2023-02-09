@@ -44,7 +44,7 @@ class Admin extends CI_Controller
 		$offset = $this->uri->segment(1);
 		$data['data'] = $this->karyawan_m->get_data($perpage, $offset)->result();
 
-		$config['base_url'] = site_url();
+		$config['base_url'] = site_url('admin/data_karyawan');
 		$config['total_rows'] = $this->karyawan_m->getAll()->num_rows();
 		$config['per_page'] = $perpage;
 		// Membuat Style pagination untuk BootStrap v4
@@ -88,7 +88,7 @@ class Admin extends CI_Controller
 
 		$data['data'] = $this->karyawan_m->cari_data($perpage, $offset, $cari)->result();
 
-		$config['base_url'] = site_url();
+		$config['base_url'] = site_url('admin/search_data_karyawan');
 		$config['total_rows'] = $this->karyawan_m->getRow($cari)->num_rows();
 		$config['per_page'] = $perpage;
 		// Membuat Style pagination untuk BootStrap v4
@@ -135,16 +135,16 @@ class Admin extends CI_Controller
 		$this->load->view('karyawan/input_karyawan');
 		$this->load->view('template/footer');
 	}
-	public function view_karyawan($id_kar)
+	public function view_karyawan($nik)
 	{
 		// dep,sec,jab
 
-		$data['karyawan'] = $this->jabatan_m->get_view_kar($id_kar);
+		$data['data'] = $this->karyawan_m->get_view_kar($nik);
 
 		$data['judul'] = 'Add Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
 		$this->load->view('template/header', $data);
-		$this->load->view('karyawan/input_karyawan');
+		$this->load->view('karyawan/view_karyawan');
 		$this->load->view('template/footer');
 	}
 	public function edit_karyawan()

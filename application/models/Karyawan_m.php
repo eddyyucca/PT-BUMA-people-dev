@@ -18,13 +18,13 @@ class Karyawan_m extends CI_Model
         $query = $this->db->get('karyawan');
         return $query->row();
     }
-    public function get_view_kar($id_kar)
+    public function get_view_kar($nik)
     {
         $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
-        $this->db->join('section', 'section.id_jab = karyawan.section', 'left');
-        $this->db->join('departement', 'departement.id_jab = karyawan.departement', 'left');
-        $this->db->order_by('jabatan', 'DESC');
-        return   $this->db->get('karyawan')->result();
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $this->db->where('nik', $nik);
+        return   $this->db->get('karyawan')->row();
     }
 
     // cek user saat upload data excel
@@ -76,9 +76,9 @@ class Karyawan_m extends CI_Model
         $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
         $this->db->from('karyawan');
-        $this->db->like('nama', $cari);
         $this->db->order_by('id_kar', 'ASC');
         $this->db->limit($limit, $offset);
+        $this->db->like('nama', $cari);
 
         return $this->db->get();
     }
