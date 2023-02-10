@@ -9,20 +9,16 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">
-                        <img class="shadow" <?php
-                                            if ($data->foto == false) { ?> src="<?= base_url('assets/profil_default.png') ?>" <?php
-                                                                                                                            } else {
-                                                                                                                                ?> src="<?= base_url('assets/profil_default.png') ?>" <?php
-                                                                                                                                                                                    } ?> "
+                        <img class="shadow rounded-circle" <?php
+                                                            if ($data->foto == false) { ?> src="<?= base_url('assets/profil_default.png') ?>" <?php
+                                                                                                                                            } else {
+                                                                                                                                                ?> src="<?= base_url('assets/profil_default.png') ?>" <?php
+                                                                                                                                                                                                    } ?> "
                               alt=" Foto_profil" class="card-img-top" data-holder-rendered="true" style="height: 275px; width: 225px; display: block;">
 
 
                     </div>
                     <div class="col-6">
-                        <a href="<?= base_url('user_karyawan/cetak_idcard/' .  $data->nik) ?>" class="btn btn-primary mt-2">Edit Data Karyawan</a>
-                        <a href="<?= base_url('user_karyawan/riwayat_pendidikan/' .  $data->nik) ?>" class="btn btn-primary mt-2">Cetak Personal Data</a>
-                        <hr>
-
                         <table class="mt-2 ml-3">
                             <tr>
                                 <td> NIK</td>

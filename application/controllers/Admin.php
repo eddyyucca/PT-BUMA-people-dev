@@ -17,6 +17,7 @@ class Admin extends CI_Controller
 		$this->load->model('jabatan_m');
 		$this->load->model('section_m');
 		$this->load->model('karyawan_m');
+		$this->load->model('ci_m');
 
 		// $level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -413,5 +414,18 @@ class Admin extends CI_Controller
 	}
 	//end jabatan
 
+
+	// continuesImprovement
+	public function continuesimprovement()
+	{
+		$data['judul'] = 'Continues Improvement';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['continuesimprovement'] = $this->ci_m->get_all_ci();
+		$this->load->view('template/header', $data);
+		$this->load->view('continuesimprovement/data_continuesimprovement');
+		$this->load->view('template/footer');
+	}
+	// end continuesImprovement
 
 }
