@@ -506,7 +506,7 @@ class Admin extends CI_Controller
 	// end continuesImprovement
 
 	// jenisKompetensi
-	public function kompetensi()
+	public function data_jeniskompetensi()
 	{
 		$data['judul'] = 'Data kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
@@ -530,10 +530,88 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Update kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
 
-		$data['data'] = $this->kompetensi_m->get_row_dep($id_kom);
+		$data['data'] = $this->kompetensi_m->get_row_kom($id_kom);
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/edit_kompetensi', $data);
 		$this->load->view('template/footer');
 	}
+	public function proses_tambah_kom()
+	{
+		$data = array(
+			'j_kompetensi' => $this->input->post('j_kompetensi')
+		);
+		$this->db->insert('kompetensi', $data);
+		return redirect('admin/data_kompetensi');
+	}
+	public function proses_edit_kom($id_kom)
+	{
+		$data = array(
+			'j_kompetensi' => $this->input->post('j_kompetensi')
+		);
+		$this->db->where('id_kom', $id_kom);
+		$this->db->update('kompetensi', $data);
+		return redirect('admin/data_kompetensi');
+	}
+	public function delete_kompetensi($id_kom)
+	{
+		$this->db->where('id_kom', $id_kom);
+		$this->db->delete('kompetensi');
+		return redirect('admin/data_kompetensi');
+	}
 	// end jenisKompetensi
+
+	// task_kompetensi
+		public function task_kompetensi()
+	{
+		$data['judul'] = 'Data kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_all_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/data_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_kompetensi()
+	{
+		$data['judul'] = 'Create Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/create_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_kompetensi($id_kom)
+	{
+		$data['judul'] = 'Update kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_row_kom($id_kom);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/edit_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_kom()
+	{
+		$data = array(
+			'j_kompetensi' => $this->input->post('j_kompetensi')
+		);
+		$this->db->insert('kompetensi', $data);
+		return redirect('admin/data_kompetensi');
+	}
+	public function proses_edit_kom($id_kom)
+	{
+		$data = array(
+			'j_kompetensi' => $this->input->post('j_kompetensi')
+		);
+		$this->db->where('id_kom', $id_kom);
+		$this->db->update('kompetensi', $data);
+		return redirect('admin/data_kompetensi');
+	}
+	public function delete_kompetensi($id_kom)
+	{
+		$this->db->where('id_kom', $id_kom);
+		$this->db->delete('kompetensi');
+		return redirect('admin/data_kompetensi');
+	}
+	// end task_kompetensi
 }
