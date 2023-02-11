@@ -19,6 +19,7 @@ class Admin extends CI_Controller
 		$this->load->model('karyawan_m');
 		$this->load->model('kompetensi_m');
 		$this->load->model('ci_m');
+		$this->load->model('task_kompetensi_m');
 
 		// $level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -541,7 +542,7 @@ class Admin extends CI_Controller
 			'j_kompetensi' => $this->input->post('j_kompetensi')
 		);
 		$this->db->insert('kompetensi', $data);
-		return redirect('admin/data_kompetensi');
+		return redirect('admin/data_jeniskompetensi');
 	}
 	public function proses_edit_kom($id_kom)
 	{
@@ -550,68 +551,72 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_kom', $id_kom);
 		$this->db->update('kompetensi', $data);
-		return redirect('admin/data_kompetensi');
+		return redirect('admin/data_jeniskompetensi');
 	}
 	public function delete_kompetensi($id_kom)
 	{
 		$this->db->where('id_kom', $id_kom);
 		$this->db->delete('kompetensi');
-		return redirect('admin/data_kompetensi');
+		return redirect('admin/data_jeniskompetensi');
 	}
 	// end jenisKompetensi
 
 	// task_kompetensi
-		public function task_kompetensi()
+	public function task_kompetensi()
 	{
 		$data['judul'] = 'Data kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
 
-		$data['data'] = $this->kompetensi_m->get_all_kom();
+		$data['data'] = $this->task_kompetensi_m->get_all_tk();
 		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi/data_kompetensi', $data);
+		$this->load->view('task_kompetensi/data_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
-	public function create_kompetensi()
+	public function create_task_kompetensi()
 	{
-		$data['judul'] = 'Create Kompetensi';
+		$data['judul'] = 'Create Task Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['jabatan'] = $this->jabatan_m->get_all_jab();
+		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('task_kompetensi/create_taskkompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_task_kompetensi($id_kompetensi)
+	{
+		$data['judul'] = 'Update Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
 
+		$data['data'] = $this->task_kompetensi_m->get_row_tk($id_kompetensi);
 		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi/create_kompetensi', $data);
+		$this->load->view('task_kompetensi/edit_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
-	public function edit_kompetensi($id_kom)
+	public function proses_tambah_task_kompetensi()
 	{
-		$data['judul'] = 'Update kompetensi';
-		$data['nama'] = $this->session->userdata('nama');
-
-		$data['data'] = $this->kompetensi_m->get_row_kom($id_kom);
-		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi/edit_kompetensi', $data);
-		$this->load->view('template/footer');
+		$data = array(
+			'jabatan' => $this->input->post('jabatan'),
+			'kompetensi' => $this->input->post('kompetensi'),
+			't_kompetensi' => $this->input->post('t_kompetensi'),
+			'level_kom' => $this->input->post('level'),
+		);
+		$this->db->insert('kompetensi_user', $data);
+		return redirect('admin/task_kompetensi');
 	}
-	public function proses_tambah_kom()
+	public function proses_edit_task_kompetensi($id_kom)
 	{
 		$data = array(
 			'j_kompetensi' => $this->input->post('j_kompetensi')
 		);
-		$this->db->insert('kompetensi', $data);
-		return redirect('admin/data_kompetensi');
+		$this->db->where('id_kompetensi', $id_kompetensi);
+		$this->db->update('kompetensi_user', $data);
+		return redirect('admin/task_kompetensi');
 	}
-	public function proses_edit_kom($id_kom)
+	public function delete_task_kompetensi($id_kompetensi)
 	{
-		$data = array(
-			'j_kompetensi' => $this->input->post('j_kompetensi')
-		);
-		$this->db->where('id_kom', $id_kom);
-		$this->db->update('kompetensi', $data);
-		return redirect('admin/data_kompetensi');
-	}
-	public function delete_kompetensi($id_kom)
-	{
-		$this->db->where('id_kom', $id_kom);
-		$this->db->delete('kompetensi');
-		return redirect('admin/data_kompetensi');
+		$this->db->where('id_kompetensi', $id_kompetensi);
+		$this->db->delete('kompetensi_user');
+		return redirect('admin/task_kompetensi');
 	}
 	// end task_kompetensi
 }

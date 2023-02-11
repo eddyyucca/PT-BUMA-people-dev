@@ -109,7 +109,7 @@
                             <span>Cont. Improvement</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="<?= base_url('admin/task_kompetensi') ?>">
                             <i class="fad fa-chalkboard-teacher"></i>
                             <span>Kompetensi</span></a>
                     </li>

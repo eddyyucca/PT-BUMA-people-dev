@@ -7,15 +7,18 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Kompetensi</a>
+                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Kompetensi</a>
                     <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Kompetensi</th>
-                            <th>Aksi</th>
+                            <th>Jabatan</th>
+                            <th>Jenis kompetensi</th>
+                            <th>Task kompetensi</th>
+                            <th>Level</th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,10 +27,13 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
+                                <td><?= $x->nama_jab; ?></td>
                                 <td><?= $x->j_kompetensi; ?></td>
+                                <td><?= $x->t_kompetensi; ?></td>
+                                <td><?= $x->level_kom; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_kompetensi/') . $x->id_kom; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_kompetensi/') . $x->id_kom; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>
