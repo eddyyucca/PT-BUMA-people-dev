@@ -16,8 +16,10 @@
                         <tr>
                             <th>No</th>
                             <th>Judul</th>
+                            <th>pembuat</th>
                             <th>Tanggal Implementasi</th>
                             <th>Tim Terlibat</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +28,25 @@
                         foreach ($continuesimprovement as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
+                                <td><?= $x->judul; ?></td>
+                                <td><?= $x->pembuat; ?></td>
+                                <td><?= $x->t_implementasi; ?></td>
+                                <?php
+                                $model = $this->load->model('ci_m');
+                                $citt = $this->ci_m->get_tim_ci($x->tim);
+                                ?>
+                                <td> <?php
+                                        foreach ($citt as $ok) {
+                                            echo $ok->nama_tim;
+                                            echo "
+                                    <hr>";
+                                        }
+                                        ?>
+                                </td>
+                                <td>
+                                    <a href="<?= base_url("admin/delete_continuesimprovement/") . $x->tim ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url("admin/update_continuesimprovement/") . $x->id_ci . "/" . $x->pembuat ?>" class="btn btn-success">edit</a>
+                                </td>
 
                             </tr>
                         <?php   } ?>

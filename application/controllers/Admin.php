@@ -423,8 +423,84 @@ class Admin extends CI_Controller
 
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci();
 		$this->load->view('template/header', $data);
-		$this->load->view('continuesimprovement/data_continuesimprovement');
+		$this->load->view('continuesimprovement/data_continuesimprovement', $data);
 		$this->load->view('template/footer');
+	}
+	public function create_continuesimprovement()
+	{
+		$data['judul'] = 'Continues Improvement';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('continuesimprovement/create_continuesimprovement', $data);
+		$this->load->view('template/footer');
+	}
+	public function update_continuesimprovement($nik, $pembuat)
+	{
+		$data['judul'] = 'Continues Improvement';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->ci_m->get_row_ci($pembuat);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('continuesimprovement/edit_continuesimprovement', $data);
+		$this->load->view('template/footer');
+	}
+
+	public  function proses_tambah_ci()
+	{
+		$x = $this->input->post('kar');
+
+		$pembuat = $this->input->post('pembuat');
+		$kode_tim = date('Ymdhis') . $pembuat;
+		$data = array(
+			'judul' => $this->input->post('judul'),
+			'pembuat' => $this->input->post('pembuat'),
+			't_implementasi' => $this->input->post('t_implementasi'),
+			'tim' => $kode_tim,
+		);
+		$this->db->insert('continuesimprovement', $data);
+		foreach ($x as $tim) {
+			$data2 = array(
+				'nama_tim' => $tim,
+				'kode_tim' => $kode_tim
+			);
+			$this->db->insert('citt', $data2);
+		}
+
+		return redirect('admin/continuesimprovement');
+	}
+	public  function proses_edit_ci($kode_tim)
+	{
+
+		$data = array(
+			'judul' => $this->input->post('judul'),
+			'pembuat' => $this->input->post('pembuat'),
+			't_implementasi' => $this->input->post('t_implementasi'),
+			'tim' => $kode_tim,
+		);
+		$this->db->where('tim', $kode_tim);
+		$this->db->update('continuesimprovement', $data);
+		$this->db->where('kode_tim', $kode_tim);
+		$this->db->delete('citt');
+		$x = $this->input->post('kar');
+		foreach ($x as $tim) {
+			$data2 = array(
+				'nama_tim' => $tim,
+				'kode_tim' => $kode_tim
+			);
+			$this->db->insert('citt', $data2);
+		}
+		return redirect('admin/continuesimprovement');
+	}
+
+	public  function delete_continuesimprovement($kode_tim)
+	{
+		$this->db->where('tim', $kode_tim);
+		$this->db->delete('continuesimprovement');
+		$this->db->where('kode_tim', $kode_tim);
+		$this->db->delete('citt');
+		return redirect('admin/continuesimprovement');
 	}
 	// end continuesImprovement
 

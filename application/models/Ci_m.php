@@ -9,11 +9,17 @@ class Ci_m extends CI_Model
         $query = $this->db->get('continuesimprovement');
         return $query->result();
     }
-    public function get_row_ci($id_ci)
+    public function get_row_ci($nik)
     {
-        $this->db->where('id_ci', $id_ci);
+        $this->db->where('pembuat', $nik);
         $query = $this->db->get('continuesimprovement');
         return $query->row();
+    }
+    public function get_tim_ci($kode_tim)
+    {
+        $this->db->where('kode_tim', $kode_tim);
+        $query = $this->db->get('citt');
+        return $query->result();
     }
 }
 
