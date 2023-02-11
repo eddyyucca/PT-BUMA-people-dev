@@ -43,6 +43,7 @@
         .pagination>li.active>a {
             background: purple;
             color: #fff;
+        }
     </style>
 
 </head>
@@ -127,6 +128,7 @@
                         </a>
                         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="<?= base_url('admin/jeniskompetensi') ?>">Jenis Kompetensi</a>
                                 <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
                                 <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
                                 <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Jabatan</a>

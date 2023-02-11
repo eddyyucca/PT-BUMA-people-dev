@@ -17,6 +17,7 @@ class Admin extends CI_Controller
 		$this->load->model('jabatan_m');
 		$this->load->model('section_m');
 		$this->load->model('karyawan_m');
+		$this->load->model('kompetensi_m');
 		$this->load->model('ci_m');
 
 		// $level_akun = $this->session->userdata('level');
@@ -504,4 +505,35 @@ class Admin extends CI_Controller
 	}
 	// end continuesImprovement
 
+	// jenisKompetensi
+	public function kompetensi()
+	{
+		$data['judul'] = 'Data kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_all_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/data_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_kompetensi()
+	{
+		$data['judul'] = 'Create Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/create_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_kompetensi($id_kom)
+	{
+		$data['judul'] = 'Update kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_row_dep($id_kom);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/edit_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	// end jenisKompetensi
 }
