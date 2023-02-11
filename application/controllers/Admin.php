@@ -582,12 +582,13 @@ class Admin extends CI_Controller
 		$this->load->view('task_kompetensi/create_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
-	public function edit_task_kompetensi($id_kompetensi)
+	public function update_task_kompetensi($id_kompetensi)
 	{
 		$data['judul'] = 'Update Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
-
 		$data['data'] = $this->task_kompetensi_m->get_row_tk($id_kompetensi);
+		$data['jabatan'] = $this->jabatan_m->get_all_jab();
+		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template/header', $data);
 		$this->load->view('task_kompetensi/edit_taskkompetensi', $data);
 		$this->load->view('template/footer');
@@ -603,10 +604,13 @@ class Admin extends CI_Controller
 		$this->db->insert('kompetensi_user', $data);
 		return redirect('admin/task_kompetensi');
 	}
-	public function proses_edit_task_kompetensi($id_kom)
+	public function proses_edit_task_kompetensi($id_kompetensi)
 	{
 		$data = array(
-			'j_kompetensi' => $this->input->post('j_kompetensi')
+			'jabatan' => $this->input->post('jabatan'),
+			'kompetensi' => $this->input->post('kompetensi'),
+			't_kompetensi' => $this->input->post('t_kompetensi'),
+			'level_kom' => $this->input->post('level'),
 		);
 		$this->db->where('id_kompetensi', $id_kompetensi);
 		$this->db->update('kompetensi_user', $data);

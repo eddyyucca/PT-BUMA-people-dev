@@ -18,11 +18,33 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_kom/') . $data->id_kom ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_task_kompetensi/' . $data->id_kompetensi)  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>Nama Kompetensi</td>
-                                                                    <td><input type="text" name="j_kompetensi" class="form-control" required placeholder="Nama Kompetensi" value="<?= $data->j_kompetensi ?>"></td>
+                                                                    <td>Jabatan</td>
+                                                                    <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
+                                                                            <option value="">--PILIH Jabatan--</option>
+                                                                            <?php foreach ($jabatan as $jab) { ?>
+                                                                                <option value="<?= $jab->id_jab ?>" <?= $jab->id_jab == $data->jabatan ? 'selected=selected' : ''; ?>><?= $jab->nama_jab ?></option>
+                                                                            <?php } ?>
+                                                                        </select></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Kompetensi</td>
+                                                                    <td><select name="kompetensi" class="form-control  selectpicker" data-live-search="true">
+                                                                            <option value="">--PILIH Kompetensi--</option>
+                                                                            <?php foreach ($kompetensi as $kom) { ?>
+                                                                                <option value="<?= $kom->id_kom ?>" <?= $kom->id_kom == $data->kompetensi ? 'selected=selected' : ''; ?>><?= $kom->j_kompetensi ?></option>
+                                                                            <?php } ?>
+                                                                        </select></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Task Kompetensi</td>
+                                                                    <td><input type="text" name="t_kompetensi" class="form-control" value="<?= $data->t_kompetensi ?>" required placeholder="Task Kompetensi"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Level</td>
+                                                                    <td><input type="text" name="level" value="<?= $data->level_kom ?>" class="form-control" required placeholder="Level Kompetensi"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

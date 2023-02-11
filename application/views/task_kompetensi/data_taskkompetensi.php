@@ -32,8 +32,8 @@
                                 <td><?= $x->t_kompetensi; ?></td>
                                 <td><?= $x->level_kom; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>
