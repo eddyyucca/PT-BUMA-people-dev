@@ -641,19 +641,22 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Task suggestionsystem';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['jabatan'] = $this->jabatan_m->get_all_jab();
+
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['section'] = $this->section_m->get_all_sec();
+
 		$data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss();
 		$this->load->view('template/header', $data);
 		$this->load->view('suggestionsystem/create_suggestionsystem', $data);
 		$this->load->view('template/footer');
 	}
-	public function update_suggestionsystem($id_suggestionsystem)
+	public function update_suggestionsystem($id_ss)
 	{
 		$data['judul'] = 'Update Task suggestionsystem';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['data'] = $this->task_suggestionsystem_m->get_row_tk($id_suggestionsystem);
-		$data['jabatan'] = $this->jabatan_m->get_all_jab();
-		$data['suggestionsystem'] = $this->suggestionsystem_m->get_all_kom();
+		$data['data'] = $this->suggestionsystem_m->get_row_ss($id_ss);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['section'] = $this->section_m->get_all_sec();
 		$this->load->view('template/header', $data);
 		$this->load->view('suggestionsystem/edit_suggestionsystem', $data);
 		$this->load->view('template/footer');
@@ -661,30 +664,30 @@ class Admin extends CI_Controller
 	public function proses_tambah_suggestionsystem()
 	{
 		$data = array(
-			'jabatan' => $this->input->post('jabatan'),
-			'suggestionsystem' => $this->input->post('suggestionsystem'),
-			't_suggestionsystem' => $this->input->post('t_suggestionsystem'),
-			'level_kom' => $this->input->post('level'),
+			'judul_ss' => $this->input->post('judul_ss'),
+			't_implementasi_ss' => $this->input->post('t_implementasi_ss'),
+			'section_ss' => $this->input->post('section_ss'),
+			'pembuat_ss' => $this->input->post('pembuat_ss'),
 		);
-		$this->db->insert('suggestionsystem_user', $data);
+		$this->db->insert('suggestionsystem', $data);
 		return redirect('admin/suggestionsystem');
 	}
-	public function proses_edit_suggestionsystem($id_suggestionsystem)
+	public function proses_edit_suggestionsystem($id_ss)
 	{
 		$data = array(
-			'jabatan' => $this->input->post('jabatan'),
-			'suggestionsystem' => $this->input->post('suggestionsystem'),
-			't_suggestionsystem' => $this->input->post('t_suggestionsystem'),
-			'level_kom' => $this->input->post('level'),
+			'judul_ss' => $this->input->post('judul_ss'),
+			't_implementasi_ss' => $this->input->post('t_implementasi_ss'),
+			'section_ss' => $this->input->post('section_ss'),
+			'pembuat_ss' => $this->input->post('pembuat_ss'),
 		);
-		$this->db->where('id_suggestionsystem', $id_suggestionsystem);
-		$this->db->update('suggestionsystem_user', $data);
+		$this->db->where('id_ss', $id_ss);
+		$this->db->update('suggestionsystem', $data);
 		return redirect('admin/suggestionsystem');
 	}
-	public function delete_suggestionsystem($id_suggestionsystem)
+	public function delete_suggestionsystem($id_ss)
 	{
-		$this->db->where('id_suggestionsystem', $id_suggestionsystem);
-		$this->db->delete('suggestionsystem_user');
+		$this->db->where('id_ss', $id_ss);
+		$this->db->delete('suggestionsystem');
 		return redirect('admin/suggestionsystem');
 	}
 	// end suggestionsystem

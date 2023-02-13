@@ -12,39 +12,40 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold ">Edit Kompetensi</h6>
+                                                <h6 class="m-0 font-weight-bold ">Edit Suggestion System</h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_task_kompetensi/' . $data->id_kompetensi)  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_suggestionsystem/') . $data->id_ss  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td>Jabatan</td>
-                                                                    <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH Jabatan--</option>
-                                                                            <?php foreach ($jabatan as $jab) { ?>
-                                                                                <option value="<?= $jab->id_jab ?>" <?= $jab->id_jab == $data->jabatan ? 'selected=selected' : ''; ?>><?= $jab->nama_jab ?></option>
+                                                                    <td width=20%>Judul</td>
+                                                                    <td><input type="text" name="judul_ss" class="form-control" value="<?= $data->judul_ss ?>" required placeholder=" Judul"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Tanggal Implementasi</td>
+                                                                    <td><input type="date" name="t_implementasi_ss" class="form-control" value="<?= $data->t_implementasi_ss ?>" required>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Tim Section</td>
+                                                                    <td><select name="section_ss" class="form-control  selectpicker" data-live-search="true">
+                                                                            <option value="">--PILIH SECTION--</option>
+                                                                            <?php foreach ($section as $sec) { ?>
+                                                                                <option value="<?= $sec->id_sec ?>" <?= $sec->id_sec == $data->section_ss ? 'selected=selected' : ''; ?>><?= $sec->nama_sec ?></option>
                                                                             <?php } ?>
                                                                         </select></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Kompetensi</td>
-                                                                    <td><select name="kompetensi" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH Kompetensi--</option>
-                                                                            <?php foreach ($kompetensi as $kom) { ?>
-                                                                                <option value="<?= $kom->id_kom ?>" <?= $kom->id_kom == $data->kompetensi ? 'selected=selected' : ''; ?>><?= $kom->j_kompetensi ?></option>
+                                                                    <td>Yang Melakukan</td>
+                                                                    <td><select name="pembuat_ss" class="form-control  selectpicker" data-live-search="true">
+                                                                            <option value="">--PILIH karyawan--</option>
+                                                                            <?php foreach ($kar as $karyawan) { ?>
+                                                                                <option value="<?= $karyawan->nik ?>" <?= $karyawan->nik == $data->pembuat_ss ? 'selected=selected' : ''; ?>><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
                                                                             <?php } ?>
                                                                         </select></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Task Kompetensi</td>
-                                                                    <td><input type="text" name="t_kompetensi" class="form-control" value="<?= $data->t_kompetensi ?>" required placeholder="Task Kompetensi"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width=20%>Level</td>
-                                                                    <td><input type="text" name="level" value="<?= $data->level_kom ?>" class="form-control" required placeholder="Level Kompetensi"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

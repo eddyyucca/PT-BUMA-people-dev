@@ -29,11 +29,11 @@
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->judul_ss; ?></td>
                                 <td><?= $x->t_implementasi_ss; ?></td>
-                                <td><?= $x->section_ss; ?></td>
-                                <td><?= $x->level_pembuat_sskom; ?></td>
+                                <td><?= $x->nama_sec; ?></td>
+                                <td><?= $x->nama; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->id_ss; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->id_ss; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_suggestionsystem/') . $x->id_ss; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/update_suggestionsystem/') . $x->id_ss; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

@@ -22,35 +22,30 @@
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Judul</td>
-                                                                    <td><input type="text" name="judul" class="form-control" required placeholder="Judul"></td>
+                                                                    <td><input type="text" name="judul_ss" class="form-control" required placeholder="Judul"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Tanggal Implementasi</td>
-                                                                    <td><input type="date" name="t_implementasi" class="form-control" required>
+                                                                    <td><input type="date" name="t_implementasi_ss" class="form-control" required>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Tim Section</td>
-                                                                    <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
+                                                                    <td><select name="section_ss" class="form-control  selectpicker" data-live-search="true">
                                                                             <option value="">--PILIH SECTION--</option>
-                                                                            <?php foreach ($Section as $sec) { ?>
-                                                                                <option value="<?= $sec->id_sec ?>"><?= $sec->nama_section ?></option>
+                                                                            <?php foreach ($section as $sec) { ?>
+                                                                                <option value="<?= $sec->id_sec ?>"><?= $sec->nama_sec ?></option>
                                                                             <?php } ?>
                                                                         </select></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Yang Melakukan</td>
-                                                                    <td><select name="pembuat" class="form-control  selectpicker" data-live-search="true">
+                                                                    <td><select name="pembuat_ss" class="form-control  selectpicker" data-live-search="true">
                                                                             <option value="">--PILIH karyawan--</option>
                                                                             <?php foreach ($kar as $karyawan) { ?>
                                                                                 <option value="<?= $karyawan->nik ?>"><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
                                                                             <?php } ?>
                                                                         </select></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td width=20%>Level</td>
-                                                                    <td><input type="text" name="level" class="form-control" required placeholder="Level Kompetensi"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
