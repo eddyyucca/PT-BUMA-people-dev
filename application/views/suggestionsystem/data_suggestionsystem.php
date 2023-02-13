@@ -2,22 +2,22 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
+            <h6 class="m-0 font-weight-bold ">Data Suggestion System</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Kompetensi</a>
+                    <a href="<?= base_url('admin/create_suggestionsystem') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Suggestion System</a>
                     <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Jabatan</th>
-                            <th>Jenis kompetensi</th>
-                            <th>Task kompetensi</th>
-                            <th>Level</th>
+                            <th>Judul</th>
+                            <th>Tanggal Implementasi</th>
+                            <th>Tim Terlibat</th>
+                            <th>Yang Melakukan</th>
                             <th>aksi</th>
                         </tr>
                     </thead>
@@ -27,13 +27,13 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_jab; ?></td>
-                                <td><?= $x->j_kompetensi; ?></td>
-                                <td><?= $x->t_kompetensi; ?></td>
-                                <td><?= $x->level_kom; ?></td>
+                                <td><?= $x->judul_ss; ?></td>
+                                <td><?= $x->t_implementasi_ss; ?></td>
+                                <td><?= $x->section_ss; ?></td>
+                                <td><?= $x->level_pembuat_sskom; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->id_ss; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->id_ss; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

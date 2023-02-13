@@ -64,11 +64,11 @@ class Karyawan_m extends CI_Model
         $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
 
-        $this->db->from('karyawan');
+        // $this->db->from('karyawan');
+        $query = $this->db->get('karyawan', $limit, $offset);
         $this->db->order_by('id_kar', 'ASC');
-        $this->db->limit($limit, $offset);
 
-        return $this->db->get();
+        return $query;
     }
     public function cari_data($limit, $offset, $cari)
     {

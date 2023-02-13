@@ -20,6 +20,7 @@ class Admin extends CI_Controller
 		$this->load->model('kompetensi_m');
 		$this->load->model('ci_m');
 		$this->load->model('task_kompetensi_m');
+		$this->load->model('suggestionsystem_m');
 
 		// $level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -46,10 +47,11 @@ class Admin extends CI_Controller
 		$perpage = 8;
 		$offset = $this->uri->segment(1);
 		$data['data'] = $this->karyawan_m->get_data($perpage, $offset)->result();
-
-		$config['base_url'] = site_url('admin/data_karyawan');
+		$config['base_url'] = site_url('admin/data_karyawan/');
 		$config['total_rows'] = $this->karyawan_m->getAll()->num_rows();
 		$config['per_page'] = $perpage;
+
+
 		// Membuat Style pagination untuk BootStrap v4
 		$config['first_link']       = 'First';
 		$config['last_link']        = 'Last';
@@ -71,14 +73,14 @@ class Admin extends CI_Controller
 		$config['last_tagl_close']  = '</span></li>';
 
 		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-		//end
 
 		$data['judul'] = 'Data Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
 
 		$this->load->view('template/header', $data);
-		$this->load->view('karyawan/data_karyawan');
+		$this->load->view('karyawan/data_karyawan', $data);
 		$this->load->view('template/footer');
 	}
 
@@ -623,4 +625,67 @@ class Admin extends CI_Controller
 		return redirect('admin/task_kompetensi');
 	}
 	// end task_kompetensi
+
+	// suggestionsystem
+	public function suggestionsystem()
+	{
+		$data['judul'] = 'Data Suggestion system';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->suggestionsystem_m->get_all_ss();
+		$this->load->view('template/header', $data);
+		$this->load->view('suggestionsystem/data_suggestionsystem', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_suggestionsystem()
+	{
+		$data['judul'] = 'Create Task suggestionsystem';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['jabatan'] = $this->jabatan_m->get_all_jab();
+		$data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss();
+		$this->load->view('template/header', $data);
+		$this->load->view('suggestionsystem/create_suggestionsystem', $data);
+		$this->load->view('template/footer');
+	}
+	public function update_suggestionsystem($id_suggestionsystem)
+	{
+		$data['judul'] = 'Update Task suggestionsystem';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->task_suggestionsystem_m->get_row_tk($id_suggestionsystem);
+		$data['jabatan'] = $this->jabatan_m->get_all_jab();
+		$data['suggestionsystem'] = $this->suggestionsystem_m->get_all_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('suggestionsystem/edit_suggestionsystem', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_suggestionsystem()
+	{
+		$data = array(
+			'jabatan' => $this->input->post('jabatan'),
+			'suggestionsystem' => $this->input->post('suggestionsystem'),
+			't_suggestionsystem' => $this->input->post('t_suggestionsystem'),
+			'level_kom' => $this->input->post('level'),
+		);
+		$this->db->insert('suggestionsystem_user', $data);
+		return redirect('admin/suggestionsystem');
+	}
+	public function proses_edit_suggestionsystem($id_suggestionsystem)
+	{
+		$data = array(
+			'jabatan' => $this->input->post('jabatan'),
+			'suggestionsystem' => $this->input->post('suggestionsystem'),
+			't_suggestionsystem' => $this->input->post('t_suggestionsystem'),
+			'level_kom' => $this->input->post('level'),
+		);
+		$this->db->where('id_suggestionsystem', $id_suggestionsystem);
+		$this->db->update('suggestionsystem_user', $data);
+		return redirect('admin/suggestionsystem');
+	}
+	public function delete_suggestionsystem($id_suggestionsystem)
+	{
+		$this->db->where('id_suggestionsystem', $id_suggestionsystem);
+		$this->db->delete('suggestionsystem_user');
+		return redirect('admin/suggestionsystem');
+	}
+	// end suggestionsystem
 }
