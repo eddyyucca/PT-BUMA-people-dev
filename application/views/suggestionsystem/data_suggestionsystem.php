@@ -10,6 +10,20 @@
                     <a href="<?= base_url('admin/create_suggestionsystem') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Suggestion System</a>
                     <hr>
                 </div>
+                <?php
+
+                if ($this->session->flashdata('pesan') == "hapus") { ?>
+                    <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
+                    </div>
+                <?php   } elseif ($this->session->flashdata('pesan') == "buat") { ?>
+                    <div class="alert alert-success" role="alert">
+                        Data Berhasil Di Tambah !
+                    </div>
+                <?php    } elseif ($this->session->flashdata('pesan') == "ubah") { ?>
+                    <div class="alert alert-warning" role="alert">
+                        Data Berhasil Di Ubah !
+                    </div>
+                <?php    } ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

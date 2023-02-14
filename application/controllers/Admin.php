@@ -179,6 +179,7 @@ class Admin extends CI_Controller
 			'level' => "user",
 		);
 		$this->db->insert('karyawan', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/data_karyawan');
 	}
 	public function proses_edit_karyawan()
@@ -188,6 +189,7 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_dep', $id_dep);
 		$this->db->update('departement', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/karyawan');
 	}
 	public function import()
@@ -233,6 +235,7 @@ class Admin extends CI_Controller
 				}
 			}
 		}
+		$this->session->set_flashdata('pesan', 'import');
 		return redirect('admin/data_karyawan');
 	}
 	public function upload_config($path)
@@ -287,6 +290,7 @@ class Admin extends CI_Controller
 			'nama_dep' => $this->input->post('nama_dep')
 		);
 		$this->db->insert('departement', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/departement');
 	}
 	public function proses_edit_dep($id_dep)
@@ -296,12 +300,14 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_dep', $id_dep);
 		$this->db->update('departement', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/departement');
 	}
 	public function delete_departement($id_dep)
 	{
 		$this->db->where('id_dep', $id_dep);
 		$this->db->delete('departement');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/departement');
 	}
 	// end departement
@@ -342,6 +348,7 @@ class Admin extends CI_Controller
 			'nama_sec' => $this->input->post('nama_sec')
 		);
 		$this->db->insert('section', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/section');
 	}
 	public function proses_edit_sec($id_sec)
@@ -351,6 +358,7 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_sec', $id_sec);
 		$this->db->update('section', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/section');
 	}
 	public function delete_section($id_sec)
@@ -358,6 +366,7 @@ class Admin extends CI_Controller
 
 		$this->db->where('id_sec', $id_sec);
 		$this->db->delete('section');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/section');
 	}
 	// end section
@@ -398,6 +407,7 @@ class Admin extends CI_Controller
 			'nama_jab' => $this->input->post('nama_jab')
 		);
 		$this->db->insert('jabatan', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/jabatan');
 	}
 	public function proses_edit_jab($id_jab)
@@ -407,6 +417,7 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_jab', $id_jab);
 		$this->db->update('jabatan', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/jabatan');
 	}
 	public function delete_jab($id_jab)
@@ -414,6 +425,7 @@ class Admin extends CI_Controller
 
 		$this->db->where('id_jab', $id_jab);
 		$this->db->delete('jabatan');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/jabatan');
 	}
 	//end jabatan
@@ -424,6 +436,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Continues Improvement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['alert'] = false;
 
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci();
 		$this->load->view('template/header', $data);
@@ -471,7 +484,7 @@ class Admin extends CI_Controller
 			);
 			$this->db->insert('citt', $data2);
 		}
-
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/continuesimprovement');
 	}
 	public  function proses_edit_ci($kode_tim)
@@ -495,6 +508,7 @@ class Admin extends CI_Controller
 			);
 			$this->db->insert('citt', $data2);
 		}
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/continuesimprovement');
 	}
 
@@ -504,6 +518,7 @@ class Admin extends CI_Controller
 		$this->db->delete('continuesimprovement');
 		$this->db->where('kode_tim', $kode_tim);
 		$this->db->delete('citt');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/continuesimprovement');
 	}
 	// end continuesImprovement
@@ -544,6 +559,7 @@ class Admin extends CI_Controller
 			'j_kompetensi' => $this->input->post('j_kompetensi')
 		);
 		$this->db->insert('kompetensi', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/data_jeniskompetensi');
 	}
 	public function proses_edit_kom($id_kom)
@@ -553,12 +569,14 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_kom', $id_kom);
 		$this->db->update('kompetensi', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/data_jeniskompetensi');
 	}
 	public function delete_kompetensi($id_kom)
 	{
 		$this->db->where('id_kom', $id_kom);
 		$this->db->delete('kompetensi');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/data_jeniskompetensi');
 	}
 	// end jenisKompetensi
@@ -604,6 +622,7 @@ class Admin extends CI_Controller
 			'level_kom' => $this->input->post('level'),
 		);
 		$this->db->insert('kompetensi_user', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/task_kompetensi');
 	}
 	public function proses_edit_task_kompetensi($id_kompetensi)
@@ -616,12 +635,14 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_kompetensi', $id_kompetensi);
 		$this->db->update('kompetensi_user', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/task_kompetensi');
 	}
 	public function delete_task_kompetensi($id_kompetensi)
 	{
 		$this->db->where('id_kompetensi', $id_kompetensi);
 		$this->db->delete('kompetensi_user');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/task_kompetensi');
 	}
 	// end task_kompetensi
@@ -670,6 +691,7 @@ class Admin extends CI_Controller
 			'pembuat_ss' => $this->input->post('pembuat_ss'),
 		);
 		$this->db->insert('suggestionsystem', $data);
+		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/suggestionsystem');
 	}
 	public function proses_edit_suggestionsystem($id_ss)
@@ -682,12 +704,14 @@ class Admin extends CI_Controller
 		);
 		$this->db->where('id_ss', $id_ss);
 		$this->db->update('suggestionsystem', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/suggestionsystem');
 	}
 	public function delete_suggestionsystem($id_ss)
 	{
 		$this->db->where('id_ss', $id_ss);
 		$this->db->delete('suggestionsystem');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/suggestionsystem');
 	}
 	// end suggestionsystem

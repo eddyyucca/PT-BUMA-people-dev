@@ -6,6 +6,7 @@ class Ci_m extends CI_Model
 
     public function get_all_ci()
     {
+        $this->db->join('karyawan', 'karyawan.nik = continuesimprovement.pembuat', 'left');
         $query = $this->db->get('continuesimprovement');
         return $query->result();
     }

@@ -27,6 +27,25 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    <?php
+
+                                    if ($this->session->flashdata('pesan') == "hapus") { ?>
+                                        <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
+                                        </div>
+                                    <?php   } elseif ($this->session->flashdata('pesan') == "buat") { ?>
+                                        <div class="alert alert-success" role="alert">
+                                            Data Berhasil Di Tambah !
+                                        </div>
+                                    <?php    } elseif ($this->session->flashdata('pesan') == "ubah") { ?>
+                                        <div class="alert alert-warning" role="alert">
+                                            Data Berhasil Di Ubah !
+                                        </div>
+                                    <?php  } elseif ($this->session->flashdata('pesan') == "import") { ?>
+                                        <div class="alert alert-success" role="alert">
+                                            Data Berhasil Di Import !
+                                        </div>
+                                    <?php    }  ?>
+
                                     <form action="<?= base_url('admin/import')  ?>" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group row">
