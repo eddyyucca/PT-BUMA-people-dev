@@ -45,7 +45,7 @@
                 <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
                     <!-- Sidebar - Brand -->
                     <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> -->
-                    <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('admin') ?>">
+                    <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('user') ?>">
                         <div class="sidebar-brand-icon">
                             <img src="<?= base_url('assets/logo.png'); ?>" width="90" height="35" alt="BUMA">
                         </div>
@@ -63,34 +63,14 @@
                     </div>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="<?= base_url('user/profil') ?>">
                             <i class="fas fa-fw fa-thumbs-up"></i>
-                            <span>Asesor</span></a>
+                            <span>Profil</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
-                            <i class="fas fa-fw fa-chart-area"></i>
-                            <span>Training</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
-                            <i class="fas fa-sort-amount-up-alt"></i>
-                            <span>Suggestion System</span></a>
-                    </li>
-                    <li class=" nav-item">
-                        <a class="nav-link" href="charts.html">
-                            <i class="fas fa-fw fa-chart-area"></i>
-                            <span>Cont. Improvement</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
-                            <i class="fad fa-chalkboard-teacher"></i>
-                            <span>Kompetensi</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
-                            <i class="fas fa-tasks"></i>
-                            <span>Assessment</span></a>
+                        <a class="nav-link" href="<?= base_url('user/password') ?>">
+                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <span>Password</span></a>
                     </li>
 
                     <!-- Divider -->

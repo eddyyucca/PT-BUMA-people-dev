@@ -18,6 +18,12 @@ class Karyawan_m extends CI_Model
         $query = $this->db->get('karyawan');
         return $query->row();
     }
+    public function get_row_nik($nik)
+    {
+        $this->db->where('nik', $nik);
+        $query = $this->db->get('karyawan');
+        return $query->row();
+    }
     public function get_view_kar($nik)
     {
         $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
