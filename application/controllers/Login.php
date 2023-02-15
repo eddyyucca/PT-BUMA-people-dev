@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class Login extends CI_Controller
 {
 
     public function __construct()
@@ -18,15 +18,6 @@ class Auth extends CI_Controller
         $data['judul'] = 'Login';
         $this->load->view('auth/template_auth/header', $data);
         $this->load->view('auth/index', $data);
-        $this->load->view('auth/template_auth/footer', $data);
-    }
-    public function user_login()
-    {
-        $data['data'] = false;
-        $data['pesan'] = $this->session->flashdata('pesan');
-        $data['judul'] = 'Login User';
-        $this->load->view('auth/template_auth/header', $data);
-        $this->load->view('auth/user_login', $data);
         $this->load->view('auth/template_auth/footer', $data);
     }
 
@@ -112,6 +103,6 @@ class Auth extends CI_Controller
     public function keluar()
     {
         $this->session->sess_destroy();
-        redirect('auth');
+        return redirect('login');
     }
 }

@@ -33,7 +33,7 @@
          <div class="modal-body">Klik Tombol Untuk Keluar</div>
          <div class="modal-footer">
            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-           <a class="btn btn-primary" href="<?= base_url('auth/keluar') ?>">Keluar</a>
+           <a class="btn btn-primary" href="<?= base_url('login/keluar') ?>">Keluar</a>
          </div>
        </div>
      </div>

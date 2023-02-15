@@ -17,12 +17,11 @@ class User extends CI_Controller
         $this->load->model('jabatan_m');
         $this->load->model('section_m');
         $this->load->model('karyawan_m');
-        // $this->load->model('alumni_m');
-
-        // $level_akun = $this->session->userdata('level');
-        // if ($level_akun != "admin") {
-        // 	return redirect('auth');
-        // }
+        $level_akun = $this->session->userdata('level');
+        if ($level_akun != "user") {
+            $this->session->set_flashdata('login', 'n_login');
+            return redirect('login');
+        }
     }
 
     public function index()
@@ -57,9 +56,20 @@ class User extends CI_Controller
         // $nik =  $this->session->userdata('nik');
         $nik = 10000272;
         $data['data'] = $this->karyawan_m->get_row_nik($nik);
-
         $data['judul'] = 'Setting Password';
         $data['nama'] = $this->session->userdata('nama');
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/profil/ubah_password', $data);
+        $this->load->view('template_user/footer');
+    }
+    public function change_password()
+    {
+        $data['judul'] = 'Change Password Karyawan';
+        $data['nama'] = $this->session->userdata('nama');
+        $nik =  $this->session->userdata('id_pegawai');
+        $data['data'] = $this->karyawan_m->get_row_nik($nik);
+        $data['pesan'] = false;
+        $data['keranjang'] = $this->cart->contents();
         $this->load->view('template_user/header', $data);
         $this->load->view('user/profil/ubah_password', $data);
         $this->load->view('template_user/footer');

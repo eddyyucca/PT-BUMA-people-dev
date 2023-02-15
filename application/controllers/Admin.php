@@ -73,7 +73,7 @@ class Admin extends CI_Controller
 		$config['last_tagl_close']  = '</span></li>';
 
 		$this->pagination->initialize($config);
-		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		// $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
 		$data['judul'] = 'Data Karyawan';

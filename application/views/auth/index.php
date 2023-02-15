@@ -13,6 +13,16 @@
                                         <div class="text-center">
                                             <img src="<?= base_url('assets/logo.png') ?>" width="30%">
                                             <hr>
+                                            <?php
+
+                                            if ($this->session->flashdata('login') == "n_login") { ?>
+                                                <div class="alert alert-danger" role="alert">Anda Belum Login !
+                                                </div>
+                                            <?php   } elseif ($this->session->flashdata('login') == "keluar_akun") { ?>
+                                                <div class="alert alert-success" role="alert">
+                                                    Anda Berhasil Keluar !
+                                                </div>
+                                            <?php    } ?>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
                                         </div>
                                         <?php
