@@ -60,8 +60,6 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-primary">Simpan</button>
-                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-success">Upload</button> -->
                                         </div>
                                     </form>
                                 </div>
