@@ -41,9 +41,9 @@ class Karyawan_m extends CI_Model
         $query = $this->db->get('karyawan');
 
         if ($query->num_rows > 1) {
-            return false;
+            return true;
         } else {
-            return $query->row();
+            return false;
         }
     }
     public function jumlah_karyawan()

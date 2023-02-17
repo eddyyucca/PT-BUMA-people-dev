@@ -213,7 +213,6 @@ class Admin extends CI_Controller
 			if (!empty($sheetData)) {
 				for ($i = 1; $i < count($sheetData); $i++) {
 					// $cek = $this->karyawan_m->cek_nik(115);
-					// $cek = $this->karyawan_m->cek_nik(($sheetData[$i][0]));
 
 					$nik = $sheetData[$i][0];
 					$nama = $sheetData[$i][1];
@@ -221,17 +220,29 @@ class Admin extends CI_Controller
 					$jabatan = $sheetData[$i][5];
 					$departement = $sheetData[$i][7];
 					// looping insert data
-					$data = array(
-						'nik' => $nik,
-						'nama' => $nama,
-						'section' => $section,
-						'jabatan' => $jabatan,
-						'departement' => $departement,
-						'password' => md5('12345678'),
-						'level' => 'user',
-					);
-
-					$this->db->insert('karyawan', $data);
+					$cek = $this->karyawan_m->cek_nik(($sheetData[$i][0]));
+					if ($cek == false) {
+						$data = array(
+							'nik' => $nik,
+							'nama' => $nama,
+							'section' => $section,
+							'jabatan' => $jabatan,
+							'departement' => $departement,
+							'password' => md5('12345678'),
+							'level' => 'user',
+						);
+						$this->db->insert('karyawan', $data);
+					} elseif ($cek == true) {
+						$data2 = array(
+							'nik' => $nik,
+							'nama' => $nama,
+							'section' => $section,
+							'jabatan' => $jabatan,
+							'departement' => $departement,
+						);
+						$this->db->where('$nik', $nik);
+						$this->db->update('karyawan', $data2);
+					}
 				}
 			}
 		}
