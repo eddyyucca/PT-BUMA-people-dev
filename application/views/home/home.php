@@ -34,7 +34,7 @@
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
-                                    <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dash-1.png" alt="" width="210" height="160"></span>
+                                    <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dep.svg" alt="" width="210" height="160"></span>
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <h6>
@@ -56,7 +56,7 @@
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
-                                    <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dash-1.png" alt="" width="210" height="160"></span>
+                                    <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/section.svg" alt="" width="210" height="160"></span>
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <h6>
@@ -79,7 +79,7 @@
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
-                                    <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/dash-1.png" alt="" width="210" height="160"></span>
+                                    <span class="float-left"><img src="<?= base_url('assets') ?>/img/dash/jab.svg" alt="" width="210" height="160"></span>
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <h6>

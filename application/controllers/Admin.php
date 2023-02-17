@@ -21,7 +21,7 @@ class Admin extends CI_Controller
 		$this->load->model('ci_m');
 		$this->load->model('task_kompetensi_m');
 		$this->load->model('suggestionsystem_m');
-
+		$this->load->helper(array('url'));
 		// $level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
 		// 	return redirect('auth');
@@ -44,8 +44,9 @@ class Admin extends CI_Controller
 	// karyawan
 	public function data_karyawan($num = '')
 	{
+
 		$perpage = 8;
-		$offset = $this->uri->segment(1);
+		$offset = $this->uri->segment(3);
 		$data['data'] = $this->karyawan_m->get_data($perpage, $offset)->result();
 		$config['base_url'] = site_url('admin/data_karyawan/');
 		$config['total_rows'] = $this->karyawan_m->getAll()->num_rows();
@@ -72,30 +73,23 @@ class Admin extends CI_Controller
 		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
 		$config['last_tagl_close']  = '</span></li>';
 
-		$this->pagination->initialize($config);
-		// $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-
+		$pagination = $this->pagination->initialize($config);
 		$data['judul'] = 'Data Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
 
 		$this->load->view('template/header', $data);
-		$this->load->view('karyawan/data_karyawan', $data);
+		$this->load->view('karyawan/data_karyawan', $data, $pagination);
 		$this->load->view('template/footer');
 	}
 
-	public function search_data_karyawan()
+	public function search_data_karyawan($num = '')
 	{
 		$perpage = 8;
-		$offset = $this->uri->segment(1);
-
+		$offset = $this->uri->segment(3);
 		$cari = $this->input->post('cari');
-
 		$data['data'] = $this->karyawan_m->cari_data($perpage, $offset, $cari)->result();
-
 		$config['base_url'] = site_url('admin/search_data_karyawan');
 		$config['total_rows'] = $this->karyawan_m->getRow($cari)->num_rows();
-		$config['per_page'] = $perpage;
 		// Membuat Style pagination untuk BootStrap v4
 		$config['first_link']       = 'First';
 		$config['last_link']        = 'Last';
@@ -116,7 +110,7 @@ class Admin extends CI_Controller
 		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
 		$config['last_tagl_close']  = '</span></li>';
 
-		$this->pagination->initialize($config);
+		$pagination = $this->pagination->initialize($config);
 
 		//end
 
@@ -124,7 +118,7 @@ class Admin extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 
 		$this->load->view('template/header', $data);
-		$this->load->view('karyawan/data_karyawan');
+		$this->load->view('karyawan/data_karyawan', $data, $pagination);
 		$this->load->view('template/footer');
 	}
 	public function add_karyawan()
@@ -152,45 +146,69 @@ class Admin extends CI_Controller
 		$this->load->view('karyawan/view_karyawan');
 		$this->load->view('template/footer');
 	}
-	public function edit_karyawan()
+	public function edit_karyawan($nik)
 	{
 		$data['judul'] = 'Update Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->karyawan_m->get_view_kar($nik);
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/input_karyawan');
 		$this->load->view('template/footer');
 	}
 	public function proses_tambah_karyawan()
 	{
-		$data = array(
-			'nik' => $this->input->post('nik'),
-			'nama' => $this->input->post('nama_lengkap'),
-			'jk' => $this->input->post('jk'),
-			'tempat' => $this->input->post('tempat'),
-			'tanggal_lahir' => $this->input->post('ttl'),
-			'alamat' => $this->input->post('alamat'),
-			'agama' => $this->input->post('agama'),
-			'email' => $this->input->post('email'),
-			'telpon' => $this->input->post('telpon'),
-			'section' => $this->input->post('section'),
-			'jabatan' => $this->input->post('jabatan'),
-			'departement' => $this->input->post('departement'),
-			// 'foto' => $this->input->post('foto'),
-			'level' => "user",
-		);
-		$this->db->insert('karyawan', $data);
-		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/data_karyawan');
+		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[karyawan.nik]');
+		if ($this->form_validation->run() === FALSE) {
+			$this->add_karyawan();
+		} else {
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+				// 'foto' => $this->input->post('foto'),
+				'level' => "user",
+			);
+			$this->db->insert('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'buat');
+			return redirect('admin/data_karyawan');
+		}
 	}
-	public function proses_edit_karyawan()
+	public function proses_edit_karyawan($nik)
 	{
-		$data = array(
-			'nama_dep' => $this->input->post('nama_dep')
-		);
-		$this->db->where('id_dep', $id_dep);
-		$this->db->update('departement', $data);
-		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/karyawan');
+		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[karyawan.nik]');
+		if ($this->form_validation->run() === FALSE) {
+			$this->edit_karyawan($nik);
+		} else {
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+				'foto' => $this->input->post('foto'),
+				'level' => "user",
+			);
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('admin/data_karyawan');
+		}
 	}
 	public function import()
 	{

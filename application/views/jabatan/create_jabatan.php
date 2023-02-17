@@ -22,7 +22,7 @@
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Nama Jabatan</td>
-                                                                    <td><input type="text" name="nama_jab" class="form-control" required placeholder="Nama Jabatan"></td>
+                                                                    <td><input type="text" name="nama_jab" aria-describedby="basic-addon1" class="form-control" required placeholder="Nama Jabatan"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
