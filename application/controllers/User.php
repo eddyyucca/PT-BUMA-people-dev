@@ -20,7 +20,7 @@ class User extends CI_Controller
         $level_akun = $this->session->userdata('level');
         if ($level_akun != "user") {
             $this->session->set_flashdata('login', 'n_login');
-            return redirect('login');
+            // return redirect('login');
         }
     }
 

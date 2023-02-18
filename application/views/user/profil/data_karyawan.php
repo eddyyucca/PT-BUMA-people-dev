@@ -57,7 +57,63 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-6">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#pendidikan" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="pendidikan">
+                    <h6 class="m-0 font-weight-bold text-primary">Training </h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="pendidikan">
+                    <div class="card-body">
+                        <?php
+                        if ($pendidikan == false) {
+                            echo "-- Data Kosong --";
+                        } else { ?>
+                            <?php foreach ($data as $pen) { ?>
+                                <table border="0">
+                                    <tr>
+                                        <td>Tingkatan</td>
+                                        <td> </td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                </tr>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
 
-
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#rw_pekerjaan" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="rw_pekerjaan">
+                    <h6 class="m-0 font-weight-bold text-primary">Sertifikat</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="rw_pekerjaan">
+                    <div class="card-body">
+                        <?php
+                        if ($data == false) {
+                            echo "-- Data Kosong --";
+                        } else { ?>
+                            <?php foreach ($riwayat_pekerjaan as $rp) { ?>
+                                <table border="0">
+                                    <tr>
+                                        <td>Nama Perusahaan</td>
+                                        <td> : </td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                </tr>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
     </div>
