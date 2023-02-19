@@ -18,9 +18,9 @@ class User extends CI_Controller
         $this->load->model('section_m');
         $this->load->model('karyawan_m');
         $level_akun = $this->session->userdata('level');
-        if ($level_akun != "user") {
-            $this->session->set_flashdata('login', 'n_login');
-            // return redirect('login');
+        // if ($level_akun != "user") {
+        //     $this->session->set_flashdata('login', 'n_login');
+        //     return redirect('login');
         }
     }
 

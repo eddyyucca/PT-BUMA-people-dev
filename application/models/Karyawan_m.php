@@ -64,6 +64,24 @@ class Karyawan_m extends CI_Model
 
         return $this->db->get();
     }
+    public function getAll_user()
+    {
+        $this->db->where('level', 'user');
+        $this->db->order_by('id_kar', 'ASC');
+        $query = $this->db->get('karyawan');
+
+        return $query->result();
+    }
+    public function get_allassesor()
+    {
+        $this->db->select('*');
+        $this->db->where('level', 'asesor');
+
+        $this->db->from('karyawan');
+        $this->db->order_by('id_kar', 'ASC');
+
+        return $this->db->get();
+    }
     public function get_data($limit, $offset)
     {
         $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
@@ -72,7 +90,19 @@ class Karyawan_m extends CI_Model
 
         // $this->db->from('karyawan');
         $query = $this->db->get('karyawan', $limit, $offset);
-        $this->db->order_by('id_kar', 'ASC');
+        $this->db->order_by('id_kar', 'DESC');
+
+        return $query;
+    }
+    public function get_data_asesor($limit, $offset)
+    {
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $this->db->where('level', 'asesor');
+        // $this->db->from('karyawan');
+        $query = $this->db->get('karyawan', $limit, $offset);
+        $this->db->order_by('id_kar', 'DESC');
 
         return $query;
     }

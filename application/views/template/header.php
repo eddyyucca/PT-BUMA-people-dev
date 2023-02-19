@@ -89,7 +89,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="<?= base_url('admin/data_asesor') ?>">
                             <i class="fas fa-fw fa-thumbs-up"></i>
                             <span>Asesor</span></a>
                     </li>
