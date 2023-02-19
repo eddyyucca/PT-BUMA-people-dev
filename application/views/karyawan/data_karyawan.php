@@ -90,13 +90,15 @@
                                             <div class="advisor_thumb">
                                                 <?php if ($kar->foto == false) { ?>
                                                     <img src="<?= base_url('assets') ?>/profil_default.png" class="rounded" width="185" height="183" alt="Foto Profil">
-                                                <?php  } else { ?>
-                                                    <img src="<?= base_url('assets/profil_default/ ') . $kar->foto ?>" class="rounded" width="185" height="200" alt="Foto Profil">
+                                                <?php  } elseif ($kar->foto == true) { ?>
+
+                                                    <img src="<?= base_url('assets/foto_profil/') . $kar->foto ?>" class="rounded" width="185" height="200" alt="Foto Profil">
                                                 <?php  } ?>
                                             </div>
                                             <!-- Team Details-->
                                             <div class=" text-secondary single_advisor_details_info">
                                                 <h6><?= $kar->nama ?></h6>
+
                                                 <p class="designation"><?= $kar->nama_jab  ?> - <?= $kar->nama_dep ?></p>
                                             </div>
                                         </div>
