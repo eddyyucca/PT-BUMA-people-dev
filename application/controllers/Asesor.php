@@ -33,7 +33,7 @@ class Asesor extends CI_Controller
         // $data['karyawan'] = $this->karyawan_m->get_all_kar();
 
         $this->load->view('template_user/header', $data);
-        $this->load->view('Asesor/home');
+        $this->load->view('asesor/home');
         $this->load->view('template_user/footer');
     }
 }

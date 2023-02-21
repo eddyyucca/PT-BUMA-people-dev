@@ -823,5 +823,36 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('pesan', 'update');
 		return redirect('admin/data_asesor');
 	}
+	public function proses_ubah_admin()
+	{
+		$data = array(
+			"level" => "admin"
+		);
+
+		$nik = $this->input->post('nik');
+		$this->db->where('nik', $nik);
+		$this->db->update('karyawan', $data);
+
+		$this->session->set_flashdata('pesan', 'update');
+		return redirect('admin/data_asesor');
+	}
 	// end asesor
+	// user
+	public function proses_ubah_user()
+	{
+		$data = array(
+			"level" => "user"
+		);
+
+		$nik = $this->input->post('nik');
+		$this->db->where(
+			'nik',
+			$nik
+		);
+		$this->db->update('karyawan', $data);
+
+		$this->session->set_flashdata('pesan', 'update');
+		return redirect('admin/data_asesor');
+	}
+	// end user
 }
