@@ -10,6 +10,13 @@ class Ci_m extends CI_Model
         $query = $this->db->get('continuesimprovement');
         return $query->result();
     }
+    public function get_all_ci_user($nik)
+    {
+        $this->db->join('karyawan', 'karyawan.nik = continuesimprovement.pembuat', 'left');
+        $this->db->where('nik', $nik);
+        $query = $this->db->get('continuesimprovement');
+        return $query->result();
+    }
     public function get_row_ci($nik)
     {
         $this->db->where('pembuat', $nik);

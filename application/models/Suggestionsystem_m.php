@@ -11,6 +11,14 @@ class Suggestionsystem_m extends CI_Model
         $this->db->order_by('id_ss', 'DESC');
         return   $this->db->get('suggestionsystem')->result();
     }
+    public function get_all_ss_user($nik)
+    {
+        $this->db->join('section', 'section.id_sec = suggestionsystem.section_ss', 'left');
+        $this->db->join('karyawan', 'karyawan.nik = suggestionsystem.pembuat_ss', 'left');
+        $this->db->where('nik', $nik);
+        $this->db->order_by('id_ss', 'DESC');
+        return   $this->db->get('suggestionsystem')->result();
+    }
     public function get_row_ss($id_ss)
     {
         $this->db->where('id_ss', $id_ss);

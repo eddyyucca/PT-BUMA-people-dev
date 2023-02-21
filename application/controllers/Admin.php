@@ -843,12 +843,9 @@ class Admin extends CI_Controller
 		$data = array(
 			"level" => "user"
 		);
-
+		// 10034026
 		$nik = $this->input->post('nik');
-		$this->db->where(
-			'nik',
-			$nik
-		);
+		$this->db->where('nik', $nik);
 		$this->db->update('karyawan', $data);
 
 		$this->session->set_flashdata('pesan', 'update');

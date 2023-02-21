@@ -68,6 +68,16 @@
                             <span>Profil</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('user/suggestionsystem') ?>">
+                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <span>Suggestion system</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
+                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <span>Continues Improvement</span></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/password') ?>">
                             <i class="fas fa-fw fa-thumbs-up"></i>
                             <span>Password</span></a>

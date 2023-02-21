@@ -7,24 +7,6 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <a href="<?= base_url('admin/create_continuesimprovement') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Add Continues Improvement</a>
-                    <hr>
-                </div>
-                <?php
-
-                if ($this->session->flashdata('pesan') == "hapus") { ?>
-                    <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
-                    </div>
-                <?php   } elseif ($this->session->flashdata('pesan') == "buat") { ?>
-                    <div class="alert alert-success" role="alert">
-                        Data Berhasil Di Tambah !
-                    </div>
-                <?php    } elseif ($this->session->flashdata('pesan') == "ubah") { ?>
-                    <div class="alert alert-warning" role="alert">
-                        Data Berhasil Di Ubah !
-                    </div>
-                <?php    } ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -33,7 +15,6 @@
                             <th>pembuat</th>
                             <th>Tanggal Implementasi</th>
                             <th>Tim Terlibat</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,11 +38,6 @@
                                         }
                                         ?>
                                 </td>
-                                <td>
-                                    <a href="<?= base_url("admin/delete_continuesimprovement/") . $x->tim ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url("admin/update_continuesimprovement/") . $x->id_ci . "/" . $x->pembuat ?>" class="btn btn-success">edit</a>
-                                </td>
-
                             </tr>
                         <?php   } ?>
                     </tbody>

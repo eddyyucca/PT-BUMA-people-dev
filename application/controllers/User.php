@@ -17,16 +17,17 @@ class User extends CI_Controller
         $this->load->model('jabatan_m');
         $this->load->model('section_m');
         $this->load->model('karyawan_m');
+        $this->load->model('suggestionsystem_m');
+        $this->load->model('ci_m');
         $level_akun = $this->session->userdata('level');
         // if ($level_akun != "user") {
         //     $this->session->set_flashdata('login', 'n_login');
         //     return redirect('login');
-        }
     }
+
 
     public function index()
     {
-
         $data['total_karyawan'] = $this->karyawan_m->jumlah_karyawan();
         $data['total_section'] = $this->section_m->jumlah_section();
         $data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
@@ -74,4 +75,30 @@ class User extends CI_Controller
         $this->load->view('user/profil/ubah_password', $data);
         $this->load->view('template_user/footer');
     }
+    //  suggestionsystem
+    public function suggestionsystem()
+    {
+        $data['judul'] = 'Data Suggestion system';
+        $data['nama'] = $this->session->userdata('nama');
+        $nik =  $this->session->userdata('nik');
+        $data['data'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/suggestionsystem/data_suggestionsystem', $data);
+        $this->load->view('template_user/footer');
+    }
+    // end suggestionsystem
+
+    // continuesImprovement
+    public function continuesimprovement()
+    {
+        $data['judul'] = 'Continues Improvement';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['alert'] = false;
+        $nik =  $this->session->userdata('nik');
+        $data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/continuesImprovement/data_continuesimprovement', $data);
+        $this->load->view('template_user/footer');
+    }
+    // end continuesImprovement
 }
