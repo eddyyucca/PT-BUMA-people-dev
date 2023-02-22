@@ -10,12 +10,20 @@
                     <form action="<?= base_url('user/proses_ubah_password/') . $data->nik ?>" method="POST">
                         <table class="table">
                             <!-- <?= $pesan; ?> -->
-                            <?php if (validation_errors() == false) {
-                            } else { ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <?= validation_errors() ?>
+                            <?php
+
+                            if ($this->session->flashdata('pesan') == "update") { ?>
+                                <div class="alert alert-success" role="alert">Password Berhasil Di Ubah !
                                 </div>
-                            <?php } ?>
+                            <?php   } elseif ($this->session->flashdata('pesan') == "salah") { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Password Salah !
+                                </div>
+                            <?php    } elseif ($this->session->flashdata('pesan') == "mtc") { ?>
+                                <div class="alert alert-warning" role="alert">
+                                    Password Tidak Sama !
+                                </div>
+                            <?php    } ?>
                             <tr>
                                 <td width=20%>Password Lama</td>
                                 <td><input type="password" name="password_lama" class="form-control" placeholder="Password Lama"></td>
@@ -24,8 +32,12 @@
                                 <td width=20%>Password Baru</td>
                                 <td><input type="password" name="password_baru" class="form-control" placeholder="Password Baru"></td>
                             </tr>
+                            <tr>
+                                <td width=20%>Ulangi Password Baru</td>
+                                <td><input type="password" name="u_password" class="form-control" placeholder="Ulangi Password Baru"></td>
+                            </tr>
                             <td>
-                                <button class="btn btn-primary">Simpan</button>
+                                <button class="btn btn-primary">Ubah</button>
                             </td>
                             <td></td>
                             </tr>

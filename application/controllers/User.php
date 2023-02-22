@@ -63,17 +63,31 @@ class User extends CI_Controller
         $this->load->view('user/profil/ubah_password', $data);
         $this->load->view('template_user/footer');
     }
-    public function change_password()
+    public function proses_ubah_password($nik)
     {
-        $data['judul'] = 'Change Password Karyawan';
-        $data['nama'] = $this->session->userdata('nama');
-        $nik =  $this->session->userdata('id_pegawai');
-        $data['data'] = $this->karyawan_m->get_row_nik($nik);
-        $data['pesan'] = false;
-        $data['keranjang'] = $this->cart->contents();
-        $this->load->view('template_user/header', $data);
-        $this->load->view('user/profil/ubah_password', $data);
-        $this->load->view('template_user/footer');
+        $password = md5($this->input->post('password_lama'));
+        $cek = $this->karyawan_m->cek_pass($password, $nik);
+        $pass1 = $this->input->post('password_baru');
+        $pass2 = $this->input->post('u_password');
+
+        if ($pass1 == $pass2) {
+            if ($cek == true) {
+                $data_update = array(
+                    "password" => md5($this->input->post('password_baru'))
+                );
+                $this->db->where('nik', $nik);
+                $this->db->update('karyawan', $data_update);
+                $this->session->set_flashdata('pesan', 'update');
+                return redirect('user/password');
+            } else {
+
+                $this->session->set_flashdata('pesan', 'salah');
+                return redirect('user/password');
+            }
+        } else {
+            $this->session->set_flashdata('pesan', 'mtc');
+            return redirect('user/password');
+        }
     }
     //  suggestionsystem
     public function suggestionsystem()

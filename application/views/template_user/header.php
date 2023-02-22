@@ -64,7 +64,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/profil') ?>">
-                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <i class="fas fa-user-circle"></i>
                             <span>Profil</span></a>
                     </li>
                     <li class="nav-item">
@@ -76,6 +76,16 @@
                         <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
                             <i class="fas fa-fw fa-thumbs-up"></i>
                             <span>Continues Improvement</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
+                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <span>Training</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
+                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <span>Assessment</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/password') ?>">
@@ -144,18 +154,17 @@
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="mr-2 d-none d-lg-inline text-gray-600">
-                                            <!-- <?= $nama; ?> -->
-                                            Kambing
+                                            <?= $nama; ?>
                                         </span>
                                         <i class="fas fa-user-circle"></i>
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <a class="dropdown-item" href="<?= base_url('login/keluar') ?>" data-toggle="modal" data-target="#logoutModal">
                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Keluar
                                         </a>
-                                        <a class="dropdown-item" href="<?= base_url('') ?>" data-toggle="modal" data-target="#">
+                                        <a class="dropdown-item" href="<?= base_url('user/password') ?>">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i></i>
                                             Setting
                                         </a>

@@ -127,6 +127,21 @@ class Karyawan_m extends CI_Model
 
         return $this->db->get();
     }
+
+
+    public function cek_pass($password, $nik)
+    {
+        $this->db->where('nik', $nik);
+        $this->db->where('password', $password);
+        $this->db->limit(1);
+        $query = $this->db->get('karyawan');
+
+        if ($query->num_rows() == 1) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
 }
 
 /* End of file karyawan_m.php */
