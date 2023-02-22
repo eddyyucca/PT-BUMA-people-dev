@@ -922,6 +922,4 @@ class Admin extends CI_Controller
 		$this->load->view('template/footer');
 	}
 		// end assessment
-	}
-	
 }
