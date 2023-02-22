@@ -37,24 +37,32 @@ class Login extends CI_Controller
             $nik = $this->input->post('nik');
             $password =  md5($this->input->post('password'));
             $cek = $this->auth_m->login($nik, $password);
-            if ($cek == true) {
-                foreach ($cek as $row);
-                $this->session->set_userdata('nik', $row->nik);
-                $this->session->set_userdata('nama', $row->nama);
-                $this->session->set_userdata('nik', $row->nik);
-                $this->session->set_userdata('level', $row->level);
-                if ($row->level == "admin") {
-                    redirect('admin');
-                } elseif ($row->level == "user") {
-                    redirect("user");
-                } elseif ($row->level == "asesor") {
-                    redirect('asesor');
+            $cek_nik = $this->auth_m->cek_nik($nik);
+
+            if ($cek_nik == true) {
+                if ($cek == true) {
+                    foreach ($cek as $row);
+                    $this->session->set_userdata('nik', $row->nik);
+                    $this->session->set_userdata('nama', $row->nama);
+                    $this->session->set_userdata('nik', $row->nik);
+                    $this->session->set_userdata('level', $row->level);
+                    if ($row->level == "admin") {
+                        redirect('admin');
+                    } elseif ($row->level == "user") {
+                        redirect("user");
+                    } elseif ($row->level == "asesor") {
+                        redirect('asesor');
+                    } else {
+                        $this->session->set_flashdata('pesan', 'pass_salah');
+                        return redirect('login');
+                    }
                 } else {
-                    $data['data'] = '<div class="alert alert-danger" role="alert">Password Salah !
-            </div>';
-                    $data['judul'] = 'Login';
-                    return $this->index();
+                    $this->session->set_flashdata('pesan', 'pass_salah');
+                    return redirect('login');
                 }
+            } elseif ($cek_nik == false) {
+                $this->session->set_flashdata('pesan', 'nik_k');
+                return redirect('login');
             }
         }
     }

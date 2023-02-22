@@ -26,9 +26,15 @@
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
                                         </div>
                                         <?php
-                                        echo $data;
-                                        echo $this->session->flashdata('pesan')
-                                        ?>
+
+                                        if ($this->session->flashdata('pesan') == "pass_salah") { ?>
+                                            <div class="alert alert-danger" role="alert">Password Salah !
+                                            </div>
+                                        <?php   } elseif ($this->session->flashdata('pesan') == "nik_k") { ?>
+                                            <div class="alert alert-warning" role="alert">
+                                                NIK Tidak Terdaftar !
+                                            </div>
+                                        <?php    } ?>
                                         <?= validation_errors() ?>
                                         <form class="user" action="<?= base_url('login/auth') ?>" method="POST">
                                             <div class="form-group mb-4">
