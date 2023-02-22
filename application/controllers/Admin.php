@@ -21,6 +21,7 @@ class Admin extends CI_Controller
 		$this->load->model('ci_m');
 		$this->load->model('task_kompetensi_m');
 		$this->load->model('suggestionsystem_m');
+		$this->load->model('training_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -852,4 +853,75 @@ class Admin extends CI_Controller
 		return redirect('admin/data_asesor');
 	}
 	// end user
+
+	// training
+	public function training()
+	{
+		$data['judul'] = 'Data Training';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->training_m->get_all_tra();
+		$this->load->view('template/header', $data);
+		$this->load->view('training/data_training', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_training()
+	{
+		$data['judul'] = 'Data Training';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('training/create_training', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_sertifikat()
+	{
+		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[karyawan.nik]');
+		if ($this->form_validation->run() === FALSE) {
+			$this->add_karyawan();
+		} else {
+			$config['upload_path']   = './assets/sertifikat/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			// $config['encrypt_name'] = TRUE;
+			$config['file_name'] = $this->input->post('nik');
+			//$config['max_size']      = 100; 
+			//$config['max_width']     = 1024; 
+			//$config['max_height']    = 768;  
+
+			$this->load->library('upload', $config);
+			// script upload file 1
+			$this->upload->do_upload('foto');
+			$file1 = $this->upload->data();
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'foto' => $file1['orig_name'],
+
+			);
+			$this->db->insert('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'buat');
+			return redirect('admin/data_karyawan');
+		}
+	// end training
+
+	// assessment
+	public function assessment()
+	{
+		$data['judul'] = 'Data assessment';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->assessment_m->get_all_tra();
+		$this->load->view('template/header', $data);
+		$this->load->view('assessment/data_assessment', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_assessment()
+	{
+		$data['judul'] = 'Data assessment';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('assessment/create_assessment', $data);
+		$this->load->view('template/footer');
+	}
+		// end assessment
+	}
+	
 }

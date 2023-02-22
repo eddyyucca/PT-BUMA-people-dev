@@ -2,15 +2,17 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
+            <h6 class="m-0 font-weight-bold ">Data <Section></Section>
+            </h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Kompetensi</a>
+                    <a href="<?= base_url('admin/create_training') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Training</a>
                     <hr>
                 </div>
                 <?php
+
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
                     <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
                     </div>
@@ -27,11 +29,10 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Jabatan</th>
-                            <th>Jenis kompetensi</th>
-                            <th>Task kompetensi</th>
-                            <th>Level</th>
-                            <th>aksi</th>
+                            <th>Karyawan</th>
+                            <th>Training</th>
+                            <th>Tanggal</th>
+                            <th>Penyelenggara</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,13 +41,10 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_jab; ?></td>
-                                <td><?= $x->j_kompetensi; ?></td>
-                                <td><?= $x->t_kompetensi; ?></td>
-                                <td><?= $x->level_kom; ?></td>
+                                <td><?= $x->nama_sec; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_section/') . $x->id_sec; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_section/') . $x->id_sec; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>
