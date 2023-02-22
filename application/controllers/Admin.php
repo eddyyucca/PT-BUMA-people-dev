@@ -22,6 +22,7 @@ class Admin extends CI_Controller
 		$this->load->model('task_kompetensi_m');
 		$this->load->model('suggestionsystem_m');
 		$this->load->model('training_m');
+		$this->load->model('assessment_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -900,6 +901,7 @@ class Admin extends CI_Controller
 			$this->session->set_flashdata('pesan', 'buat');
 			return redirect('admin/data_karyawan');
 		}
+	}
 	// end training
 
 	// assessment
@@ -907,7 +909,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data assessment';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['data'] = $this->assessment_m->get_all_tra();
+		$data['data'] = $this->assessment_m->get_all_am();
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/data_assessment', $data);
 		$this->load->view('template/footer');
@@ -921,5 +923,5 @@ class Admin extends CI_Controller
 		$this->load->view('assessment/create_assessment', $data);
 		$this->load->view('template/footer');
 	}
-		// end assessment
+	// end assessment
 }
