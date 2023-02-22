@@ -64,32 +64,32 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/profil') ?>">
-                            <i class="fas fa-user-circle"></i>
+                            <i class="fas fa-user-alt"></i>
                             <span>Profil</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/suggestionsystem') ?>">
-                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <i class="fas fa-sort-amount-up-alt"></i>
                             <span>Suggestion system</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
-                            <i class="fas fa-fw fa-thumbs-up"></i>
-                            <span>Continues Improvement</span></a>
+                            <i class="fas fa-fw fa-chart-area"></i>
+                            <span>Cont. Improvement</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
-                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <i class="fas fa-fw fa-chart-area"></i>
                             <span>Training</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
-                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <i class="fas fa-tasks"></i>
                             <span>Assessment</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/password') ?>">
-                            <i class="fas fa-fw fa-thumbs-up"></i>
+                            <i class="fas fa-unlock-alt"></i>
                             <span>Password</span></a>
                     </li>
 

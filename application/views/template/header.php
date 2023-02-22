@@ -110,7 +110,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/task_kompetensi') ?>">
-                            <i class="fad fa-chalkboard-teacher"></i>
+                            <i class="fas fa-list-alt"></i>
                             <span>Kompetensi</span></a>
                     </li>
                     <li class="nav-item">

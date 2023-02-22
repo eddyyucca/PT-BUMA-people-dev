@@ -34,20 +34,22 @@ class User extends CI_Controller
         $data['total_departement'] = $this->departement_m->jumlah_departement();
         $data['judul'] = 'Dashboard Karyawan';
         $data['nama'] = $this->session->userdata('nama');
-        // $data['karyawan'] = $this->karyawan_m->get_all_kar();
 
         $this->load->view('template_user/header', $data);
-        $this->load->view('user/home');
+        $this->load->view('user/home', $data);
         $this->load->view('template_user/footer');
     }
     public function profil()
     {
-        // $nik =  $this->session->userdata('nik');
-        $nik = 10000272;
+        $nik =  $this->session->userdata('nik');
         $data['data'] = $this->karyawan_m->get_view_kar($nik);
 
         $data['judul'] = 'Profil Karyawan';
         $data['nama'] = $this->session->userdata('nama');
+
+        $data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+
+        $data['continuesimprovement'] = $this->ci_m->get_all_ci($nik);
         $this->load->view('template_user/header', $data);
         $this->load->view('user/profil/data_karyawan');
         $this->load->view('template_user/footer');
