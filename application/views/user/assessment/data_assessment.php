@@ -34,7 +34,6 @@
                             <th>Target Kompetensi</th>
                             <th>Asesor</th>
                             <th>Dokumen Pendukung</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,10 +51,6 @@
                                     echo $citt->nama; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('assets/dokumen_pendukung/') . $x->f_pendukung; ?>" class="btn btn-primary" target="_blank">Open File</a>
-                                </td>
-                                <td align="center">
-                                    <a href="<?= base_url('admin/delete_assessment/') . $x->id_am; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_assessment/') . $x->id_am; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

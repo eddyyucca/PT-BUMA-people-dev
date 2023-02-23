@@ -83,7 +83,7 @@
                             <span>Training</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
+                        <a class="nav-link" href="<?= base_url('user/assessment') ?>">
                             <i class="fas fa-tasks"></i>
                             <span>Assessment</span></a>
                     </li>

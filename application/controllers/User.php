@@ -19,6 +19,7 @@ class User extends CI_Controller
         $this->load->model('karyawan_m');
         $this->load->model('suggestionsystem_m');
         $this->load->model('ci_m');
+        $this->load->model('assessment_m');
         $level_akun = $this->session->userdata('level');
         // if ($level_akun != "user") {
         //     $this->session->set_flashdata('login', 'n_login');
@@ -117,4 +118,16 @@ class User extends CI_Controller
         $this->load->view('template_user/footer');
     }
     // end continuesImprovement
+
+    // assessment
+    public function assessment()
+    {
+        $nik =  $this->session->userdata('nik');
+        $data['judul'] = 'Data Assessment';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->assessment_m->get_all_am_user($nik);
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/assessment/data_assessment', $data);
+        $this->load->view('template_user/footer');
+    }
 }

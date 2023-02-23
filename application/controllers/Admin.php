@@ -919,9 +919,42 @@ class Admin extends CI_Controller
 		$data['judul'] = 'Data assessment';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['asesor'] = $this->karyawan_m->get_all_ar();
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$data['t_kom'] = $this->task_kompetensi_m->get_all_tk();
+
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/create_assessment', $data);
 		$this->load->view('template/footer');
 	}
+	public function proses_tambah_assessment()
+	{
+		$nik = $this->input->post('karyawan');
+		$config['upload_path']   = './assets/dokumen_pendukung/' . $nik;
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		// $config['encrypt_name'] = TRUE;
+		// $config['file_name'] = $this->input->post('karyawan');
+		//$config['max_size']      = 100; 
+		//$config['max_width']     = 1024; 
+		//$config['max_height']    = 768;  
+
+		$this->load->library('upload', $config);
+		// script upload file 1
+		$this->upload->do_upload('sertifikat');
+		$file1 = $this->upload->data();
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'asesor' => $this->input->post('asesor'),
+			'kompetensi' => $this->input->post('kompetensi'),
+			't_komp' => $this->input->post('t_komp'),
+			'f_pendukung' => $file1['orig_name'],
+			'ket' => $this->input->post('ket'),
+		);
+		$this->db->insert('assessment', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/assessment');
+	}
+
+
 	// end assessment
 }
