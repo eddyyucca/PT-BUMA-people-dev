@@ -927,12 +927,26 @@ class Admin extends CI_Controller
 		$this->load->view('assessment/create_assessment', $data);
 		$this->load->view('template/footer');
 	}
+	public function edit_assessment($id_am)
+	{
+		$data['judul'] = 'Data assessment';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['asesor'] = $this->karyawan_m->get_all_ar();
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$data['t_kom'] = $this->task_kompetensi_m->get_all_tk();
+		$data['data'] = $this->assessment_m->get_row_am($id_am);
+
+		$this->load->view('template/header', $data);
+		$this->load->view('assessment/edit_assessment', $data);
+		$this->load->view('template/footer');
+	}
 	public function proses_tambah_assessment()
 	{
 		$nik = $this->input->post('karyawan');
-		$config['upload_path']   = './assets/dokumen_pendukung/' . $nik;
+		$config['upload_path']   = './assets/dokumen_pendukung/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		// $config['encrypt_name'] = TRUE;
+		$config['encrypt_name'] = TRUE;
 		// $config['file_name'] = $this->input->post('karyawan');
 		//$config['max_size']      = 100; 
 		//$config['max_width']     = 1024; 
@@ -947,14 +961,65 @@ class Admin extends CI_Controller
 			'asesor' => $this->input->post('asesor'),
 			'kompetensi' => $this->input->post('kompetensi'),
 			't_komp' => $this->input->post('t_komp'),
-			'f_pendukung' => $file1['orig_name'],
+			'f_pendukung' => $file1['file_name'],
 			'ket' => $this->input->post('ket'),
 		);
 		$this->db->insert('assessment', $data);
 		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/assessment');
 	}
+	public function proses_edit_assessment($id_am)
+	{
+		$config['upload_path']   = './assets/dokumen_pendukung/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['encrypt_name'] = TRUE;
+		// $config['file_name'] = $this->input->post('karyawan');
+		//$config['max_size']      = 100; 
+		//$config['max_width']     = 1024; 
+		//$config['max_height']    = 768;  
 
+		$this->load->library('upload', $config);
+		// script upload file 1
+		$this->upload->do_upload('sertifikat');
+		$file1 = $this->upload->data();
+
+		if ($file1['file_name'] == true) {
+			$data = array(
+				'karyawan' => $this->input->post('karyawan'),
+				'asesor' => $this->input->post('asesor'),
+				'kompetensi' => $this->input->post('kompetensi'),
+				't_komp' => $this->input->post('t_komp'),
+				'f_pendukung' => $file1['file_name'],
+				'ket' => $this->input->post('ket'),
+			);
+			$get = $this->assessment_m->get_row_am($id_am);
+			unlink($_SERVER['DOCUMENT_ROOT'] . '/assets/dokumen_pendukung/' . $get->f_pendukung);
+		} elseif ($file1['file_name'] ==  false) {
+			$data = array(
+				'karyawan' => $this->input->post('karyawan'),
+				'asesor' => $this->input->post('asesor'),
+				'kompetensi' => $this->input->post('kompetensi'),
+				't_komp' => $this->input->post('t_komp'),
+				'ket' => $this->input->post('ket'),
+			);
+		}
+
+		$this->db->where('id_am', $id_am);
+		$this->db->update('assessment', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/assessment');
+	}
+	public function delete_assessment($id_am)
+	{
+		$get = $this->assessment_m->get_row_am($id_am);
+		unlink($_SERVER['DOCUMENT_ROOT'] . '/assets/dokumen_pendukung/' . $get->f_pendukung);
+
+		$this->db->where('id_am', $id_am);
+		$this->db->delete('assessment');
+
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/assessment');
+	}
 
 	// end assessment
 }
