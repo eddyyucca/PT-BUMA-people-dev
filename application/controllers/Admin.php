@@ -143,7 +143,7 @@ class Admin extends CI_Controller
 
 		$data['data'] = $this->karyawan_m->get_view_kar($nik);
 
-		$data['judul'] = 'Add Karyawan';
+		$data['judul'] = 'Profil Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/view_karyawan');

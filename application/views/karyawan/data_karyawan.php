@@ -92,7 +92,7 @@
                                                     <img src="<?= base_url('assets') ?>/profil_default.png" class="rounded" width="185" height="183" alt="Foto Profil">
                                                 <?php  } elseif ($kar->foto == true) { ?>
 
-                                                    <img src="<?= base_url('assets/foto_profil/') . $kar->foto ?>" class="rounded" width="185" height="200" alt="Foto Profil">
+                                                    <img src="<?= base_url('assets/foto_profil/') . $kar->foto ?>" class="rounded" width="200" height="200" alt="Foto Profil">
                                                 <?php  } ?>
                                             </div>
                                             <!-- Team Details-->

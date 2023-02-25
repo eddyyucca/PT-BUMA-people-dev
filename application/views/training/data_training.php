@@ -2,7 +2,7 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data <Section></Section>
+            <h6 class="m-0 font-weight-bold ">Data Training<Section></Section>
             </h6>
         </div>
         <div class="card-body">
@@ -33,6 +33,7 @@
                             <th>Training</th>
                             <th>Tanggal</th>
                             <th>Penyelenggara</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,10 +42,23 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_sec; ?></td>
+                                <td><?= $x->nama; ?>
+                                    <br>
+                                    <footer class="blockquote-footer">Section - <?= $x->nama_sec ?></footer>
+                                    <footer class="blockquote-footer">Jabatan - <?= $x->nama_jab ?></footer>
+                                </td>
+                                <td>
+                                    <?= $x->training; ?>
+                                    <br>
+                                    <footer class="blockquote-footer">
+                                        <a href="<?= base_url('assets/sertifikat_pendukung/') ?>"><b>Open Sertitikat</b></a>
+                                    </footer>
+                                </td>
+                                <td><?= $x->mulai_training . " - " . $x->akhir_training; ?></td>
+                                <td><?= $x->penyelenggara ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_section/') . $x->id_sec; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_section/') . $x->id_sec; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_training/') . $x->id_training; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_training/') . $x->id_training; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

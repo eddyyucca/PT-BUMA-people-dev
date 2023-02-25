@@ -226,37 +226,28 @@ function tanggal_indonesia($tanggal)
                 <div class="collapse" id="assesment">
                     <div class="card-body">
                         <?php
-                        if ($continuesimprovement == false) {
+                        if ($assessment == false) {
                             echo "-- Data Kosong --";
                         } else { ?>
-                            <?php foreach ($continuesimprovement as $ci) { ?>
+                            <?php foreach ($assessment as $am) { ?>
                                 <table border="0">
                                     <tr>
-                                        <td>Judul</td>
+                                        <td>Asesor</td>
                                         <td>:</td>
-                                        <td> <?= $ci->judul ?></td>
+                                        <td><?php
+                                            $model = $this->load->model('karyawan_m');
+                                            $xx = $this->karyawan_m->get_row_nik($am->asesor);
+                                            echo $xx->nama; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Implementasi</td>
+                                        <td>Kompetensi</td>
                                         <td>: </td>
-                                        <td> <?= tanggal_indonesia($ci->t_implementasi) ?></td>
+                                        <td> <?= $am->j_kompetensi ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Tim Terlibat</td>
-                                        <td>:</td>
-                                        <td>
-                                        <td>
-                                            <?php
-                                            $model = $this->load->model('ci_m');
-                                            $citt = $this->ci_m->get_tim_ci($ci->tim);
-                                            foreach ($citt as $ok) {
-                                                echo $ok->nama_tim;
-                                                echo "
-                                    <hr>";
-                                            }
-                                            ?>
-                                        </td>
-                                        </td>
+                                        <td>Kompetensi</td>
+                                        <td>: </td>
+                                        <td> <?= $am->t_kompetensi ?></td>
                                     </tr>
                                 </table>
                                 <hr>

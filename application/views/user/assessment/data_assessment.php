@@ -7,10 +7,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <a href="<?= base_url('admin/create_assessment') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Assessment</a>
-                    <hr>
-                </div>
+
                 <?php
 
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
@@ -47,8 +44,8 @@
                                 <td><?= $x->t_kompetensi; ?></td>
                                 <td><?php
                                     $model = $this->load->model('karyawan_m');
-                                    $citt = $this->karyawan_m->get_row_nik($x->asesor);
-                                    echo $citt->nama; ?></td>
+                                    $am = $this->karyawan_m->get_row_nik($x->asesor);
+                                    echo $am->nama; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('assets/dokumen_pendukung/') . $x->f_pendukung; ?>" class="btn btn-primary" target="_blank">Open File</a>
                                 </td>

@@ -47,9 +47,8 @@ class User extends CI_Controller
 
         $data['judul'] = 'Profil Karyawan';
         $data['nama'] = $this->session->userdata('nama');
-
+        $data['assessment'] = $this->assessment_m->get_all_am_user($nik);
         $data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss_user($nik);
-
         $data['continuesimprovement'] = $this->ci_m->get_all_ci($nik);
         $this->load->view('template_user/header', $data);
         $this->load->view('user/profil/data_karyawan');
