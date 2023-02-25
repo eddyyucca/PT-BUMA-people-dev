@@ -51,7 +51,7 @@
                                     <?= $x->training; ?>
                                     <br>
                                     <footer class="blockquote-footer">
-                                        <a href="<?= base_url('assets/sertifikat_pendukung/') ?>"><b>Open Sertitikat</b></a>
+                                        <a href="<?= base_url('assets/sertifikat_training/') . $x->training_foto ?>"><b>Open Sertitikat</b></a>
                                     </footer>
                                 </td>
                                 <td><?= $x->mulai_training . " - " . $x->akhir_training; ?></td>

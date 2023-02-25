@@ -12,21 +12,74 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold ">Edit Departement</h6>
+                                                <h6 class="m-0 font-weight-bold ">Create Training</h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_dep/') . $data->id_dep ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_tambah_training')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>Nama Departement</td>
-                                                                    <td><input type="text" name="nama_dep" class="form-control" required placeholder="Nama Departement" value="<?= $data->nama_dep ?>"></td>
+                                                                    <td>Yang Melakukan</td>
+                                                                    <td><select name="karyawan" class="form-control  selectpicker" data-live-search="true">
+                                                                            <option value="">--PILIH karyawan--</option>
+                                                                            <?php foreach ($kar as $karyawan) { ?>
+                                                                                <option value="<?= $karyawan->nik ?>" <?= $karyawan->nik == $data->karyawan ? 'selected=selected' : ''; ?>><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
+                                                                            <?php } ?>
+                                                                        </select></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=auto>Nama Training</td>
+                                                                    <td><input type="text" name="training" class="form-control" required placeholder="Nama Training"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=auto>Penyelenggara</td>
+                                                                    <td><input type="text" name="penyelenggara" class="form-control" required placeholder="Nama Penyelenggara"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Tanggal Traininig</td>
+                                                                    <td>
+                                                                        <div class="input-group">
+                                                                            <input type="date" aria-label="First name" class="form-control" name="mulai_training">
+                                                                            <input type="date" aria-label="Last name" class="form-control" name="akhir_training">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Diskripsi Training</td>
+                                                                    <td>
+                                                                        <div class="input-group">
+                                                                            <textarea name="d_training" class="form-control"></textarea>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Tanggal Traininig</td>
+                                                                    <td>
+                                                                        <div class="input-group">
+                                                                            <input type="date" class="form-control" name="awal_st">
+                                                                            <input type="date" class="form-control" name="akhir_st">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=auto>Kredensial</td>
+                                                                    <td><input type="text" name="kredensial" class="form-control" required placeholder="Kredensial"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <button class="btn btn-success">Simpan</button>
+                                                                        Upload Foto Sertifikat
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="mb-3">
+                                                                            <input name="sertifikat_training" class="form-control" type="file" id="formFile" accept="image/*">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <button class="btn btn-success">Update</button>
                                                                     </td>
                                                                     <td></td>
                                                                 </tr>

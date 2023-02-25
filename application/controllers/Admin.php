@@ -874,33 +874,74 @@ class Admin extends CI_Controller
 		$this->load->view('training/create_training', $data);
 		$this->load->view('template/footer');
 	}
-	public function proses_tambah_sertifikat()
+	public function edit_training($id_training)
 	{
-		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[karyawan.nik]');
-		if ($this->form_validation->run() === FALSE) {
-			$this->add_karyawan();
-		} else {
-			$config['upload_path']   = './assets/sertifikat/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			// $config['encrypt_name'] = TRUE;
-			$config['file_name'] = $this->input->post('nik');
-			//$config['max_size']      = 100; 
-			//$config['max_width']     = 1024; 
-			//$config['max_height']    = 768;  
+		$data['judul'] = 'Data Training';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['data'] = $this->training_m->get_row_tra($id_training);
 
-			$this->load->library('upload', $config);
-			// script upload file 1
-			$this->upload->do_upload('foto');
-			$file1 = $this->upload->data();
-			$data = array(
-				'nik' => $this->input->post('nik'),
-				'foto' => $file1['orig_name'],
+		$this->load->view('template/header', $data);
+		$this->load->view('training/edit_training', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_training()
+	{
+		$config['upload_path']   = './assets/sertifikat_training/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['encrypt_name'] = TRUE;
+		// $config['file_name'] = $this->input->post('karyawan');
+		//$config['max_size']      = 100; 
+		//$config['max_width']     = 1024; 
+		//$config['max_height']    = 768;  
 
-			);
-			$this->db->insert('karyawan', $data);
-			$this->session->set_flashdata('pesan', 'buat');
-			return redirect('admin/data_karyawan');
-		}
+		$this->load->library('upload', $config);
+		// script upload file 1
+		$this->upload->do_upload('sertifikat_training');
+		$file1 = $this->upload->data();
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'penyelenggara' => $this->input->post('penyelenggara'),
+			'mulai_training' => $this->input->post('mulai_training'),
+			'akhir_training' => $this->input->post('akhir_training'),
+			'd_training' => $this->input->post('d_training'),
+			'awal_st' => $this->input->post('awal_st'),
+			'akhir_st' => $this->input->post('akhir_st'),
+			'kredensial' => $this->input->post('kredensial'),
+			'training_foto' => $file1['file_name'],
+		);
+		$this->db->insert('training', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/training');
+	}
+	public function proses_edit_training()
+	{
+		$config['upload_path']   = './assets/sertifikat_training/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['encrypt_name'] = TRUE;
+		// $config['file_name'] = $this->input->post('karyawan');
+		//$config['max_size']      = 100; 
+		//$config['max_width']     = 1024; 
+		//$config['max_height']    = 768;  
+
+		$this->load->library('upload', $config);
+		// script upload file 1
+		$this->upload->do_upload('sertifikat_training');
+		$file1 = $this->upload->data();
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'penyelenggara' => $this->input->post('penyelenggara'),
+			'mulai_training' => $this->input->post('mulai_training'),
+			'akhir_training' => $this->input->post('akhir_training'),
+			'd_training' => $this->input->post('d_training'),
+			'awal_st' => $this->input->post('awal_st'),
+			'akhir_st' => $this->input->post('akhir_st'),
+			'kredensial' => $this->input->post('kredensial'),
+			'training_foto' => $file1['file_name'],
+		);
+		$this->db->insert('training', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/training');
 	}
 	// end training
 
@@ -943,7 +984,6 @@ class Admin extends CI_Controller
 	}
 	public function proses_tambah_assessment()
 	{
-		$nik = $this->input->post('karyawan');
 		$config['upload_path']   = './assets/dokumen_pendukung/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = TRUE;
