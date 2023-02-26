@@ -901,6 +901,7 @@ class Admin extends CI_Controller
 		$file1 = $this->upload->data();
 		$data = array(
 			'karyawan' => $this->input->post('karyawan'),
+			'training' => $this->input->post('training'),
 			'penyelenggara' => $this->input->post('penyelenggara'),
 			'mulai_training' => $this->input->post('mulai_training'),
 			'akhir_training' => $this->input->post('akhir_training'),
@@ -916,7 +917,7 @@ class Admin extends CI_Controller
 	}
 	public function proses_edit_training()
 	{
-		$config['upload_path']   = './assets/dokumen_pendukung/';
+		$config['upload_path']   = './assets/sertifikat_training/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = TRUE;
 		// $config['file_name'] = $this->input->post('karyawan');
@@ -958,6 +959,15 @@ class Admin extends CI_Controller
 		$this->db->where('id_training', $id_training);
 		$this->db->update('training', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/training');
+	}
+	public function delete_training($id_training)
+	{
+		$get = $this->training_m->get_row_tra($id_training);
+		unlink($_SERVER['DOCUMENT_ROOT'] . '/assets/sertifikat_training/' . $get->training_foto);
+		$this->db->where('id_training', $id_training);
+		$this->db->delete('training');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/training');
 	}
 	// end training

@@ -1,3 +1,31 @@
+<?php
+function tanggal_indonesia($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+}
+
+?>
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="card shadow mb-4">
@@ -54,7 +82,7 @@
                                         <a href="<?= base_url('assets/sertifikat_training/') . $x->training_foto ?>"><b>Open Sertitikat</b></a>
                                     </footer>
                                 </td>
-                                <td><?= $x->mulai_training . " - " . $x->akhir_training; ?></td>
+                                <td><?= tanggal_indonesia($x->mulai_training) . " - " . tanggal_indonesia($x->akhir_training) ?></td>
                                 <td><?= $x->penyelenggara ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_training/') . $x->id_training; ?>" class="btn btn-danger">Hapus</a>
