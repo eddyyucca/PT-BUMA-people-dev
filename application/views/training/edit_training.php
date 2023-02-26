@@ -12,13 +12,13 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold ">Create Training</h6>
+                                                <h6 class="m-0 font-weight-bold ">Edit Training</h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_tambah_training')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_training/') . $data->id_training  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td>Yang Melakukan</td>
@@ -31,18 +31,19 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=auto>Nama Training</td>
-                                                                    <td><input type="text" name="training" class="form-control" required placeholder="Nama Training"></td>
+                                                                    <td><input type="text" name="training" class="form-control" required placeholder="Nama Training" value="<?= $data->training ?>"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=auto>Penyelenggara</td>
-                                                                    <td><input type="text" name="penyelenggara" class="form-control" required placeholder="Nama Penyelenggara"></td>
+                                                                    <td><input type="text" name="penyelenggara" class="form-control" required value="<?= $data->penyelenggara ?>" placeholder="Nama Penyelenggara"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Tanggal Traininig</td>
                                                                     <td>
                                                                         <div class="input-group">
-                                                                            <input type="date" aria-label="First name" class="form-control" name="mulai_training">
-                                                                            <input type="date" aria-label="Last name" class="form-control" name="akhir_training">
+                                                                            <input type="date" aria-label="First name" class="form-control" name="mulai_training" value="<?= $data->mulai_training ?>">
+
+                                                                            <input type="date" aria-label="Last name" class="form-control" name="akhir_training" value="<?= $data->akhir_training ?>">
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -50,7 +51,7 @@
                                                                     <td>Diskripsi Training</td>
                                                                     <td>
                                                                         <div class="input-group">
-                                                                            <textarea name="d_training" class="form-control"></textarea>
+                                                                            <textarea name="d_training" class="form-control"><?= $data->d_training ?></textarea>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -58,14 +59,14 @@
                                                                     <td>Tanggal Traininig</td>
                                                                     <td>
                                                                         <div class="input-group">
-                                                                            <input type="date" class="form-control" name="awal_st">
-                                                                            <input type="date" class="form-control" name="akhir_st">
+                                                                            <input type="date" class="form-control" name="awal_st" value="<?= $data->awal_st ?>">
+                                                                            <input type="date" class="form-control" name="akhir_st" value="<?= $data->akhir_st ?>">
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=auto>Kredensial</td>
-                                                                    <td><input type="text" name="kredensial" class="form-control" required placeholder="Kredensial"></td>
+                                                                    <td><input type="text" name="kredensial" class="form-control" required placeholder="Kredensial" value="<?= $data->kredensial ?>"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

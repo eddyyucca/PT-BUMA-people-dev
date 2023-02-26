@@ -916,7 +916,7 @@ class Admin extends CI_Controller
 	}
 	public function proses_edit_training()
 	{
-		$config['upload_path']   = './assets/sertifikat_training/';
+		$config['upload_path']   = './assets/dokumen_pendukung/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = TRUE;
 		// $config['file_name'] = $this->input->post('karyawan');
@@ -928,19 +928,36 @@ class Admin extends CI_Controller
 		// script upload file 1
 		$this->upload->do_upload('sertifikat_training');
 		$file1 = $this->upload->data();
-		$data = array(
-			'karyawan' => $this->input->post('karyawan'),
-			'penyelenggara' => $this->input->post('penyelenggara'),
-			'mulai_training' => $this->input->post('mulai_training'),
-			'akhir_training' => $this->input->post('akhir_training'),
-			'd_training' => $this->input->post('d_training'),
-			'awal_st' => $this->input->post('awal_st'),
-			'akhir_st' => $this->input->post('akhir_st'),
-			'kredensial' => $this->input->post('kredensial'),
-			'training_foto' => $file1['file_name'],
-		);
-		$this->db->insert('training', $data);
-		$this->session->set_flashdata('pesan', 'buat');
+
+		if ($file1['file_name'] == true) {
+			$data = array(
+				'karyawan' => $this->input->post('karyawan'),
+				'penyelenggara' => $this->input->post('penyelenggara'),
+				'mulai_training' => $this->input->post('mulai_training'),
+				'akhir_training' => $this->input->post('akhir_training'),
+				'd_training' => $this->input->post('d_training'),
+				'awal_st' => $this->input->post('awal_st'),
+				'akhir_st' => $this->input->post('akhir_st'),
+				'kredensial' => $this->input->post('kredensial'),
+				'training_foto' => $file1['file_name'],
+			);
+			$get = $this->training_m->get_row_tra($id_training);
+			unlink($_SERVER['DOCUMENT_ROOT'] . '/assets/sertifikat_training/' . $get->training_foto);
+		} elseif ($file1['file_name'] ==  false) {
+			$data = array(
+				'karyawan' => $this->input->post('karyawan'),
+				'penyelenggara' => $this->input->post('penyelenggara'),
+				'mulai_training' => $this->input->post('mulai_training'),
+				'akhir_training' => $this->input->post('akhir_training'),
+				'd_training' => $this->input->post('d_training'),
+				'awal_st' => $this->input->post('awal_st'),
+				'akhir_st' => $this->input->post('akhir_st'),
+				'kredensial' => $this->input->post('kredensial')
+			);
+		}
+		$this->db->where('id_training', $id_training);
+		$this->db->update('training', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/training');
 	}
 	// end training
