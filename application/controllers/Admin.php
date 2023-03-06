@@ -576,7 +576,7 @@ class Admin extends CI_Controller
 
 		$data['data'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi/data_kompetensi', $data);
+		$this->load->view('kompetensi/jenis_kompetensi/data_kompetensi', $data);
 		$this->load->view('template/footer');
 	}
 	public function create_kompetensi()
@@ -585,17 +585,16 @@ class Admin extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 
 		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi/create_kompetensi', $data);
+		$this->load->view('kompetensi/jenis_kompetensi/create_kompetensi', $data);
 		$this->load->view('template/footer');
 	}
 	public function edit_kompetensi($id_kom)
 	{
 		$data['judul'] = 'Update kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
-
 		$data['data'] = $this->kompetensi_m->get_row_kom($id_kom);
 		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi/edit_kompetensi', $data);
+		$this->load->view('kompetensi/jenis_kompetensi/edit_kompetensi', $data);
 		$this->load->view('template/footer');
 	}
 	public function proses_tambah_kom()
@@ -1089,4 +1088,118 @@ class Admin extends CI_Controller
 	}
 
 	// end assessment
+
+	// plantkompetensi
+	public function data_plantkompetensi()
+	{
+		$data['judul'] = 'Data Plant kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_all_pk();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/plant/data_plant', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function create_plant()
+	{
+		$data['judul'] = 'Create Plant';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['plant'] = $this->kompetensi_m->get_all_plant();
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/plant/create_plant', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function proses_tambah_plant()
+	{
+		$get_id = date('Ymdhis');
+		$x = $this->input->post('target_p');
+		$data = array(
+			"plant" => $this->input->post('plant'),
+			"pengembangan" => $this->input->post('pengembangan'),
+			"target_p" => $get_id,
+		);
+		$this->db->insert('plant_kom', $data);
+		foreach ($x as $d) {
+			$data = array(
+				"target_p" => $d,
+				"id_p" => $get_id,
+			);
+			$this->db->insert('sub_kom', $data);
+		}
+		return redirect('admin/data_plantkompetensi');
+	}
+	// end plantkompetensi
+
+	// pengembangan
+	public function data_bidangpengembangan()
+	{
+		$data['judul'] = 'Create Plant';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/plant/create_plant', $data);
+		$this->load->view('template/footer');
+	}
+	// end plantkompetensi
+
+	public function data_jenisplant()
+	{
+		$data['judul'] = 'Data Jenis Plant';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_all_plant();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/jenis_plant/data_jenisplant', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_jenisplant()
+	{
+		$data['judul'] = 'Create Jenis Plant';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/jenis_plant/create_jenisplant', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_jenisplant($id_plant)
+	{
+		$data['judul'] = 'Update Jenis Plant';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->kompetensi_m->get_row_plant($id_plant);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/jenis_plant/edit_jenisplant', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_jenisplant()
+	{
+		$data = array(
+			'nama_plant' => $this->input->post('nama_plant')
+		);
+		$this->db->insert('plant', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/data_jenisplant');
+	}
+	public function proses_edit_jenisplant($id_plant)
+	{
+		$data = array(
+			'nama_plant' => $this->input->post('nama_plant')
+		);
+		$this->db->where('id_plant', $id_plant);
+		$this->db->update('plant', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/data_jenisplant');
+	}
+	public function delete_jenisplant($id_plant)
+	{
+		$this->db->where('id_plant', $id_plant);
+		$this->db->delete('plant');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/data_jenisplant');
+	}
+	// end jenisplant
 }

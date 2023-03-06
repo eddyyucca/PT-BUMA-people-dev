@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +9,6 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href=" <?= base_url('assets') ?>/logo.ico">
     <title><?= $judul ?></title>
-
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets') ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
@@ -137,9 +135,23 @@
                         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <a class="collapse-item" href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a>
+                                <a class="collapse-item" href="<?= base_url('admin/data_plantkompetensi') ?>">Plant Kompetensi</a>
                                 <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
                                 <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
                                 <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Jabatan</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#kompetensi" aria-expanded="true" aria-controls="kompetensi">
+                            <i class="fas fa-database"></i>
+                            <span>Master kompetensi</span>
+                        </a>
+                        <div id="kompetensi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a>
+                                <a class="collapse-item" href="<?= base_url('admin/data_jenisplant') ?>">Jenis Plant</a>
+                                <a class="collapse-item" href="<?= base_url('admin/data_plantkompetensi') ?>">Plant Kompetensi</a>
                             </div>
                         </div>
                     </li>
