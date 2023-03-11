@@ -150,8 +150,8 @@
                         <div id="kompetensi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <a class="collapse-item" href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a>
-                                <a class="collapse-item" href="<?= base_url('admin/data_jenisplant') ?>">Jenis Plant</a>
-                                <a class="collapse-item" href="<?= base_url('admin/data_plantkompetensi') ?>">Plant Kompetensi</a>
+                                <a class="collapse-item" href="<?= base_url('admin/data_jenisplan') ?>">Jenis Plan</a>
+                                <a class="collapse-item" href="<?= base_url('admin/data_plankompetensi') ?>">Plan Kompetensi</a>
                             </div>
                         </div>
                     </li>

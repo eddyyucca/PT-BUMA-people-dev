@@ -9,17 +9,18 @@ class Kompetensi_m extends CI_Model
         $query = $this->db->get('kompetensi');
         return $query->result();
     }
-    public function get_all_plant()
+    public function get_all_plan()
     {
-        $query = $this->db->get('plant');
+        // $this->db->join('kompetensi', 'kompetensi.id_kom = plan.kompetensi', 'left');
+        $query = $this->db->get('plan');
         return $query->result();
     }
     public function get_all_pk()
     {
-        $this->db->join('kompetensi', 'kompetensi.id_kom = plant_kom.target_p', 'left');
-        $this->db->join('plant', 'plant.id_plant = plant_kom.plant', 'left');
+        // $this->db->join('kompetensi', 'kompetensi.id_kom = plan.kompetensi', 'left');
+        $this->db->join('plan', 'plan.id_plan = plan_kom.plan_t', 'left');
 
-        $query = $this->db->get('plant_kom');
+        $query = $this->db->get('plan_kom');
         return $query->result();
     }
     public function get_all_pk_sub($id_p)
@@ -35,10 +36,10 @@ class Kompetensi_m extends CI_Model
         $query = $this->db->get('kompetensi');
         return $query->row();
     }
-    public function get_row_plant($id_plant)
+    public function get_row_plan($id_plan)
     {
-        $this->db->where('id_plant', $id_plant);
-        $query = $this->db->get('plant');
+        $this->db->where('id_plan', $id_plan);
+        $query = $this->db->get('plan');
         return $query->row();
     }
 

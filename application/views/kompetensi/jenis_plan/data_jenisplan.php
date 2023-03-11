@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_jenisplant') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Jenis Plant</a>
+                    <a href="<?= base_url('admin/create_jenisplan') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Jenis Plan</a>
                     <hr>
                 </div>
                 <?php
@@ -28,7 +28,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Plant</th>
+                            <th>Kompetensi</th>
+                            <th>Nama Plan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -38,10 +39,11 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_plant; ?></td>
+                                <td><?= $x->j_kompetensi; ?></td>
+                                <td><?= $x->nama_plan; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_jenisplant/') . $x->id_plant; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_jenisplant/') . $x->id_plant; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_jenisplan/') . $x->id_plan; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_jenisplan/') . $x->id_plan; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>
