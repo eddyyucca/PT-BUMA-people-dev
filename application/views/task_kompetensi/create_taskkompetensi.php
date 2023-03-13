@@ -20,7 +20,7 @@
                                                         <?= validation_errors() ?>
                                                         <form action="<?= base_url('admin/proses_tambah_task_kompetensi')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
-                                                                <!-- <tr>
+                                                                <tr>
                                                                     <td>Karyawan</td>
                                                                     <td><select name="pembuat" class="form-control  selectpicker" data-live-search="true">
                                                                             <option value="">--PILIH karyawan--</option>
@@ -28,7 +28,7 @@
                                                                                 <option value="<?= $karyawan->nik ?>"><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
                                                                             <?php } ?>
                                                                         </select></td>
-                                                                </tr> -->
+                                                                </tr>
                                                                 <tr>
                                                                 <tr>
                                                                     <td>Kompetensi</td>
@@ -46,6 +46,17 @@
                                                                     <td>Plan Kompetensi</td>
                                                                     <td>
                                                                         <select class="form-control" id="opt_plan" name="plan" required>
+                                                                            <option value="">No Selected</option>
+                                                                            <?php
+
+                                                                            ?>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Target Plan Kompetensi</td>
+                                                                    <td>
+                                                                        <select class="form-control" id="tpk" name="tpk" required>
                                                                             <option value="">No Selected</option>
                                                                             <?php
 
@@ -88,6 +99,21 @@
                     },
                     success: function(data) {
                         $('#opt_plan').html(data)
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $('#opt_plan').change(function() {
+                var sub_id = $(this).val();
+                $.ajax({
+                    url: '<?= base_url(); ?>admin/get_plan_kom',
+                    method: 'POST',
+                    data: {
+                        sub_id: sub_id
+                    },
+                    success: function(data) {
+                        $('#tpk').html(data)
                     }
                 });
             });

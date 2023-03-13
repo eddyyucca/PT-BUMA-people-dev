@@ -34,6 +34,22 @@ class Task_kompetensi_m extends CI_Model
         //return data kabupaten
         return $output;
     }
+    function plan_kom($plan_t)
+    {
+        //ambil data kabupaten berdasarkan id provinsi yang dipilih
+        $this->db->where('plan_t', $plan_t);
+        // $this->db->order_by('name', 'ASC');
+        $query = $this->db->get('plan_kom');
+
+        $output = '<option value="">-- Pilih Target Plan Kompetensi--</option>';
+
+        //looping data
+        foreach ($query->result() as $row) {
+            $output .= '<option value="' . $row->id_plan_t . '">' . $row->target_p . '</option>';
+        }
+        //return data kabupaten
+        return $output;
+    }
 }
 
 /* End of file task_kompetensi_m.php */

@@ -702,6 +702,11 @@ class Admin extends CI_Controller
 		$id_kom = $this->input->post('id');
 		echo $this->task_kompetensi_m->plan($id_kom);
 	}
+	function get_plan_kom()
+	{
+		$plan_t = $this->input->post('sub_id');
+		echo $this->task_kompetensi_m->plan_kom($plan_t);
+	}
 	// end task_kompetensi
 
 	// suggestionsystem
