@@ -640,10 +640,17 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['jabatan'] = $this->jabatan_m->get_all_jab();
 		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
 		$this->load->view('task_kompetensi/create_taskkompetensi', $data);
+		$this->load->view('template/footer');
+	}
+	public function coba()
+	{
+
+		$this->load->view('template/header');
+		$this->load->view('welcome_message');
 		$this->load->view('template/footer');
 	}
 	public function update_task_kompetensi($id_kompetensi)
@@ -688,6 +695,12 @@ class Admin extends CI_Controller
 		$this->db->delete('kompetensi_user');
 		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/task_kompetensi');
+	}
+
+	function get_plan()
+	{
+		$id_kom = $this->input->post('id');
+		echo $this->task_kompetensi_m->plan($id_kom);
 	}
 	// end task_kompetensi
 

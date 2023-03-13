@@ -20,32 +20,40 @@
                                                         <?= validation_errors() ?>
                                                         <form action="<?= base_url('admin/proses_tambah_task_kompetensi')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
-                                                                <tr>
-                                                                    <td>Jabatan</td>
-                                                                    <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH Jabatan--</option>
-                                                                            <?php foreach ($jabatan as $jab) { ?>
-                                                                                <option value="<?= $jab->id_jab ?>"><?= $jab->nama_jab ?></option>
+                                                                <!-- <tr>
+                                                                    <td>Karyawan</td>
+                                                                    <td><select name="pembuat" class="form-control  selectpicker" data-live-search="true">
+                                                                            <option value="">--PILIH karyawan--</option>
+                                                                            <?php foreach ($kar as $karyawan) { ?>
+                                                                                <option value="<?= $karyawan->nik ?>"><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
                                                                             <?php } ?>
                                                                         </select></td>
-                                                                </tr>
+                                                                </tr> -->
+                                                                <tr>
                                                                 <tr>
                                                                     <td>Kompetensi</td>
-                                                                    <td><select name="kompetensi" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH Kompetensi--</option>
+                                                                    <td>
+                                                                        <select name="opt_kom" id="opt_kom" class="form-control">
+                                                                            <option value="">No Selected</option>
                                                                             <?php foreach ($kompetensi as $kom) { ?>
                                                                                 <option value="<?= $kom->id_kom ?>"><?= $kom->j_kompetensi ?></option>
                                                                             <?php } ?>
-                                                                        </select></td>
+                                                                        </select>
+                                                                    </td>
                                                                 </tr>
+
                                                                 <tr>
-                                                                    <td width=20%>Task Kompetensi</td>
-                                                                    <td><input type="text" name="t_kompetensi" class="form-control" required placeholder="Task Kompetensi"></td>
+                                                                    <td>Plan Kompetensi</td>
+                                                                    <td>
+                                                                        <select class="form-control" id="opt_plan" name="plan" required>
+                                                                            <option value="">No Selected</option>
+                                                                            <?php
+
+                                                                            ?>
+                                                                        </select>
+                                                                    </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td width=20%>Level</td>
-                                                                    <td><input type="text" name="level" class="form-control" required placeholder="Level Kompetensi"></td>
-                                                                </tr>
+
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-success">Simpan</button>
@@ -67,4 +75,22 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#opt_kom').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: '<?= base_url(); ?>admin/get_plan',
+                    method: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        $('#opt_plan').html(data)
+                    }
+                });
+            });
+        });
+    </script>
 </body>

@@ -17,6 +17,8 @@
     <link href="<?= base_url('assets') ?>/css/profil.css" rel="stylesheet">
     <!-- pop up -->
     <!-- select -->
+
+    <script src="<?= base_url('assets') ?>/js/jquery-3.3.1.js"></script>
     <link href="<?= base_url('assets') ?>/select/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/loading/loading.css" rel="stylesheet">
     <!-- 
@@ -26,14 +28,14 @@
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
 
     <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
-    <script>
+    <!-- <script>
         var viewMode = getCookie("view-mode");
         if (viewMode == "desktop") {
             viewport.setAttribute('content', 'width=1024');
         } else if (viewMode == "mobile") {
             viewport.setAttribute('content', 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
         }
-    </script>
+    </script> -->
     <style>
         .file {
             visibility: hidden;

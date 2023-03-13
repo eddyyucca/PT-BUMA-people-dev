@@ -27,10 +27,10 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Karyawan</th>
                             <th>Jabatan</th>
-                            <th>Jenis kompetensi</th>
-                            <th>Task kompetensi</th>
-                            <th>Level</th>
+                            <th>Section</th>
+                            <th>View Kompetensi</th>
                             <th>aksi</th>
                         </tr>
                     </thead>
@@ -41,12 +41,14 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_jab; ?></td>
-                                <td><?= $x->j_kompetensi; ?></td>
-                                <td><?= $x->t_kompetensi; ?></td>
-                                <td><?= $x->level_kom; ?></td>
+                                <td><?= $x->nama_jab; ?></td>
+                                <td><?= $x->nama_sec; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->id_kompetensi; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/view_kompetensi/') . $x->nik; ?>" class="btn btn-success">View Kompetensi</a>
+                                </td>
+                                <td align="center">
+                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->nik; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->nik; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

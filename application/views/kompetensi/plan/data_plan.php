@@ -31,6 +31,7 @@
                             <th>Plant Kompetensi</th>
                             <!-- <th>Bidang Pengembangan</th> -->
                             <th>Target</th>
+                            <th>Target Nilai</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -44,6 +45,10 @@
 
                                 <td>
                                     <?= $x->target_p
+                                    ?>
+                                </td>
+                                <td>
+                                    <?= $x->target_nilai
                                     ?>
                                 </td>
                                 <td align="center">
