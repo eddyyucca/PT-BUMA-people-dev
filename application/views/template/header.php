@@ -154,6 +154,7 @@
                                 <a class="collapse-item" href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_jenisplan') ?>">Jenis Plan</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_plankompetensi') ?>">Plan Kompetensi</a>
+                                <a class="collapse-item" href="<?= base_url('admin/data_levelkompetensi') ?>">Level Kompetensi</a>
                             </div>
                         </div>
                     </li>

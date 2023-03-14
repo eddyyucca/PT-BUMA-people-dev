@@ -2,12 +2,12 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data Plant Kompetensi</h6>
+            <h6 class="m-0 font-weight-bold ">Data Level Kompetensi</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_plan') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Plan Kompetensi</a>
+                    <a href="<?= base_url('admin/create_levelkompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Level Kompetensi</a>
                     <hr>
                 </div>
                 <?php
@@ -28,9 +28,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Plant Kompetensi</th>
-                            <!-- <th>Bidang Pengembangan</th> -->
-                            <th>Target</th>
+                            <th>Level Kompetensi</th>
+                            <th>Nilai Level</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -41,14 +40,9 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_plan; ?></td>
-
-                                <td>
-                                    <?= $x->target_p
-                                    ?>
-                                </td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_plan/') . $x->id_plan_t; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_plan/') . $x->id_plan_t; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_level/') . $x->id_lp; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_level/') . $x->id_lp; ?>" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         <?php   } ?>

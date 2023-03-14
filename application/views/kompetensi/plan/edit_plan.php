@@ -12,17 +12,25 @@
                                         <!-- Page Heading -->
                                         <div class="card">
                                             <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold ">Edit Kompetensi</h6>
+                                                <h6 class="m-0 font-weight-bold ">Edit Plant Kompetensi</h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_kom/') . $data->id_kom ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_plan/' . $plan_kom->id_plan_t)  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>Nama Kompetensi</td>
-                                                                    <td><input type="text" name="j_kompetensi" class="form-control" required placeholder="Nama Kompetensi" value="<?= $data->j_kompetensi ?>"></td>
+                                                                    <td>Jenis Plant</td>
+                                                                    <td><select name="plan_t" class="form-control  selectpicker" data-live-search="true">
+                                                                            <?php foreach ($plan as $p) { ?>
+                                                                                <option value="<?= $p->id_plan ?>" <?= $p->id_plan == $plan_kom->plan_t ? 'selected=selected' : ''; ?>><?= $p->nama_plan ?></option>
+                                                                            <?php } ?>
+                                                                        </select></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width=20%>Target Plan</td>
+                                                                    <td><input type="text" name="target_p" value="<?= $plan_kom->target_p ?>" class="form-control" required placeholder="Target Plan"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

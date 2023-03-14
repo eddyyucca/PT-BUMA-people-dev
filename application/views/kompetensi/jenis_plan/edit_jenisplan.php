@@ -18,12 +18,21 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_jenisplan/') . $data->id_plan ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_jenisplan/' . $data->id_plan)  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
-                                                                    <td width=20%>Nama Kompetensi</td>
-                                                                    <td><input type="text" name="nama_plan" class="form-control" required placeholder="Nama Plan" value="<?= $data->nama_plan ?>"></td>
+                                                                    <td>Jenis Kompetensi</td>
+                                                                    <td><select data-placeholder="Begin typing a name to filter..." name="kompetensi" class="form-control  selectpicker" data-live-search="true">
+                                                                            <?php foreach ($kom as $k) { ?>
+                                                                                <option value="<?= $k->id_kom ?>" <?= $k->id_kom == $data->kompetensi ? 'selected=selected' : ''; ?>><?= $k->j_kompetensi ?></option>
+                                                                            <?php } ?>
+                                                                        </select></td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td width=20%>Nama Jenis Plan</td>
+                                                                    <td><input type="text" name="nama_plan" value="<?= $data->nama_plan ?>" class="form-control" required placeholder="Nama Jenis Plan"></td>
+                                                                </tr>
+
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-success">Simpan</button>

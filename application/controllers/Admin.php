@@ -1130,7 +1130,18 @@ class Admin extends CI_Controller
 		$this->load->view('kompetensi/plan/create_plan', $data);
 		$this->load->view('template/footer');
 	}
+	public function edit_plan($id_plan_t)
+	{
+		$data['judul'] = 'Create Plan';
+		$data['nama'] = $this->session->userdata('nama');
 
+		$data['plan'] = $this->kompetensi_m->get_all_plan();
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$data['plan_kom'] = $this->kompetensi_m->get_kom($id_plan_t);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/plan/edit_plan', $data);
+		$this->load->view('template/footer');
+	}
 	public function proses_tambah_plan()
 	{
 
@@ -1138,11 +1149,28 @@ class Admin extends CI_Controller
 
 			"plan_t" => $this->input->post('plan_t'),
 			"target_p" => $this->input->post('target_p'),
-			"target_nilai" => $this->input->post('target_nilai'),
-		);
+			);
 		$this->db->insert('plan_kom', $data);
 		return redirect('admin/data_plankompetensi');
 	}
+	public function proses_edit_plan($id_plan_t)
+	{
+		$data = array(
+			"plan_t" => $this->input->post('plan_t'),
+			"target_p" => $this->input->post('target_p'),
+			);
+		$this->db->where('id_plan_t', $id_plan_t);
+		$this->db->update('plan_kom', $data);
+		return redirect('admin/data_plankompetensi');
+	}
+	public function delete_plan($id_plan_t)
+	{
+		$this->db->where('id_plan_t', $id_plan_t);
+		$this->db->delete('plan_kom');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/data_plankompetensi');
+	}
+
 	// end plantkompetensi
 
 	// pengembangan
@@ -1177,11 +1205,12 @@ class Admin extends CI_Controller
 		$this->load->view('kompetensi/jenis_plan/create_jenisplan', $data);
 		$this->load->view('template/footer');
 	}
-	public function edit_jenisplant($id_plant)
+	public function edit_jenisplan($id_plan)
 	{
 		$data['judul'] = 'Update Jenis Plan';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['data'] = $this->kompetensi_m->get_row_plant($id_plan);
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$data['data'] = $this->kompetensi_m->get_row_plan($id_plan);
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/jenis_plan/edit_jenisplan', $data);
 		$this->load->view('template/footer');
@@ -1199,12 +1228,13 @@ class Admin extends CI_Controller
 	public function proses_edit_jenisplan($id_plan)
 	{
 		$data = array(
-			'nama_plan' => $this->input->post('nama_plan')
+			'nama_plan' => $this->input->post('nama_plan'),
+			'kompetensi' => $this->input->post('kompetensi'),
 		);
 		$this->db->where('id_plan', $id_plan);
 		$this->db->update('plan', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/data_jenisplant');
+		return redirect('admin/data_jenisplan');
 	}
 	public function delete_jenisplan($id_plan)
 	{
@@ -1214,4 +1244,26 @@ class Admin extends CI_Controller
 		return redirect('admin/data_jenisplan');
 	}
 	// end jenisplant
+
+
+	// data_levelkompetensi
+	public function data_levelkompetensi()
+	{
+		$data['judul'] = 'Data Level Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->kompetensi_m->get_all_level();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/target_level/data_level', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_levelkompetensi()
+	{
+		$data['judul'] = 'Data Level Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->kompetensi_m->get_all_level();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/target_level/create_level', $data);
+		$this->load->view('template/footer');
+	}
+	// end data_levelkompetensi
 }

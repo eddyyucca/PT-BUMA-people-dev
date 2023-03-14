@@ -9,9 +9,26 @@ class Kompetensi_m extends CI_Model
         $query = $this->db->get('kompetensi');
         return $query->result();
     }
+    public function get_all_level()
+    {
+        $query = $this->db->get('level_kom');
+        return $query->result();
+    }
+    public function get_kom($id_plan_t)
+    {
+        $this->db->where('id_plan_t', $id_plan_t);
+        $query = $this->db->get('plan_kom');
+        return $query->row();
+    }
+    public function get_row_plan_kom($id_plan_t)
+    {
+        $this->db->where('id_plan_t', $id_plan_t);
+        $query = $this->db->get('plan_kom');
+        return $query->row();
+    }
     public function get_all_plan()
     {
-        // $this->db->join('kompetensi', 'kompetensi.id_kom = plan.kompetensi', 'left');
+        $this->db->join('kompetensi', 'kompetensi.id_kom = plan.kompetensi', 'left');
         $query = $this->db->get('plan');
         return $query->result();
     }
@@ -43,21 +60,6 @@ class Kompetensi_m extends CI_Model
         return $query->row();
     }
 
-    function getkec($id_kab, $searchTerm = "")
-    {
-        $this->db->select('id_kec, nama');
-        $this->db->where('id_kab', $id_kab);
-        $this->db->where("nama like '%" . $searchTerm . "%' ");
-        $this->db->order_by('id_kec', 'asc');
-        $fetched_records = $this->db->get('kecamatan');
-        $datakec = $fetched_records->result_array();
-
-        $data = array();
-        foreach ($datakec as $kec) {
-            $data[] = array("id" => $kec['id_kec'], "text" => $kec['nama']);
-        }
-        return $data;
-    }
 
     function plan($id_kom)
     {
