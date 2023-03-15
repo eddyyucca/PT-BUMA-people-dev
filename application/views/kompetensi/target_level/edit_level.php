@@ -18,7 +18,7 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_tambah_level_kom')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_level_kom/').$data->id_lp  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td>Kompetensi</td>
@@ -58,13 +58,13 @@
                                                                     <td>Jabatan</td>
                                                                     <td><select name="lvl_jab" class="form-control  selectpicker" data-live-search="true">
                                                                             <option value="">--PILIH JABATAN--</option>
-                                                                            <option value="Skilled">Skilled</option>
-                                                                            <option value="Foreman">Foreman</option>
+                                                                            <option value="Skilled" <?= $data->lvl_jab == "Skilled" ? 'selected=selected' : ''; ?>>Skilled</option>
+                                                                            <option value="Foreman" <?= $data->lvl_jab == "Foreman" ? 'selected=selected' : ''; ?>>Foreman</option>
                                                                         </select></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Nilai Level</td>
-                                                                    <td><input type="number" name="nilai_lp" class="form-control" required placeholder="Nilai Level"></td>
+                                                                    <td><input type="number" name="nilai_lp" value="<?= $data->nilai_lp ?>" class="form-control" required placeholder="Nilai Level"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

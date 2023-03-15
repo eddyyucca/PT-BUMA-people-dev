@@ -28,6 +28,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Level Jabatan</th>
                             <th>Level Kompetensi</th>
                             <th>Nilai Level</th>
                             <th>Aksi</th>
@@ -39,10 +40,12 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_plan; ?></td>
+                                <td><?= $x->lvl_jab; ?></td>
+                                <td><?= $x->target_p; ?></td>
+                                <td align="center"><?= $x->nilai_lp; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_level/') . $x->id_lp; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_level/') . $x->id_lp; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_levelkompetensi/') . $x->id_lp; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

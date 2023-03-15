@@ -9,8 +9,18 @@ class Kompetensi_m extends CI_Model
         $query = $this->db->get('kompetensi');
         return $query->result();
     }
+    public function get_row_level($id_lp)
+    {
+        
+        $this->db->where('id_lp', $id_lp);
+        
+        $query = $this->db->get('level_kom');
+        return $query->row();
+    }
     public function get_all_level()
     {
+        $this->db->join('plan_kom', 'plan_kom.id_plan_t = level_kom.pk_level', 'left');
+       
         $query = $this->db->get('level_kom');
         return $query->result();
     }

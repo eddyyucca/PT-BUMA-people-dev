@@ -1149,7 +1149,7 @@ class Admin extends CI_Controller
 
 			"plan_t" => $this->input->post('plan_t'),
 			"target_p" => $this->input->post('target_p'),
-			);
+		);
 		$this->db->insert('plan_kom', $data);
 		return redirect('admin/data_plankompetensi');
 	}
@@ -1158,7 +1158,7 @@ class Admin extends CI_Controller
 		$data = array(
 			"plan_t" => $this->input->post('plan_t'),
 			"target_p" => $this->input->post('target_p'),
-			);
+		);
 		$this->db->where('id_plan_t', $id_plan_t);
 		$this->db->update('plan_kom', $data);
 		return redirect('admin/data_plankompetensi');
@@ -1260,10 +1260,54 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Level Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['data'] = $this->kompetensi_m->get_all_level();
+		$data['jab'] = $this->jabatan_m->get_all_jab();
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/target_level/create_level', $data);
 		$this->load->view('template/footer');
+	}
+	public function edit_levelkompetensi($id_lp)
+	{
+		$data['judul'] = 'Data Level Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['jab'] = $this->jabatan_m->get_all_jab();
+		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		$data['data'] = $this->kompetensi_m->get_row_level($id_lp);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi/target_level/edit_level', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_level_kom()
+	{
+		$data = array(
+			"pk_level" => $this->input->post('pk_level', true),
+			"lvl_jab" => $this->input->post('lvl_jab', true),
+			"nilai_lp" => $this->input->post('nilai_lp', true),
+		);
+
+		$this->db->insert('level_kom', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/data_levelkompetensi');
+	}
+	public function proses_edit_level_kom($id_lp)
+	{
+		$data = array(
+			"pk_level" => $this->input->post('pk_level', true),
+			"lvl_jab" => $this->input->post('lvl_jab', true),
+			"nilai_lp" => $this->input->post('nilai_lp', true),
+		);
+
+		$this->db->where('id_lp', $id_lp);
+		$this->db->update('level_kom', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/data_levelkompetensi');
+	}
+	public function delete_level($id_lp)
+	{
+		$this->db->where('id_lp', $id_lp);
+		$this->db->delete('level_kom');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/data_levelkompetensi');
 	}
 	// end data_levelkompetensi
 }
