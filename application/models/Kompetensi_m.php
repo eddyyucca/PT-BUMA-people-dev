@@ -105,16 +105,11 @@ class Kompetensi_m extends CI_Model
     }
     function get_jab_opt($id_jab)
     {
-        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
-        $this->db->where('nik', $id_jab);
-        // $this->db->order_by('name', 'ASC');
-        $query = $this->db->get('karyawan');
-        // $output = '<option value="">--Level Target--</option>';
-        //looping data
+        
+        $query = $this->db->get('level_kom');
         foreach ($query->result() as $row) {
-            $output = '<option value="' . $row->id_jab . '">' . $row->nama_jab . '</option>';
+            $output = '<option value="' . $row->id_lp . '">' . $row->level_jab . '</option>';
         }
-        //return data kabupaten
         return $output;
     }
 }
