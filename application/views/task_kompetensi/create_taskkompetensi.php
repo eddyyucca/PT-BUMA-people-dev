@@ -22,11 +22,19 @@
                                                             <table class="table">
                                                                 <tr>
                                                                     <td>Karyawan</td>
-                                                                    <td><select name="pembuat" class="form-control  selectpicker" data-live-search="true">
+                                                                    <td><select name="xp" id="xp" class="form-control  selectpicker" data-live-search="true">
                                                                             <option value="">--PILIH karyawan--</option>
                                                                             <?php foreach ($kar as $karyawan) { ?>
                                                                                 <option value="<?= $karyawan->nik ?>"><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
                                                                             <?php } ?>
+                                                                        </select></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Jabatan Level</td>
+                                                                    <td><select name="xjab" id="xjab" class="form-control" disabled>
+                                                                            <!-- <option value="">--PILIH Level--</option> -->
+                                                                            <?php
+                                                                             ?>
                                                                         </select></td>
                                                                 </tr>
                                                                 <tr>
@@ -114,6 +122,21 @@
                     },
                     success: function(data) {
                         $('#tpk').html(data)
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $('#xp').change(function() {
+                var id_jab = $(this).val();
+                $.ajax({
+                    url: '<?= base_url(); ?>admin/get_jabatan',
+                    method: 'POST',
+                    data: {
+                        id_jab: id_jab
+                    },
+                    success: function(data) {
+                        $('#xjab').html(data)
                     }
                 });
             });

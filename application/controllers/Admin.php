@@ -11,7 +11,6 @@ class Admin extends CI_Controller
 {
 	public function __construct()
 	{
-		// tes 123
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('departement_m');
@@ -647,13 +646,7 @@ class Admin extends CI_Controller
 		$this->load->view('task_kompetensi/create_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
-	public function coba()
-	{
-
-		$this->load->view('template/header');
-		$this->load->view('welcome_message');
-		$this->load->view('template/footer');
-	}
+	
 	public function update_task_kompetensi($id_kompetensi)
 	{
 		$data['judul'] = 'Update Task Kompetensi';
@@ -698,6 +691,11 @@ class Admin extends CI_Controller
 		return redirect('admin/task_kompetensi');
 	}
 
+	function get_jabatan()
+	{
+		$id_jab = $this->input->post('id_jab');
+		echo $this->kompetensi_m->get_jab_opt($id_jab);
+	}
 	function get_plan()
 	{
 		$id_kom = $this->input->post('id');
