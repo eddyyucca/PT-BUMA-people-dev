@@ -11,7 +11,7 @@ class Admin extends CI_Controller
 {
 	public function __construct()
 	{
-		// tes
+		// tes 123
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('departement_m');
