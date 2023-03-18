@@ -31,7 +31,18 @@ class Task_kompetensi_m extends CI_Model
         foreach ($query->result() as $row) {
             $output .= '<option value="' . $row->id_plan . '">' . $row->nama_plan . '</option>';
         }
-        //return data kabupaten
+      
+        return $output;
+    }
+    function get_jabatan($id_jab)
+    {
+        $this->db->where('nama_jab', $id_jab);
+        $query = $this->db->get('jabatan');
+        //looping data
+        foreach ($query->result() as $row) {
+            $output = '<option value="' . $row->id_jab . '">' . $row->nama_jab . '</option>';
+        }
+      
         return $output;
     }
     function plan_kom($plan_t)
@@ -47,7 +58,7 @@ class Task_kompetensi_m extends CI_Model
         foreach ($query->result() as $row) {
             $output .= '<option value="' . $row->id_plan_t . '">' . $row->target_p . '</option>';
         }
-        //return data kabupaten
+      
         return $output;
     }
 }

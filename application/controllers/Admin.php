@@ -648,6 +648,15 @@ class Admin extends CI_Controller
 		$this->load->view('task_kompetensi/create_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
+	public function view_kompetensi($nik)
+	{
+		$data['judul'] = 'Create Task Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['data'] = $this->karyawan_m->view_kompetensi_row($nik);
+		$this->load->view('template/header', $data);
+		$this->load->view('task_kompetensi/view_kompetensi', $data);
+		$this->load->view('template/footer');
+	}
 	
 	public function update_task_kompetensi($id_kompetensi)
 	{
@@ -695,8 +704,9 @@ class Admin extends CI_Controller
 
 	function get_jabatan()
 	{
-		$id_jab = $this->input->post('id_jab');
-		echo $this->kompetensi_m->get_jab_opt($id_jab);
+		$nik = $this->input->post('nik');
+		echo $this->kompetensi_m->get_jab_opt($nik);
+		
 	}
 	function get_plan()
 	{
@@ -708,6 +718,7 @@ class Admin extends CI_Controller
 		$plan_t = $this->input->post('sub_id');
 		echo $this->task_kompetensi_m->plan_kom($plan_t);
 	}
+	
 	// end task_kompetensi
 
 	// suggestionsystem

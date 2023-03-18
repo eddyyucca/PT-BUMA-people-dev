@@ -12,6 +12,15 @@ class Karyawan_m extends CI_Model
         $this->db->order_by('jabatan', 'DESC');
         return   $this->db->get('karyawan')->result();
     }
+
+    public function view_kompetensi_row($nik)
+    {
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $this->db->order_by('jabatan', 'DESC');
+        return   $this->db->get('karyawan')->result();
+    }
     public function get_all_ar()
     {
         $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');

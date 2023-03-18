@@ -31,7 +31,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Jabatan Level</td>
-                                                                    <td><select name="xjab" id="xjab" class="form-control" disabled>
+                                                                    <td><select name="xjab" id="xjab" class="form-control">
                                                                             <!-- <option value="">--PILIH Level--</option> -->
                                                                             <?php
                                                                              ?>
@@ -128,12 +128,12 @@
         });
         $(document).ready(function() {
             $('#xp').change(function() {
-                var id_jab = $(this).val();
+                var nik = $(this).val();
                 $.ajax({
                     url: '<?= base_url(); ?>admin/get_jabatan',
                     method: 'POST',
                     data: {
-                        id_jab: id_jab
+                        nik: nik
                     },
                     success: function(data) {
                         $('#xjab').html(data)

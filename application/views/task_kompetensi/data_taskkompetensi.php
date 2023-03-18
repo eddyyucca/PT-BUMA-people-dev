@@ -27,11 +27,11 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Nik</th>
                             <th>Karyawan</th>
                             <th>Jabatan</th>
                             <th>Section</th>
                             <th>View Kompetensi</th>
-                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,15 +40,12 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_jab; ?></td>
+                                <td><?= $x->nik; ?></td>
+                                <td><?= $x->nama; ?></td>
                                 <td><?= $x->nama_jab; ?></td>
                                 <td><?= $x->nama_sec; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/view_kompetensi/') . $x->nik; ?>" class="btn btn-success">View Kompetensi</a>
-                                </td>
-                                <td align="center">
-                                    <a href="<?= base_url('admin/delete_task_kompetensi/') . $x->nik; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/update_task_kompetensi/') . $x->nik; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>
