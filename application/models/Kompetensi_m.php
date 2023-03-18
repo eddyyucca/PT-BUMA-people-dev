@@ -20,7 +20,8 @@ class Kompetensi_m extends CI_Model
     public function get_all_level()
     {
         $this->db->join('plan_kom', 'plan_kom.id_plan_t = level_kom.pk_level', 'left');
-       
+        $this->db->join('jabatan', 'jabatan.id_jab = level_kom.lvl_jab', 'left');
+        $this->db->order_by('lvl_jab', 'DESC');
         $query = $this->db->get('level_kom');
         return $query->result();
     }
@@ -106,9 +107,10 @@ class Kompetensi_m extends CI_Model
     function get_jab_opt($id_jab)
     {
         
-        $query = $this->db->get('level_kom');
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $query = $this->db->get('karyawan');
         foreach ($query->result() as $row) {
-            $output = '<option value="' . $row->id_lp . '">' . $row->level_jab . '</option>';
+            $output = '<option value="' . $row->id_jab . '">' . $row->nama_jab . '</option>';
         }
         return $output;
     }

@@ -30,6 +30,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Jabatan</th>
+                            <th>Level</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -40,6 +41,7 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_jab; ?></td>
+                                <td align="center"><?= $x->level; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_jab/') . $x->id_jab; ?>" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_jabatan/') . $x->id_jab; ?>" class="btn btn-primary">Edit</a>
@@ -52,7 +54,6 @@
         </div>
     </div>
 </div>
-
 <?php if ($this->session->flashdata('flash_message')) : ?>
     <script>
         swal({

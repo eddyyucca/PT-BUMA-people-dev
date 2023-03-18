@@ -23,6 +23,10 @@
                     <div class="alert alert-warning" role="alert">
                         Data Berhasil Di Ubah !
                     </div>
+                <?php    } elseif ($this->session->flashdata('pesan') == "sudahada") { ?>
+                    <div class="alert alert-warning" role="alert">
+                        Data Sudah Ada !
+                    </div>
                 <?php    } ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -40,7 +44,7 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->lvl_jab; ?></td>
+                                <td><?= $x->nama_jab; ?></td>
                                 <td><?= $x->target_p; ?></td>
                                 <td align="center"><?= $x->nilai_lp; ?></td>
                                 <td align="center">

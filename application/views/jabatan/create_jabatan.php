@@ -24,6 +24,11 @@
                                                                     <td width=20%>Nama Jabatan</td>
                                                                     <td><input type="text" name="nama_jab" aria-describedby="basic-addon1" class="form-control" required placeholder="Nama Jabatan"></td>
                                                                 </tr>
+                                                         
+                                                                <tr>
+                                                                    <td width=20%>Level</td>
+                                                                    <td><input type="number" name="level" aria-describedby="basic-addon1" class="form-control" required placeholder="Level"></td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <button class="btn btn-success">Simpan</button>

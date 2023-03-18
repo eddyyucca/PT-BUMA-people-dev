@@ -449,7 +449,8 @@ class Admin extends CI_Controller
 	public function proses_tambah_jab()
 	{
 		$data = array(
-			'nama_jab' => $this->input->post('nama_jab')
+			'nama_jab' => $this->input->post('nama_jab'),
+			'level' => $this->input->post('level')
 		);
 		$this->db->insert('jabatan', $data);
 		$this->session->set_flashdata('pesan', 'buat');
@@ -458,7 +459,8 @@ class Admin extends CI_Controller
 	public function proses_edit_jab($id_jab)
 	{
 		$data = array(
-			'nama_jab' => $this->input->post('nama_jab')
+			'nama_jab' => $this->input->post('nama_jab'),
+			'level' => $this->input->post('level')
 		);
 		$this->db->where('id_jab', $id_jab);
 		$this->db->update('jabatan', $data);
@@ -1261,6 +1263,7 @@ class Admin extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 		$data['jab'] = $this->jabatan_m->get_all_jab();
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
+		
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/target_level/create_level', $data);
 		$this->load->view('template/footer');
@@ -1283,10 +1286,22 @@ class Admin extends CI_Controller
 			"lvl_jab" => $this->input->post('lvl_jab', true),
 			"nilai_lp" => $this->input->post('nilai_lp', true),
 		);
-
-		$this->db->insert('level_kom', $data);
-		$this->session->set_flashdata('pesan', 'buat');
+		$pk_level = $this->input->post('pk_level', true);
+		$lvl_jab = $this->input->post('lvl_jab', true);
+		$this->db->from('level_kom');
+        $this->db->where('pk_level', $pk_level);
+        $this->db->where('lvl_jab', $lvl_jab);
+ 		$this->db->limit(1);
+        $query = $this->db->get();
+        if ($query->num_rows() >= 1) {
+			$this->session->set_flashdata('pesan', 'sudahada');
+			return redirect('admin/data_levelkompetensi');
+        }elseif($query->num_rows() < 1) {
+			$this->db->insert('level_kom', $data);
+			$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/data_levelkompetensi');
+		}
+		// var_dump($query->num_rows());
 	}
 	public function proses_edit_level_kom($id_lp)
 	{

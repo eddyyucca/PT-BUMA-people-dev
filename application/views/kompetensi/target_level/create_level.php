@@ -57,9 +57,10 @@
                                                                 <tr>
                                                                     <td>Jabatan</td>
                                                                     <td><select name="lvl_jab" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH JABATAN--</option>
-                                                                            <option value="Skilled">Skilled</option>
-                                                                            <option value="Foreman">Foreman</option>
+                                                                    <option value="">No Selected</option>
+                                                                            <?php foreach ($jab as $x) { ?>
+                                                                                <option value="<?= $x->id_jab ?>"><?= $x->nama_jab ?></option>
+                                                                            <?php } ?>
                                                                         </select></td>
                                                                 </tr>
                                                                 <tr>
