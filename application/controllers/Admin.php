@@ -672,14 +672,24 @@ class Admin extends CI_Controller
 	public function proses_tambah_task_kompetensi()
 	{
 		$data = array(
-			'jabatan' => $this->input->post('jabatan'),
-			'kompetensi' => $this->input->post('kompetensi'),
-			't_kompetensi' => $this->input->post('t_kompetensi'),
-			'level_kom' => $this->input->post('level'),
+			'nik_kar' => $this->input->post('xp'),
+			'date_kom' => date("Y-m-d"),
 		);
-		$this->db->insert('kompetensi_user', $data);
-		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/task_kompetensi');
+		$nik = $this->input->post('xp');
+		$date_kom = date("Y-m-d");
+		$this->db->from('kompetensi_user');
+        $this->db->where('nik_kar', $nik);
+        $this->db->where('date_kom', $date_kom);
+ 		$this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1) {
+			$this->session->set_flashdata('pesan', 'buat');
+			return redirect('admin/task_kompetensi');
+		}elseif($query->num_rows() < 1) {
+			$this->db->insert('kompetensi_user', $data);
+			$this->session->set_flashdata('pesan', 'sudahada');
+			return redirect('admin/task_kompetensi');
+		}
 	}
 	public function proses_edit_task_kompetensi($id_kompetensi)
 	{

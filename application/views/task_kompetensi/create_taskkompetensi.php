@@ -31,47 +31,13 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Jabatan Level</td>
-                                                                    <td><select name="xjab" id="xjab" class="form-control">
+                                                                    <td><select name="xjab" id="xjab" class="form-control" disabled>
                                                                             <!-- <option value="">--PILIH Level--</option> -->
                                                                             <?php
                                                                              ?>
                                                                         </select></td>
                                                                 </tr>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td>Kompetensi</td>
-                                                                    <td>
-                                                                        <select name="opt_kom" id="opt_kom" class="form-control">
-                                                                            <option value="">No Selected</option>
-                                                                            <?php foreach ($kompetensi as $kom) { ?>
-                                                                                <option value="<?= $kom->id_kom ?>"><?= $kom->j_kompetensi ?></option>
-                                                                            <?php } ?>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Plan Kompetensi</td>
-                                                                    <td>
-                                                                        <select class="form-control" id="opt_plan" name="plan" required>
-                                                                            <option value="">No Selected</option>
-                                                                            <?php
-
-                                                                            ?>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Target Plan Kompetensi</td>
-                                                                    <td>
-                                                                        <select class="form-control" id="tpk" name="tpk" required>
-                                                                            <option value="">No Selected</option>
-                                                                            <?php
-
-                                                                            ?>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
+                                                            
 
                                                                 <tr>
                                                                     <td>

@@ -22,32 +22,74 @@
                     <div class="alert alert-warning" role="alert">
                         Data Berhasil Di Ubah !
                     </div>
+                <?php    }  elseif ($this->session->flashdata('pesan') == "sudahada") { ?>
+                    <div class="alert alert-warning" role="alert">
+                        Data Sudah Di Buat !
+                    </div>
                 <?php    } ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nik</th>
-                            <th>Karyawan</th>
+                            <th>Nama</th>
                             <th>Jabatan</th>
                             <th>Section</th>
+                            <th>Tanggal</th>
                             <th>View Kompetensi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                        function tgl_indo($tanggal){
+                            $bulan = array (
+                                1 =>   'Januari',
+                                'Februari',
+                                'Maret',
+                                'April',
+                                'Mei',
+                                'Juni',
+                                'Juli',
+                                'Agustus',
+                                'September',
+                                'Oktober',
+                                'November',
+                                'Desember'
+                            );
+                            $pecahkan = explode('-', $tanggal);
+                            
+                            // variabel pecahkan 0 = tanggal
+                            // variabel pecahkan 1 = bulan
+                            // variabel pecahkan 2 = tahun
+                         
+                            return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+                        }
+                         
+                        echo tgl_indo(date('Y-m-d')); // 21 Oktober 2017
+                         
+                        echo "<br/>";
+                        echo "<br/>";
+                         
+                      
                         $nomor = 1;
-                        foreach ($data as $x) { ?>
-                            <tr>
+                        foreach ($data as $x) { 
+                            if ($x->date_kom == true) { ?>
+                                <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nik; ?></td>
                                 <td><?= $x->nama; ?></td>
                                 <td><?= $x->nama_jab; ?></td>
                                 <td><?= $x->nama_sec; ?></td>
+                                <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/view_kompetensi/') . $x->nik; ?>" class="btn btn-success">View Kompetensi</a>
                                 </td>
                             </tr>
+                         <?php   }else{
+
+                            }
+                            ?>
+                          
                         <?php   } ?>
                     </tbody>
                 </table>
