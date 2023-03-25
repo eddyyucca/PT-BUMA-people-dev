@@ -638,6 +638,16 @@ class Admin extends CI_Controller
 		$this->load->view('task_kompetensi/data_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
+	public function view_taskkompetensi()
+	{
+		$data['judul'] = 'Data kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+
+		$data['data'] = $this->kompetensi_m->get_all_pk();
+		$this->load->view('template/header', $data);
+		$this->load->view('task_kompetensi/view_taskkompetensi', $data);
+		$this->load->view('template/footer');
+	}
 	public function create_task_kompetensi()
 	{
 		$data['judul'] = 'Create Task Kompetensi';
