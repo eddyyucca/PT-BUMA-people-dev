@@ -638,12 +638,11 @@ class Admin extends CI_Controller
 		$this->load->view('task_kompetensi/data_taskkompetensi', $data);
 		$this->load->view('template/footer');
 	}
-	public function view_taskkompetensi()
+	public function view_taskkompetensi($id_jab)
 	{
 		$data['judul'] = 'Data kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
-
-		$data['data'] = $this->kompetensi_m->get_all_pk();
+		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template/header', $data);
 		$this->load->view('task_kompetensi/view_taskkompetensi', $data);
 		$this->load->view('template/footer');
@@ -662,7 +661,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['data'] = $this->karyawan_m->view_kompetensi_row($nik);
+		$data['data'] = $this->kompetensi_m->get_all_level();
 		$this->load->view('template/header', $data);
 		$this->load->view('task_kompetensi/view_kompetensi', $data);
 		$this->load->view('template/footer');
@@ -1025,21 +1024,17 @@ class Admin extends CI_Controller
 	public function assessment()
 	{
 		$data['judul'] = 'Data assessment';
-		$data['nama'] = $this->session->userdata('nama');
-		$data['data'] = $this->assessment_m->get_all_am();
+		$data['nama'] = $this->session->userdata('nama');		
+		$data['data'] = $this->task_kompetensi_m->get_all_tk();
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/data_assessment', $data);
 		$this->load->view('template/footer');
 	}
-	public function create_assessment()
+	public function create_assessment($id_jab)
 	{
 		$data['judul'] = 'Data assessment';
 		$data['nama'] = $this->session->userdata('nama');
-		$data['kar'] = $this->karyawan_m->get_all_kar();
-		$data['asesor'] = $this->karyawan_m->get_all_ar();
-		$data['kom'] = $this->kompetensi_m->get_all_kom();
-		$data['t_kom'] = $this->task_kompetensi_m->get_all_tk();
-
+		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/create_assessment', $data);
 		$this->load->view('template/footer');

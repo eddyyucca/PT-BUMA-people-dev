@@ -1,98 +1,47 @@
-<body class="bg-gradient-success">
-    <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="card o-hidden border-0 shadow-lg my-5 ">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div class="col-lg">
-                                    <div class="p-5">
-                                        <!-- Page Heading -->
-                                        <div class="card">
-                                            <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold ">Tambah Assessment</h6>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="container-fluid">
-                                                        <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_tambah_assessment')  ?>" method="POST" enctype="multipart/form-data">
-                                                            <table class="table">
-                                                                <tr>
-                                                                    <td>Karyawan</td>
-                                                                    <td><select name="karyawan" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH karyawan--</option>
-                                                                            <?php foreach ($kar as $karyawan) { ?>
-                                                                                <option value="<?= $karyawan->nik ?>"><?= $karyawan->nama ?> | <?= $karyawan->nik ?></option>
-                                                                            <?php } ?>
-                                                                        </select></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Asesor</td>
-                                                                    <td><select name="asesor" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH Asesor--</option>
-                                                                            <?php foreach ($asesor as $ar) { ?>
-                                                                                <option value="<?= $ar->nik ?>"><?= $ar->nama ?> | <?= $ar->nik ?></option>
-                                                                            <?php } ?>
-                                                                        </select></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Kompetensi</td>
-                                                                    <td><select name="kompetensi" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH KMPETENSI--</option>
-                                                                            <?php foreach ($kom as $kome) { ?>
-                                                                                <option value="<?= $kome->id_kom ?>"><?= $kome->j_kompetensi ?></option>
-                                                                            <?php } ?>
-                                                                        </select></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Target Kompetensi</td>
-                                                                    <td><select name="t_komp" class="form-control  selectpicker" data-live-search="true">
-                                                                            <option value="">--PILIH TARGET KOMPETENSI--</option>
-                                                                            <?php foreach ($t_kom as $kome) { ?>
-                                                                                <option value="<?= $kome->id_kompetensi ?>"><?= $kome->t_kompetensi ?></option>
-                                                                            <?php } ?>
-                                                                        </select></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        File Pendukung
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="mb-3">
-                                                                            <input name="sertifikat" class="form-control" type="file" id="formFile" accept="image/*">
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                <tr>
-                                                                    <td>Keterangan</td>
-                                                                    <td>
-                                                                        <div class="form-floating">
-                                                                            <textarea name="ket" class="form-control" id="floatingTextarea"></textarea>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <td>
-                                                                    <button class="btn btn-success">Simpan</button>
-                                                                </td>
-                                                                <td></td>
-                                                                </tr>
-                                                            </table>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold ">View Task Kompetensi Karyawan</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+               
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Plan</th>
+                            <th>Level Kompetensi</th>
+                            <th>Nilai Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $nomor = 1;
+                        foreach ($data as $x) { ?>
+                            <tr>
+                                <td><?= $nomor++; ?></td>
+                                <td><?= $x->nama_plan; ?></td>
+                                <td><?= $x->target_p; ?></td>
+                                <td align="center"><?= $x->nilai_lp; ?></td>
+                            </tr>
+                        <?php   } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</body>
+</div>
+
+<?php if ($this->session->flashdata('flash_message')) : ?>
+    <script>
+        swal({
+            title: "Done",
+            text: "<?php echo $this->session->flashdata('flash_message'); ?>",
+            timer: 1500,
+            showConfirmButton: false,
+            type: 'success'
+        });
+    </script>
+<?php endif; ?>

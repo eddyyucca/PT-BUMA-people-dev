@@ -42,8 +42,7 @@
                                 <td><?= $x->nama_plan; ?></td>
 
                                 <td>
-                                    <?= $x->target_p
-                                    ?>
+                                    <?= $x->target_p ?>
                                 </td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_plan/') . $x->id_plan_t; ?>" class="btn btn-danger">Hapus</a>

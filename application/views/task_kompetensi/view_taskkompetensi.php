@@ -2,21 +2,18 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
+            <h6 class="m-0 font-weight-bold ">View Task Kompetensi Karyawan</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Kompetensi</a>
-                    <hr>
-                </div>
+               
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Plant Kompetensi</th>
-                            <th>Target</th>
-                            <th>Aksi</th>
+                            <th>Plan</th>
+                            <th>Level Kompetensi</th>
+                            <th>Nilai Level</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,15 +23,8 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_plan; ?></td>
-
-                                <td>
-                                    <?= $x->target_p
-                                    ?>
-                                </td>
-                                <td align="center">
-                                    <a href="<?= base_url('admin/delete_plan/') . $x->id_plan_t; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_plan/') . $x->id_plan_t; ?>" class="btn btn-primary">Edit</a>
-                                </td>
+                                <td><?= $x->target_p; ?></td>
+                                <td align="center"><?= $x->nilai_lp; ?></td>
                             </tr>
                         <?php   } ?>
                     </tbody>

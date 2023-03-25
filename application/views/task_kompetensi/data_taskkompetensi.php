@@ -58,9 +58,6 @@
                             );
                             $pecahkan = explode('-', $tanggal);
                             
-                            // variabel pecahkan 0 = tanggal
-                            // variabel pecahkan 1 = bulan
-                            // variabel pecahkan 2 = tahun
                          
                             return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
                         }
@@ -82,7 +79,7 @@
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $x->nik; ?>" class="btn btn-success">View Kompetensi</a>
+                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $x->id_jab; ?>" class="btn btn-success">View Kompetensi</a>
                                 </td>
                             </tr>
                          <?php   }else{

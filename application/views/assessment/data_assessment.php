@@ -2,17 +2,11 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data Assessment Karyawan<Section></Section>
-            </h6>
+            <h6 class="m-0 font-weight-bold ">Data Assessment</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <a href="<?= base_url('admin/create_assessment') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Assessment</a>
-                    <hr>
-                </div>
                 <?php
-
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
                     <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
                     </div>
@@ -24,40 +18,64 @@
                     <div class="alert alert-warning" role="alert">
                         Data Berhasil Di Ubah !
                     </div>
+                <?php    }  elseif ($this->session->flashdata('pesan') == "sudahada") { ?>
+                    <div class="alert alert-warning" role="alert">
+                        Data Sudah Di Buat !
+                    </div>
                 <?php    } ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Karyawan</th>
-                            <th>Kompetensi</th>
-                            <th>Target Kompetensi</th>
-                            <th>Asesor</th>
-                            <th>Dokumen Pendukung</th>
-                            <th>Aksi</th>
+                            <th>Nik</th>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Section</th>
+                            <th>Tanggal</th>
+                            <th>View Kompetensi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                        function tgl_indo($tanggal){
+                            $bulan = array (
+                                1 =>   'Januari',
+                                'Februari',
+                                'Maret',
+                                'April',
+                                'Mei',
+                                'Juni',
+                                'Juli',
+                                'Agustus',
+                                'September',
+                                'Oktober',
+                                'November',
+                                'Desember'
+                            );
+                            $pecahkan = explode('-', $tanggal);
+                            
+                         
+                            return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+                        }
                         $nomor = 1;
-                        foreach ($data as $x) { ?>
-                            <tr>
+                        foreach ($data as $x) { 
+                            if ($x->date_kom == true) { ?>
+                                <tr>
                                 <td><?= $nomor++; ?></td>
+                                <td><?= $x->nik; ?></td>
                                 <td><?= $x->nama; ?></td>
-                                <td><?= $x->j_kompetensi; ?></td>
-                                <td><?= $x->t_kompetensi; ?></td>
-                                <td><?php
-                                    $model = $this->load->model('karyawan_m');
-                                    $am = $this->karyawan_m->get_row_nik($x->asesor);
-                                    echo $am->nama; ?></td>
+                                <td><?= $x->nama_jab; ?></td>
+                                <td><?= $x->nama_sec; ?></td>
+                                <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('assets/dokumen_pendukung/') . $x->f_pendukung; ?>" class="btn btn-primary" target="_blank">Open File</a>
-                                </td>
-                                <td align="center">
-                                    <a href="<?= base_url('admin/delete_assessment/') . $x->id_am; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_assessment/') . $x->id_am; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab; ?>" class="btn btn-success">View Kompetensi</a>
                                 </td>
                             </tr>
+                         <?php   }else{
+
+                            }
+                            ?>
+                          
                         <?php   } ?>
                     </tbody>
                 </table>
@@ -65,6 +83,7 @@
         </div>
     </div>
 </div>
+
 <?php if ($this->session->flashdata('flash_message')) : ?>
     <script>
         swal({
