@@ -68,7 +68,7 @@
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab; ?>" class="btn btn-success">View Kompetensi</a>
+                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab ."/".$x->nik ?>" class="btn btn-success">View Kompetensi</a>
                                 </td>
                             </tr>
                          <?php   }else{

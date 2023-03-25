@@ -1030,9 +1030,11 @@ class Admin extends CI_Controller
 		$this->load->view('assessment/data_assessment', $data);
 		$this->load->view('template/footer');
 	}
-	public function create_assessment($id_jab)
+	public function create_assessment($id_jab,$nik)
 	{
+
 		$data['judul'] = 'Data assessment';
+		$data['nik'] = $nik;
 		$data['nama'] = $this->session->userdata('nama');
 		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template/header', $data);
