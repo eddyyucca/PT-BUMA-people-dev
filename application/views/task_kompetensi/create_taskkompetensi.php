@@ -32,12 +32,14 @@
                                                                 <tr>
                                                                     <td>Jabatan Level</td>
                                                                     <td><select name="xjab" id="xjab" class="form-control" disabled>
-                                                                            <!-- <option value="">--PILIH Level--</option> -->
                                                                             <?php
                                                                              ?>
                                                                         </select></td>
                                                                 </tr>
-                                                            
+                                                                <tr>
+                                                                    <td width=20%>Tanggal</td>
+                                                                    <td><input type="date" name="tanggal" class="form-control" required placeholder="Tanggal"></td>
+                                                                </tr>
 
                                                                 <tr>
                                                                     <td>

@@ -20,6 +20,7 @@ class User extends CI_Controller
         $this->load->model('suggestionsystem_m');
         $this->load->model('ci_m');
         $this->load->model('assessment_m');
+        $this->load->model('kompetensi_m');
         $level_akun = $this->session->userdata('level');
         // if ($level_akun != "user") {
         //     $this->session->set_flashdata('login', 'n_login');
@@ -43,11 +44,13 @@ class User extends CI_Controller
     public function profil()
     {
         $nik =  $this->session->userdata('nik');
+        $data['nik'] =  $this->session->userdata('nik');
+        $id_jab =  $this->session->userdata('jabatan');
         $data['data'] = $this->karyawan_m->get_view_kar($nik);
 
         $data['judul'] = 'Profil Karyawan';
         $data['nama'] = $this->session->userdata('nama');
-        $data['assessment'] = $this->assessment_m->get_all_am_user($nik);
+        $data['assessment'] = $this->kompetensi_m->get_row_level_kar($id_jab);
         $data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss_user($nik);
         $data['continuesimprovement'] = $this->ci_m->get_all_ci($nik);
         $this->load->view('template_user/header', $data);

@@ -43,7 +43,7 @@ class Login extends CI_Controller
                     foreach ($cek as $row);
                     $this->session->set_userdata('nik', $row->nik);
                     $this->session->set_userdata('nama', $row->nama);
-                    $this->session->set_userdata('nik', $row->nik);
+                    $this->session->set_userdata('jabatan', $row->jabatan);
                     $this->session->set_userdata('level', $row->level);
                     if ($row->level == "admin") {
                         redirect('admin');

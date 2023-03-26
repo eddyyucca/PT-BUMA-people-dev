@@ -152,10 +152,9 @@ function tanggal_indonesia($tanggal)
                                         <td> <?= tanggal_indonesia($ci->t_implementasi) ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Tim Terlibat</td>
+                                        <td align="">Tim Terlibat</td>
                                         <td>:</td>
-                                        <td>
-                                        <td>
+                                        <td align="top">
                                             <?php
                                             $model = $this->load->model('ci_m');
                                             $citt = $this->ci_m->get_tim_ci($ci->tim);
@@ -165,7 +164,6 @@ function tanggal_indonesia($tanggal)
                                     <hr>";
                                             }
                                             ?>
-                                        </td>
                                         </td>
                                     </tr>
                                 </table>
@@ -225,35 +223,43 @@ function tanggal_indonesia($tanggal)
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="assesment">
                     <div class="card-body">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Plan</th>
+                            <th>Level Kompetensi</th>
+                            <th>Nilai Level</th>
+                            <th>Nilai Karyawan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <?php
-                        if ($assessment == false) {
-                            echo "-- Data Kosong --";
-                        } else { ?>
-                            <?php foreach ($assessment as $am) { ?>
-                                <table border="0">
-                                    <tr>
-                                        <td>Asesor</td>
-                                        <td>:</td>
-                                        <td><?php
-                                            $model = $this->load->model('karyawan_m');
-                                            $xx = $this->karyawan_m->get_row_nik($am->asesor);
-                                            echo $xx->nama; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kompetensi</td>
-                                        <td>: </td>
-                                        <td> <?= $am->j_kompetensi ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kompetensi</td>
-                                        <td>: </td>
-                                        <td> <?= $am->t_kompetensi ?></td>
-                                    </tr>
-                                </table>
-                                <hr>
-                                </tr>
-                        <?php }
-                        } ?>
+                        $nomor = 1;
+                        foreach ($assessment as $x) { ?>
+                            <tr>
+                                <td><?= $nomor++; ?></td>
+                                <td><?= $x->nama_plan; ?></td>
+                                <td><?= $x->target_p; ?></td>
+                                <td align="center"><?= $x->nilai_lp; ?></td>
+                               
+                                <?php  
+                                $model = $this->load->model('Assessment_m');
+                                $x_assessment = $this->assessment_m->get_assessment($nik);
+                                 ?>  
+                                <td> 
+                                    <?php
+                                        foreach ($x_assessment as $ok) {
+                                            echo $ok->nik;
+                                            echo "
+                                    <hr>";
+                                        }
+                                        ?>
+                                </td>
+                            </tr>
+                        <?php   } ?>
+                    </tbody>
+                </table>
                     </div>
                 </div>
             </div>
