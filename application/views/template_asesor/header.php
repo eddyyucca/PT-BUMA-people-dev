@@ -53,11 +53,18 @@
             color: #fff;
         }
     </style>
-
+    <style>
+		/* Menyembunyikan elemen HTML pada ukuran layar yang lebih kecil dari 768px */
+		@media only screen and (max-width: 800px) {
+			.desktop-only {
+				display: none !important;
+			}
+		}
+	</style>
 </head>
 <!-- Loading Page -->
 
-<body id="page-top" onload="myFunction()" style="margin:0;">
+<body id="page-top" onload="myFunction()" style="margin:0;"  class="desktop-only">
     <div id="loader"></div>
     <div style="display:none;" id="myDiv" class="animate-bottom">
 
@@ -70,7 +77,7 @@
                 <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
                     <!-- Sidebar - Brand -->
                     <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> -->
-                    <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('admin') ?>">
+                    <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('asesor') ?>">
                         <div class="sidebar-brand-icon">
                             <img src="<?= base_url('assets/logo.png'); ?>" width="90" height="35" alt="BUMA">
                         </div>

@@ -1,3 +1,31 @@
+<?php
+function tanggal_indonesia($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+}
+
+?>
 <div class="container-fluid">
     <?= $this->session->flashdata('pesanan'); ?>
     <!-- Page Heading -->
@@ -57,7 +85,183 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-6">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#ss" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="ss">
+                    <h6 class="m-0 font-weight-bold text-primary">Suggestion System</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="ss">
+                    <div class="card-body">
+                        <?php
+                        if ($suggestionsystem == false) {
+                            echo "-- Data Kosong --";
+                        } else { ?>
+                            <?php foreach ($suggestionsystem as $ss) { ?>
+                                <table border="0">
+                                    <tr>
+                                        <td>Judul</td>
+                                        <td>:</td>
+                                        <td> <?= $ss->judul_ss ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Implementasi</td>
+                                        <td>: </td>
+                                        <td> <?= tanggal_indonesia($ss->t_implementasi_ss) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tim</td>
+                                        <td>:</td>
+                                        <td> <?= $ss->nama_sec ?></td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                </tr>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#ci" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="ci">
+                    <h6 class="m-0 font-weight-bold text-primary">Continues Improvement</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="ci">
+                    <div class="card-body">
+                        <?php
+                        if ($continuesimprovement == false) {
+                            echo "-- Data Kosong --";
+                        } else { ?>
+                            <?php foreach ($continuesimprovement as $ci) { ?>
+                                <table border="0">
+                                    <tr>
+                                        <td>Judul</td>
+                                        <td>:</td>
+                                        <td> <?= $ci->judul ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Implementasi</td>
+                                        <td>: </td>
+                                        <td> <?= tanggal_indonesia($ci->t_implementasi) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="">Tim Terlibat</td>
+                                        <td>:</td>
+                                        <td align="top">
+                                            <?php
+                                            $model = $this->load->model('ci_m');
+                                            $citt = $this->ci_m->get_tim_ci($ci->tim);
+                                            foreach ($citt as $ok) {
+                                                echo $ok->nama_tim;
+                                                echo "
+                                    <hr>";
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                </tr>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <div class="col-6">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#training" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="training">
+                    <h6 class="m-0 font-weight-bold text-primary">Training</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="training">
+                    <div class="card-body">
+                        <?php
+                        if ($suggestionsystem == false) {
+                            echo "-- Data Kosong --";
+                        } else { ?>
+                            <?php foreach ($suggestionsystem as $ss) { ?>
+                                <table border="0">
+                                    <tr>
+                                        <td>Judul</td>
+                                        <td>:</td>
+                                        <td> <?= $ss->judul_ss ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Implementasi</td>
+                                        <td>: </td>
+                                        <td> <?= tanggal_indonesia($ss->t_implementasi_ss) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tim</td>
+                                        <td>:</td>
+                                        <td> <?= $ss->nama_sec ?></td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                </tr>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#assesment" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="assesment">
+                    <h6 class="m-0 font-weight-bold text-primary">Assessment</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="assesment">
+                    <div class="card-body">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Plan</th>
+                            <th>Level Kompetensi</th>
+                            <th>Nilai Level</th>
+                            <th>Nilai Karyawan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $nomor = 1;
+                        foreach ($assessment as $x) { ?>
+                            <tr>
+                                <td><?= $nomor++; ?></td>
+                                <td><?= $x->nama_plan; ?></td>
+                                <td><?= $x->target_p; ?></td>
+                                <td align="center"><?= $x->nilai_lp; ?></td>
+                                <?php  
+                                $model = $this->load->model('Assessment_m');
+                                $x_assessment = $this->assessment_m->get_assessment($nik,$x->id_plan_t);
+                                 ?>  
+                                <td align="center"> 
+                                    <?php
+                                    if ($x_assessment == true) {
+                                        echo $x_assessment->h_kom;
+                                    }elseif($x_assessment == false){
+                                        echo "Nilai Kosong";
+                                    }
+                                        ?>
+                                </td>
+                            </tr>
+                        <?php   } ?>
+                    </tbody>
+                </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
     </div>

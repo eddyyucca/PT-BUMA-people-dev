@@ -128,14 +128,18 @@ class Asesor extends CI_Controller
 	
 	public function view_karyawan($nik)
 	{
-		// dep,sec,jab
+        $data['nik'] =  $nik;
+		$karyawan = $this->karyawan_m->get_row_nik($nik);
+        $id_jab =  $karyawan->jabatan;
+        $data['data'] = $this->karyawan_m->get_view_kar($nik);
 
-		$data['data'] = $this->karyawan_m->get_view_kar($nik);
-
-		$data['judul'] = 'Profil Karyawan';
-		$data['nama'] = $this->session->userdata('nama');
+        $data['judul'] = 'Profil Karyawan';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['assessment'] =  $this->kompetensi_m->get_row_level_kar($id_jab);
+        $data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+        $data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('asesor_home/karyawan/view_karyawan');
+		$this->load->view('asesor_home/karyawan/view_karyawan',$data);
 		$this->load->view('template_asesor/footer');
 	}
 
@@ -150,7 +154,7 @@ class Asesor extends CI_Controller
 
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('continuesimprovement/data_continuesimprovement', $data);
+		$this->load->view('asesor_home/continuesimprovement/data_continuesimprovement', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function create_continuesimprovement()
@@ -160,7 +164,7 @@ class Asesor extends CI_Controller
 
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('continuesimprovement/create_continuesimprovement', $data);
+		$this->load->view('asesor_home/continuesimprovement/create_continuesimprovement', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function update_continuesimprovement($nik, $pembuat)
@@ -170,7 +174,7 @@ class Asesor extends CI_Controller
 		$data['data'] = $this->ci_m->get_row_ci($pembuat);
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('continuesimprovement/edit_continuesimprovement', $data);
+		$this->load->view('asesor_home/continuesimprovement/edit_continuesimprovement', $data);
 		$this->load->view('template_asesor/footer');
 	}
 
@@ -195,7 +199,7 @@ class Asesor extends CI_Controller
 			$this->db->insert('citt', $data2);
 		}
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/continuesimprovement');
+		return redirect('asesor/continuesimprovement');
 	}
 	public  function proses_edit_ci($kode_tim)
 	{
@@ -219,7 +223,7 @@ class Asesor extends CI_Controller
 			$this->db->insert('citt', $data2);
 		}
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/continuesimprovement');
+		return redirect('asesor/continuesimprovement');
 	}
 
 	public  function delete_continuesimprovement($kode_tim)
@@ -229,7 +233,7 @@ class Asesor extends CI_Controller
 		$this->db->where('kode_tim', $kode_tim);
 		$this->db->delete('citt');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/continuesimprovement');
+		return redirect('asesor/continuesimprovement');
 	}
 	// end continuesImprovement
 
@@ -298,7 +302,7 @@ class Asesor extends CI_Controller
 
 		$data['data'] = $this->task_kompetensi_m->get_all_tk();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('task_kompetensi/data_taskkompetensi', $data);
+		$this->load->view('asesor_home/task_kompetensi/data_taskkompetensi', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function view_taskkompetensi($id_jab)
@@ -307,7 +311,7 @@ class Asesor extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('task_kompetensi/view_taskkompetensi', $data);
+		$this->load->view('asesor_home/task_kompetensi/view_taskkompetensi', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function create_task_kompetensi()
@@ -317,7 +321,7 @@ class Asesor extends CI_Controller
 		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('task_kompetensi/create_taskkompetensi', $data);
+		$this->load->view('asesor_home/task_kompetensi/create_taskkompetensi', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function view_kompetensi($nik)
@@ -326,7 +330,7 @@ class Asesor extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 		$data['data'] = $this->kompetensi_m->get_all_level();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('task_kompetensi/view_kompetensi', $data);
+		$this->load->view('asesor_home/task_kompetensi/view_kompetensi', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	
@@ -338,7 +342,7 @@ class Asesor extends CI_Controller
 		$data['jabatan'] = $this->jabatan_m->get_all_jab();
 		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('task_kompetensi/edit_taskkompetensi', $data);
+		$this->load->view('asesor_home/task_kompetensi/edit_taskkompetensi', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function proses_tambah_task_kompetensi()
@@ -358,10 +362,10 @@ class Asesor extends CI_Controller
 		if ($query->num_rows() < 1) {
 			$this->db->insert('kompetensi_user', $data);
 			$this->session->set_flashdata('pesan', 'buat');
-			return redirect('admin/task_kompetensi');
+			return redirect('asesor/task_kompetensi');
 		}elseif($query->num_rows() >= 1) {
 			$this->session->set_flashdata('pesan', 'sudahada');
-			return redirect('admin/task_kompetensi');
+			return redirect('asesor/task_kompetensi');
 		}
 	}
 	public function proses_edit_task_kompetensi($id_kompetensi)
@@ -375,14 +379,21 @@ class Asesor extends CI_Controller
 		$this->db->where('id_kompetensi', $id_kompetensi);
 		$this->db->update('kompetensi_user', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/task_kompetensi');
+		return redirect('asesor/task_kompetensi');
 	}
 	public function delete_task_kompetensi($id_kompetensi)
 	{
 		$this->db->where('id_kompetensi', $id_kompetensi);
 		$this->db->delete('kompetensi_user');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/task_kompetensi');
+		return redirect('asesor/task_kompetensi');
+	}
+	public function delete_taskkompetensi($id_kom_user)
+	{
+		$this->db->where('id_kom_user', $id_kom_user);
+		$this->db->delete('kompetensi_user');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('asesor/task_kompetensi');
 	}
 
 	function get_jabatan()
@@ -412,7 +423,7 @@ class Asesor extends CI_Controller
 
 		$data['data'] = $this->suggestionsystem_m->get_all_ss();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('suggestionsystem/data_suggestionsystem', $data);
+		$this->load->view('asesor_home/suggestionsystem/data_suggestionsystem', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function create_suggestionsystem()
@@ -425,7 +436,7 @@ class Asesor extends CI_Controller
 
 		$data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('suggestionsystem/create_suggestionsystem', $data);
+		$this->load->view('asesor_home/suggestionsystem/create_suggestionsystem', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function update_suggestionsystem($id_ss)
@@ -436,7 +447,7 @@ class Asesor extends CI_Controller
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$data['section'] = $this->section_m->get_all_sec();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('suggestionsystem/edit_suggestionsystem', $data);
+		$this->load->view('asesor_home/suggestionsystem/edit_suggestionsystem', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function proses_tambah_suggestionsystem()
@@ -449,7 +460,7 @@ class Asesor extends CI_Controller
 		);
 		$this->db->insert('suggestionsystem', $data);
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/suggestionsystem');
+		return redirect('asesor/suggestionsystem');
 	}
 	public function proses_edit_suggestionsystem($id_ss)
 	{
@@ -462,14 +473,14 @@ class Asesor extends CI_Controller
 		$this->db->where('id_ss', $id_ss);
 		$this->db->update('suggestionsystem', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/suggestionsystem');
+		return redirect('asesor/suggestionsystem');
 	}
 	public function delete_suggestionsystem($id_ss)
 	{
 		$this->db->where('id_ss', $id_ss);
 		$this->db->delete('suggestionsystem');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/suggestionsystem');
+		return redirect('asesor/suggestionsystem');
 	}
 	// end suggestionsystem
 
@@ -533,15 +544,12 @@ class Asesor extends CI_Controller
 		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('asesor/training');
 	}
-	public function proses_edit_training()
+	public function proses_edit_training($id_training)
 	{
+		// get data foto
 		$config['upload_path']   = './assets/sertifikat_training/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = TRUE;
-		// $config['file_name'] = $this->input->post('karyawan');
-		//$config['max_size']      = 100; 
-		//$config['max_width']     = 1024; 
-		//$config['max_height']    = 768;  
 
 		$this->load->library('upload', $config);
 		// script upload file 1
@@ -562,6 +570,7 @@ class Asesor extends CI_Controller
 			);
 			$get = $this->training_m->get_row_tra($id_training);
 			unlink($_SERVER['DOCUMENT_ROOT'] . '/assets/sertifikat_training/' . $get->training_foto);
+
 		} elseif ($file1['file_name'] ==  false) {
 			$data = array(
 				'karyawan' => $this->input->post('karyawan'),
@@ -748,7 +757,7 @@ class Asesor extends CI_Controller
 		$this->db->where('nik', $nik);
 		$query = $this->db->get('karyawan')->row();
 
-		return redirect("admin/create_assessment/".$query->jabatan."/".$query->nik);
+		return redirect("asesor/create_assessment/".$query->jabatan."/".$query->nik);
 	}
 	// end assessment
 

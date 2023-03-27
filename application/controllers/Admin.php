@@ -487,7 +487,7 @@ class Admin extends CI_Controller
 
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci();
 		$this->load->view('template/header', $data);
-		$this->load->view('continuesimprovement/data_continuesimprovement', $data);
+		$this->load->view('asesor_home/continuesimprovement/data_continuesimprovement', $data);
 		$this->load->view('template/footer');
 	}
 	public function create_continuesimprovement()
@@ -497,7 +497,7 @@ class Admin extends CI_Controller
 
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
-		$this->load->view('continuesimprovement/create_continuesimprovement', $data);
+		$this->load->view('asesor_home/continuesimprovement/create_continuesimprovement', $data);
 		$this->load->view('template/footer');
 	}
 	public function update_continuesimprovement($nik, $pembuat)
@@ -507,7 +507,7 @@ class Admin extends CI_Controller
 		$data['data'] = $this->ci_m->get_row_ci($pembuat);
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
-		$this->load->view('continuesimprovement/edit_continuesimprovement', $data);
+		$this->load->view('asesor_home/continuesimprovement/edit_continuesimprovement', $data);
 		$this->load->view('template/footer');
 	}
 
@@ -532,7 +532,7 @@ class Admin extends CI_Controller
 			$this->db->insert('citt', $data2);
 		}
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/continuesimprovement');
+		return redirect('asesor/continuesimprovement');
 	}
 	public  function proses_edit_ci($kode_tim)
 	{
@@ -556,7 +556,7 @@ class Admin extends CI_Controller
 			$this->db->insert('citt', $data2);
 		}
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/continuesimprovement');
+		return redirect('asesor/continuesimprovement');
 	}
 
 	public  function delete_continuesimprovement($kode_tim)
@@ -566,7 +566,7 @@ class Admin extends CI_Controller
 		$this->db->where('kode_tim', $kode_tim);
 		$this->db->delete('citt');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/continuesimprovement');
+		return redirect('asesor/continuesimprovement');
 	}
 	// end continuesImprovement
 
@@ -964,21 +964,16 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('pesan', 'buat');
 		return redirect('admin/training');
 	}
-	public function proses_edit_training()
+	public function proses_edit_training($id_training)
 	{
 		$config['upload_path']   = './assets/sertifikat_training/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = TRUE;
-		// $config['file_name'] = $this->input->post('karyawan');
-		//$config['max_size']      = 100; 
-		//$config['max_width']     = 1024; 
-		//$config['max_height']    = 768;  
 
 		$this->load->library('upload', $config);
 		// script upload file 1
 		$this->upload->do_upload('sertifikat_training');
 		$file1 = $this->upload->data();
-
 		if ($file1['file_name'] == true) {
 			$data = array(
 				'karyawan' => $this->input->post('karyawan'),
