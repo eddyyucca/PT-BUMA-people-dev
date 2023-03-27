@@ -25,15 +25,13 @@
                 <?php    } ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
                             <th>No</th>
-                            <th>Nik</th>
-                            <th>Nama</th>
+                            <th>Asesor</th>
+                            <th>Karyawan</th>
                             <th>Jabatan</th>
                             <th>Section</th>
                             <th>Tanggal</th>
-                            <th>View Kompetensi</th>
-                        </tr>
+                            <th>View</th>
                     </thead>
                     <tbody>
                         <?php
@@ -58,17 +56,28 @@
                             return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
                         }
                         $nomor = 1;
+                        $nomor = 1;
                         foreach ($data as $x) { 
                             if ($x->date_kom == true) { ?>
                                 <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nik; ?></td>
-                                <td><?= $x->nama; ?></td>
+                                <td>
+                                <?php  
+                                $model = $this->load->model('karyawan_m');
+                                $asesor = $this->karyawan_m->get_row_nik($x->asesor);
+                                 ?>      
+                                <?= $asesor->nama ?>
+                                <footer class="blockquote-footer">NIK - <?= $x->nik ?></footer>
+                                 
+                            </td>
+                                <td><?= $x->nama; ?>
+                                <footer class="blockquote-footer">NIK - <?= $x->nik ?></footer>
+                            </td>
                                 <td><?= $x->nama_jab; ?></td>
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab ."/".$x->nik ?>" class="btn btn-success">View Kompetensi</a>
+                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab ."/".$x->nik ?>" class="btn btn-success">View Assessment</a>
                                 </td>
                             </tr>
                          <?php   }else{

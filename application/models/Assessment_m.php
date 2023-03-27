@@ -35,11 +35,19 @@ class Assessment_m extends CI_Model
         $query = $this->db->get('assessment');
         return $query->row();
     }
-    public function get_assessment($nik)
+    public function get_assessment($nik,$id_plan_t)
     {
         $this->db->where('karyawan', $nik);
+        $this->db->where('kompetensi', $id_plan_t);
         $query = $this->db->get('assessment');
-        return $query->result();
+        
+
+        if ($query->num_rows() > 0) {
+                return $query->row();
+            } else {
+                return 0;
+            }
+       
     }
     public function jumlah_assessment()
     {

@@ -31,8 +31,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nik</th>
-                            <th>Nama</th>
+                            <th>Asesor</th>
+                            <th>Karyawan</th>
                             <th>Jabatan</th>
                             <th>Section</th>
                             <th>Tanggal</th>
@@ -56,25 +56,26 @@
                                 'November',
                                 'Desember'
                             );
-                            $pecahkan = explode('-', $tanggal);
-                            
-                         
+                            $pecahkan = explode('-', $tanggal); 
                             return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
                         }
-                         
-                        echo tgl_indo(date('Y-m-d')); // 21 Oktober 2017
-                         
-                        echo "<br/>";
-                        echo "<br/>";
-                         
-                      
                         $nomor = 1;
                         foreach ($data as $x) { 
                             if ($x->date_kom == true) { ?>
                                 <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nik; ?></td>
-                                <td><?= $x->nama; ?></td>
+                                <td>
+                                <?php  
+                                $model = $this->load->model('karyawan_m');
+                                $asesor = $this->karyawan_m->get_row_nik($x->asesor);
+                                 ?>      
+                                <?= $asesor->nama ?>
+                                <footer class="blockquote-footer">NIK - <?= $x->nik ?></footer>
+                                 
+                            </td>
+                                <td><?= $x->nama; ?>
+                                <footer class="blockquote-footer">NIK - <?= $x->nik ?></footer>
+                            </td>
                                 <td><?= $x->nama_jab; ?></td>
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= tgl_indo($x->date_kom); ?></td>

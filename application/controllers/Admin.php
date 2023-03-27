@@ -683,6 +683,7 @@ class Admin extends CI_Controller
 		$data = array(
 			'nik_kar' => $this->input->post('xp'),
 			'date_kom' => $this->input->post('tanggal'),
+			'asesor' => $this->session->userdata('nik'),
 		);
 		$nik = $this->input->post('xp');
 		$date_kom = $this->input->post('tanggal');
@@ -1030,6 +1031,16 @@ class Admin extends CI_Controller
 		$this->load->view('assessment/data_assessment', $data);
 		$this->load->view('template/footer');
 	}
+	public function create_nilaiassessment($nik,$id_plan_t)
+	{
+		$data['judul'] = 'Create Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $nik;
+		$data['id_plan_t'] = $id_plan_t;
+		$this->load->view('template/header', $data);
+		$this->load->view('assessment/nilai_assessment', $data);
+		$this->load->view('template/footer');
+	}
 	public function create_assessment($id_jab,$nik)
 	{
 
@@ -1131,9 +1142,35 @@ class Admin extends CI_Controller
 		$this->db->delete('assessment');
 
 		$this->session->set_flashdata('pesan', 'hapus');
+		
 		return redirect('admin/assessment');
 	}
+	public function nilai_assessment($id_am,$nik)
+	{
+		$this->db->where('id_am', $id_am);
+		$this->db->delete('assessment');
 
+		$this->db->where('nik', $nik);
+		$query = $this->db->get('karyawan')->row();
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect("admin/create_assessment/".$query->jabatan."/".$query->nik);
+	}
+
+	public function proses_tambah_nilaiassessment($nik,$id_plan_t)
+	{
+
+		$data = array(
+
+			"karyawan" => $nik,
+			"kompetensi" => $id_plan_t,
+			"h_kom" => $this->input->post('nilai_assessment'), 
+		);
+		$this->db->insert('assessment', $data);
+		$this->db->where('nik', $nik);
+		$query = $this->db->get('karyawan')->row();
+
+		return redirect("admin/create_assessment/".$query->jabatan."/".$query->nik);
+	}
 	// end assessment
 
 	// plantkompetensi
