@@ -597,7 +597,7 @@ class Asesor extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');		
 		$data['data'] = $this->task_kompetensi_m->get_all_tk();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('assessment/data_assessment', $data);
+		$this->load->view('asesor_home/assessment/data_assessment', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function create_nilaiassessment($nik,$id_plan_t)
@@ -607,7 +607,7 @@ class Asesor extends CI_Controller
 		$data['nik'] = $nik;
 		$data['id_plan_t'] = $id_plan_t;
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('assessment/nilai_assessment', $data);
+		$this->load->view('asesor_home/assessment/nilai_assessment', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function edit_nilaiassessment($nik,$id_plan_t)
@@ -617,7 +617,7 @@ class Asesor extends CI_Controller
 		$data['nik'] = $nik;
 		$data['id_plan_t'] = $id_plan_t;
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('assessment/nilai_assessment', $data);
+		$this->load->view('asesor_home/assessment/nilai_assessment', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function create_assessment($id_jab,$nik)
@@ -628,7 +628,7 @@ class Asesor extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('assessment/create_assessment', $data);
+		$this->load->view('asesor_home/assessment/create_assessment', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function edit_assessment($id_am)
@@ -669,7 +669,7 @@ class Asesor extends CI_Controller
 		);
 		$this->db->insert('assessment', $data);
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/assessment');
+		return redirect('asesor/assessment');
 	}
 	public function proses_edit_assessment($id_am)
 	{
@@ -710,7 +710,7 @@ class Asesor extends CI_Controller
 		$this->db->where('id_am', $id_am);
 		$this->db->update('assessment', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/assessment');
+		return redirect('asesor/assessment');
 	}
 	public function delete_assessment($id_am)
 	{
