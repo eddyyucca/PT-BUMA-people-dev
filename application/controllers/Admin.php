@@ -1033,7 +1033,17 @@ class Admin extends CI_Controller
 	}
 	public function create_nilaiassessment($nik,$id_plan_t)
 	{
-		$data['judul'] = 'Create Kompetensi';
+		$data['judul'] = 'Create Assessment';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $nik;
+		$data['id_plan_t'] = $id_plan_t;
+		$this->load->view('template/header', $data);
+		$this->load->view('assessment/nilai_assessment', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_nilaiassessment($nik,$id_plan_t)
+	{
+		$data['judul'] = 'Edit Assessment';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $nik;
 		$data['id_plan_t'] = $id_plan_t;

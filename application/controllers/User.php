@@ -21,6 +21,7 @@ class User extends CI_Controller
         $this->load->model('ci_m');
         $this->load->model('assessment_m');
         $this->load->model('kompetensi_m');
+        $this->load->model('task_kompetensi_m');
         $level_akun = $this->session->userdata('level');
         // if ($level_akun != "user") {
         //     $this->session->set_flashdata('login', 'n_login');
@@ -124,10 +125,10 @@ class User extends CI_Controller
     // assessment
     public function assessment()
     {
-        $nik =  $this->session->userdata('nik');
-        $data['judul'] = 'Data Assessment';
-        $data['nama'] = $this->session->userdata('nama');
-        $data['data'] = $this->assessment_m->get_all_am_user($nik);
+        $data['judul'] = 'Data assessment';
+		$data['nama'] = $this->session->userdata('nama');		
+		$nik= $this->session->userdata('nik');		
+		$data['data'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
         $this->load->view('template_user/header', $data);
         $this->load->view('user/assessment/data_assessment', $data);
         $this->load->view('template_user/footer');

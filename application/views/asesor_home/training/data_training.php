@@ -36,7 +36,7 @@ function tanggal_indonesia($tanggal)
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_training') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Training</a>
+                    <a href="<?= base_url('asesor/create_training') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Training</a>
                     <hr>
                 </div>
                 <?php
@@ -85,8 +85,8 @@ function tanggal_indonesia($tanggal)
                                 <td><?= tanggal_indonesia($x->mulai_training) . " - " . tanggal_indonesia($x->akhir_training) ?></td>
                                 <td><?= $x->penyelenggara ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_training/') . $x->id_training; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_training/') . $x->id_training; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('asesor/delete_training/') . $x->id_training; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('asesor/edit_training/') . $x->id_training; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>

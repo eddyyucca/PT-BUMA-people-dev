@@ -14,6 +14,19 @@ class Task_kompetensi_m extends CI_Model
 
         return   $this->db->get('karyawan')->result();
     }
+    public function get_all_tk_kar($nik)
+    {
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $this->db->join('kompetensi_user', 'kompetensi_user.nik_kar = karyawan.nik', 'left');
+        
+        $this->db->where('nik', $nik);
+        
+        $this->db->order_by('id_kom_user', 'DESC');
+
+        return   $this->db->get('karyawan')->result();
+    }
     public function get_row_tk($id_kompetensi)
     {
         $this->db->where('id_kompetensi', $id_kompetensi);

@@ -12,16 +12,6 @@
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
                     <div class="container">
-                        <?php 
-                        if ($akun == "asesor") {
-
-                        }elseif ($akun == "admin") {
-                            ?>
-                       
-    <a href="<?= base_url('admin/add_karyawan/') ?>" class="btn btn-success"><i class="fas fa-user-plus"></i> Add Karyawan</a>
-                        <a href="" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                            <i class="fas fa-file-excel"></i> Import Excel</a>
-                       <?php } ?>
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -31,24 +21,6 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="<?= base_url('admin/import')  ?>" method="POST" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <input type="file" class="form-control" name="file" accept=".xls, .xlsx" required>
-                                                    <div class="mt-1">
-                                                        <span class="text-secondary">File yang harus diupload : .xls, xlsx</span>
-                                                    </div>
-                                                    <?= form_error('file', '<div class="text-danger">', '</div>') ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary">Simpan</button>
-                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-success">Upload</button> -->
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -60,23 +32,6 @@
                             </form>
                         </nav>
                         <hr>
-                        <?php
-                        if ($this->session->flashdata('pesan') == "hapus") { ?>
-                            <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
-                            </div>
-                        <?php   } elseif ($this->session->flashdata('pesan') == "buat") { ?>
-                            <div class="alert alert-success" role="alert">
-                                Data Berhasil Di Tambah !
-                            </div>
-                        <?php    } elseif ($this->session->flashdata('pesan') == "ubah") { ?>
-                            <div class="alert alert-warning" role="alert">
-                                Data Berhasil Di Ubah !
-                            </div>
-                        <?php  } elseif ($this->session->flashdata('pesan') == "import") { ?>
-                            <div class="alert alert-success" role="alert">
-                                Data Berhasil Di Import !
-                            </div>
-                        <?php    }  ?>
                         <div class="row justify-content-center">
                             <div class="col-12 col-sm-8 col-lg-6">
                                 <!-- Section Heading-->
@@ -88,7 +43,7 @@
                             <?php foreach ($data as $kar) : ?>
 
                                 <div class="col-12 col-sm-6 col-lg-3">
-                                    <a href="<?= base_url('admin/view_karyawan/') . $kar->nik ?>">
+                                    <a href="<?= base_url('asesor/view_karyawan/') . $kar->nik ?>">
                                         <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                             <!-- Team Thumb-->
                                             <div class="advisor_thumb">
