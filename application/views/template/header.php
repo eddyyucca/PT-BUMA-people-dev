@@ -132,6 +132,7 @@
                                 <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
                                 <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
                                 <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Jabatan</a>
+                                <a class="collapse-item" href="<?= base_url('admin/grade') ?>">Grade</a>
                             </div>
                         </div>
                     </li>
