@@ -1,11 +1,11 @@
-<div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
             <h6 class="m-0 font-weight-bold ">Data Assessment</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+                                <div class="table-responsive">
                 <?php
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
                     <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
@@ -23,7 +23,7 @@
                         Data Sudah Di Buat !
                     </div>
                 <?php    } ?>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table id="example" class="display" style="min-width: 845px">
                     <thead>
                             <th>No</th>
                             <th>Asesor</th>

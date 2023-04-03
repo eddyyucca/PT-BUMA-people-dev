@@ -1,45 +1,38 @@
-<!-- Begin Page Content -->
-<div class="container col-8 mb-3">
-    <!-- Page Heading -->
-    <div class="card">
-        <div class="card-header">
-            <a href="<?= base_url('admin/data_karyawan') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="container-fluid">
+
+                        <div class="card">
+                            <div class="card-header">
                     <?= validation_errors() ?>
                     <form action="<?= base_url('admin/proses_tambah_karyawan')  ?>" method="POST" enctype="multipart/form-data">
-                        <table class="table">
-                            <tr>
+                    <table class="table">
+                             <div class="mb-3 col-md-9">
                                 <td width=20%>NIK</td>
                                 <td><input type="text" name="nik" class="form-control" required placeholder="NIK Lengkap"></td>
-                            </tr>
+</div>
 
-                            <tr>
+                             <div class="mb-3 col-md-9">
                                 <td width=20%>Nama Lengkap</td>
                                 <td><input type="text" name="nama_lengkap" class="form-control" required placeholder="Nama Lengkap"></td>
-                            </tr>
-                            <tr>
+</div>
+                             <div class="mb-3 col-md-9">
                                 <td>Jenis Kelamin</td>
                                 <td><select class="form-control" name="jk">
                                         <option value="-">--PILIH JENIS KELAMIN--</option>
                                         <option value="Laki-Laki">Laki-Laki</option>
                                         <option value="Perempuan">Perempuan</option>
                                     </select></td>
-                            </tr>
-                            <tr>
+</div>
+                             <div class="mb-3 col-md-9">
                                 <td>Tempat/Tanggal/Lahir</td>
                                 <td><input type="text" name="tempat" class="form-control" required placeholder="Tempat">
                                     <input type="date" name="ttl" class="form-control">
                                 </td>
-                            </tr>
-                            <tr>
+</div>
+                             <div class="mb-3 col-md-9">
                                 <td>Alamat</td>
                                 <td><textarea name="alamat" class="form-control"></textarea></td>
-                            </tr>
+</div>
 
-                            <tr>
+                             <div class="mb-3 col-md-9">
                                 <td>Agama</td>
                                 <td> <select class="form-control" name="agama">
                                         <option value="">--AGAMA--</option>
@@ -49,17 +42,17 @@
                                         <option value="Budha">Budha</option>
                                         <option value="Konghucu">Konghucu</option>
                                     </select></td>
-                            </tr>
-                            <tr>
+</div>
+                             <div class="mb-3 col-md-9">
                                 <td>Email</td>
                                 <td><input type="email" name="email" class="form-control" required placeholder="Email"></td>
-                            </tr>
-                            <tr>
+</div>
+                             <div class="mb-3 col-md-9">
                                 <td>Telpon</td>
                                 <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon"></td>
-                            </tr>
+</div>
 
-                            <tr>
+                             <div class="mb-3 col-md-9">
                                 <td>Departement</td>
                                 <td><select name="departement" class="form-control selectpicker" data-live-search="true">
                                         <option value="">--PILIH Departement--</option>
@@ -68,8 +61,8 @@
                                         <?php } ?>
                                     </select>
                                 </td>
-                            </tr>
-                            <tr>
+                                        </div>
+                             <div class="mb-3 col-md-9">
                                 <td>Section</td>
                                 <td><select name="section" class="form-control  selectpicker" data-live-search="true">
                                         <option value="">--PILIH SECTION--</option>
@@ -77,8 +70,8 @@
                                             <option value="<?= $section->id_sec ?>"><?= $section->nama_sec ?></option>
                                         <?php } ?>
                                     </select></td>
-                            </tr>
-                            <tr>
+                                        </div>
+                             <div class="mb-3 col-md-9">
                                 <td>Jabatan</td>
                                 <td><select name="jabatan" class="form-control  selectpicker" data-live-search="true">
                                         <option value="">--PILIH JABATAN--</option>
@@ -86,8 +79,8 @@
                                             <option value="<?= $jabatan->id_jab ?>"><?= $jabatan->nama_jab ?></option>
                                         <?php } ?>
                                     </select></td>
-                            </tr>
-                            <tr>
+                                        </div>
+                             <div class="mb-3 col-md-9">
                                 <td>Foto</td>
                                 <td>
                                     <input type="file" name="foto" class="file" accept="image/*">
@@ -101,17 +94,74 @@
                                         <img src="<?= base_url("assets/profil_default.png") ?>" width="100" height="100" id="preview" class="img-thumbnail">
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
+                                        </div>
+                             <div class="mb-3 col-md-9">
                                 <td>
                                     <button class="btn btn-primary">Simpan</button>
                                 </td>
                                 <td></td>
-                            </tr>
+                                        </div>
                         </table>
-                    </form>
-                </div>
+                        </div>
             </div>
-        </div>
-    </div>
+       
+ 
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Horizontal Form</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form>
+                                        <div class="row">
+                                            <div class="mb-3 col-md-9">
+                                                <label class="form-label">Nik</label>
+                                                <input type="text" name="nik" class="form-control" required placeholder="NIK Lengkap">
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" class="form-control" placeholder="Email">
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Password</label>
+                                                <input type="password" class="form-control" placeholder="Password">
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label>City</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-3 col-md-4">
+                                                <label class="form-label">State</label>
+                                                <select id="inputState" class="default-select form-control wide">
+                                                    <option selected>Choose...</option>
+                                                    <option>Option 1</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-2">
+                                                <label class="form-label">Zip</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label">
+                                                    Check me out
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+                    </form>
+                    </div>
+</div>
 </div>

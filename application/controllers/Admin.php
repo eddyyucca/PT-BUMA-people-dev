@@ -23,6 +23,7 @@ class Admin extends CI_Controller
 		$this->load->model('suggestionsystem_m');
 		$this->load->model('training_m');
 		$this->load->model('assessment_m');
+		$this->load->model('grade_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
@@ -41,14 +42,26 @@ class Admin extends CI_Controller
 		$data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
 		$data['total_departement'] = $this->departement_m->jumlah_departement();
 		$this->load->view('template/header', $data);
-		$this->load->view('home/home');
+		$this->load->view('home/home',$data);
 		$this->load->view('template/footer');
+	}
+	public function home()
+	{
+		$data['judul'] = 'PT. BUMA - SITE IPR';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['total_karyawan'] = $this->karyawan_m->jumlah_karyawan();
+		$data['total_section'] = $this->section_m->jumlah_section();
+		$data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
+		$data['total_departement'] = $this->departement_m->jumlah_departement();
+		// $this->load->view('template/header', $data);
+		$this->load->view('home/index');
+		// $this->load->view('template/footer');
 	}
 	// karyawan
 	public function data_karyawan($num = '')
 	{
 
-		$perpage = 8;
+		$perpage = 9;
 		$offset = $this->uri->segment(3);
 		$data['data'] = $this->karyawan_m->get_data($perpage, $offset)->result();
 		$config['base_url'] = site_url('admin/data_karyawan/');
@@ -1394,4 +1407,66 @@ class Admin extends CI_Controller
 		return redirect('admin/data_levelkompetensi');
 	}
 	// end data_levelkompetensi
+
+		// Grade
+		public function grade()
+		{
+			$data['judul'] = 'Data Grade';
+			$data['nama'] = $this->session->userdata('nama');
+	
+			$data['data'] = $this->grade_m->get_all_grade();
+			$this->load->view('template/header', $data);
+			$this->load->view('grade/data_grade', $data);
+			$this->load->view('template/footer');
+		}
+		public function create_grade()
+		{
+			$data['judul'] = 'Create Grade';
+			$data['nama'] = $this->session->userdata('nama');
+	
+			$this->load->view('template/header', $data);
+			$this->load->view('grade/create_grade', $data);
+			$this->load->view('template/footer');
+		}
+		public function edit_grade($id_grade)
+		{
+			$data['judul'] = 'Update Grade';
+			$data['nama'] = $this->session->userdata('nama');
+	
+			$data['data'] = $this->grade_m->get_row_grade($id_grade);
+			$this->load->view('template/header', $data);
+			$this->load->view('grade/edit_grade', $data);
+			$this->load->view('template/footer');
+		}
+		public function proses_tambah_grade()
+		{
+			$data = array(
+				'nama_grade' => $this->input->post('nama_grade'),
+				'level_grade' => $this->input->post('level_grade')
+			);
+			$this->db->insert('grade', $data);
+			$this->session->set_flashdata('pesan', 'buat');
+			return redirect('admin/grade');
+		}
+		public function proses_edit_grade($id_grade)
+		{
+			$data = array(
+				'nama_jab' => $this->input->post('nama_jab'),
+				'level' => $this->input->post('level')
+			);
+			$this->db->where('id_grade', $id_grade);
+			$this->db->update('grade', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('admin/grade');
+		}
+		public function delete_grade($id_grade)
+		{
+	
+			$this->db->where('id_grade', $id_grade);
+			$this->db->delete('grade');
+			$this->session->set_flashdata('pesan', 'hapus');
+			return redirect('admin/grade');
+		}
+		//end grade
+	
 }

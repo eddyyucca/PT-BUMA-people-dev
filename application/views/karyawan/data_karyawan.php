@@ -48,7 +48,6 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
                         <nav class="navbar ">
                             <form class="form-inline" action="<?= base_url('admin/search_data_karyawan')  ?>" method="POST">
                                 <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Search" aria-label="Search">
@@ -86,7 +85,7 @@
 						<div class="card user-card">
 							<div class="card-body pb-0">
 								<div class="d-flex mb-3 align-items-center">
-									<div class="dz-media me-3"></div>
+                                <div class="dz-media me-3">
 										<span class="icon-placeholder bg-primary text-white">pm</span>
 									</div>
 									<div>

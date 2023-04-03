@@ -242,18 +242,17 @@ function tanggal_indonesia($tanggal)
                                 <td><?= $x->nama_plan; ?></td>
                                 <td><?= $x->target_p; ?></td>
                                 <td align="center"><?= $x->nilai_lp; ?></td>
-                               
                                 <?php  
                                 $model = $this->load->model('Assessment_m');
-                                $x_assessment = $this->assessment_m->get_assessment($nik);
+                                $x_assessment = $this->assessment_m->get_assessment($nik,$x->id_plan_t);
                                  ?>  
-                                <td> 
+                                <td align="center"> 
                                     <?php
-                                        foreach ($x_assessment as $ok) {
-                                            echo $ok->nik;
-                                            echo "
-                                    <hr>";
-                                        }
+                                    if ($x_assessment == true) {
+                                        echo $x_assessment->h_kom;
+                                    }elseif($x_assessment == false){
+                                        echo "Nilai Kosong";
+                                    }
                                         ?>
                                 </td>
                             </tr>
