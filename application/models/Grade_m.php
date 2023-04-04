@@ -9,6 +9,15 @@ class Grade_m extends CI_Model
         $query = $this->db->get('grade');
         return $query->result();
     }
+    public function get_all_grade_kom()
+    {
+        $this->db->join('karyawan', 'karyawan.nik = grade_kom.nik', 'left');
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $query = $this->db->get('grade_kom');
+        return $query->result();
+    }
     public function get_row_grade($id_grade)
     {
         $this->db->where('id_grade', $id_grade);

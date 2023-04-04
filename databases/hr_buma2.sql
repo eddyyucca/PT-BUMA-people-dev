@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 12, 2023 at 08:23 AM
+-- Generation Time: Apr 04, 2023 at 10:22 PM
 -- Server version: 5.7.34
--- PHP Version: 7.4.21
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hr_buma`
+-- Database: `hr_buma2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assessment`
+--
+
+CREATE TABLE `assessment` (
+  `id_am` int(11) NOT NULL,
+  `karyawan` varchar(11) NOT NULL,
+  `kompetensi` varchar(11) NOT NULL,
+  `h_kom` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `assessment`
+--
+
+INSERT INTO `assessment` (`id_am`, `karyawan`, `kompetensi`, `h_kom`) VALUES
+(16, '10023543', '13', '1'),
+(17, '10031711', '12', '1'),
+(18, '10031711', '13', '3'),
+(20, '10016255', '12', '1'),
+(24, '10016255', '13', '3'),
+(25, '10023543', '12', '0111');
 
 -- --------------------------------------------------------
 
@@ -38,7 +63,9 @@ CREATE TABLE `citt` (
 --
 
 INSERT INTO `citt` (`id_ciit`, `nama_tim`, `kode_tim`) VALUES
-(19, 'Sudirman', '2023021102264510034027');
+(19, 'Sudirman', '2023021102264510034027'),
+(20, 'Dwi Suriananda', '2023021801002510034026'),
+(21, 'Fitra Darmawan', '2023021801002510034026');
 
 -- --------------------------------------------------------
 
@@ -59,7 +86,8 @@ CREATE TABLE `continuesimprovement` (
 --
 
 INSERT INTO `continuesimprovement` (`id_ci`, `judul`, `t_implementasi`, `pembuat`, `tim`) VALUES
-(7, 'K3LH', '2023-02-10', '10034027', '2023021102264510034027');
+(7, 'K3LH', '2023-02-10', '10034027', '2023021102264510034027'),
+(8, 'coba input', '2023-02-08', '10034026', '2023021801002510034026');
 
 -- --------------------------------------------------------
 
@@ -192,7 +220,52 @@ INSERT INTO `departement` (`id_dep`, `nama_dep`) VALUES
 (113, 'Ext Repair & Warranty'),
 (114, 'SHE System & Permit'),
 (115, 'Transportation'),
-(404, 'Kosong');
+(404, 'Kosong'),
+(405, 'coba dep');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grade`
+--
+
+CREATE TABLE `grade` (
+  `id_grade` int(11) NOT NULL,
+  `grade_section` varchar(20) NOT NULL,
+  `nama_grade` varchar(100) NOT NULL,
+  `level_grade` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `grade`
+--
+
+INSERT INTO `grade` (`id_grade`, `grade_section`, `nama_grade`, `level_grade`) VALUES
+(3, '24', 'cobaa', 'G2'),
+(4, '11', 'dada', 'G2'),
+(5, '11', 'sasa', 'G2'),
+(7, '11', 'sasas', 'G2'),
+(8, '11', 'sasas', 'G2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grade_kom`
+--
+
+CREATE TABLE `grade_kom` (
+  `id_grade_kom` int(11) NOT NULL,
+  `nik` varchar(20) NOT NULL,
+  `tanggal_grade` varchar(20) NOT NULL,
+  `nilai` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `grade_kom`
+--
+
+INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `tanggal_grade`, `nilai`) VALUES
+(1, '10000132', '2023-03-27', '123');
 
 -- --------------------------------------------------------
 
@@ -202,58 +275,60 @@ INSERT INTO `departement` (`id_dep`, `nama_dep`) VALUES
 
 CREATE TABLE `jabatan` (
   `id_jab` int(11) NOT NULL,
-  `nama_jab` varchar(30) NOT NULL
+  `nama_jab` varchar(30) NOT NULL,
+  `level` varchar(20) NOT NULL,
+  `sec_r` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jabatan`
 --
 
-INSERT INTO `jabatan` (`id_jab`, `nama_jab`) VALUES
-(1, 'Superintendent '),
-(2, 'Operator '),
-(3, 'Foreman '),
-(4, 'Manager '),
-(5, 'Supervisor '),
-(6, 'Jr. Trainer '),
-(7, 'Dispatch '),
-(8, 'Engineer '),
-(9, 'Jr. Officer '),
-(10, 'Mechanic '),
-(11, 'Chief '),
-(12, 'Foreman  '),
-(13, 'Trainer '),
-(14, 'Jr. Scheduler & PCR'),
-(15, 'Officer '),
-(16, 'Planner'),
-(17, 'Surveyor'),
-(18, 'Welder'),
-(19, 'Analyst '),
-(20, 'Jr. Engineer '),
-(21, 'Project Manager'),
-(22, 'Jr. Planner'),
-(23, 'Electrician '),
-(24, 'Tyreman'),
-(25, 'Assistant '),
-(26, 'Technical Support '),
-(27, 'Admin '),
-(28, 'Driver '),
-(29, 'Service Desk IT'),
-(30, 'Warehouseman'),
-(31, 'Pump Man'),
-(32, 'Rigger'),
-(33, 'Fuelman'),
-(34, 'Fitter '),
-(35, 'Jr. Analyst '),
-(36, 'Tool Keeper'),
-(37, 'Jr. Engineer Pit Control'),
-(38, 'Technician '),
-(39, 'Analyst CBM'),
-(40, 'Stocktaker'),
-(41, 'Officer Plant Safety'),
-(42, 'Siswa Mechanic'),
-(43, 'Siswa Operator'),
-(404, 'Kosong');
+INSERT INTO `jabatan` (`id_jab`, `nama_jab`, `level`, `sec_r`) VALUES
+(1, 'Superintendent ', '9', ''),
+(2, 'Operator ', '2', ''),
+(3, 'Foreman ', '3', ''),
+(4, 'Manager ', '', ''),
+(5, 'Supervisor ', '', ''),
+(6, 'Jr. Trainer ', '', ''),
+(7, 'Dispatch ', '', ''),
+(8, 'Engineer ', '', ''),
+(9, 'Jr. Officer ', '', ''),
+(10, 'Mechanic ', '', ''),
+(11, 'Chief ', '', ''),
+(13, 'Trainer ', '', ''),
+(14, 'Jr. Scheduler & PCR', '', ''),
+(15, 'Officer ', '', ''),
+(16, 'Planner', '', ''),
+(17, 'Surveyor', '', ''),
+(18, 'Welder', '', ''),
+(19, 'Analyst ', '', ''),
+(20, 'Jr. Engineer ', '', ''),
+(21, 'Project Manager', '', ''),
+(22, 'Jr. Planner', '', ''),
+(23, 'Electrician ', '', ''),
+(24, 'Tyreman', '', ''),
+(25, 'Assistant ', '', ''),
+(26, 'Technical Support ', '', ''),
+(27, 'Admin ', '', ''),
+(28, 'Driver ', '', ''),
+(29, 'Service Desk IT', '', ''),
+(30, 'Warehouseman', '', ''),
+(31, 'Pump Man', '', ''),
+(32, 'Rigger', '', ''),
+(33, 'Fuelman', '', ''),
+(34, 'Fitter ', '', ''),
+(35, 'Jr. Analyst ', '', ''),
+(36, 'Tool Keeper', '', ''),
+(37, 'Jr. Engineer Pit Control', '', ''),
+(38, 'Technician ', '', ''),
+(39, 'Analyst CBM', '', ''),
+(40, 'Stocktaker', '', ''),
+(41, 'Officer Plant Safety', '', ''),
+(42, 'Siswa Mechanic', '', ''),
+(43, 'Siswa Operator', '', ''),
+(404, 'Kosong', '', ''),
+(405, 'coba jabatan', '', '');
 
 -- --------------------------------------------------------
 
@@ -286,8 +361,8 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1, 'Suwarno', '', '', '', '', '', '', '', '1', '1', '1', '10000132', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(2, 'Ambrosius Sani', '', '', '', '', '', '', '', '2', '2', '2', '10000272', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1, 'Suwarno', '', '', '', '', '', '', '', '1', '1', '1', '10000132', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', ''),
+(2, 'Ambrosius Sani', '', '', '', '', '', '', '', '2', '2', '2', '10000272', '', '25f9e794323b453885f5181f1b624d0b', 'user', ''),
 (3, 'Misdi', '', '', '', '', '', '', '', '2', '2', '2', '10000318', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (4, 'Slamet Damis', '', '', '', '', '', '', '', '3', '3', '3', '10000404', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (5, 'Andi Setyawan', '', '', '', '', '', '', '', '4', '4', '4', '10000619', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -927,7 +1002,7 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (638, 'Chindy Puteri Maharani', '', '', '', '', '', '', '', '3', '7', '41', '10023227', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (639, 'Catur Dyah Puspitasari', '', '', '', '', '', '', '', '3', '7', '41', '10023229', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (640, 'Deny Ratna Sari', '', '', '', '', '', '', '', '9', '10', '87', '10023239', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(641, 'Dwi Suriananda', '', '', '', '', '', '', '', '5', '9', '42', '10023252', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(641, 'Dwi Suriananda', '', '', '', '', '', '', '', '5', '9', '42', '10023252', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', ''),
 (642, 'Hariyanto', '', '', '', '', '', '', '', '13', '7', '15', '10023297', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (643, 'Andreas Anugrah Ade Surya Lesm', '', '', '', '', '', '', '', '3', '3', '39', '10023298', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (644, 'Randa Bagus Suprayugo', '', '', '', '', '', '', '', '2', '2', '2', '10023317', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3769,7 +3844,7 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3472, 'Widodo Rosariyatno', '', '', '', '', '', '', '', '18', '5', '404', '10034021', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3473, 'Musliadi', '', '', '', '', '', '', '', '28', '5', '95', '10034022', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3474, 'Dali', '', '', '', '', '', '', '', '28', '3', '90', '10034025', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3475, 'Eddy Adha Saputra', '', '', '', '', '', '', '', '3', '9', '42', '10034026', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3475, 'Eddy Adha Saputra', '', '', '', '', '', '', '', '3', '9', '42', '10034026', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', ''),
 (3476, 'Aslam', '', '', '', '', '', '', '', '9', '1', '8', '10034027', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3477, 'Ginanjar Sujarwo', '', '', '', '', '', '', '', '2', '2', '2', '10034028', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3478, 'Arifil Fajri', '', '', '', '', '', '', '', '2', '2', '2', '10034029', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3923,7 +3998,22 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3626, 'Sapriyanto', '', '', '', '', '', '', '', '43', '7', '404', '90003696', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3627, 'Muhamad Bahtiar Teguh', '', '', '', '', '', '', '', '43', '7', '404', '90003697', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3628, 'Resa Leluno', '', '', '', '', '', '', '', '43', '7', '404', '90003699', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3629, 'Radiyan', '', '', '', '', '', '', '', '43', '7', '404', '90003700', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(3629, 'Radiyan 2', '', '', '', '', '', '', '', '43', '7', '404', '90003700', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3630, 'Radiyan', '', '', '', '', '', '', '', '43', '7', '404', '90003701', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3631, 'Radiyan 1', '', '', '', '', '', '', '', '43', '7', '404', '90003703', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3632, 'Radiyan 2', '', '', '', '', '', '', '', '43', '7', '404', '90003705', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3633, 'Radiyan 3', '', '', '', '', '', '', '', '43', '7', '404', '90003707', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3634, 'Radiyan 4', '', '', '', '', '', '', '', '43', '7', '404', '90003709', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3635, 'Radiyan 5', '', '', '', '', '', '', '', '43', '7', '404', '90003711', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3636, 'Radiyan 6', '', '', '', '', '', '', '', '43', '7', '404', '90003713', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3637, 'Radiyan 7', '', '', '', '', '', '', '', '43', '7', '404', '90003715', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3638, 'Radiyan 8', '', '', '', '', '', '', '', '43', '7', '404', '90003717', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3639, 'Radiyan 9', '', '', '', '', '', '', '', '43', '7', '404', '90003719', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3640, 'sasa', 'sasa', '2023-02-10', 'Laki-Laki', 'asa@j.c', 'sasa', 'Islam', 'sasas', '9', '9', '14', '111', '', '', 'user', ''),
+(3641, 'tes user', 'tapin', '2023-02-10', 'Laki-Laki', 'asa@tes.com', '88844', 'Islam', 'sasa', '9', '8', '7', '123123', '', '', 'user', ''),
+(3642, 'eddy as', 'sasa', '2023-02-01', 'Laki-Laki', 'eddyyucca@gmail.com', '081250653005', 'Islam', 'sasa', '12', '9', '', '666', '', '', 'user', '666'),
+(3643, 'sasa', 'sa', '2023-02-16', 'Laki-Laki', 'sasa@sas.s', '1111', 'Kristen', 'sasa', '12', '9', '8', '6660', '', '', 'user', '6660'),
+(3644, 'sasa', 'sasa', '2023-02-03', 'Laki-Laki', 'sasa@sss.c', 'sasa', 'Islam', 'sasa', '12', '8', '12', '1313111', '', '', 'user', '1313111.jpeg');
 
 -- --------------------------------------------------------
 
@@ -3941,7 +4031,8 @@ CREATE TABLE `kompetensi` (
 --
 
 INSERT INTO `kompetensi` (`id_kom`, `j_kompetensi`) VALUES
-(3, 'gg');
+(11, 'Core & Leadership'),
+(12, 'Managerial');
 
 -- --------------------------------------------------------
 
@@ -3950,21 +4041,99 @@ INSERT INTO `kompetensi` (`id_kom`, `j_kompetensi`) VALUES
 --
 
 CREATE TABLE `kompetensi_user` (
-  `id_kompetensi` int(11) NOT NULL,
-  `jabatan` varchar(11) NOT NULL,
-  `kompetensi` varchar(100) NOT NULL,
-  `t_kompetensi` varchar(255) NOT NULL,
-  `level_kom` varchar(50) NOT NULL
+  `id_kom_user` int(11) NOT NULL,
+  `nik_kar` varchar(50) NOT NULL,
+  `date_kom` varchar(20) NOT NULL,
+  `asesor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `kompetensi_user`
 --
 
-INSERT INTO `kompetensi_user` (`id_kompetensi`, `jabatan`, `kompetensi`, `t_kompetensi`, `level_kom`) VALUES
-(2, '1', '3', 'sasas', '0'),
-(3, '2', '3', 'saas', '3'),
-(4, '2', '3', 'www', 'www');
+INSERT INTO `kompetensi_user` (`id_kom_user`, `nik_kar`, `date_kom`, `asesor`) VALUES
+(16, '10031711', '2023-03-27', '10034026'),
+(17, '10023543', '2023-03-16', '10034026'),
+(18, '10016255', '2023-03-27', '10034026'),
+(19, '10030448', '2023-03-27', '10034026');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `level_kom`
+--
+
+CREATE TABLE `level_kom` (
+  `id_lp` int(11) NOT NULL,
+  `nilai_lp` varchar(10) NOT NULL,
+  `lvl_jab` varchar(50) NOT NULL,
+  `pk_level` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `level_kom`
+--
+
+INSERT INTO `level_kom` (`id_lp`, `nilai_lp`, `lvl_jab`, `pk_level`) VALUES
+(8, '1', '3', '12'),
+(9, '1', '26', '12'),
+(10, '2', '3', '13'),
+(11, '1', '5', '13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nilai_grade`
+--
+
+CREATE TABLE `nilai_grade` (
+  `id_nilai_grade` int(11) NOT NULL,
+  `nilai_grade` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plan`
+--
+
+CREATE TABLE `plan` (
+  `id_plan` int(11) NOT NULL,
+  `nama_plan` varchar(50) NOT NULL,
+  `kompetensi` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `plan`
+--
+
+INSERT INTO `plan` (`id_plan`, `nama_plan`, `kompetensi`) VALUES
+(3, 'Core', '11'),
+(4, 'Leadership', '11'),
+(5, 'Knowing & Managing Self', '12'),
+(6, 'Knowing & Managing Others', '12'),
+(7, 'Knowing & Managing Business', '12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plan_kom`
+--
+
+CREATE TABLE `plan_kom` (
+  `id_plan_t` int(11) NOT NULL,
+  `plan_t` varchar(255) NOT NULL,
+  `target_p` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `plan_kom`
+--
+
+INSERT INTO `plan_kom` (`id_plan_t`, `plan_t`, `target_p`) VALUES
+(12, '3', 'ci'),
+(13, '3', 's'),
+(14, '4', 'Tes');
 
 -- --------------------------------------------------------
 
@@ -3974,29 +4143,110 @@ INSERT INTO `kompetensi_user` (`id_kompetensi`, `jabatan`, `kompetensi`, `t_komp
 
 CREATE TABLE `section` (
   `id_sec` int(11) NOT NULL,
-  `nama_sec` varchar(30) NOT NULL
+  `nama_sec` varchar(30) NOT NULL,
+  `dep_r` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `section`
 --
 
-INSERT INTO `section` (`id_sec`, `nama_sec`) VALUES
-(1, 'Safety, Health, Env'),
-(2, 'Operation'),
-(3, 'PSCM'),
-(4, 'Business Unit'),
-(5, 'Plant'),
-(6, 'Engineering'),
-(7, 'HR & General Affairs'),
-(8, 'Business Excellence'),
-(9, 'Information & Techno'),
-(10, 'Finance & Budget Rep'),
-(404, 'Kosong');
+INSERT INTO `section` (`id_sec`, `nama_sec`, `dep_r`) VALUES
+(1, 'Safety, Health, Env', ''),
+(2, 'Operation', ''),
+(3, 'PSCM', ''),
+(4, 'Business Unit', ''),
+(5, 'Plant', ''),
+(6, 'Engineering', ''),
+(7, 'HR & General Affairs', ''),
+(8, 'Business Excellence', ''),
+(9, 'Information & Techno', ''),
+(10, 'Finance & Budget Rep', ''),
+(404, 'Kosong', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_kom`
+--
+
+CREATE TABLE `sub_kom` (
+  `id_sb` int(11) NOT NULL,
+  `target_p` varchar(255) NOT NULL,
+  `id_p` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sub_kom`
+--
+
+INSERT INTO `sub_kom` (`id_sb`, `target_p`, `id_p`) VALUES
+(8, '9', '20230306074458'),
+(9, '7', '20230306075445'),
+(10, '8', '20230306075445'),
+(11, '9', '20230306075500'),
+(12, '10', '20230306075500');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suggestionsystem`
+--
+
+CREATE TABLE `suggestionsystem` (
+  `id_ss` int(11) NOT NULL,
+  `judul_ss` varchar(25) NOT NULL,
+  `t_implementasi_ss` varchar(11) NOT NULL,
+  `section_ss` varchar(11) NOT NULL,
+  `pembuat_ss` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `suggestionsystem`
+--
+
+INSERT INTO `suggestionsystem` (`id_ss`, `judul_ss`, `t_implementasi_ss`, `section_ss`, `pembuat_ss`) VALUES
+(2, 'sasa 2', '2023-02-07', '9', '10022792'),
+(3, 'Uji COBA suggestionsystem', '2023-02-21', '9', '10034026'),
+(4, 'Uji COBA suggestionsystem', '2023-02-21', '9', '10034026');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `training`
+--
+
+CREATE TABLE `training` (
+  `id_training` int(11) NOT NULL,
+  `karyawan` varchar(11) NOT NULL,
+  `training` varchar(50) NOT NULL,
+  `penyelenggara` varchar(50) NOT NULL,
+  `mulai_training` varchar(20) NOT NULL,
+  `akhir_training` varchar(20) NOT NULL,
+  `d_training` varchar(255) NOT NULL,
+  `awal_st` varchar(20) NOT NULL,
+  `akhir_st` varchar(20) NOT NULL,
+  `kredensial` varchar(30) NOT NULL,
+  `training_foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `training`
+--
+
+INSERT INTO `training` (`id_training`, `karyawan`, `training`, `penyelenggara`, `mulai_training`, `akhir_training`, `d_training`, `awal_st`, `akhir_st`, `kredensial`, `training_foto`) VALUES
+(6, '10034026', 'JSA', 'BUMA', '2023-03-02', '2023-03-27', 'Belajar JSA', '2023-03-27', '2023-03-27', '123', 'cc3a7c40c612b42c3e22b4d3491e4e8f.jpg'),
+(7, '10030448', 'PKP ', 'SHE BUMA', '2023-03-17', '2023-03-16', 'Belajar Pkp', '2023-03-15', '2023-03-16', '121212', '044e2757f196c2f186ada4cc9de4c16f.png');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `assessment`
+--
+ALTER TABLE `assessment`
+  ADD PRIMARY KEY (`id_am`);
 
 --
 -- Indexes for table `citt`
@@ -4015,6 +4265,18 @@ ALTER TABLE `continuesimprovement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id_dep`);
+
+--
+-- Indexes for table `grade`
+--
+ALTER TABLE `grade`
+  ADD PRIMARY KEY (`id_grade`);
+
+--
+-- Indexes for table `grade_kom`
+--
+ALTER TABLE `grade_kom`
+  ADD PRIMARY KEY (`id_grade_kom`);
 
 --
 -- Indexes for table `jabatan`
@@ -4038,7 +4300,31 @@ ALTER TABLE `kompetensi`
 -- Indexes for table `kompetensi_user`
 --
 ALTER TABLE `kompetensi_user`
-  ADD PRIMARY KEY (`id_kompetensi`);
+  ADD PRIMARY KEY (`id_kom_user`);
+
+--
+-- Indexes for table `level_kom`
+--
+ALTER TABLE `level_kom`
+  ADD PRIMARY KEY (`id_lp`);
+
+--
+-- Indexes for table `nilai_grade`
+--
+ALTER TABLE `nilai_grade`
+  ADD PRIMARY KEY (`id_nilai_grade`);
+
+--
+-- Indexes for table `plan`
+--
+ALTER TABLE `plan`
+  ADD PRIMARY KEY (`id_plan`);
+
+--
+-- Indexes for table `plan_kom`
+--
+ALTER TABLE `plan_kom`
+  ADD PRIMARY KEY (`id_plan_t`);
 
 --
 -- Indexes for table `section`
@@ -4047,56 +4333,134 @@ ALTER TABLE `section`
   ADD PRIMARY KEY (`id_sec`);
 
 --
+-- Indexes for table `sub_kom`
+--
+ALTER TABLE `sub_kom`
+  ADD PRIMARY KEY (`id_sb`);
+
+--
+-- Indexes for table `suggestionsystem`
+--
+ALTER TABLE `suggestionsystem`
+  ADD PRIMARY KEY (`id_ss`);
+
+--
+-- Indexes for table `training`
+--
+ALTER TABLE `training`
+  ADD PRIMARY KEY (`id_training`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `assessment`
+--
+ALTER TABLE `assessment`
+  MODIFY `id_am` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `citt`
 --
 ALTER TABLE `citt`
-  MODIFY `id_ciit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_ciit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `continuesimprovement`
 --
 ALTER TABLE `continuesimprovement`
-  MODIFY `id_ci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_ci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `departement`
 --
 ALTER TABLE `departement`
-  MODIFY `id_dep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
+  MODIFY `id_dep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
+
+--
+-- AUTO_INCREMENT for table `grade`
+--
+ALTER TABLE `grade`
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `grade_kom`
+--
+ALTER TABLE `grade_kom`
+  MODIFY `id_grade_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
+  MODIFY `id_jab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3630;
+  MODIFY `id_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3645;
 
 --
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `kompetensi_user`
 --
 ALTER TABLE `kompetensi_user`
-  MODIFY `id_kompetensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kom_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `level_kom`
+--
+ALTER TABLE `level_kom`
+  MODIFY `id_lp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `nilai_grade`
+--
+ALTER TABLE `nilai_grade`
+  MODIFY `id_nilai_grade` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `plan`
+--
+ALTER TABLE `plan`
+  MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `plan_kom`
+--
+ALTER TABLE `plan_kom`
+  MODIFY `id_plan_t` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
   MODIFY `id_sec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
+
+--
+-- AUTO_INCREMENT for table `sub_kom`
+--
+ALTER TABLE `sub_kom`
+  MODIFY `id_sb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `suggestionsystem`
+--
+ALTER TABLE `suggestionsystem`
+  MODIFY `id_ss` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `training`
+--
+ALTER TABLE `training`
+  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

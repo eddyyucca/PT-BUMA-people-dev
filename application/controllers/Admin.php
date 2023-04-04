@@ -1473,7 +1473,7 @@ class Admin extends CI_Controller
 		{
 			$data['judul'] = 'Data Grade';
 			$data['nama'] = $this->session->userdata('nama');
-			$data['data'] = $this->grade_m->get_all_grade();
+			$data['data'] = $this->grade_m->get_all_grade_kom();
 			$this->load->view('template/header', $data);
 			$this->load->view('kompetensi_grade/data_kompetensi_grade', $data);
 			$this->load->view('template/footer');
