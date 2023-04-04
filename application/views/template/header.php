@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -126,7 +125,11 @@
                             <i class="fas fa-tasks"></i>
                             <span>Assessment</span></a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('admin/kompetensi_grade') ?>">
+                            <i class="fas fa-tasks"></i>
+                            <span>Kompetensi Grade</span></a>
+                    </li>
                     <!-- Divider -->
                     <hr class="sidebar-divider d-none d-md-block">
                     <li class="nav-item">
@@ -159,35 +162,24 @@
                     </li>
                     <!-- Divider -->
                     <hr class="sidebar-divider d-none d-md-block">
-
-
                     <!-- Divider -->
-
                     <!-- Sidebar Toggler (Sidebar) -->
                     <div class="text-center d-none d-md-inline">
                         <button class="rounded-circle border-0" id="sidebarToggle"></button>
                     </div>
-
                 </ul>
                 <!-- End of Sidebar -->
-
                 <!-- Content Wrapper -->
                 <div id="content-wrapper" class="d-flex flex-column">
-
                     <!-- Main Content -->
                     <div id="content">
-
                         <!-- Topbar -->
                         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                             <!-- Sidebar Toggle (Topbar) -->
                             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                                 <i class="fa fa-bars"></i>
                             </button>
-
-
-
-                            <!-- Topbar Navbar -->
+                                <!-- Topbar Navbar -->
                             <ul class="navbar-nav ml-auto">
 
                                 <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -209,9 +201,7 @@
                                         </form>
                                     </div>
                                 </li>
-
                                 <!-- Nav Item - Alerts -->
-
                                 <!-- Nav Item - User Information -->
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

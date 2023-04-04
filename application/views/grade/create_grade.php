@@ -42,9 +42,9 @@
                                                                 </tr>
                                                                 <tr>
                                                                 <div class="mb-3 col-md-9">
-                                <td>Departement</td>
+                                <td>Section</td>
                                 <td><select name="grade_section" class="form-control selectpicker" data-live-search="true">
-                                        <option value="">--PILIH Departement--</option>
+                                        <option value="">--Pilih Section--</option>
                                         <?php foreach ($dep as $departement) { ?>
                                             <option value="<?= $departement->id_dep ?>"><?= $departement->nama_dep ?></option>
                                         <?php } ?>

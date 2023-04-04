@@ -43,7 +43,7 @@
                                 <td><?= $x->nama_grade; ?></td>
                                 <td align="center"><?= $x->level_grade; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_grede') . $x->id_grade; ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/delete_grade/') . $x->id_grade; ?>" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_grade/') . $x->id_grade; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>

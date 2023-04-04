@@ -1451,8 +1451,9 @@ class Admin extends CI_Controller
 		public function proses_edit_grade($id_grade)
 		{
 			$data = array(
-				'nama_jab' => $this->input->post('nama_jab'),
-				'level' => $this->input->post('level')
+				'nama_grade' => $this->input->post('nama_grade'),
+				'level_grade' => $this->input->post('level_grade'),
+				'grade_section' => $this->input->post('grade_section')
 			);
 			$this->db->where('id_grade', $id_grade);
 			$this->db->update('grade', $data);
@@ -1461,11 +1462,70 @@ class Admin extends CI_Controller
 		}
 		public function delete_grade($id_grade)
 		{
-	
 			$this->db->where('id_grade', $id_grade);
 			$this->db->delete('grade');
 			$this->session->set_flashdata('pesan', 'hapus');
 			return redirect('admin/grade');
+		}
+		//end grade
+		// Grade
+		public function kompetensi_grade()
+		{
+			$data['judul'] = 'Data Grade';
+			$data['nama'] = $this->session->userdata('nama');
+			$data['data'] = $this->grade_m->get_all_grade();
+			$this->load->view('template/header', $data);
+			$this->load->view('kompetensi_grade/data_kompetensi_grade', $data);
+			$this->load->view('template/footer');
+		}
+		public function create_kompetensi_grade()
+		{
+			$data['judul'] = 'Create Grade';
+			$data['nama'] = $this->session->userdata('nama');
+			$data['dep'] = $this->departement_m->get_all_dep();
+			$this->load->view('template/header', $data);
+			$this->load->view('kompetensi_grade/kompetensi_create_grade', $data);
+			$this->load->view('template/footer');
+		}
+		public function edit_kompetensi_grade($id_grade)
+		{
+			$data['judul'] = 'Update Grade';
+			$data['nama'] = $this->session->userdata('nama');
+	
+			$data['data'] = $this->grade_m->get_row_grade($id_grade);
+			$this->load->view('template/header', $data);
+			$this->load->view('kompetensi_grade/kompetensi_edit_grade', $data);
+			$this->load->view('template/footer');
+		}
+		public function proses_tambah_kompetensi_grade()
+		{
+			$data = array(
+				'nama_grade' => $this->input->post('nama_grade'),
+				'level_grade' => $this->input->post('level_grade'),
+				'grade_section' => $this->input->post('grade_section')
+			);
+			$this->db->insert('grade', $data);
+			$this->session->set_flashdata('pesan', 'buat');
+			return redirect('admin/kompetensi_grade');
+		}
+		public function proses_edit_kompetensi_grade($id_grade)
+		{
+			$data = array(
+				'nama_grade' => $this->input->post('nama_grade'),
+				'level_grade' => $this->input->post('level_grade'),
+				'grade_section' => $this->input->post('grade_section')
+			);
+			$this->db->where('id_grade', $id_grade);
+			$this->db->update('grade', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('admin/kompetensi_grade');
+		}
+		public function delete_kompetensi_grade($id_grade)
+		{
+			$this->db->where('id_grade', $id_grade);
+			$this->db->delete('grade');
+			$this->session->set_flashdata('pesan', 'hapus');
+			return redirect('admin/kompetensi_grade');
 		}
 		//end grade
 	
