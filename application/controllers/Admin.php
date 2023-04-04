@@ -27,7 +27,7 @@ class Admin extends CI_Controller
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
 		// if ($level_akun != "admin") {
-		// 	$this->session->set_flashdata('login', 'n_login');
+		// 	$this->session->set_flashdeata('login', 'n_login');
 		// 	return redirect('login');
 		// }
 	}
@@ -1413,7 +1413,6 @@ class Admin extends CI_Controller
 		{
 			$data['judul'] = 'Data Grade';
 			$data['nama'] = $this->session->userdata('nama');
-	
 			$data['data'] = $this->grade_m->get_all_grade();
 			$this->load->view('template/header', $data);
 			$this->load->view('grade/data_grade', $data);
@@ -1423,7 +1422,7 @@ class Admin extends CI_Controller
 		{
 			$data['judul'] = 'Create Grade';
 			$data['nama'] = $this->session->userdata('nama');
-	
+			$data['dep'] = $this->departement_m->get_all_dep();
 			$this->load->view('template/header', $data);
 			$this->load->view('grade/create_grade', $data);
 			$this->load->view('template/footer');
@@ -1442,7 +1441,8 @@ class Admin extends CI_Controller
 		{
 			$data = array(
 				'nama_grade' => $this->input->post('nama_grade'),
-				'level_grade' => $this->input->post('level_grade')
+				'level_grade' => $this->input->post('level_grade'),
+				'grade_section' => $this->input->post('grade_section')
 			);
 			$this->db->insert('grade', $data);
 			$this->session->set_flashdata('pesan', 'buat');
