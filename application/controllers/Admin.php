@@ -53,9 +53,9 @@ class Admin extends CI_Controller
 		$data['total_section'] = $this->section_m->jumlah_section();
 		$data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
 		$data['total_departement'] = $this->departement_m->jumlah_departement();
-		// $this->load->view('template/header', $data);
-		$this->load->view('home/index');
-		// $this->load->view('template/footer');
+		$this->load->view('template22/header', $data);
+		// $this->load->view('home/index');
+		$this->load->view('template/22footer');
 	}
 	// karyawan
 	public function data_karyawan($num = '')

@@ -87,7 +87,6 @@
                     </div>
                     <!-- Nav Item - Pages Collapse Menu -->
                     <!-- Nav Item - Utilities Collapse Menu -->
-
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/data_karyawan') ?>">
                             <i class="fas fa-fw fa-users"></i>
