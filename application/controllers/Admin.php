@@ -37,18 +37,20 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'PT. BUMA - SITE IPR';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['total_karyawan'] = $this->karyawan_m->jumlah_karyawan();
 		$data['total_section'] = $this->section_m->jumlah_section();
 		$data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
 		$data['total_departement'] = $this->departement_m->jumlah_departement();
 		$this->load->view('template/header', $data);
-		$this->load->view('home/home',$data);
+		$this->load->view('home/home', $data);
 		$this->load->view('template/footer');
 	}
 	public function home()
 	{
 		$data['judul'] = 'PT. BUMA - SITE IPR';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['total_karyawan'] = $this->karyawan_m->jumlah_karyawan();
 		$data['total_section'] = $this->section_m->jumlah_section();
 		$data['total_jabatan'] = $this->jabatan_m->jumlah_jabatan();
@@ -92,6 +94,7 @@ class Admin extends CI_Controller
 		$pagination = $this->pagination->initialize($config);
 		$data['judul'] = 'Data Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/data_karyawan', $data, $pagination);
@@ -132,6 +135,7 @@ class Admin extends CI_Controller
 
 		$data['judul'] = 'Data Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/data_karyawan', $data, $pagination);
@@ -146,6 +150,7 @@ class Admin extends CI_Controller
 
 		$data['judul'] = 'Add Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/input_karyawan');
 		$this->load->view('template/footer');
@@ -158,6 +163,7 @@ class Admin extends CI_Controller
 
 		$data['judul'] = 'Profil Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/view_karyawan');
 		$this->load->view('template/footer');
@@ -166,6 +172,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->karyawan_m->get_view_kar($nik);
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/input_karyawan');
@@ -317,6 +324,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Departement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->departement_m->get_all_dep();
 		$this->load->view('template/header', $data);
@@ -327,6 +335,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Departement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('departement/create_departement', $data);
@@ -336,6 +345,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update Departement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->departement_m->get_row_dep($id_dep);
 		$this->load->view('template/header', $data);
@@ -375,6 +385,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Section';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->section_m->get_all_sec();
 		$this->load->view('template/header', $data);
@@ -385,6 +396,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Section';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('section/create_section', $data);
@@ -394,6 +406,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update Section';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->section_m->get_row_sec($id_sec);
 		$this->load->view('template/header', $data);
@@ -434,6 +447,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data jabatan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->jabatan_m->get_all_jab();
 		$this->load->view('template/header', $data);
@@ -444,6 +458,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create jabatan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('jabatan/create_jabatan', $data);
@@ -453,6 +468,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update jabatan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->jabatan_m->get_row_jab($id_jab);
 		$this->load->view('template/header', $data);
@@ -496,6 +512,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Continues Improvement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['alert'] = false;
 
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci();
@@ -507,6 +524,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Continues Improvement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
@@ -517,6 +535,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Continues Improvement';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->ci_m->get_row_ci($pembuat);
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
@@ -588,6 +607,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template/header', $data);
@@ -598,6 +618,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/jenis_kompetensi/create_kompetensi', $data);
@@ -607,6 +628,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_row_kom($id_kom);
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/jenis_kompetensi/edit_kompetensi', $data);
@@ -645,6 +667,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->task_kompetensi_m->get_all_tk();
 		$this->load->view('template/header', $data);
@@ -655,6 +678,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template/header', $data);
 		$this->load->view('task_kompetensi/view_taskkompetensi', $data);
@@ -664,6 +688,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
@@ -674,16 +699,18 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_all_level();
 		$this->load->view('template/header', $data);
 		$this->load->view('task_kompetensi/view_kompetensi', $data);
 		$this->load->view('template/footer');
 	}
-	
+
 	public function update_task_kompetensi($id_kompetensi)
 	{
 		$data['judul'] = 'Update Task Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->task_kompetensi_m->get_row_tk($id_kompetensi);
 		$data['jabatan'] = $this->jabatan_m->get_all_jab();
 		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
@@ -701,15 +728,15 @@ class Admin extends CI_Controller
 		$nik = $this->input->post('xp');
 		$date_kom = $this->input->post('tanggal');
 		$this->db->from('kompetensi_user');
-        $this->db->where('nik_kar', $nik);
-        $this->db->where('date_kom', $date_kom);
- 		$this->db->limit(1);
+		$this->db->where('nik_kar', $nik);
+		$this->db->where('date_kom', $date_kom);
+		$this->db->limit(1);
 		$query = $this->db->get();
 		if ($query->num_rows() < 1) {
 			$this->db->insert('kompetensi_user', $data);
 			$this->session->set_flashdata('pesan', 'buat');
 			return redirect('admin/task_kompetensi');
-		}elseif($query->num_rows() >= 1) {
+		} elseif ($query->num_rows() >= 1) {
 			$this->session->set_flashdata('pesan', 'sudahada');
 			return redirect('admin/task_kompetensi');
 		}
@@ -739,7 +766,6 @@ class Admin extends CI_Controller
 	{
 		$nik = $this->input->post('nik');
 		echo $this->kompetensi_m->get_jab_opt($nik);
-		
 	}
 	function get_plan()
 	{
@@ -751,7 +777,7 @@ class Admin extends CI_Controller
 		$plan_t = $this->input->post('sub_id');
 		echo $this->task_kompetensi_m->plan_kom($plan_t);
 	}
-	
+
 	// end task_kompetensi
 
 	// suggestionsystem
@@ -759,6 +785,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Suggestion system';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->suggestionsystem_m->get_all_ss();
 		$this->load->view('template/header', $data);
@@ -769,6 +796,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Task suggestionsystem';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$data['section'] = $this->section_m->get_all_sec();
@@ -782,6 +810,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update Task suggestionsystem';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->suggestionsystem_m->get_row_ss($id_ss);
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$data['section'] = $this->section_m->get_all_sec();
@@ -858,6 +887,7 @@ class Admin extends CI_Controller
 		$pagination = $this->pagination->initialize($config);
 		$data['judul'] = 'Data Asesor';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$this->load->view('template/header', $data);
 		$this->load->view('asesor/data_asesor', $data, $pagination);
@@ -869,6 +899,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Asesor';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['kar'] = $this->karyawan_m->getAll_user();
 		$this->load->view('template/header', $data);
 		$this->load->view('asesor/ubah_asesor', $data);
@@ -922,6 +953,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Training';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->training_m->get_all_tra();
 		$this->load->view('template/header', $data);
 		$this->load->view('training/data_training', $data);
@@ -931,6 +963,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Training';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
 		$this->load->view('training/create_training', $data);
@@ -940,6 +973,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Training';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$data['data'] = $this->training_m->get_row_tra($id_training);
 
@@ -1033,38 +1067,42 @@ class Admin extends CI_Controller
 	public function assessment()
 	{
 		$data['judul'] = 'Data assessment';
-		$data['nama'] = $this->session->userdata('nama');		
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->task_kompetensi_m->get_all_tk();
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/data_assessment', $data);
 		$this->load->view('template/footer');
 	}
-	public function create_nilaiassessment($nik,$id_plan_t)
+	public function create_nilaiassessment($nik, $id_plan_t)
 	{
 		$data['judul'] = 'Create Assessment';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['nik'] = $nik;
 		$data['id_plan_t'] = $id_plan_t;
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/nilai_assessment', $data);
 		$this->load->view('template/footer');
 	}
-	public function edit_nilaiassessment($nik,$id_plan_t)
+	public function edit_nilaiassessment($nik, $id_plan_t)
 	{
 		$data['judul'] = 'Edit Assessment';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['nik'] = $nik;
 		$data['id_plan_t'] = $id_plan_t;
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/nilai_assessment', $data);
 		$this->load->view('template/footer');
 	}
-	public function create_assessment($id_jab,$nik)
+	public function create_assessment($id_jab, $nik)
 	{
 
 		$data['judul'] = 'Data assessment';
 		$data['nik'] = $nik;
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
 		$this->load->view('template/header', $data);
 		$this->load->view('assessment/create_assessment', $data);
@@ -1074,6 +1112,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data assessment';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$data['asesor'] = $this->karyawan_m->get_all_ar();
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
@@ -1160,10 +1199,10 @@ class Admin extends CI_Controller
 		$this->db->delete('assessment');
 
 		$this->session->set_flashdata('pesan', 'hapus');
-		
+
 		return redirect('admin/assessment');
 	}
-	public function nilai_assessment($id_am,$nik)
+	public function nilai_assessment($id_am, $nik)
 	{
 		$this->db->where('id_am', $id_am);
 		$this->db->delete('assessment');
@@ -1171,23 +1210,23 @@ class Admin extends CI_Controller
 		$this->db->where('nik', $nik);
 		$query = $this->db->get('karyawan')->row();
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect("admin/create_assessment/".$query->jabatan."/".$query->nik);
+		return redirect("admin/create_assessment/" . $query->jabatan . "/" . $query->nik);
 	}
 
-	public function proses_tambah_nilaiassessment($nik,$id_plan_t)
+	public function proses_tambah_nilaiassessment($nik, $id_plan_t)
 	{
 
 		$data = array(
 
 			"karyawan" => $nik,
 			"kompetensi" => $id_plan_t,
-			"h_kom" => $this->input->post('nilai_assessment'), 
+			"h_kom" => $this->input->post('nilai_assessment'),
 		);
 		$this->db->insert('assessment', $data);
 		$this->db->where('nik', $nik);
 		$query = $this->db->get('karyawan')->row();
 
-		return redirect("admin/create_assessment/".$query->jabatan."/".$query->nik);
+		return redirect("admin/create_assessment/" . $query->jabatan . "/" . $query->nik);
 	}
 	// end assessment
 
@@ -1196,6 +1235,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Plan kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->kompetensi_m->get_all_pk();
 		$this->load->view('template/header', $data);
@@ -1207,6 +1247,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Plan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['plan'] = $this->kompetensi_m->get_all_plan();
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
@@ -1218,6 +1259,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Plan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['plan'] = $this->kompetensi_m->get_all_plan();
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
@@ -1262,6 +1304,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Plant';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template/header', $data);
@@ -1274,6 +1317,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Jenis Plan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
 		$data['data'] = $this->kompetensi_m->get_all_plan();
 		$this->load->view('template/header', $data);
@@ -1284,6 +1328,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Create Jenis Plan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_all_kom();
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/jenis_plan/create_jenisplan', $data);
@@ -1293,6 +1338,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Update Jenis Plan';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
 		$data['data'] = $this->kompetensi_m->get_row_plan($id_plan);
 		$this->load->view('template/header', $data);
@@ -1335,6 +1381,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Level Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_all_level();
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/target_level/data_level', $data);
@@ -1344,9 +1391,10 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Level Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['jab'] = $this->jabatan_m->get_all_jab();
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
-		
+
 		$this->load->view('template/header', $data);
 		$this->load->view('kompetensi/target_level/create_level', $data);
 		$this->load->view('template/footer');
@@ -1355,6 +1403,7 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = 'Data Level Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 		$data['jab'] = $this->jabatan_m->get_all_jab();
 		$data['kom'] = $this->kompetensi_m->get_all_kom();
 		$data['data'] = $this->kompetensi_m->get_row_level($id_lp);
@@ -1372,17 +1421,17 @@ class Admin extends CI_Controller
 		$pk_level = $this->input->post('pk_level', true);
 		$lvl_jab = $this->input->post('lvl_jab', true);
 		$this->db->from('level_kom');
-        $this->db->where('pk_level', $pk_level);
-        $this->db->where('lvl_jab', $lvl_jab);
- 		$this->db->limit(1);
-        $query = $this->db->get();
-        if ($query->num_rows() >= 1) {
+		$this->db->where('pk_level', $pk_level);
+		$this->db->where('lvl_jab', $lvl_jab);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() >= 1) {
 			$this->session->set_flashdata('pesan', 'sudahada');
 			return redirect('admin/data_levelkompetensi');
-        }elseif($query->num_rows() < 1) {
+		} elseif ($query->num_rows() < 1) {
 			$this->db->insert('level_kom', $data);
 			$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/data_levelkompetensi');
+			return redirect('admin/data_levelkompetensi');
 		}
 		// var_dump($query->num_rows());
 	}
@@ -1408,125 +1457,131 @@ class Admin extends CI_Controller
 	}
 	// end data_levelkompetensi
 
-		// Grade
-		public function grade()
-		{
-			$data['judul'] = 'Data Grade';
-			$data['nama'] = $this->session->userdata('nama');
-			$data['data'] = $this->grade_m->get_all_grade();
-			$this->load->view('template/header', $data);
-			$this->load->view('grade/data_grade', $data);
-			$this->load->view('template/footer');
-		}
-		public function create_grade()
-		{
-			$data['judul'] = 'Create Grade';
-			$data['nama'] = $this->session->userdata('nama');
-			$data['dep'] = $this->departement_m->get_all_dep();
-			$this->load->view('template/header', $data);
-			$this->load->view('grade/create_grade', $data);
-			$this->load->view('template/footer');
-		}
-		public function edit_grade($id_grade)
-		{
-			$data['judul'] = 'Update Grade';
-			$data['nama'] = $this->session->userdata('nama');
-	
-			$data['data'] = $this->grade_m->get_row_grade($id_grade);
-			$this->load->view('template/header', $data);
-			$this->load->view('grade/edit_grade', $data);
-			$this->load->view('template/footer');
-		}
-		public function proses_tambah_grade()
-		{
-			$data = array(
-				'nama_grade' => $this->input->post('nama_grade'),
-				'level_grade' => $this->input->post('level_grade'),
-				'grade_section' => $this->input->post('grade_section')
-			);
-			$this->db->insert('grade', $data);
-			$this->session->set_flashdata('pesan', 'buat');
-			return redirect('admin/grade');
-		}
-		public function proses_edit_grade($id_grade)
-		{
-			$data = array(
-				'nama_grade' => $this->input->post('nama_grade'),
-				'level_grade' => $this->input->post('level_grade'),
-				'grade_section' => $this->input->post('grade_section')
-			);
-			$this->db->where('id_grade', $id_grade);
-			$this->db->update('grade', $data);
-			$this->session->set_flashdata('pesan', 'ubah');
-			return redirect('admin/grade');
-		}
-		public function delete_grade($id_grade)
-		{
-			$this->db->where('id_grade', $id_grade);
-			$this->db->delete('grade');
-			$this->session->set_flashdata('pesan', 'hapus');
-			return redirect('admin/grade');
-		}
-		//end grade
-		// Grade
-		public function kompetensi_grade()
-		{
-			$data['judul'] = 'Data Grade';
-			$data['nama'] = $this->session->userdata('nama');
-			$data['data'] = $this->grade_m->get_all_grade_kom();
-			$this->load->view('template/header', $data);
-			$this->load->view('kompetensi_grade/data_kompetensi_grade', $data);
-			$this->load->view('template/footer');
-		}
-		public function create_kompetensi_grade()
-		{
-			$data['judul'] = 'Create Grade';
-			$data['nama'] = $this->session->userdata('nama');
-			$data['dep'] = $this->departement_m->get_all_dep();
-			$this->load->view('template/header', $data);
-			$this->load->view('kompetensi_grade/kompetensi_create_grade', $data);
-			$this->load->view('template/footer');
-		}
-		public function edit_kompetensi_grade($id_grade)
-		{
-			$data['judul'] = 'Update Grade';
-			$data['nama'] = $this->session->userdata('nama');
-	
-			$data['data'] = $this->grade_m->get_row_grade($id_grade);
-			$this->load->view('template/header', $data);
-			$this->load->view('kompetensi_grade/kompetensi_edit_grade', $data);
-			$this->load->view('template/footer');
-		}
-		public function proses_tambah_kompetensi_grade()
-		{
-			$data = array(
-				'nama_grade' => $this->input->post('nama_grade'),
-				'level_grade' => $this->input->post('level_grade'),
-				'grade_section' => $this->input->post('grade_section')
-			);
-			$this->db->insert('grade', $data);
-			$this->session->set_flashdata('pesan', 'buat');
-			return redirect('admin/kompetensi_grade');
-		}
-		public function proses_edit_kompetensi_grade($id_grade)
-		{
-			$data = array(
-				'nama_grade' => $this->input->post('nama_grade'),
-				'level_grade' => $this->input->post('level_grade'),
-				'grade_section' => $this->input->post('grade_section')
-			);
-			$this->db->where('id_grade', $id_grade);
-			$this->db->update('grade', $data);
-			$this->session->set_flashdata('pesan', 'ubah');
-			return redirect('admin/kompetensi_grade');
-		}
-		public function delete_kompetensi_grade($id_grade)
-		{
-			$this->db->where('id_grade', $id_grade);
-			$this->db->delete('grade');
-			$this->session->set_flashdata('pesan', 'hapus');
-			return redirect('admin/kompetensi_grade');
-		}
-		//end grade
-	
+	// Grade
+	public function grade()
+	{
+		$data['judul'] = 'Data Grade';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['data'] = $this->grade_m->get_all_grade();
+		$this->load->view('template/header', $data);
+		$this->load->view('grade/data_grade', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_grade()
+	{
+		$data['judul'] = 'Create Grade';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['dep'] = $this->departement_m->get_all_dep();
+		$this->load->view('template/header', $data);
+		$this->load->view('grade/create_grade', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_grade($id_grade)
+	{
+		$data['judul'] = 'Update Grade';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->grade_m->get_row_grade($id_grade);
+		$this->load->view('template/header', $data);
+		$this->load->view('grade/edit_grade', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_grade()
+	{
+		$data = array(
+			'nama_grade' => $this->input->post('nama_grade'),
+			'level_grade' => $this->input->post('level_grade'),
+			'grade_section' => $this->input->post('grade_section')
+		);
+		$this->db->insert('grade', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/grade');
+	}
+	public function proses_edit_grade($id_grade)
+	{
+		$data = array(
+			'nama_grade' => $this->input->post('nama_grade'),
+			'level_grade' => $this->input->post('level_grade'),
+			'grade_section' => $this->input->post('grade_section')
+		);
+		$this->db->where('id_grade', $id_grade);
+		$this->db->update('grade', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/grade');
+	}
+	public function delete_grade($id_grade)
+	{
+		$this->db->where('id_grade', $id_grade);
+		$this->db->delete('grade');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/grade');
+	}
+	//end grade
+	// Grade
+	public function kompetensi_grade()
+	{
+		$data['judul'] = 'Data Grade';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['data'] = $this->grade_m->get_all_grade_kom();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi_grade/data_kompetensi_grade', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_kompetensi_grade()
+	{
+		$data['judul'] = 'Create Grade';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['dep'] = $this->departement_m->get_all_dep();
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi_grade/kompetensi_create_grade', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_kompetensi_grade($id_grade)
+	{
+		$data['judul'] = 'Update Grade';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->grade_m->get_row_grade($id_grade);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi_grade/kompetensi_edit_grade', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_kompetensi_grade()
+	{
+		$data = array(
+			'nama_grade' => $this->input->post('nama_grade'),
+			'level_grade' => $this->input->post('level_grade'),
+			'grade_section' => $this->input->post('grade_section')
+		);
+		$this->db->insert('grade', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/kompetensi_grade');
+	}
+	public function proses_edit_kompetensi_grade($id_grade)
+	{
+		$data = array(
+			'nama_grade' => $this->input->post('nama_grade'),
+			'level_grade' => $this->input->post('level_grade'),
+			'grade_section' => $this->input->post('grade_section')
+		);
+		$this->db->where('id_grade', $id_grade);
+		$this->db->update('grade', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/kompetensi_grade');
+	}
+	public function delete_kompetensi_grade($id_grade)
+	{
+		$this->db->where('id_grade', $id_grade);
+		$this->db->delete('grade');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/kompetensi_grade');
+	}
+	//end grade
+
 }
