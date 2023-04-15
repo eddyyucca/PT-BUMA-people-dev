@@ -691,7 +691,7 @@
 						<a href="javascript:void(0);"><i class="fa fa-cog" aria-hidden="true"></i></a>
 					</div>
 					<h5 class="name"><span class="font-w400"></span> <?= $nama ?></h5>
-					<p class="nik">NIK : <?= $nik ?></p>
+					<p class="email">NIK : <?= $nik ?></p>
 				</div>
 				<ul class="metismenu" id="menu">
 					<li class="nav-label first">Main Menu</li>
@@ -700,7 +700,7 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
 						<ul aria-expanded="false">
-							<li><a href="<?= base_url('admin/profil') ?>">Profil</a></li>
+							<li><a href="<?= base_url('admin/view_karyawan/'. $nik) ?>">Profil</a></li>
 							<li><a href="<?= base_url('admin/password') ?>">Ubah Password</a></li>
 						</ul>
 					</li>

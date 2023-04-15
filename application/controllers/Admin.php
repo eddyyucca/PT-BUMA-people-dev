@@ -60,6 +60,22 @@ class Admin extends CI_Controller
 		$this->load->view('template/22footer');
 	}
 	// karyawan
+	public function profil()
+    {
+        $nik =  $this->session->userdata('nik');
+        $data['nik'] =  $this->session->userdata('nik');
+        $id_jab =  $this->session->userdata('jabatan');
+        $data['data'] = $this->karyawan_m->get_view_kar($nik);
+
+        $data['judul'] = 'Profil Karyawan';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['assessment'] = $this->kompetensi_m->get_row_level_kar($id_jab);
+        $data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+        $data['continuesimprovement'] = $this->ci_m->get_all_ci($nik);
+        $this->load->view('template/header', $data);
+        $this->load->view('user/profil/data_karyawan');
+        $this->load->view('template/footer');
+    }
 	public function data_karyawan($num = '')
 	{
 

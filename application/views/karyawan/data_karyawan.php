@@ -12,7 +12,6 @@
     </div>
     <!-- foreach data karyawan -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
     <div class="container">
         <a href="<?= base_url('admin/add_karyawan/') ?>" class="btn btn-success"><i class="fas fa-user-plus"></i> Add Karyawan</a>
         <a href="" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
@@ -74,7 +73,6 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 col-lg-6">
                 <!-- Section Heading-->
-
             </div>
         </div>
         <div class="row">
@@ -128,8 +126,4 @@
     <div class="col">
         <?php echo $this->pagination->create_links(); ?>
     </div>
-</div>
-</div>
-</div>
-</div>
 </div>
