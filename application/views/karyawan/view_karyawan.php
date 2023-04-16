@@ -1,16 +1,5 @@
 <div class="content-body">
             <div class="container-fluid">
-				<div class="row page-titles mx-0">
-					<div class="col-sm-6 p-md-0">
-						<div class="welcome-text">
-							<h4>Hi, welcome back!</h4>
-							<p class="mb-0">Your business dashboard template</p>
-						</div>
-					</div>
-					<div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-					</div>
-				</div>
-                <!-- row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="profile card card-body px-3 pt-3 pb-0">
@@ -28,7 +17,15 @@
 											<p><?= $data->nama_jab ?></p>
 										</div>
 										<div class="profile-email px-2 pt-2">
-											<h4 class="text-muted mb-0">info@example.com</h4>
+											<h4 class="text-muted mb-0">
+                                                <?php 
+                                            if ($data->email == false) {
+                                                echo "-";
+                                            }else{
+                                                echo $data->email;
+                                            }
+                                            ?>
+                                            </h4>
 											<p>Email</p>
 										</div>
 										<div class="dropdown ms-auto">

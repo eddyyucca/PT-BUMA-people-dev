@@ -49,7 +49,7 @@
         ***********************************-->
 		<div class="nav-header">
 			<a href="<?= base_url('admin') ?>" class="brand-logo">
-				<img src="<?= base_url('assets/logo.png'); ?>" class="logo-abbr" width="200" height="50" viewBox="0 0 200 50" fill="none" alt="BUMA">
+				<img src="<?= base_url('assets/logo.png'); ?>" class="logo-abbr" width="auto" height="auto" viewBox="0 0 200 50" fill="none" alt="BUMA">
 			</a>
 			<div class="nav-control">
 				<div class="hamburger">
@@ -325,7 +325,7 @@
 							<div class="card-body msg_card_body dz-scroll" id="DZ_W_Contacts_Body3">
 								<div class="d-flex justify-content-start mb-4">
 									<div class="img_cont_msg">
-										<img src="<?= base_url('assets/xhtml') ?>/images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="" />
+										<img src="<?= base_url('assets/xhtml') ?>/foto_profil.jpg" class="rounded-circle user_img_msg" alt="" />
 									</div>
 									<div class="msg_cotainer">
 										Hi, how are you samim?
@@ -711,18 +711,8 @@
 						</a>
 						<ul aria-expanded="false">
 							<li><a href="<?= base_url('admin/data_karyawan') ?>">Karyawan</a></li>
-							<li><a href="./post-details.html">Post Details</a></li>
-							<li><a href="./page-chat.html">Chat<span class="badge badge-xs badge-danger">New</span></a></li>
-							<li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Project<span class="badge badge-xs badge-danger">New</span></a>
-								<ul aria-expanded="false">
-									<li><a href="./project-list.html">Project List</a></li>
-									<li><a href="./project-card.html">Project Card</a></li>
-								</ul>
-							</li>
 							<li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Data Master</a>
 								<ul aria-expanded="false">
-									<li><a href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a></li>
-
 									<a class="collapse-item" href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_jenisplan') ?>">Jenis Plan</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_plankompetensi') ?>">Plan Kompetensi</a>

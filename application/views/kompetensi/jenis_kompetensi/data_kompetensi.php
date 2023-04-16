@@ -1,17 +1,17 @@
-<div class="container-fluid">
+<div class="content-body">
+    <div class="container-fluid">
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
         </div>
+        <div class="container">
+            <a href="<?= base_url('admin/create_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Jenis Kompetensi</a>
+            <hr>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <a href="<?= base_url('admin/create_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Jenis Kompetensi</a>
-                    <hr>
-                </div>
                 <?php
-
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
                     <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
                     </div>
@@ -24,7 +24,7 @@
                         Data Berhasil Di Ubah !
                     </div>
                 <?php    } ?>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -40,12 +40,19 @@
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->j_kompetensi; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_kompetensi/') . $x->id_kom; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_kompetensi/') . $x->id_kom; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_kompetensi/') . $x->id_kom; ?>" class="btn btn-danger shadow btn-xs sharp">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_kompetensi/') . $x->id_kom; ?>" class="btn btn-primary shadow btn-xs sharp">Edit</a>
                                 </td>
                             </tr>
                         <?php   } ?>
                     </tbody>
+                    <tfoot>
+                    <tr>
+                            <th>No</th>
+                            <th>Nama Kompetensi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
