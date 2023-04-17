@@ -83,10 +83,10 @@
                         <div class="card-body pb-0">
                             <div class="d-flex mb-3 align-items-center">
                                 <div class="dz-media me-3">
-                                    <span class="icon-placeholder bg-primary text-white">pm</span>
+                                    <span class="icon-placeholder bg-primary text-white"><?=  substr($kar->nama,0,1); ?></span>
                                 </div>
                                 <div>
-                                    <h5 class="title"><a href="javascript:void(0);"><?= $kar->nama ?></a></h5>
+                                    <h5 class="title"><a href="<?= base_url('admin/view_karyawan/') . $kar->nik ?>"><?= $kar->nama ?></a></h5>
                                     <span class="text-success"><?= $kar->nama_jab ?></span>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <a href="<?= base_url('admin/view_karyawan/') . $kar->nik ?>" class="btn btn-secondary btn-xs">View Karyawan</a>
+                            <a href="<?= base_url('admin/view_karyawan/') . $kar->nik ?>" class="btn btn-primary btn-xs">View Karyawan</a>
                         </div>
                     </div>
                 </div>

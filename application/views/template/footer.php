@@ -48,7 +48,8 @@
 	<script src="<?= base_url('assets/xhtml') ?>/vendor/owl-carousel/owl.carousel.js"></script>
     <script src="<?= base_url('assets/xhtml') ?>/js/custom.js"></script>
 	<script src="<?= base_url('assets/xhtml') ?>/js/deznav-init.js"></script> 
-    
-    
+    <!-- tabel -->
+    <script src="<?= base_url('assets/xhtml') ?>/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url('assets/xhtml') ?>/js/plugins-init/datatables.init.js"></script>
 </body>
 </html>

@@ -1,13 +1,5 @@
-<!-- Begin Page Content -->
-<div class="container col-8 mb-3">
-    <!-- Page Heading -->
-    <div class="card">
-        <div class="card-header">
-            <a href="<?= base_url('admin/data_karyawan') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="container-fluid">
+<div class="content-body">
+    <div class="container-fluid">
                     <?= validation_errors() ?>
                     <form action="<?= base_url('admin/proses_edit_karyawan')  ?>" method="POST" enctype="multipart/form-data">
                         <table class="table">

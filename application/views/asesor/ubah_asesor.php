@@ -1,5 +1,5 @@
-<!-- Begin Page Content -->
-<div class="container col-8 mb-3">
+<div class="content-body">
+    <div class="container-fluid">
     <!-- Page Heading -->
     <div class="card">
         <div class="card-header">

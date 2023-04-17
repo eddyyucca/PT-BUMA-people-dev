@@ -711,37 +711,19 @@
 						</a>
 						<ul aria-expanded="false">
 							<li><a href="<?= base_url('admin/data_karyawan') ?>">Karyawan</a></li>
+							<li><a href="<?= base_url('admin/data_asesor') ?>">Asesor</a></li>
+							<li><a href="<?= base_url('admin/training') ?>">Training</a></li>
+							<li><a href="<?= base_url('admin/suggestionsystem') ?>">Suggestion System</a></li>
+							<li><a href="<?= base_url('admin/continuesimprovement') ?>">Cont. Improvement</a></li>
+							<li><a href="<?= base_url('admin/task_kompetensi') ?>">Task Kompetensi</a></li>
+							<li><a href="<?= base_url('admin/assessment') ?>">Assessment</a></li>
+							<li><a href="<?= base_url('admin/kompetensi_grade') ?>">Kompetensi Grade</a></li>
 							<li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Data Master</a>
 								<ul aria-expanded="false">
 									<a class="collapse-item" href="<?= base_url('admin/data_jeniskompetensi') ?>">Jenis Kompetensi</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_jenisplan') ?>">Jenis Plan</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_plankompetensi') ?>">Plan Kompetensi</a>
                                 <a class="collapse-item" href="<?= base_url('admin/data_levelkompetensi') ?>">Level Kompetensi</a>
-								</ul>
-							</li>
-							<li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Contact<span class="badge badge-xs badge-danger">New</span></a>
-								<ul aria-expanded="false">
-									<li><a href="./contact-list.html">Contact List</a></li>
-									<li><a href="./contact-card.html">Contact Card</a></li>
-								</ul>
-							</li>
-							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-								<ul aria-expanded="false">
-									<li><a href="./email-compose.html">Compose</a></li>
-									<li><a href="./email-inbox.html">Inbox</a></li>
-									<li><a href="./email-read.html">Read</a></li>
-								</ul>
-							</li>
-							<li><a href="./app-calender.html">Calendar</a></li>
-							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-								<ul aria-expanded="false">
-									<li><a href="./ecom-product-grid.html">Product Grid</a></li>
-									<li><a href="./ecom-product-list.html">Product List</a></li>
-									<li><a href="./ecom-product-detail.html">Product Details</a></li>
-									<li><a href="./ecom-product-order.html">Order</a></li>
-									<li><a href="./ecom-checkout.html">Checkout</a></li>
-									<li><a href="./ecom-invoice.html">Invoice</a></li>
-									<li><a href="./ecom-customers.html">Customers</a></li>
 								</ul>
 							</li>
 						</ul>
