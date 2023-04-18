@@ -1,5 +1,12 @@
-<div class="content-body">
-    <div class="container-fluid">
+<body class="bg-gradient-success">
+    <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="card o-hidden border-0 shadow-lg my-5 ">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
                                 <div class="col-lg">
                                     <div class="p-5">
                                         <!-- Page Heading -->

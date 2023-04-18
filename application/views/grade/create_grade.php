@@ -1,5 +1,13 @@
-<div class="content-body">
-    <div class="container-fluid">
+<body class="bg-gradient-success">
+    <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000"
+        data-pause="true">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="card o-hidden border-0 shadow-lg my-5 ">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
                                 <div class="col-lg">
                                     <div class="p-5">
                                         <!-- Page Heading -->
@@ -11,39 +19,51 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_tambah_grade')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_tambah_grade')  ?>"
+                                                            method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Nama Grade</td>
-                                                                    <td><input type="text" name="nama_grade" aria-describedby="basic-addon1" class="form-control" required placeholder="Nama Grade"></td>
+                                                                    <td><input type="text" name="nama_grade"
+                                                                            aria-describedby="basic-addon1"
+                                                                            class="form-control" required
+                                                                            placeholder="Nama Grade"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Yang Melakukan</td>
-                                                                    <td><select name="level_grade" class="form-control  selectpicker" data-live-search="true">
+                                                                    <td><select name="level_grade"
+                                                                            class="form-control  selectpicker"
+                                                                            data-live-search="true">
                                                                             <option value="">--PILIH Level--</option>
-                                                                                <option value="G1">G1</option>
-                                                                                <option value="G2">G2</option>
-                                                                                <option value="G3">G3</option>
-                                                                                <option value="G4">G4</option>
-                                                                                <option value="G5">G5</option>
-                                                                                <option value="G6">G6</option>
-                                                                                <option value="G7">G7</option>
-                                                                                <option value="G8">G8</option>
-                                                                                <option value="G9">G9</option>
-                                                                                <option value="G10">G10</option>
-                                                                             </select></td>
+                                                                            <option value="G1">G1</option>
+                                                                            <option value="G2">G2</option>
+                                                                            <option value="G3">G3</option>
+                                                                            <option value="G4">G4</option>
+                                                                            <option value="G5">G5</option>
+                                                                            <option value="G6">G6</option>
+                                                                            <option value="G7">G7</option>
+                                                                            <option value="G8">G8</option>
+                                                                            <option value="G9">G9</option>
+                                                                            <option value="G10">G10</option>
+                                                                        </select></td>
                                                                 </tr>
                                                                 <tr>
-                                                                <div class="mb-3 col-md-9">
-                                <td>Section</td>
-                                <td><select name="grade_section" class="form-control selectpicker" data-live-search="true">
-                                        <option value="">--Pilih Section--</option>
-                                        <?php foreach ($dep as $departement) { ?>
-                                            <option value="<?= $departement->id_dep ?>"><?= $departement->nama_dep ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </td>
-                                        </div>
+                                                                    <div class="mb-3 col-md-9">
+                                                                        <td>Section</td>
+                                                                        <td><select name="grade_section"
+                                                                                class="form-control selectpicker"
+                                                                                data-live-search="true">
+                                                                                <option value="">--Pilih Section--
+                                                                                </option>
+                                                                                <?php foreach ($dep as $departement) { ?>
+                                                                                <option
+                                                                                    value="<?= $departement->id_dep ?>">
+                                                                                    <?= $departement->nama_dep ?>
+                                                                                </option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </div>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

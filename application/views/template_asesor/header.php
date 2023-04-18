@@ -53,14 +53,14 @@
             color: #fff;
         }
     </style>
-    <style>
+    <!-- <style>
 		/* Menyembunyikan elemen HTML pada ukuran layar yang lebih kecil dari 768px */
 		@media only screen and (max-width: 800px) {
 			.desktop-only {
 				display: none !important;
 			}
 		}
-	</style>
+	</style> -->
 </head>
 <!-- Loading Page -->
 
@@ -74,7 +74,7 @@
             <!-- Page Wrapper -->
             <div id="wrapper">
                 <!-- Sidebar -->
-                <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+                <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion toggled" id="accordionSidebar">
                     <!-- Sidebar - Brand -->
                     <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> -->
                     <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('asesor') ?>">
