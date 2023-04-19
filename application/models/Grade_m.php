@@ -6,6 +6,9 @@ class Grade_m extends CI_Model
 
     public function get_all_grade()
     {
+
+        $this->db->join('departement', 'departement.id_dep = grade.grade_section', 'left');
+         $this->db->order_by('id_dep', 'ASC');
         $query = $this->db->get('grade');
         return $query->result();
     }
@@ -15,6 +18,7 @@ class Grade_m extends CI_Model
         $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
         $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+       
         $query = $this->db->get('grade_kom');
         return $query->result();
     }

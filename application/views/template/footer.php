@@ -1,19 +1,22 @@
    <!-- Footer -->
-   </div>
-   <footer class="sticky-footer bg-white">
-     <div class="container my-auto">
-       <div class="copyright text-center my-auto">
-         <span>Copyright &copy; TEAM IT - BUMA SITE IPR - 2023</span>
+         </div>
 
-       </div>
-     </div>
-   </footer>
-   <!-- End of Footer -->
+                
+                <!-- /.container-fluid -->
 
-   </div>
-   <!-- End of Content Wrapper -->
+                <footer class="sticky-footer bg-white">
+                  <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                      <span>Copyright &copy; TEAM IT - BUMA SITE IPR - 2023</span>
+                    </div>
+                  </div>
+                </footer>
+                <!-- End of Footer -->
+                
+                
+              </div>
+              </div>
 
-   </div>
    <!-- End of Page Wrapper -->
 
    <!-- Scroll to Top Button-->
@@ -22,7 +25,8 @@
    </a>
 
    <!-- Logout Modal-->
-   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
      <div class="modal-dialog" role="document">
        <div class="modal-content">
          <div class="modal-header">
@@ -86,7 +90,8 @@
    <script src="<?= base_url('assets') ?>/js/demo/chart-area-demo.js"></script>
    <script>
      // Set new default font family and font color to mimic Bootstrap's default styling
-     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+     Chart.defaults.global.defaultFontFamily = 'Nunito',
+       '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
      Chart.defaults.global.defaultFontColor = '#858796';
 
      // Pie Chart Example

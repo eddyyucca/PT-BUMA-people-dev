@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Grade Kompetensi</a>
+                    <a href="<?= base_url('admin/create_kompetensi_grade') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Grade Kompetensi</a>
                     <hr>
                 </div>
                 <?php
@@ -90,4 +90,6 @@
             type: 'success'
         });
     </script>
+
+   
 <?php endif; ?>

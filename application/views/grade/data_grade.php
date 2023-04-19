@@ -31,6 +31,7 @@
                             <th>No</th>
                             <th>Nama Grade</th>
                             <th>Level Grade</th>
+                            <th>Nama Section</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_grade; ?></td>
                                 <td align="center"><?= $x->level_grade; ?></td>
+                                <td align="center"><?= $x->nama_dep; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_grade/') . $x->id_grade; ?>" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_grade/') . $x->id_grade; ?>" class="btn btn-primary">Edit</a>

@@ -1474,7 +1474,7 @@ class Admin extends CI_Controller
 	// end data_levelkompetensi
 
 	// Grade
-	public function grade()
+	public function data_grade()
 	{
 		$data['judul'] = 'Data Grade';
 		$data['nama'] = $this->session->userdata('nama');
@@ -1514,7 +1514,7 @@ class Admin extends CI_Controller
 		);
 		$this->db->insert('grade', $data);
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/grade');
+		return redirect('admin/data_grade');
 	}
 	public function proses_edit_grade($id_grade)
 	{
@@ -1526,14 +1526,14 @@ class Admin extends CI_Controller
 		$this->db->where('id_grade', $id_grade);
 		$this->db->update('grade', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/grade');
+		return redirect('admin/data_grade');
 	}
 	public function delete_grade($id_grade)
 	{
 		$this->db->where('id_grade', $id_grade);
 		$this->db->delete('grade');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/grade');
+		return redirect('admin/data_grade');
 	}
 	//end grade
 	// Grade
@@ -1549,12 +1549,14 @@ class Admin extends CI_Controller
 	}
 	public function create_kompetensi_grade()
 	{
-		$data['judul'] = 'Create Grade';
+		$data['judul'] = 'Create Grade Kompetensi';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
-		$data['dep'] = $this->departement_m->get_all_dep();
+		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['data'] = $this->grade_m->get_all_grade();
 		$this->load->view('template/header', $data);
-		$this->load->view('kompetensi_grade/kompetensi_create_grade', $data);
+		$this->load->view('kompetensi_grade/create_kompetensi_grade', $data);
 		$this->load->view('template/footer');
 	}
 	public function edit_kompetensi_grade($id_grade)
