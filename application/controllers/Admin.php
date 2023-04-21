@@ -1570,8 +1570,20 @@ class Admin extends CI_Controller
 		$this->load->view('kompetensi_grade/kompetensi_edit_grade', $data);
 		$this->load->view('template/footer');
 	}
-	public function proses_tambah_kompetensi_grade()
+	public function proses_tambah_grade_kompetensi()
 	{
+		$nilai = $this->input->post('nilai');
+		$random_number = rand(1,1000);
+		$date = date("dmY");
+		$kode = $date . $random_number;
+		
+		foreach ($nilai as $t) {
+			$data = array(
+			'nama_grade' => $this->input->post('nama_grade'),
+			'level_grade' => $this->input->post('level_grade'),
+			'grade_section' => $this->input->post('grade_section')
+		);
+		}
 		$data = array(
 			'nama_grade' => $this->input->post('nama_grade'),
 			'level_grade' => $this->input->post('level_grade'),

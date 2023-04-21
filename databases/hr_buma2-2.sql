@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 04, 2023 at 10:22 PM
+-- Generation Time: Apr 21, 2023 at 06:04 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -245,7 +245,13 @@ INSERT INTO `grade` (`id_grade`, `grade_section`, `nama_grade`, `level_grade`) V
 (4, '11', 'dada', 'G2'),
 (5, '11', 'sasa', 'G2'),
 (7, '11', 'sasas', 'G2'),
-(8, '11', 'sasas', 'G2');
+(8, '11', 'sasas', 'G2'),
+(9, '45', 's', 'G2'),
+(10, '10', 'ew', 'G1'),
+(11, '10', 'dddd dsd', 'G1'),
+(12, '10', 'COba 22', 'G1'),
+(13, '10', 'aaaa', 'G1'),
+(14, '10', 'aaa ', 'G1');
 
 -- --------------------------------------------------------
 
@@ -257,14 +263,14 @@ CREATE TABLE `grade_kom` (
   `id_grade_kom` int(11) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `tanggal_grade` varchar(20) NOT NULL,
-  `nilai` varchar(20) NOT NULL
+  `kode_nilai` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `grade_kom`
 --
 
-INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `tanggal_grade`, `nilai`) VALUES
+INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `tanggal_grade`, `kode_nilai`) VALUES
 (1, '10000132', '2023-03-27', '123');
 
 -- --------------------------------------------------------
@@ -362,7 +368,7 @@ CREATE TABLE `karyawan` (
 
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
 (1, 'Suwarno', '', '', '', '', '', '', '', '1', '1', '1', '10000132', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', ''),
-(2, 'Ambrosius Sani', '', '', '', '', '', '', '', '2', '2', '2', '10000272', '', '25f9e794323b453885f5181f1b624d0b', 'user', ''),
+(2, 'Ambrosius Sani', '', '', '', '', '', '', '', '2', '2', '2', '10000272', '', '25f9e794323b453885f5181f1b624d0b', 'admin', ''),
 (3, 'Misdi', '', '', '', '', '', '', '', '2', '2', '2', '10000318', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (4, 'Slamet Damis', '', '', '', '', '', '', '', '3', '3', '3', '10000404', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (5, 'Andi Setyawan', '', '', '', '', '', '', '', '4', '4', '4', '10000619', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -4088,7 +4094,8 @@ INSERT INTO `level_kom` (`id_lp`, `nilai_lp`, `lvl_jab`, `pk_level`) VALUES
 
 CREATE TABLE `nilai_grade` (
   `id_nilai_grade` int(11) NOT NULL,
-  `nilai_grade` int(20) NOT NULL
+  `nilai_grade` varchar(100) NOT NULL,
+  `grade` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -4382,7 +4389,7 @@ ALTER TABLE `departement`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `grade_kom`
