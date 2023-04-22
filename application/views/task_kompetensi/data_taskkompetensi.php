@@ -80,7 +80,7 @@
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $x->id_jab; ?>" class="btn btn-success">View Kompetensi</a>
+                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $x->id_jab; ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
                          <?php   }else{

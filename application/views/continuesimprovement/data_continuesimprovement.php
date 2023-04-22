@@ -57,9 +57,9 @@
                                         }
                                         ?>
                                 </td>
-                                <td>
-                                    <a href="<?= base_url("admin/delete_continuesimprovement/") . $x->tim ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url("admin/update_continuesimprovement/") . $x->id_ci . "/" . $x->pembuat ?>" class="btn btn-success">edit</a>
+                                <td align="center">
+                                    <a href="<?= base_url("admin/delete_continuesimprovement/") . $x->tim ?>" class="btn btn-danger"> <i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url("admin/update_continuesimprovement/") . $x->id_ci . "/" . $x->pembuat ?>" class="btn btn-success"> <i class="fas fa-edit"></i></a>
                                 </td>
 
                             </tr>

@@ -48,8 +48,8 @@
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= $x->nama; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_suggestionsystem/') . $x->id_ss; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/update_suggestionsystem/') . $x->id_ss; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_suggestionsystem/') . $x->id_ss; ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/update_suggestionsystem/') . $x->id_ss; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php   } ?>

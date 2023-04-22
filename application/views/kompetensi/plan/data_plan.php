@@ -45,8 +45,8 @@
                                     <?= $x->target_p ?>
                                 </td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_plan/') . $x->id_plan_t; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_plan/') . $x->id_plan_t; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_plan/') . $x->id_plan_t; ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/edit_plan/') . $x->id_plan_t; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php   } ?>

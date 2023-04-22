@@ -42,8 +42,8 @@
                                 <td><?= $x->j_kompetensi; ?></td>
                                 <td><?= $x->nama_plan; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_jenisplan/') . $x->id_plan; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_jenisplan/') . $x->id_plan; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="<?= base_url('admin/delete_jenisplan/') . $x->id_plan; ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/edit_jenisplan/') . $x->id_plan; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php   } ?>

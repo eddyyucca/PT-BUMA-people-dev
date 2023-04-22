@@ -43,7 +43,7 @@
                             <?php foreach ($data as $kar) : ?>
 
                                 <div class="col-12 col-sm-6 col-lg-3">
-                                    <a href="<?= base_url('asesor/view_karyawan/') . $kar->nik ?>">
+                                    <a href="<?= base_url('admin/view_karyawan/') . $kar->nik ?>">
                                         <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                             <!-- Team Thumb-->
                                             <div class="advisor_thumb">

@@ -64,7 +64,7 @@
                                 <td><?= $x->nama ?></td>
                                 <td><?= tgl_indo($x->tanggal_grade); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $x->nik; ?>" class="btn btn-success">View</a>
+                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $x->nik; ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
                          <?php   }else{

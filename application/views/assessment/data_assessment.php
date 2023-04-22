@@ -1,7 +1,12 @@
-<div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="container">
             <h6 class="m-0 font-weight-bold ">Data Assessment</h6>
         </div>
         <div class="card-body">
@@ -23,7 +28,7 @@
                         Data Sudah Di Buat !
                     </div>
                 <?php    } ?>
-                <table id="example" class="display" style="min-width: 845px">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                             <th>No</th>
                             <th>Asesor</th>
@@ -77,7 +82,7 @@
                                 <td><?= $x->nama_sec; ?></td>
                                 <td><?= tgl_indo($x->date_kom); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab ."/".$x->nik ?>" class="btn btn-success">View Assessment</a>
+                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab ."/".$x->nik ?>" class="btn btn-success"> <i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
                          <?php   }else{

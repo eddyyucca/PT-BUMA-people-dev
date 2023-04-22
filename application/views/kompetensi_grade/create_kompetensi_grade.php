@@ -1,7 +1,7 @@
 <body class="bg-gradient-success">
     <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000"
         data-pause="true">
-        <!-- <div class="container"> -->
+        <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="card o-hidden border-0 shadow-lg my-5 ">
@@ -25,7 +25,7 @@
                                                         <table class="table">
                                                             <tr>
                                                                 <td>Karyawan</td>
-                                                                <td><select name="xp" id="xp"
+                                                                <td><select name="nik" id="xp"
                                                                         class="form-control  selectpicker"
                                                                         data-live-search="true">
                                                                         <option value="">--PILIH karyawan--</option>
@@ -58,7 +58,7 @@
                                         <div class="card shadow mb-4">
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                    <table class="table table-striped-columns" id="dataTable" width="100%"
+                                                    <table class="table table-striped-columns" width="100%"
                                                         cellspacing="0">
                                                         <thead>
                                                             <tr>

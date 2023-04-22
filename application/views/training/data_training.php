@@ -85,8 +85,8 @@ function tanggal_indonesia($tanggal)
                                 <td><?= tanggal_indonesia($x->mulai_training) . " - " . tanggal_indonesia($x->akhir_training) ?></td>
                                 <td><?= $x->penyelenggara ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_training/') . $x->id_training; ?>" class="btn btn-danger">   <i class="fas fa-trash"></i></a>
-                                    <a href="<?= base_url('admin/edit_training/') . $x->id_training; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="<?= base_url('admin/delete_training/') . $x->id_training; ?>" class="btn btn-danger">  <i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/edit_training/') . $x->id_training; ?>" class="btn btn-primary"> <i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         <?php   } ?>
