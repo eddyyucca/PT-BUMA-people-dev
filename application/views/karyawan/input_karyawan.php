@@ -1,6 +1,13 @@
 
                         <div class="card">
                             <div class="card-header">
+                                  <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin/data_karyawan/') ?>">User</a></li>
+              <li class="breadcrumb-item active" aria-current="">Add Profile</li>
+            </ol>
+          </nav>
                     <?= validation_errors() ?>
                     <form action="<?= base_url('admin/proses_tambah_karyawan')  ?>" method="POST" enctype="multipart/form-data">
                     <table class="table">

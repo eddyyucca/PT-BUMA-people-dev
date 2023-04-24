@@ -71,7 +71,7 @@
                     <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> -->
                     <a class="sidebar-brand d-flex avbar-light bg-white topbar mb-4 static-top shadow align-items-center justify-content-center" href="<?= base_url('admin') ?>">
                         <div class="sidebar-brand-icon">
-                            <img src="<?= base_url('assets/logo.png'); ?>" width="90" height="35" alt="BUMA">
+                            <img src="<?= base_url('assets/logo.png'); ?>" width="75" height="30" alt="BUMA">
                         </div>
                         <div class="sidebar-brand-text mx-3"></div>
                     </a>
@@ -183,9 +183,7 @@
 
                                 <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                                 <li class="nav-item dropdown no-arrow d-sm-none">
-                                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-search fa-fw"></i>
-                                    </a>
+                                    
                                     <!-- Dropdown - Messages -->
                                     <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                         <form class="form-inline mr-auto w-100 navbar-search">

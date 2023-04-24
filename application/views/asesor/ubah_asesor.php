@@ -1,9 +1,16 @@
 <!-- Begin Page Content -->
 <div class="container">
     <!-- Page Heading -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin/data_asesor/') ?>">User</a></li>
+              <li class="breadcrumb-item active" aria-current="">add Asesor</li>
+            </ol>
+          </nav>
     <div class="card">
         <div class="card-header">
-            <a href="<?= base_url('admin/data_asesor') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+           <b>Add Asesor</b>
         </div>
         <div class="card-body">
             <div class="row">

@@ -15,9 +15,9 @@ class Login extends CI_Controller
         $data['data'] = false;
         $data['pesan'] = $this->session->flashdata('pesan');
         $data['judul'] = 'Login';
-        // $this->load->view('auth/template_auth/header', $data);
+        $this->load->view('auth/template_auth/header', $data);
         $this->load->view('auth/index', $data);
-        // $this->load->view('auth/template_auth/footer', $data);
+        $this->load->view('auth/template_auth/footer', $data);
     }
 
     public function auth()

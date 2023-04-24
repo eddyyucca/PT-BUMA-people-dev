@@ -1559,6 +1559,7 @@ class Admin extends CI_Controller
 		$this->load->view('kompetensi_grade/create_kompetensi_grade', $data);
 		$this->load->view('template/footer');
 	}
+	
 	public function edit_kompetensi_grade($id_grade)
 	{
 		$data['judul'] = 'Update Grade';
@@ -1576,24 +1577,24 @@ class Admin extends CI_Controller
 		$random_number = rand(1,1000);
 		$date = date("dmY");
 		$kode = $date . $random_number;
-		
-		// foreach ($nilai as $t) {
-			$data = array(
+		// var_dump($nilai);
+		$data = array(
 			'nik' => $this->input->post('nik'),
 			'tanggal_grade' => $this->input->post('tanggal'),
 			'kode_nilai' => $kode,
 		);
 		$this->db->insert('grade_kom', $data);
 		$this->session->set_flashdata('pesan', 'buat');
-		// }
-		// $data = array(
-		// 	'nama_grade' => $this->input->post('nama_grade'),
-		// 	'level_grade' => $this->input->post('level_grade'),
-		// 	'grade_section' => $this->input->post('grade_section')
-		// );
-		// $this->db->insert('grade', $data);
-		// $this->session->set_flashdata('pesan', 'buat');
-		// return redirect('admin/kompetensi_grade');
+		foreach ($nilai as $t) {
+			$data = array(
+				'nilai_grade' => "1",
+				'grade' => $t,
+				'grade_kode' => $kode,
+			);
+			$this->db->insert('nilai_grade', $data);
+			$this->session->set_flashdata('pesan', 'buat');
+		}
+		return redirect('admin/kompetensi_grade');
 	}
 	public function proses_edit_kompetensi_grade($id_grade)
 	{

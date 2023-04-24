@@ -37,6 +37,7 @@ class Grade_m extends CI_Model
             return 0;
         }
     }
+    
 }
 
 /* End of file grade_m.php */

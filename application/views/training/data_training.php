@@ -27,6 +27,12 @@ function tanggal_indonesia($tanggal)
 
 ?>
 <div class="container-fluid">
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="">Traning</li>
+            </ol>
+          </nav>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

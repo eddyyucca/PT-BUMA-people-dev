@@ -1,4 +1,11 @@
 <div class="container-fluid">
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin/training/') ?>">Training</a></li>
+              <li class="breadcrumb-item active" aria-current="">Create Training</li>
+            </ol>
+          </nav>
     <div class="card">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold ">Create Training</h6>

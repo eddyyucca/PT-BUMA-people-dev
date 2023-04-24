@@ -1,4 +1,11 @@
 <div class="container-fluid">
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="">Suggestion System</a></li>
+              <!-- <li class="breadcrumb-item active" aria-current="">Create Training</li> -->
+            </ol>
+          </nav>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
