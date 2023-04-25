@@ -16,43 +16,37 @@
                     <?= validation_errors() ?>
                     <form action="<?= base_url('admin/nilai_grade_kompetensi')  ?>" method="POST"
                         enctype="multipart/form-data">
-                 <table class="table table-bordered" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Grade</th>
-                            <th>Level Grade</th>
-                            <th>Nama Section</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Grade</th>
+                                    <th>Level Grade</th>
+                                    <th>Nama Section</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                         $nomor = 1;
                         foreach ($data as $x) { ?>
-                            <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama_grade; ?></td>
-                                <td align="center"><?= $x->level_grade; ?></td>
-                                <td align="center"><?= $x->nama_dep; ?></td>
-                                <td align="center">
-                                   <input
-      type="checkbox"
-      id="subscribeNews"
-      name="nilai"
-      value="<?= $x->id_grade ?>" />
-                                </td>
-                            </tr>
-                        <?php   } ?>
-                    </tbody>
-                </table>
-                <div class="form-group">
-    
+                                <tr>
+                                    <td><?= $nomor++; ?></td>
+                                    <td><?= $x->nama_grade; ?></td>
+                                    <td align="center"><?= $x->level_grade; ?></td>
+                                    <td align="center"><?= $x->nama_dep; ?></td>
+                                    <td align="center">
+                                        <input type="checkbox" id="subscribeNews" name="nilai"
+                                            value="<?= $x->id_grade ?>" />
+                                    </td>
+                                </tr>
+                                <?php   } ?>
+                            </tbody>
+                        </table>
+                        <div class="form-group">
                             <button class="btn btn-success">Simpan</button>
-    
-    
                         </div>
-            </div>
+                </div>
                 </form>
             </div>
         </div>
