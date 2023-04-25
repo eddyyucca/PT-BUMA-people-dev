@@ -1,6 +1,11 @@
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="card shadow mb-4">
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="">Task Kompetensi</li>
+        </ol>
+    </nav>
+    <div class="card">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
         </div>

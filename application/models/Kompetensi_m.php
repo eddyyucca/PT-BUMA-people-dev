@@ -124,6 +124,15 @@ class Kompetensi_m extends CI_Model
         $output = '<option value="' . $query->id_jab . '">' . $query->nama_jab . '</option>';
         return $output;
     }
+    function get_sec_opt($nik)
+    {
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $this->db->where('nik', $nik);
+        $query = $this->db->get('karyawan')->row();
+
+        $output = '<option value="' . $query->id_dep . '">' . $query->nama_dep . '</option>';
+        return $output;
+    }
 }
 
 /* End of file Kompetensi_m.php */

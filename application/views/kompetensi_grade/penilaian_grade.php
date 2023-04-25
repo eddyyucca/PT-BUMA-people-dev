@@ -16,42 +16,43 @@
                     <?= validation_errors() ?>
                     <form action="<?= base_url('admin/nilai_grade_kompetensi')  ?>" method="POST"
                         enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Karyawan</label>
-                            <select name="nik" id="xp" class="form-control  selectpicker" data-live-search="true">
-                                <option value="">--PILIH karyawan--</option>
-                                <?php foreach ($kar as $karyawan) { ?>
-                                <option value="<?= $karyawan->nik ?>">
-                                    <?= $karyawan->nama ?> |
-                                    <?= $karyawan->nik ?></option>
-                                <?php } ?>
-                            </select>
-                            <div class="form-group">
-                                <label>Jabatan Level</label>
-                                <select name="xjab" id="xjab" class="form-control">
-                                    <?php
-                                                                             ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Section</label>
-                                <select name="section" id="section" class="form-control">
-                                    <?php
-                                                                             ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal</label>
-                                <input type="date" name="tanggal" class="form-control" required placeholder="Tanggal">
-                            </div>
-                            <div class="form-group">
-
-                                <button class="btn btn-success">Simpan</button>
-
-
-                            </div>
+                 <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Grade</th>
+                            <th>Level Grade</th>
+                            <th>Nama Section</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $nomor = 1;
+                        foreach ($data as $x) { ?>
+                            <tr>
+                                <td><?= $nomor++; ?></td>
+                                <td><?= $x->nama_grade; ?></td>
+                                <td align="center"><?= $x->level_grade; ?></td>
+                                <td align="center"><?= $x->nama_dep; ?></td>
+                                <td align="center">
+                                   <input
+      type="checkbox"
+      id="subscribeNews"
+      name="nilai"
+      value="<?= $x->id_grade ?>" />
+                                </td>
+                            </tr>
+                        <?php   } ?>
+                    </tbody>
+                </table>
+                <div class="form-group">
+    
+                            <button class="btn btn-success">Simpan</button>
+    
+    
                         </div>
-                </div>
+            </div>
                 </form>
             </div>
         </div>
@@ -104,18 +105,28 @@
         });
     });
     $(document).ready(function () {
-        $('#xp').change(function () {
-            var nik = $(this).val();
-            $.ajax({
-                url: '<?= base_url(); ?>admin/get_sec',
-                method: 'POST',
-                data: {
-                    nik: nik
+        var table = $('#example').DataTable({
+            'ajax': 'https://gyrocode.github.io/files/jquery-datatables/arrays_id.json',
+            'columnDefs': [{
+                'targets': 0,
+                'render': function (data, type, row,
+                    meta) {
+                    if (type === 'display') {
+                        data =
+                            '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
+                    }
+
+                    return data;
                 },
-                success: function (data) {
-                    $('#section').html(data)
+                'checkboxes': {
+                    'selectRow': true,
+                    'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
                 }
-            });
+            }],
+            'select': 'multi',
+            'order': [
+                [1, 'asc']
+            ]
         });
     });
 </script>

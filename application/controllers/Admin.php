@@ -783,6 +783,11 @@ class Admin extends CI_Controller
 		$nik = $this->input->post('nik');
 		echo $this->kompetensi_m->get_jab_opt($nik);
 	}
+	function get_sec()
+	{
+		$nik = $this->input->post('nik');
+		echo $this->kompetensi_m->get_sec_opt($nik);
+	}
 	function get_plan()
 	{
 		$id_kom = $this->input->post('id');
@@ -1571,30 +1576,41 @@ class Admin extends CI_Controller
 		$this->load->view('kompetensi_grade/kompetensi_edit_grade', $data);
 		$this->load->view('template/footer');
 	}
-	public function proses_tambah_grade_kompetensi()
+	public function nilai_grade_kompetensi()
 	{
-		$nilai = $this->input->post('nilai');
-		$random_number = rand(1,1000);
-		$date = date("dmY");
-		$kode = $date . $random_number;
-		// var_dump($nilai);
-		$data = array(
-			'nik' => $this->input->post('nik'),
-			'tanggal_grade' => $this->input->post('tanggal'),
-			'kode_nilai' => $kode,
-		);
-		$this->db->insert('grade_kom', $data);
-		$this->session->set_flashdata('pesan', 'buat');
-		foreach ($nilai as $t) {
-			$data = array(
-				'nilai_grade' => "1",
-				'grade' => $t,
-				'grade_kode' => $kode,
-			);
-			$this->db->insert('nilai_grade', $data);
-			$this->session->set_flashdata('pesan', 'buat');
-		}
-		return redirect('admin/kompetensi_grade');
+		
+		// $nilai = $this->input->post('nilai');
+		// $random_number = rand(1,1000);
+		// $date = date("dmY");
+		// $kode = $date . $random_number;
+		// // var_dump($nilai);
+		// $data = array(
+		// 	'nik' => $this->input->post('nik'),
+		// 	'tanggal_grade' => $this->input->post('tanggal'),
+		// 	'kode_nilai' => $kode,
+		// );
+		// $this->db->insert('grade_kom', $data);
+		// $this->session->set_flashdata('pesan', 'buat');
+		// foreach ($nilai as $t) {
+		// 	$data = array(
+		// 		'nilai_grade' => "1",
+		// 		'grade' => $t,
+		// 		'grade_kode' => $kode,
+		// 	);
+		// 	$this->db->insert('nilai_grade', $data);
+		// 	$this->session->set_flashdata('pesan', 'buat');
+		// }
+		// return redirect('admin/kompetensi_grade');
+		$sec_grade = $this->input->post('section');
+		$data['judul'] = 'Create Grade Kompetensi';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['kompetensi'] = $this->kompetensi_m->get_all_kom();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['data'] = $this->grade_m->get_grade_sec($sec_grade);
+		$this->load->view('template/header', $data);
+		$this->load->view('kompetensi_grade/penilaian_grade', $data);
+		$this->load->view('template/footer');
 	}
 	public function proses_edit_kompetensi_grade($id_grade)
 	{
