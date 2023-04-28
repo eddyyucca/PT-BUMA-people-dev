@@ -18,7 +18,7 @@
                         enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Karyawan</label>
-                            <select name="nik" id="xp" class="form-control  selectpicker" data-live-search="true">
+                            <select name="nik_kar" id="xp" class="form-control  selectpicker" data-live-search="true">
                                 <option value="">--PILIH karyawan--</option>
                                 <?php foreach ($kar as $karyawan) { ?>
                                 <option value="<?= $karyawan->nik ?>">
@@ -46,9 +46,7 @@
                             </div>
                             <div class="form-group">
 
-                                <button class="btn btn-success">Simpan</button>
-
-
+                                <button class="btn btn-success">Selanjutnya</button>
                             </div>
                         </div>
                 </div>

@@ -14,8 +14,11 @@
             <div class="row">
                 <div class="container-fluid">
                     <?= validation_errors() ?>
-                    <form action="<?= base_url('admin/nilai_grade_kompetensi')  ?>" method="POST"
+                    <form action="<?= base_url('admin/penilaian_grade')  ?>" method="POST"
                         enctype="multipart/form-data">
+                        <input type="hidden" name="nik_kar" value="<?= $nik_kar ?>">
+                        <input type="hidden" name="tanggal" value="<?= $tanggal ?>">
+                        <input type="hidden" name="section" value="<?= $section ?>">
                         <table class="table table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
@@ -36,7 +39,7 @@
                                     <td align="center"><?= $x->level_grade; ?></td>
                                     <td align="center"><?= $x->nama_dep; ?></td>
                                     <td align="center">
-                                        <input type="checkbox" id="subscribeNews" name="nilai"
+                                        <input type="checkbox" id="subscribeNews" name="nilai[]"
                                             value="<?= $x->id_grade ?>" />
                                     </td>
                                 </tr>

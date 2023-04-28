@@ -1,8 +1,14 @@
 <div class="container-fluid">
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="">Section</li>
+        </ol>
+    </nav>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold ">Data <Section></Section>
+            <h6 class="m-0 font-weight-bold ">Data Section<Section></Section>
             </h6>
         </div>
         <div class="card-body">
