@@ -174,11 +174,15 @@ class Admin extends CI_Controller
 	public function view_karyawan($nik)
 	{
 		// dep,sec,jab
-
 		$data['data'] = $this->karyawan_m->get_view_kar($nik);
 		$data['judul'] = 'Profil Karyawan';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data_training'] = $this->training_m->get_all_tra_user($nik);
+		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
+		$data['tk'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/view_karyawan');
 		$this->load->view('template/footer');

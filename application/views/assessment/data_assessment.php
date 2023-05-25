@@ -5,11 +5,6 @@
             <h6 class="m-0 font-weight-bold ">Data Kompetensi</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <div class="container">
-            <h6 class="m-0 font-weight-bold ">Data Assessment</h6>
-        </div>
-        <div class="card-body">
                                 <div class="table-responsive">
                 <?php
                 if ($this->session->flashdata('pesan') == "hapus") { ?>

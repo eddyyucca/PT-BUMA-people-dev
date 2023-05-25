@@ -14,6 +14,18 @@ class Training_m extends CI_Model
         $query = $this->db->get('training');
         return $query->result();
     }
+    public function get_all_tra_user($nik)
+    {
+        $this->db->join('karyawan', 'karyawan.nik = training.karyawan', 'left');
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+
+$this->db->where('karyawan', $nik);
+
+        $query = $this->db->get('training');
+        return $query->result();
+    }
     public function get_row_tra($id_training)
     {
         $this->db->where('id_training', $id_training);

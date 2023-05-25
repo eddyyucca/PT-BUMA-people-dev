@@ -18,7 +18,6 @@
                     <hr>
                 </div>
                 <?php
-
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
                     <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
                     </div>
