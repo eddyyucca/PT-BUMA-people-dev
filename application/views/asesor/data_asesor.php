@@ -77,7 +77,6 @@
                                                 <!-- Team Details-->
                                                 <div class=" text-secondary single_advisor_details_info">
                                                     <h6><?= $kar->nama ?></h6>
-
                                                     <p class="designation"><?= $kar->nama_jab  ?> - <?= $kar->nama_dep ?></p>
                                                 </div>
                                             </div>

@@ -69,7 +69,8 @@
                                         if ($x->id_grade == $sc->grade) {
                                         echo "Lulus";
                                         }
-                                  }  ?> </td>
+                                    }
+                                      ?> </td>
                         </tr>
                         <?php   } ?>
                     </tbody>

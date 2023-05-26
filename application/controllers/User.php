@@ -22,10 +22,11 @@ class User extends CI_Controller
         $this->load->model('assessment_m');
         $this->load->model('kompetensi_m');
         $this->load->model('task_kompetensi_m');
+        $this->load->model('training_m');
         $level_akun = $this->session->userdata('level');
-        // if ($level_akun != "user") {
-        //     $this->session->set_flashdata('login', 'n_login');
-        //     return redirect('login');
+        if ($level_akun != "user") {
+            $this->session->set_flashdata('login', 'n_login');
+            return redirect('login');
     }
 
 
@@ -51,9 +52,12 @@ class User extends CI_Controller
 
         $data['judul'] = 'Profil Karyawan';
         $data['nama'] = $this->session->userdata('nama');
-        $data['assessment'] = $this->kompetensi_m->get_row_level_kar($id_jab);
-        $data['suggestionsystem'] = $this->suggestionsystem_m->get_all_ss_user($nik);
-        $data['continuesimprovement'] = $this->ci_m->get_all_ci($nik);
+ 
+       $data['data_training'] = $this->training_m->get_all_tra_user($nik);
+		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
+		$data['tk'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
+
         $this->load->view('template_user/header', $data);
         $this->load->view('user/profil/data_karyawan');
         $this->load->view('template_user/footer');

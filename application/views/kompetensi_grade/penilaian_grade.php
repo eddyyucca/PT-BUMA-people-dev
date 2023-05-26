@@ -47,7 +47,14 @@
                             </tbody>
                         </table>
                         <div class="form-group">
+                            <?php 
+                            if ($data == false) {
+                                
+                            }else{ ?>
+
                             <button class="btn btn-success">Simpan</button>
+                            <?php }
+                            ?>
                         </div>
                 </div>
                 </form>

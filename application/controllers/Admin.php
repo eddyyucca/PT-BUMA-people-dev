@@ -26,10 +26,10 @@ class Admin extends CI_Controller
 		$this->load->model('grade_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
-		// if ($level_akun != "admin") {
-		// 	$this->session->set_flashdeata('login', 'n_login');
-		// 	return redirect('login');
-		// }
+		if ($level_akun != "admin") {
+			$this->session->set_flashdeata('login', 'n_login');
+			return redirect('login');
+		}
 	}
 
 
