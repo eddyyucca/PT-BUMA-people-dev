@@ -1,28 +1,29 @@
-<body class="bg-gradient-success">
-    <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="card o-hidden border-0 shadow-lg my-5 ">
-                        <div class="card-body p-0">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row">
-                                <div class="col-lg">
-                                    <div class="p-5">
-                                        <!-- Page Heading -->
-                                        <div class="card">
-                                            <div class="card-header py-3">
+<div class="container-fluid">
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+            <li class="breadcrumb-item active"><a href="<?= base_url('admin/section') ?>">Section</a></li>
+            <li class="breadcrumb-item active" aria-current="">Update Section</li>
+        </ol>
+    </nav> 
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
                                                 <h6 class="m-0 font-weight-bold ">Edit Departement</h6>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="container-fluid">
+                                                <h6 class="m-0 font-weight-bold ">Edit Section</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_edit_dep/') . $data->id_dep ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_sec/') . $data->id_sec ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Nama Departement</td>
-                                                                    <td><input type="text" name="nama_dep" class="form-control" required placeholder="Nama Departement" value="<?= $data->nama_dep ?>"></td>
+                                                                    <td><input type="text" name="nama_sec" class="form-control" required placeholder="Nama Section" value="<?= $data->nama_sec ?>"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>

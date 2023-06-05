@@ -46,7 +46,7 @@
                                
                                 <?php  
                                 $model = $this->load->model('Assessment_m');
-                                $x_assessment = $this->assessment_m->get_assessment($nik,$x->id_plan_t);
+                                $x_assessment = $this->assessment_m->get_assessment($nikkar,$x->id_plan_t);
                                  ?>  
                                 <td align="center"> 
                                     <?php
@@ -60,8 +60,8 @@
                                 <td align="center">
                                 <?php
                                    if ($x_assessment == true) { ?>
-                                    <a href="<?= base_url('admin/nilai_assessment/') . $x_assessment->id_am."/".$nik;?>" class="btn btn-danger">Hapus</a>
-                                       <a href="<?= base_url('admin/edit_plan/') . $x_assessment->id_am."/".$nik; ?>" class="btn btn-primary">Edit</a>  
+                                    <a href="<?= base_url('admin/nilai_assessment/') . $x_assessment->id_am."/".$nikkar;?>" class="btn btn-danger">Hapus</a>
+                                       <a href="<?= base_url('admin/edit_plan/') . $x_assessment->id_am."/".$nikkar; ?>" class="btn btn-primary">Edit</a>  
                                   <? }elseif($x_assessment == false){?>
                                     
                                  <?php  }
@@ -70,7 +70,7 @@
                                 <?php
                                     if ($x_assessment == true) { 
                                     }elseif($x_assessment == false){?>
-                                        <a href="<?= base_url('admin/create_nilaiassessment/') . $nik ."/". $x->id_plan_t; ?>" class="btn btn-primary">Tambah Nilai</a>
+                                        <a href="<?= base_url('admin/create_nilaiassessment/') . $nikkar ."/". $x->id_plan_t; ?>" class="btn btn-primary">Tambah Nilai</a>
  
                                   <?php  }
                                         ?>

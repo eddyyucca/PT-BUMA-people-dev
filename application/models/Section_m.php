@@ -11,7 +11,7 @@ class Section_m extends CI_Model
     }
     public function get_row_sec($id_section)
     {
-        $this->db->where('id_section', $id_section);
+        $this->db->where('id_sec', $id_section);
         $query = $this->db->get('section');
         return $query->row();
     }

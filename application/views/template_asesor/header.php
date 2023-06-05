@@ -128,6 +128,11 @@
                             <i class="fas fa-tasks"></i>
                             <span>Assessment</span></a>
                     </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('asesor/kompetensi_grade') ?>">
+                            <i class="fas fa-tasks"></i>
+                            <span>Kompetensi Grade</span></a>
+                    </li>
 
                     <!-- Sidebar Toggler (Sidebar) -->
                     <div class="text-center d-none d-md-inline">

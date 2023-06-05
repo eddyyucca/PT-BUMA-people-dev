@@ -14,8 +14,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                class="rounded-circle" width="150">
+                            <?php if ($data->foto == false) { ?>
+                                                    <img src="<?= base_url('assets') ?>/profil_default.png" class="rounded" width="150" height="150" alt="Foto Profil">
+                                                <?php  } elseif ($data->foto == true) { ?>
+
+                                                    <img src="<?= base_url('assets/foto_profil/') . $data->foto ?>" class="rounded" width="150" height="150" alt="Foto Profil">
+                                                <?php  } ?>
                             <div class="mt-3">
                                 <h4><?= $data->nama ?></h4>
                                 <p class="text-secondary mb-1"> <?= $data->nama_jab ?></p>

@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('admin/kompetensi_grade') ?>">Grade Kompetensi</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('asesor') ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('asesor/kompetensi_grade') ?>">Grade Kompetensi</a></li>
             <li class="breadcrumb-item active" aria-current="">Nilai Grade Kompetensi</a></li>
         </ol>
     </nav>

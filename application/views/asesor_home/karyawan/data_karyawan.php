@@ -1,16 +1,20 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="card-body">
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="">Data Karyawan</li>
+            </ol>
+          </nav>
         <div class="card shadow mb-4">
             <div class="card-header">
                 <b>Data Karyawan</b>
             </div>
             <div class="card-body">
-
                 <div class="row">
                     <!-- foreach data karyawan -->
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
                     <div class="container">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -35,7 +39,6 @@
                         <div class="row justify-content-center">
                             <div class="col-12 col-sm-8 col-lg-6">
                                 <!-- Section Heading-->
-
                             </div>
                         </div>
                         <div class="row">

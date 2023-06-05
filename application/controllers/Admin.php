@@ -26,10 +26,10 @@ class Admin extends CI_Controller
 		$this->load->model('grade_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
-		if ($level_akun != "admin") {
-			$this->session->set_flashdeata('login', 'n_login');
-			return redirect('login');
-		}
+		// if ($level_akun != "admin") {
+		// 	// $this->session->set_flashdeata('login', 'n_login');
+		// 	return redirect('login');
+		// }
 	}
 
 
@@ -444,7 +444,7 @@ class Admin extends CI_Controller
 	public function proses_edit_sec($id_sec)
 	{
 		$data = array(
-			'nama_section' => $this->input->post('nama_section')
+			'nama_sec' => $this->input->post('nama_sec')
 		);
 		$this->db->where('id_sec', $id_sec);
 		$this->db->update('section', $data);
@@ -1122,9 +1122,8 @@ class Admin extends CI_Controller
 	}
 	public function create_assessment($id_jab, $nik)
 	{
-
 		$data['judul'] = 'Data assessment';
-		$data['nik'] = $nik;
+		$data['nikkar'] = $nik;
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->kompetensi_m->get_row_level_kar($id_jab);
