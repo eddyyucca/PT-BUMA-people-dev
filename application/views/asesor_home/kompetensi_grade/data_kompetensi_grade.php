@@ -70,8 +70,8 @@
                                 <td><?= $x->nama ?></td>
                                 <td><?= tgl_indo($x->tanggal_grade); ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/view_penilaian_grade/') . $x->kode_nilai ."/".$x->grade_sc ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                                    <a href="<?= base_url('admin/delete_kompetensi_grade_penilaian/') . $x->kode_nilai; ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="<?= base_url('asesor/view_penilaian_grade/') . $x->kode_nilai ."/".$x->grade_sc ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                                    <a href="<?= base_url('asesor/delete_kompetensi_grade_penilaian/') . $x->kode_nilai; ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                          <?php   }else{

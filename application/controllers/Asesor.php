@@ -988,7 +988,7 @@ class Asesor extends CI_Controller
 		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->grade_m->get_all_grade_kom();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('kompetensi_grade/data_kompetensi_grade', $data);
+		$this->load->view('asesor_home/kompetensi_grade/data_kompetensi_grade', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function create_kompetensi_grade()
@@ -1000,7 +1000,7 @@ class Asesor extends CI_Controller
 		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$data['data'] = $this->grade_m->get_all_grade();
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('kompetensi_grade/create_kompetensi_grade', $data);
+		$this->load->view('asesor_home/kompetensi_grade/create_kompetensi_grade', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	
@@ -1012,7 +1012,7 @@ class Asesor extends CI_Controller
 
 		$data['data'] = $this->grade_m->get_row_grade($id_grade);
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('kompetensi_grade/kompetensi_edit_grade', $data);
+		$this->load->view('asesor_home/kompetensi_grade/kompetensi_edit_grade', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function view_penilaian_grade($grade_kode,$grade_sc)
@@ -1024,7 +1024,7 @@ class Asesor extends CI_Controller
 		$data['data'] = $this->grade_m->get_all_grade_section($grade_sc);
 		$data['data_sc'] = $this->grade_m->get_sc_grade($grade_kode);
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('kompetensi_grade/view_penilaian_grade', $data);
+		$this->load->view('asesor_home/kompetensi_grade/view_penilaian_grade', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function nilai_grade_kompetensi()
@@ -1041,7 +1041,7 @@ class Asesor extends CI_Controller
 		$data['data'] = $this->grade_m->get_grade_sec($sec_grade);
 		$data['get_sec'] = $this->grade_m->get_grade_sec($sec_grade);
 		$this->load->view('template_asesor/header', $data);
-		$this->load->view('kompetensi_grade/penilaian_grade', $data);
+		$this->load->view('asesor_home/kompetensi_grade/penilaian_grade', $data);
 		$this->load->view('template_asesor/footer');
 	}
 	public function penilaian_grade()
@@ -1067,7 +1067,7 @@ class Asesor extends CI_Controller
 			$this->db->insert('nilai_grade', $data);
 			$this->session->set_flashdata('pesan', 'buat');
 		}
-		return redirect('admin/kompetensi_grade');
+		return redirect('asesor/kompetensi_grade');
 	}
 	public function proses_edit_kompetensi_grade($id_grade)
 	{
@@ -1079,14 +1079,14 @@ class Asesor extends CI_Controller
 		$this->db->where('id_grade', $id_grade);
 		$this->db->update('grade', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/kompetensi_grade');
+		return redirect('asesor/kompetensi_grade');
 	}
 	public function delete_kompetensi_grade($id_grade)
 	{
 		$this->db->where('id_grade', $id_grade);
 		$this->db->delete('grade');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/kompetensi_grade');
+		return redirect('asesor/kompetensi_grade');
 	}
 	public function delete_kompetensi_grade_penilaian($kode_nilai)
 	{
@@ -1095,7 +1095,7 @@ class Asesor extends CI_Controller
 		$this->db->where('grade_kode', $kode_nilai);
 		$this->db->delete('nilai_grade');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/kompetensi_grade');
+		return redirect('asesor/kompetensi_grade');
 	}
 	//end grade
 }

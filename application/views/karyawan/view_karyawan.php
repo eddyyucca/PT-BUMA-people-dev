@@ -131,7 +131,7 @@
                                 <h6 class="mb-0">Jenis Kelamin</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= $data->tempat ?> - <?= $data->jk ?>
+                                <?= $data->jk ?>
                             </div>
                         </div>
                         <hr>
@@ -140,7 +140,7 @@
                                 <h6 class="mb-0">Agama</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= $data->agama ?> - <?= $data->jk ?>
+                                <?= $data->agama ?> 
                             </div>
                         </div>
                         <hr>
@@ -348,7 +348,7 @@
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold ">Kompetensi<Section></Section>
+                        <h6 class="m-0 font-weight-bold ">Assessment<Section></Section>
                         </h6>
                     </div>
                     <div class="card-body">
@@ -403,63 +403,6 @@
             </div>
         </div>
         <!-- ki -->
-         <div class="row gutters-sm">
-            <div class="col-md-12 mb-3">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold ">Kompetensi<Section></Section>
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Asesor</th>
-                            <th>Karyawan</th>
-                            <th>Jabatan</th>
-                            <th>Section</th>
-                            <th>Tanggal</th>
-                            <th>View Kompetensi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        
-                        $nomor = 1;
-                        foreach ($tk as $xtk) { 
-                            if ($xtk->date_kom == true) { ?>
-                                <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td>
-                                <?php  
-                                $model = $this->load->model('karyawan_m');
-                                $asesor = $this->karyawan_m->get_row_nik($xtk->asesor);
-                                 ?>      
-                                <?= $asesor->nama ?>
-                                <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
-                            </td>
-                                <td><?= $xtk->nama; ?>
-                                <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
-                            </td>
-                                <td><?= $xtk->nama_jab; ?></td>
-                                <td><?= $xtk->nama_sec; ?></td>
-                                <td><?= tanggal_indonesia($xtk->date_kom); ?></td>
-                              <td align="center">
-                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $xtk->id_jab; ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                                </td>
-                            </tr>
-                         <?php   }else{
-
-                            }
-                             } ?>
-                    </tbody>
-                </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </div>

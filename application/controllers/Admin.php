@@ -193,8 +193,13 @@ class Admin extends CI_Controller
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
 		$data['data'] = $this->karyawan_m->get_view_kar($nik);
+		
+		$data['dep'] = $this->departement_m->get_all_dep();
+		$data['sec'] = $this->section_m->get_all_sec();
+		$data['jab'] = $this->jabatan_m->get_all_jab();
+
 		$this->load->view('template/header', $data);
-		$this->load->view('karyawan/edit_karyawan');
+		$this->load->view('karyawan/edit_karyawan', $data);
 		$this->load->view('template/footer');
 	}
 	public function proses_tambah_karyawan()
@@ -238,10 +243,19 @@ class Admin extends CI_Controller
 	}
 	public function proses_edit_karyawan($nik)
 	{
-		$this->form_validation->set_rules('nik', 'NIK', 'required|is_unique[karyawan.nik]');
-		if ($this->form_validation->run() === FALSE) {
-			$this->edit_karyawan($nik);
-		} else {
+		$config['upload_path']   = './assets/foto_profil/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			// $config['encrypt_name'] = TRUE;
+			$config['file_name'] = $this->input->post('nik');
+			//$config['max_size']      = 100; 
+			//$config['max_width']     = 1024; 
+			//$config['max_height']    = 768;  
+
+			$this->load->library('upload', $config);
+			// script upload file 1
+			$this->upload->do_upload('foto');
+			$file1 = $this->upload->data();
+	
 			unlink(base_url('assets/foto_profil/') . $nik->foto);
 			$data = array(
 				'nik' => $this->input->post('nik'),
@@ -263,7 +277,7 @@ class Admin extends CI_Controller
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
 			return redirect('admin/data_karyawan');
-		}
+		
 	}
 	public function import()
 	{
