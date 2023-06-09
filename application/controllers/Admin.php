@@ -255,8 +255,7 @@ class Admin extends CI_Controller
 			// script upload file 1
 			$this->upload->do_upload('foto');
 			$file1 = $this->upload->data();
-	
-			unlink(base_url('assets/foto_profil/') . $nik->foto);
+			if ($file1 == true) {
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -270,14 +269,35 @@ class Admin extends CI_Controller
 				'section' => $this->input->post('section'),
 				'jabatan' => $this->input->post('jabatan'),
 				'departement' => $this->input->post('departement'),
-				'foto' => $this->input->post('foto'),
 				'level' => "user",
 			);
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
 			return redirect('admin/data_karyawan');
-		
+			}else{
+					unlink(base_url('assets/foto_profil/') . $nik->foto);
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+				'foto' => $file1["orig_name"],
+			);
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('admin/data_karyawan');
+			}
+			// var_dump($file1);
 	}
 	public function import()
 	{

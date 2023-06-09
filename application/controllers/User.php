@@ -62,10 +62,84 @@ class User extends CI_Controller
         $this->load->view('user/profil/data_karyawan');
         $this->load->view('template_user/footer');
     }
+    public function update_karyawan()
+	{
+        $nik =  $this->session->userdata('nik');
+		$data['judul'] = 'Update Karyawan';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['data'] = $this->karyawan_m->get_view_kar($nik);
+		
+		$data['dep'] = $this->departement_m->get_all_dep();
+		$data['sec'] = $this->section_m->get_all_sec();
+		$data['jab'] = $this->jabatan_m->get_all_jab();
+
+		$this->load->view('template_user/header', $data);
+		$this->load->view('user/profil/ubah_profil', $data);
+		$this->load->view('template_user/footer');
+	}
+    public function proses_edit_karyawan($nik)
+	{
+		$config['upload_path']   = './assets/foto_profil/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			// $config['encrypt_name'] = TRUE;
+			$config['file_name'] = $this->input->post('nik');
+			//$config['max_size']      = 100; 
+			//$config['max_width']     = 1024; 
+			//$config['max_height']    = 768;  
+
+			$this->load->library('upload', $config);
+			// script upload file 1
+			$this->upload->do_upload('foto');
+			$file1 = $this->upload->data();
+			if ($file1 == true) {
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+				'foto' => $this->input->post('foto'),
+			);
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('user/profil');
+			}else{
+					unlink(base_url('assets/foto_profil/') . $nik->foto);
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+				'foto' => $this->input->post('foto'),
+			);
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('user/profil');
+			}
+			
+	}
     public function password()
     {
-        // $nik =  $this->session->userdata('nik');
-        $nik = 10000272;
+        $data['nik'] =  $this->session->userdata('nik');
+        $nik = $this->session->userdata('nik');
         $data['data'] = $this->karyawan_m->get_row_nik($nik);
         $data['judul'] = 'Setting Password';
         $data['nama'] = $this->session->userdata('nama');
