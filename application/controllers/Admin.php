@@ -243,6 +243,7 @@ class Admin extends CI_Controller
 	}
 	public function proses_edit_karyawan($nik)
 	{
+		$nik = $this->input->post('nik');
 		$config['upload_path']   = './assets/foto_profil/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			// $config['encrypt_name'] = TRUE;
@@ -255,7 +256,7 @@ class Admin extends CI_Controller
 			// script upload file 1
 			$this->upload->do_upload('foto');
 			$file1 = $this->upload->data();
-			if ($file1 == true) {
+			if ($file1 == false) {
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -274,9 +275,9 @@ class Admin extends CI_Controller
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
-			return redirect('admin/data_karyawan');
-			}else{
-					unlink(base_url('assets/foto_profil/') . $nik->foto);
+			return redirect('admin/view_karyawan/' . $nik);
+			}elseif($file1 == true){
+			unlink(base_url('assets/foto_profil/') . $nik->foto);
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -290,14 +291,13 @@ class Admin extends CI_Controller
 				'section' => $this->input->post('section'),
 				'jabatan' => $this->input->post('jabatan'),
 				'departement' => $this->input->post('departement'),
-				'foto' => $file1["orig_name"],
+				'foto' => $file1['file_name'],
 			);
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
-			return redirect('admin/data_karyawan');
+		return redirect('admin/view_karyawan/' . $nik);
 			}
-			// var_dump($file1);
 	}
 	public function import()
 	{
