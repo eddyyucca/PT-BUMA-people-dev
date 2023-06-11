@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 28, 2023 at 11:21 AM
+-- Generation Time: Jun 11, 2023 at 10:35 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -44,7 +44,9 @@ INSERT INTO `assessment` (`id_am`, `karyawan`, `kompetensi`, `h_kom`) VALUES
 (18, '10031711', '13', '3'),
 (20, '10016255', '12', '1'),
 (24, '10016255', '13', '3'),
-(25, '10023543', '12', '0111');
+(25, '10023543', '12', '0111'),
+(26, '10003987', '12', '3'),
+(27, '10003987', '13', '1');
 
 -- --------------------------------------------------------
 
@@ -275,7 +277,8 @@ CREATE TABLE `grade_kom` (
 --
 
 INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `grade_sc`, `tanggal_grade`, `kode_nilai`) VALUES
-(2, '10003987', '24', '2023-04-26', '2604202319');
+(2, '10003987', '24', '2023-04-26', '2604202319'),
+(3, '10030254', '10', '2023-06-08', '05062023392');
 
 -- --------------------------------------------------------
 
@@ -371,8 +374,7 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1, 'Suwarno', '', '', '', '', '', '', '', '1', '1', '1', '10000132', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', ''),
-(2, 'Ambrosius Sani', '', '', '', '', '', '', '', '2', '2', '2', '10000272', '', '25f9e794323b453885f5181f1b624d0b', 'admin', ''),
+(1, 'Suwarno', 'hjhj', '1998-06-09', 'Laki-Laki', 'g@d.k', '8888', 'Kristen', 'kjj', '1', '1', '1', '10000132', '', '25d55ad283aa400af464c76d713c07ad', 'user', '10000132'),
 (3, 'Misdi', '', '', '', '', '', '', '', '2', '2', '2', '10000318', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (4, 'Slamet Damis', '', '', '', '', '', '', '', '3', '3', '3', '10000404', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (5, 'Andi Setyawan', '', '', '', '', '', '', '', '4', '4', '4', '10000619', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -753,9 +755,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (380, 'Natal Baru', '', '', '', '', '', '', '', '3', '7', '68', '10015111', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (381, 'Rischa Andhica Pratama', '', '', '', '', '', '', '', '2', '2', '2', '10015329', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (382, 'Tiffany Kristen Gerungan', '', '', '', '', '', '', '', '3', '2', '32', '10015350', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(383, 'Ahmad Roni', '', '', '', '', '', '', '', '2', '2', '2', '10015360', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(383, 'Ahmad Roni', '', '', '', '', '', '', '', '2', '2', '2', '10015360', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(384, 'Rengga Wisananta', '', '', '', '', '', '', '', '2', '2', '2', '10015366', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(384, 'Rengga Wisananta', '', '', '', '', '', '', '', '2', '2', '2', '10015366', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (385, 'David Manusul Sitanggang', '', '', '', '', '', '', '', '2', '2', '2', '10015392', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (386, 'Anwar Asykari', '', '', '', '', '', '', '', '3', '3', '66', '10015396', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (387, 'Mashuri', '', '', '', '', '', '', '', '2', '2', '2', '10015407', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -1134,9 +1136,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (760, 'Faisal', '', '', '', '', '', '', '', '2', '2', '2', '10023944', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (761, 'Sujahtra Candra Pasinggi', '', '', '', '', '', '', '', '2', '2', '2', '10023951', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (762, 'Alan Widi Saputra', '', '', '', '', '', '', '', '2', '2', '2', '10023955', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(763, 'Dwi Nur Cahyono', '', '', '', '', '', '', '', '2', '2', '2', '10023956', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(763, 'Dwi Nur Cahyono', '', '', '', '', '', '', '', '2', '2', '2', '10023956', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(764, 'Amirullah', '', '', '', '', '', '', '', '2', '2', '2', '10023958', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(764, 'Amirullah', '', '', '', '', '', '', '', '2', '2', '2', '10023958', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (765, 'Alexsander', '', '', '', '', '', '', '', '2', '2', '2', '10023964', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (766, 'Apri Iis Sugiarto', '', '', '', '', '', '', '', '6', '7', '15', '10023974', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (767, 'Gigih Sunarwan', '', '', '', '', '', '', '', '5', '1', '8', '10023992', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -1513,9 +1515,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (1138, 'Agata Ochtavia Christine Ping', '', '', '', '', '', '', '', '27', '3', '104', '10025716', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1139, 'Jemi', '', '', '', '', '', '', '', '24', '5', '404', '10025717', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1140, 'Pilias Kasing', '', '', '', '', '', '', '', '3', '3', '3', '10025719', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(1141, 'Anggi Wijaya', '', '', '', '', '', '', '', '24', '5', '404', '10025720', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(1141, 'Anggi Wijaya', '', '', '', '', '', '', '', '24', '5', '404', '10025720', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1142, 'Arif Wahyudi', '', '', '', '', '', '', '', '24', '5', '404', '10025721', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1142, 'Arif Wahyudi', '', '', '', '', '', '', '', '24', '5', '404', '10025721', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1143, 'Erma', '', '', '', '', '', '', '', '27', '6', '89', '10025739', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1144, 'Yusril Mahendra', '', '', '', '', '', '', '', '33', '3', '404', '10025754', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1145, 'Muhammad Sipri', '', '', '', '', '', '', '', '27', '2', '2', '10025761', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -1890,9 +1892,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (1514, 'Agustyanto', '', '', '', '', '', '', '', '2', '2', '2', '10029189', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1515, 'Rendra Prabowo Triscahyoko', '', '', '', '', '', '', '', '2', '2', '2', '10029190', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1516, 'Dwi Pamuji Febriyanto', '', '', '', '', '', '', '', '2', '2', '2', '10029257', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(1517, 'Anang Nugroho Saputro', '', '', '', '', '', '', '', '10', '5', '75', '10029258', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(1517, 'Anang Nugroho Saputro', '', '', '', '', '', '', '', '10', '5', '75', '10029258', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1518, 'Nuin Hayat', '', '', '', '', '', '', '', '2', '2', '2', '10029259', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1518, 'Nuin Hayat', '', '', '', '', '', '', '', '2', '2', '2', '10029259', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1519, 'Saharuddin', '', '', '', '', '', '', '', '2', '2', '2', '10029260', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1520, 'Budiono', '', '', '', '', '', '', '', '2', '2', '2', '10029261', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1521, 'Kasim Pai\'pin', '', '', '', '', '', '', '', '2', '2', '2', '10029262', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -2267,9 +2269,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (1890, 'Hermannino', '', '', '', '', '', '', '', '2', '2', '2', '10030159', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1891, 'Suharno', '', '', '', '', '', '', '', '9', '1', '8', '10030160', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1892, 'Henry Walker', '', '', '', '', '', '', '', '10', '5', '24', '10030161', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(1893, 'Dedi', '', '', '', '', '', '', '', '28', '5', '95', '10030162', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(1893, 'Dedi', '', '', '', '', '', '', '', '28', '5', '95', '10030162', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1894, 'Yulius Tandipada', '', '', '', '', '', '', '', '33', '3', '404', '10030163', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1894, 'Yulius Tandipada', '', '', '', '', '', '', '', '33', '3', '404', '10030163', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1895, 'Haris Maulana', '', '', '', '', '', '', '', '27', '7', '100', '10030164', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1896, 'Ahmad Iskandar', '', '', '', '', '', '', '', '30', '3', '404', '10030176', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1897, 'Pujianto', '', '', '', '', '', '', '', '3', '5', '72', '10030177', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -2644,9 +2646,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (2266, 'Saleh', '', '', '', '', '', '', '', '2', '2', '2', '10030807', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2267, 'Havin Pahlevi', '', '', '', '', '', '', '', '2', '2', '2', '10030808', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2268, 'Asep Nurcahyono', '', '', '', '', '', '', '', '2', '2', '2', '10030809', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(2269, 'Desty Palinggi', '', '', '', '', '', '', '', '2', '2', '2', '10030810', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(2269, 'Desty Palinggi', '', '', '', '', '', '', '', '2', '2', '2', '10030810', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(2270, 'Reynold Kosta Hutagalung', '', '', '', '', '', '', '', '2', '2', '2', '10030811', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(2270, 'Reynold Kosta Hutagalung', '', '', '', '', '', '', '', '2', '2', '2', '10030811', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2271, 'Mustapa', '', '', '', '', '', '', '', '2', '2', '2', '10030812', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2272, 'Nyoman Suarsana', '', '', '', '', '', '', '', '2', '2', '2', '10030813', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2273, 'Andrianto Lunda', '', '', '', '', '', '', '', '2', '2', '2', '10030814', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3021,9 +3023,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (2642, 'Rudiansyah', '', '', '', '', '', '', '', '28', '5', '95', '10031799', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2643, 'Al Husin', '', '', '', '', '', '', '', '2', '2', '2', '10031800', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2644, 'Sadam Husein', '', '', '', '', '', '', '', '2', '2', '2', '10031801', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(2645, 'Marthen Radu', '', '', '', '', '', '', '', '2', '2', '2', '10031802', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(2645, 'Marthen Radu', '', '', '', '', '', '', '', '2', '2', '2', '10031802', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(2646, 'Pujan Wahyudi', '', '', '', '', '', '', '', '28', '5', '95', '10031803', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(2646, 'Pujan Wahyudi', '', '', '', '', '', '', '', '28', '5', '95', '10031803', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2647, 'Indra Prasetyo', '', '', '', '', '', '', '', '2', '2', '2', '10031804', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2648, 'Rahmadan', '', '', '', '', '', '', '', '10', '5', '27', '10031805', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2649, 'Reagen Walukow', '', '', '', '', '', '', '', '2', '2', '2', '10031806', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3397,9 +3399,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3017, 'Farizal Nordiansah', '', '', '', '', '', '', '', '10', '5', '27', '10033226', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3018, 'Supriadi', '', '', '', '', '', '', '', '22', '5', '404', '10033228', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3019, 'Ahmadan', '', '', '', '', '', '', '', '10', '5', '48', '10033229', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3020, 'Cecep Sudirman', '', '', '', '', '', '', '', '10', '5', '59', '10033230', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(3020, 'Cecep Sudirman', '', '', '', '', '', '', '', '10', '5', '59', '10033230', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3021, 'Andy Yulianto', '', '', '', '', '', '', '', '10', '5', '24', '10033250', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(3021, 'Andy Yulianto', '', '', '', '', '', '', '', '10', '5', '24', '10033250', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3022, 'Ripiansyah', '', '', '', '', '', '', '', '10', '5', '24', '10033251', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3023, 'Riki Saputra', '', '', '', '', '', '', '', '10', '5', '24', '10033253', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3024, 'Gacuk Edy Winarto', '', '', '', '', '', '', '', '10', '5', '24', '10033254', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3774,9 +3776,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3393, 'Fauzi Rizqi Nur Saifuddin', '', '', '', '', '', '', '', '2', '2', '2', '10033863', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3394, 'Jeremi RM Saragih', '', '', '', '', '', '', '', '3', '7', '63', '10033865', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3395, 'Samsul Arifin', '', '', '', '', '', '', '', '30', '3', '404', '10033866', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3396, 'Muhammad Andra Alfahera', '', '', '', '', '', '', '', '28', '3', '90', '10033867', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(3396, 'Muhammad Andra Alfahera', '', '', '', '', '', '', '', '28', '3', '90', '10033867', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3397, 'Muh. Alwy Husain Jumsa', '', '', '', '', '', '', '', '28', '3', '90', '10033868', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(3397, 'Muh. Alwy Husain Jumsa', '', '', '', '', '', '', '', '28', '3', '90', '10033868', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3398, 'Iman Budi Gunawan', '', '', '', '', '', '', '', '10', '5', '24', '10033869', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3399, 'Fatih Pandu Winata', '', '', '', '', '', '', '', '2', '2', '2', '10033870', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3400, 'Syamsul Bahri', '', '', '', '', '', '', '', '33', '3', '404', '10033874', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3854,7 +3856,7 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3472, 'Widodo Rosariyatno', '', '', '', '', '', '', '', '18', '5', '404', '10034021', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3473, 'Musliadi', '', '', '', '', '', '', '', '28', '5', '95', '10034022', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3474, 'Dali', '', '', '', '', '', '', '', '28', '3', '90', '10034025', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3475, 'Eddy Adha Saputra', '', '', '', '', '', '', '', '3', '9', '42', '10034026', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', ''),
+(3475, 'Eddy Adha Saputra', 'Tapin', '1997-04-17', 'Laki-Laki', 'eddy.as@bukitmakmur.com', '081250653005', 'Islam', 'Tapin', '3', '9', '42', '10034026', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', '10034026'),
 (3476, 'Aslam', '', '', '', '', '', '', '', '9', '1', '8', '10034027', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3477, 'Ginanjar Sujarwo', '', '', '', '', '', '', '', '2', '2', '2', '10034028', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3478, 'Arifil Fajri', '', '', '', '', '', '', '', '2', '2', '2', '10034029', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -4023,7 +4025,8 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3641, 'tes user', 'tapin', '2023-02-10', 'Laki-Laki', 'asa@tes.com', '88844', 'Islam', 'sasa', '9', '8', '7', '123123', '', '', 'user', ''),
 (3642, 'eddy as', 'sasa', '2023-02-01', 'Laki-Laki', 'eddyyucca@gmail.com', '081250653005', 'Islam', 'sasa', '12', '9', '', '666', '', '', 'user', '666'),
 (3643, 'sasa', 'sa', '2023-02-16', 'Laki-Laki', 'sasa@sas.s', '1111', 'Kristen', 'sasa', '12', '9', '8', '6660', '', '', 'user', '6660'),
-(3644, 'sasa', 'sasa', '2023-02-03', 'Laki-Laki', 'sasa@sss.c', 'sasa', 'Islam', 'sasa', '12', '8', '12', '1313111', '', '', 'user', '1313111.jpeg');
+(3644, 'sasa', 'sasa', '2023-02-03', 'Laki-Laki', 'sasa@sss.c', 'sasa', 'Islam', 'sasa', '12', '8', '12', '1313111', '', '', 'user', '1313111.jpeg'),
+(3645, 'coba karyawan', 'as', '1997-06-05', 'Laki-Laki', 'a@buna.ci', '0828282828', 'Islam', 'sasa', '14', '8', '3', '1001', '', '', 'user', '');
 
 -- --------------------------------------------------------
 
@@ -4113,7 +4116,10 @@ CREATE TABLE `nilai_grade` (
 INSERT INTO `nilai_grade` (`id_nilai_grade`, `nilai_grade`, `grade`, `grade_kode`) VALUES
 (3, '1', '15', '2604202319'),
 (4, '1', '3', '2604202319'),
-(5, '1', '16', '2604202319');
+(5, '1', '16', '2604202319'),
+(6, '1', '10', '05062023392'),
+(7, '1', '11', '05062023392'),
+(8, '1', '12', '05062023392');
 
 -- --------------------------------------------------------
 
@@ -4179,14 +4185,13 @@ INSERT INTO `section` (`id_sec`, `nama_sec`, `dep_r`) VALUES
 (1, 'Safety, Health, Env', ''),
 (2, 'Operation', ''),
 (3, 'PSCM', ''),
-(4, 'Business Unit', ''),
+(4, 'BI', ''),
 (5, 'Plant', ''),
 (6, 'Engineering', ''),
 (7, 'HR & General Affairs', ''),
 (8, 'Business Excellence', ''),
 (9, 'Information & Techno', ''),
-(10, 'Finance & Budget Rep', ''),
-(404, 'Kosong', '');
+(10, 'Finance & Budget Rep', '');
 
 -- --------------------------------------------------------
 
@@ -4382,7 +4387,7 @@ ALTER TABLE `training`
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
-  MODIFY `id_am` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_am` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `citt`
@@ -4412,7 +4417,7 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `grade_kom`
 --
 ALTER TABLE `grade_kom`
-  MODIFY `id_grade_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_grade_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -4424,7 +4429,7 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3645;
+  MODIFY `id_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3646;
 
 --
 -- AUTO_INCREMENT for table `kompetensi`
@@ -4448,7 +4453,7 @@ ALTER TABLE `level_kom`
 -- AUTO_INCREMENT for table `nilai_grade`
 --
 ALTER TABLE `nilai_grade`
-  MODIFY `id_nilai_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_nilai_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `plan`
@@ -4466,7 +4471,7 @@ ALTER TABLE `plan_kom`
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `id_sec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
+  MODIFY `id_sec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sub_kom`
