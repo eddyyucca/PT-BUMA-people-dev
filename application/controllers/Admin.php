@@ -253,8 +253,6 @@ class Admin extends CI_Controller
 			//$config['max_height']    = 768;  
 
 			$this->load->library('upload', $config);
-			// script upload file 1
-			// $this->upload->do_upload('foto');
 			
 			 if (!$this->upload->do_upload('foto')) {
 			$data = array(
