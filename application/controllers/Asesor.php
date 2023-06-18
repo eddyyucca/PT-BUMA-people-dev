@@ -26,10 +26,10 @@ class Asesor extends CI_Controller
 		$this->load->model('grade_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
-		// if ($level_akun != "asesor") {
-		// 	$this->session->set_flashdata('login', 'n_login');
-		// 	return redirect('login');
-		// }
+		if ($level_akun != "asesor") {
+			$this->session->set_flashdata('login', 'n_login');
+			return redirect('login');
+		}
 	}
 
 
@@ -413,6 +413,11 @@ class Asesor extends CI_Controller
 	{
 		$plan_t = $this->input->post('sub_id');
 		echo $this->task_kompetensi_m->plan_kom($plan_t);
+	}
+	function get_sec()
+	{
+		$nik = $this->input->post('nik');
+		echo $this->kompetensi_m->get_sec_opt($nik);
 	}
 	
 	// end task_kompetensi
@@ -1098,4 +1103,7 @@ class Asesor extends CI_Controller
 		return redirect('asesor/kompetensi_grade');
 	}
 	//end grade
+
+
+	// 
 }

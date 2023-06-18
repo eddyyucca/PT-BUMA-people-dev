@@ -50,7 +50,7 @@ class Login extends CI_Controller
                     } elseif ($row->level == "user") {
                         redirect("user");
                     } elseif ($row->level == "asesor") {
-                        redirect('admin');
+                        redirect('asesor');
                     } else {
                         $this->session->set_flashdata('pesan', 'pass_salah');
                         return redirect('login');

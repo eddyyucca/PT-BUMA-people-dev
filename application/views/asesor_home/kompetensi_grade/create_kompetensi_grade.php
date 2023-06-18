@@ -60,7 +60,7 @@
         $('#opt_kom').change(function () {
             var id = $(this).val();
             $.ajax({
-                url: '<?= base_url(); ?>admin/get_plan',
+                url: '<?= base_url(); ?>asesor/get_plan',
                 method: 'POST',
                 data: {
                     id: id
@@ -75,7 +75,7 @@
         $('#opt_plan').change(function () {
             var sub_id = $(this).val();
             $.ajax({
-                url: '<?= base_url(); ?>admin/get_plan_kom',
+                url: '<?= base_url(); ?>asesor/get_plan_kom',
                 method: 'POST',
                 data: {
                     sub_id: sub_id
@@ -90,7 +90,7 @@
         $('#xp').change(function () {
             var nik = $(this).val();
             $.ajax({
-                url: '<?= base_url(); ?>admin/get_jabatan',
+                url: '<?= base_url(); ?>asesor/get_jabatan',
                 method: 'POST',
                 data: {
                     nik: nik
@@ -105,7 +105,7 @@
         $('#xp').change(function () {
             var nik = $(this).val();
             $.ajax({
-                url: '<?= base_url(); ?>admin/get_sec',
+                url: '<?= base_url(); ?>asesor/get_sec',
                 method: 'POST',
                 data: {
                     nik: nik

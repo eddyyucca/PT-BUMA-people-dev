@@ -26,10 +26,10 @@ class Admin extends CI_Controller
 		$this->load->model('grade_m');
 		$this->load->helper(array('url'));
 		$level_akun = $this->session->userdata('level');
-		// if ($level_akun != "admin") {
-		// 	// $this->session->set_flashdeata('login', 'n_login');
-		// 	return redirect('login');
-		// }
+		if ($level_akun != "admin") {
+			$this->session->set_flashdata('login', 'n_login');
+			return redirect('login');
+		}
 	}
 
 
@@ -211,7 +211,7 @@ class Admin extends CI_Controller
 			$config['upload_path']   = './assets/foto_profil/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			// $config['encrypt_name'] = TRUE;
-			$config['file_name'] = $this->input->post('nik');
+			// $config['file_name'] = $this->input->post('nik');
 			//$config['max_size']      = 100; 
 			//$config['max_width']     = 1024; 
 			//$config['max_height']    = 768;  
@@ -243,20 +243,20 @@ class Admin extends CI_Controller
 	}
 	public function proses_edit_karyawan($nik)
 	{
-		$nik = $this->input->post('nik');
+		$foto = $this->input->post('foto');
 		$config['upload_path']   = './assets/foto_profil/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			// $config['encrypt_name'] = TRUE;
-			$config['file_name'] = $this->input->post('nik');
+			// $config['file_name'] = $this->input->post('nik');
 			//$config['max_size']      = 100; 
 			//$config['max_width']     = 1024; 
 			//$config['max_height']    = 768;  
 
 			$this->load->library('upload', $config);
 			// script upload file 1
-			$this->upload->do_upload('foto');
-			$file1 = $this->upload->data();
-			if ($file1 == false) {
+			// $this->upload->do_upload('foto');
+			
+			 if (!$this->upload->do_upload('foto')) {
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -270,14 +270,16 @@ class Admin extends CI_Controller
 				'section' => $this->input->post('section'),
 				'jabatan' => $this->input->post('jabatan'),
 				'departement' => $this->input->post('departement'),
-				'level' => "user",
 			);
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
 			return redirect('admin/view_karyawan/' . $nik);
-			}elseif($file1 == true){
-			unlink(base_url('assets/foto_profil/') . $nik->foto);
+			}else{
+			$get_foto = $this->karyawan_m->get_row_nik($nik);
+			$link = base_url('assets/foto_profil/'). $get_foto->foto;
+			unlink($link);
+			$file1 = $this->upload->data();
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -291,7 +293,7 @@ class Admin extends CI_Controller
 				'section' => $this->input->post('section'),
 				'jabatan' => $this->input->post('jabatan'),
 				'departement' => $this->input->post('departement'),
-				'foto' => $file1['file_name'],
+				'foto' => $file1['orig_name'],
 			);
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);

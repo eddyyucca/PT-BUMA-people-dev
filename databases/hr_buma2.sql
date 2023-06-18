@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 11, 2023 at 10:35 PM
--- Server version: 5.7.34
--- PHP Version: 8.0.8
+-- Waktu pembuatan: 18 Jun 2023 pada 01.50
+-- Versi server: 5.7.34
+-- Versi PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `assessment`
+-- Struktur dari tabel `assessment`
 --
 
 CREATE TABLE `assessment` (
@@ -35,7 +35,7 @@ CREATE TABLE `assessment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `assessment`
+-- Dumping data untuk tabel `assessment`
 --
 
 INSERT INTO `assessment` (`id_am`, `karyawan`, `kompetensi`, `h_kom`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `assessment` (`id_am`, `karyawan`, `kompetensi`, `h_kom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `citt`
+-- Struktur dari tabel `citt`
 --
 
 CREATE TABLE `citt` (
@@ -61,7 +61,7 @@ CREATE TABLE `citt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `citt`
+-- Dumping data untuk tabel `citt`
 --
 
 INSERT INTO `citt` (`id_ciit`, `nama_tim`, `kode_tim`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `citt` (`id_ciit`, `nama_tim`, `kode_tim`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `continuesimprovement`
+-- Struktur dari tabel `continuesimprovement`
 --
 
 CREATE TABLE `continuesimprovement` (
@@ -84,7 +84,7 @@ CREATE TABLE `continuesimprovement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `continuesimprovement`
+-- Dumping data untuk tabel `continuesimprovement`
 --
 
 INSERT INTO `continuesimprovement` (`id_ci`, `judul`, `t_implementasi`, `pembuat`, `tim`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `continuesimprovement` (`id_ci`, `judul`, `t_implementasi`, `pembuat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departement`
+-- Struktur dari tabel `departement`
 --
 
 CREATE TABLE `departement` (
@@ -103,7 +103,7 @@ CREATE TABLE `departement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `departement`
+-- Dumping data untuk tabel `departement`
 --
 
 INSERT INTO `departement` (`id_dep`, `nama_dep`) VALUES
@@ -228,7 +228,7 @@ INSERT INTO `departement` (`id_dep`, `nama_dep`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grade`
+-- Struktur dari tabel `grade`
 --
 
 CREATE TABLE `grade` (
@@ -239,7 +239,7 @@ CREATE TABLE `grade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `grade`
+-- Dumping data untuk tabel `grade`
 --
 
 INSERT INTO `grade` (`id_grade`, `grade_section`, `nama_grade`, `level_grade`) VALUES
@@ -261,7 +261,7 @@ INSERT INTO `grade` (`id_grade`, `grade_section`, `nama_grade`, `level_grade`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grade_kom`
+-- Struktur dari tabel `grade_kom`
 --
 
 CREATE TABLE `grade_kom` (
@@ -273,7 +273,7 @@ CREATE TABLE `grade_kom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `grade_kom`
+-- Dumping data untuk tabel `grade_kom`
 --
 
 INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `grade_sc`, `tanggal_grade`, `kode_nilai`) VALUES
@@ -283,7 +283,7 @@ INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `grade_sc`, `tanggal_grade`, `ko
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
+-- Struktur dari tabel `jabatan`
 --
 
 CREATE TABLE `jabatan` (
@@ -294,7 +294,7 @@ CREATE TABLE `jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `jabatan`
+-- Dumping data untuk tabel `jabatan`
 --
 
 INSERT INTO `jabatan` (`id_jab`, `nama_jab`, `level`, `sec_r`) VALUES
@@ -346,7 +346,7 @@ INSERT INTO `jabatan` (`id_jab`, `nama_jab`, `level`, `sec_r`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan`
+-- Struktur dari tabel `karyawan`
 --
 
 CREATE TABLE `karyawan` (
@@ -370,14 +370,12 @@ CREATE TABLE `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `karyawan`
+-- Dumping data untuk tabel `karyawan`
 --
 
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1, 'Suwarno', 'hjhj', '1998-06-09', 'Laki-Laki', 'g@d.k', '8888', 'Kristen', 'kjj', '1', '1', '1', '10000132', '', '25d55ad283aa400af464c76d713c07ad', 'user', '10000132'),
-(3, 'Misdi', '', '', '', '', '', '', '', '2', '2', '2', '10000318', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(4, 'Slamet Damis', '', '', '', '', '', '', '', '3', '3', '3', '10000404', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(5, 'Andi Setyawan', '', '', '', '', '', '', '', '4', '4', '4', '10000619', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(4, '', '', '', '', '', '', '', '', '', '', '', '', '', '25d55ad283aa400af464c76d713c07ad', 'admin', '7_psk.jpeg'),
+(5, 'Andi Setyawan', 'assa', '2023-06-14', '-', 'sa@s.c', '1111', 'Islam', 'assa', '4', '4', '4', '10000619', '', '25d55ad283aa400af464c76d713c07ad', 'asesor', 'ALDI.jpeg'),
 (6, 'Samuel Agus Pribadi', '', '', '', '', '', '', '', '3', '5', '5', '10000646', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (7, 'Musmuliadi', '', '', '', '', '', '', '', '5', '5', '6', '10000770', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (8, 'Poniran T', '', '', '', '', '', '', '', '3', '3', '3', '10000816', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -756,9 +754,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (381, 'Rischa Andhica Pratama', '', '', '', '', '', '', '', '2', '2', '2', '10015329', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (382, 'Tiffany Kristen Gerungan', '', '', '', '', '', '', '', '3', '2', '32', '10015350', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (383, 'Ahmad Roni', '', '', '', '', '', '', '', '2', '2', '2', '10015360', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(384, 'Rengga Wisananta', '', '', '', '', '', '', '', '2', '2', '2', '10015366', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(384, 'Rengga Wisananta', '', '', '', '', '', '', '', '2', '2', '2', '10015366', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(385, 'David Manusul Sitanggang', '', '', '', '', '', '', '', '2', '2', '2', '10015392', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(385, 'David Manusul Sitanggang', '', '', '', '', '', '', '', '2', '2', '2', '10015392', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (386, 'Anwar Asykari', '', '', '', '', '', '', '', '3', '3', '66', '10015396', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (387, 'Mashuri', '', '', '', '', '', '', '', '2', '2', '2', '10015407', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (388, 'Tedi Hidayat', '', '', '', '', '', '', '', '2', '2', '2', '10015424', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -1137,9 +1135,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (761, 'Sujahtra Candra Pasinggi', '', '', '', '', '', '', '', '2', '2', '2', '10023951', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (762, 'Alan Widi Saputra', '', '', '', '', '', '', '', '2', '2', '2', '10023955', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (763, 'Dwi Nur Cahyono', '', '', '', '', '', '', '', '2', '2', '2', '10023956', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(764, 'Amirullah', '', '', '', '', '', '', '', '2', '2', '2', '10023958', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(764, 'Amirullah', '', '', '', '', '', '', '', '2', '2', '2', '10023958', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(765, 'Alexsander', '', '', '', '', '', '', '', '2', '2', '2', '10023964', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(765, 'Alexsander', '', '', '', '', '', '', '', '2', '2', '2', '10023964', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (766, 'Apri Iis Sugiarto', '', '', '', '', '', '', '', '6', '7', '15', '10023974', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (767, 'Gigih Sunarwan', '', '', '', '', '', '', '', '5', '1', '8', '10023992', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (768, 'Irhas', '', '', '', '', '', '', '', '2', '2', '2', '10024004', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -1516,9 +1514,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (1139, 'Jemi', '', '', '', '', '', '', '', '24', '5', '404', '10025717', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1140, 'Pilias Kasing', '', '', '', '', '', '', '', '3', '3', '3', '10025719', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1141, 'Anggi Wijaya', '', '', '', '', '', '', '', '24', '5', '404', '10025720', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(1142, 'Arif Wahyudi', '', '', '', '', '', '', '', '24', '5', '404', '10025721', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(1142, 'Arif Wahyudi', '', '', '', '', '', '', '', '24', '5', '404', '10025721', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1143, 'Erma', '', '', '', '', '', '', '', '27', '6', '89', '10025739', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1143, 'Erma', '', '', '', '', '', '', '', '27', '6', '89', '10025739', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1144, 'Yusril Mahendra', '', '', '', '', '', '', '', '33', '3', '404', '10025754', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1145, 'Muhammad Sipri', '', '', '', '', '', '', '', '27', '2', '2', '10025761', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1146, 'Muhammad Amirudin Syah', '', '', '', '', '', '', '', '16', '5', '404', '10025783', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -1893,9 +1891,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (1515, 'Rendra Prabowo Triscahyoko', '', '', '', '', '', '', '', '2', '2', '2', '10029190', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1516, 'Dwi Pamuji Febriyanto', '', '', '', '', '', '', '', '2', '2', '2', '10029257', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1517, 'Anang Nugroho Saputro', '', '', '', '', '', '', '', '10', '5', '75', '10029258', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(1518, 'Nuin Hayat', '', '', '', '', '', '', '', '2', '2', '2', '10029259', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(1518, 'Nuin Hayat', '', '', '', '', '', '', '', '2', '2', '2', '10029259', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1519, 'Saharuddin', '', '', '', '', '', '', '', '2', '2', '2', '10029260', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1519, 'Saharuddin', '', '', '', '', '', '', '', '2', '2', '2', '10029260', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1520, 'Budiono', '', '', '', '', '', '', '', '2', '2', '2', '10029261', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1521, 'Kasim Pai\'pin', '', '', '', '', '', '', '', '2', '2', '2', '10029262', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1522, 'Dikal Zulfa Al Fistha', '', '', '', '', '', '', '', '10', '5', '75', '10029263', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -2270,9 +2268,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (1891, 'Suharno', '', '', '', '', '', '', '', '9', '1', '8', '10030160', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1892, 'Henry Walker', '', '', '', '', '', '', '', '10', '5', '24', '10030161', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1893, 'Dedi', '', '', '', '', '', '', '', '28', '5', '95', '10030162', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(1894, 'Yulius Tandipada', '', '', '', '', '', '', '', '33', '3', '404', '10030163', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(1894, 'Yulius Tandipada', '', '', '', '', '', '', '', '33', '3', '404', '10030163', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(1895, 'Haris Maulana', '', '', '', '', '', '', '', '27', '7', '100', '10030164', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(1895, 'Haris Maulana', '', '', '', '', '', '', '', '27', '7', '100', '10030164', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1896, 'Ahmad Iskandar', '', '', '', '', '', '', '', '30', '3', '404', '10030176', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1897, 'Pujianto', '', '', '', '', '', '', '', '3', '5', '72', '10030177', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (1898, 'Rinto I\'si', '', '', '', '', '', '', '', '2', '2', '2', '10030180', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -2647,9 +2645,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (2267, 'Havin Pahlevi', '', '', '', '', '', '', '', '2', '2', '2', '10030808', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2268, 'Asep Nurcahyono', '', '', '', '', '', '', '', '2', '2', '2', '10030809', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2269, 'Desty Palinggi', '', '', '', '', '', '', '', '2', '2', '2', '10030810', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(2270, 'Reynold Kosta Hutagalung', '', '', '', '', '', '', '', '2', '2', '2', '10030811', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(2270, 'Reynold Kosta Hutagalung', '', '', '', '', '', '', '', '2', '2', '2', '10030811', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(2271, 'Mustapa', '', '', '', '', '', '', '', '2', '2', '2', '10030812', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(2271, 'Mustapa', '', '', '', '', '', '', '', '2', '2', '2', '10030812', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2272, 'Nyoman Suarsana', '', '', '', '', '', '', '', '2', '2', '2', '10030813', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2273, 'Andrianto Lunda', '', '', '', '', '', '', '', '2', '2', '2', '10030814', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2274, 'Ramadhani', '', '', '', '', '', '', '', '2', '2', '2', '10030816', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3024,9 +3022,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (2643, 'Al Husin', '', '', '', '', '', '', '', '2', '2', '2', '10031800', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2644, 'Sadam Husein', '', '', '', '', '', '', '', '2', '2', '2', '10031801', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2645, 'Marthen Radu', '', '', '', '', '', '', '', '2', '2', '2', '10031802', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(2646, 'Pujan Wahyudi', '', '', '', '', '', '', '', '28', '5', '95', '10031803', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(2646, 'Pujan Wahyudi', '', '', '', '', '', '', '', '28', '5', '95', '10031803', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(2647, 'Indra Prasetyo', '', '', '', '', '', '', '', '2', '2', '2', '10031804', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(2647, 'Indra Prasetyo', '', '', '', '', '', '', '', '2', '2', '2', '10031804', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2648, 'Rahmadan', '', '', '', '', '', '', '', '10', '5', '27', '10031805', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2649, 'Reagen Walukow', '', '', '', '', '', '', '', '2', '2', '2', '10031806', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (2650, 'Yoyok Suprianto', '', '', '', '', '', '', '', '2', '2', '2', '10031807', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3400,9 +3398,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3018, 'Supriadi', '', '', '', '', '', '', '', '22', '5', '404', '10033228', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3019, 'Ahmadan', '', '', '', '', '', '', '', '10', '5', '48', '10033229', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3020, 'Cecep Sudirman', '', '', '', '', '', '', '', '10', '5', '59', '10033230', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3021, 'Andy Yulianto', '', '', '', '', '', '', '', '10', '5', '24', '10033250', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(3021, 'Andy Yulianto', '', '', '', '', '', '', '', '10', '5', '24', '10033250', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3022, 'Ripiansyah', '', '', '', '', '', '', '', '10', '5', '24', '10033251', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(3022, 'Ripiansyah', '', '', '', '', '', '', '', '10', '5', '24', '10033251', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3023, 'Riki Saputra', '', '', '', '', '', '', '', '10', '5', '24', '10033253', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3024, 'Gacuk Edy Winarto', '', '', '', '', '', '', '', '10', '5', '24', '10033254', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3025, 'Adnan', '', '', '', '', '', '', '', '10', '5', '24', '10033255', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -3777,9 +3775,9 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 (3394, 'Jeremi RM Saragih', '', '', '', '', '', '', '', '3', '7', '63', '10033865', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3395, 'Samsul Arifin', '', '', '', '', '', '', '', '30', '3', '404', '10033866', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3396, 'Muhammad Andra Alfahera', '', '', '', '', '', '', '', '28', '3', '90', '10033867', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
-(3397, 'Muh. Alwy Husain Jumsa', '', '', '', '', '', '', '', '28', '3', '90', '10033868', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
+(3397, 'Muh. Alwy Husain Jumsa', '', '', '', '', '', '', '', '28', '3', '90', '10033868', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
+(3398, 'Iman Budi Gunawan', '', '', '', '', '', '', '', '10', '5', '24', '10033869', '', '25d55ad283aa400af464c76d713c07ad', 'user', '');
 INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `email`, `telpon`, `agama`, `alamat`, `jabatan`, `section`, `departement`, `nik`, `username`, `password`, `level`, `foto`) VALUES
-(3398, 'Iman Budi Gunawan', '', '', '', '', '', '', '', '10', '5', '24', '10033869', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3399, 'Fatih Pandu Winata', '', '', '', '', '', '', '', '2', '2', '2', '10033870', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3400, 'Syamsul Bahri', '', '', '', '', '', '', '', '33', '3', '404', '10033874', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
 (3401, 'Arif Wibowo', '', '', '', '', '', '', '', '10', '5', '59', '10033875', '', '25d55ad283aa400af464c76d713c07ad', 'user', ''),
@@ -4031,7 +4029,7 @@ INSERT INTO `karyawan` (`id_kar`, `nama`, `tempat`, `tanggal_lahir`, `jk`, `emai
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kompetensi`
+-- Struktur dari tabel `kompetensi`
 --
 
 CREATE TABLE `kompetensi` (
@@ -4040,7 +4038,7 @@ CREATE TABLE `kompetensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `kompetensi`
+-- Dumping data untuk tabel `kompetensi`
 --
 
 INSERT INTO `kompetensi` (`id_kom`, `j_kompetensi`) VALUES
@@ -4050,7 +4048,7 @@ INSERT INTO `kompetensi` (`id_kom`, `j_kompetensi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kompetensi_user`
+-- Struktur dari tabel `kompetensi_user`
 --
 
 CREATE TABLE `kompetensi_user` (
@@ -4061,7 +4059,7 @@ CREATE TABLE `kompetensi_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `kompetensi_user`
+-- Dumping data untuk tabel `kompetensi_user`
 --
 
 INSERT INTO `kompetensi_user` (`id_kom_user`, `nik_kar`, `date_kom`, `asesor`) VALUES
@@ -4075,7 +4073,7 @@ INSERT INTO `kompetensi_user` (`id_kom_user`, `nik_kar`, `date_kom`, `asesor`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `level_kom`
+-- Struktur dari tabel `level_kom`
 --
 
 CREATE TABLE `level_kom` (
@@ -4086,7 +4084,7 @@ CREATE TABLE `level_kom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `level_kom`
+-- Dumping data untuk tabel `level_kom`
 --
 
 INSERT INTO `level_kom` (`id_lp`, `nilai_lp`, `lvl_jab`, `pk_level`) VALUES
@@ -4099,7 +4097,7 @@ INSERT INTO `level_kom` (`id_lp`, `nilai_lp`, `lvl_jab`, `pk_level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nilai_grade`
+-- Struktur dari tabel `nilai_grade`
 --
 
 CREATE TABLE `nilai_grade` (
@@ -4110,7 +4108,7 @@ CREATE TABLE `nilai_grade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `nilai_grade`
+-- Dumping data untuk tabel `nilai_grade`
 --
 
 INSERT INTO `nilai_grade` (`id_nilai_grade`, `nilai_grade`, `grade`, `grade_kode`) VALUES
@@ -4124,7 +4122,7 @@ INSERT INTO `nilai_grade` (`id_nilai_grade`, `nilai_grade`, `grade`, `grade_kode
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plan`
+-- Struktur dari tabel `plan`
 --
 
 CREATE TABLE `plan` (
@@ -4134,7 +4132,7 @@ CREATE TABLE `plan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `plan`
+-- Dumping data untuk tabel `plan`
 --
 
 INSERT INTO `plan` (`id_plan`, `nama_plan`, `kompetensi`) VALUES
@@ -4147,7 +4145,7 @@ INSERT INTO `plan` (`id_plan`, `nama_plan`, `kompetensi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plan_kom`
+-- Struktur dari tabel `plan_kom`
 --
 
 CREATE TABLE `plan_kom` (
@@ -4157,7 +4155,7 @@ CREATE TABLE `plan_kom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `plan_kom`
+-- Dumping data untuk tabel `plan_kom`
 --
 
 INSERT INTO `plan_kom` (`id_plan_t`, `plan_t`, `target_p`) VALUES
@@ -4168,7 +4166,7 @@ INSERT INTO `plan_kom` (`id_plan_t`, `plan_t`, `target_p`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `section`
+-- Struktur dari tabel `section`
 --
 
 CREATE TABLE `section` (
@@ -4178,7 +4176,7 @@ CREATE TABLE `section` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `section`
+-- Dumping data untuk tabel `section`
 --
 
 INSERT INTO `section` (`id_sec`, `nama_sec`, `dep_r`) VALUES
@@ -4196,7 +4194,7 @@ INSERT INTO `section` (`id_sec`, `nama_sec`, `dep_r`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sub_kom`
+-- Struktur dari tabel `sub_kom`
 --
 
 CREATE TABLE `sub_kom` (
@@ -4206,7 +4204,7 @@ CREATE TABLE `sub_kom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sub_kom`
+-- Dumping data untuk tabel `sub_kom`
 --
 
 INSERT INTO `sub_kom` (`id_sb`, `target_p`, `id_p`) VALUES
@@ -4219,7 +4217,7 @@ INSERT INTO `sub_kom` (`id_sb`, `target_p`, `id_p`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `suggestionsystem`
+-- Struktur dari tabel `suggestionsystem`
 --
 
 CREATE TABLE `suggestionsystem` (
@@ -4231,7 +4229,7 @@ CREATE TABLE `suggestionsystem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `suggestionsystem`
+-- Dumping data untuk tabel `suggestionsystem`
 --
 
 INSERT INTO `suggestionsystem` (`id_ss`, `judul_ss`, `t_implementasi_ss`, `section_ss`, `pembuat_ss`) VALUES
@@ -4242,7 +4240,7 @@ INSERT INTO `suggestionsystem` (`id_ss`, `judul_ss`, `t_implementasi_ss`, `secti
 -- --------------------------------------------------------
 
 --
--- Table structure for table `training`
+-- Struktur dari tabel `training`
 --
 
 CREATE TABLE `training` (
@@ -4260,7 +4258,7 @@ CREATE TABLE `training` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `training`
+-- Dumping data untuk tabel `training`
 --
 
 INSERT INTO `training` (`id_training`, `karyawan`, `training`, `penyelenggara`, `mulai_training`, `akhir_training`, `d_training`, `awal_st`, `akhir_st`, `kredensial`, `training_foto`) VALUES
@@ -4272,221 +4270,221 @@ INSERT INTO `training` (`id_training`, `karyawan`, `training`, `penyelenggara`, 
 --
 
 --
--- Indexes for table `assessment`
+-- Indeks untuk tabel `assessment`
 --
 ALTER TABLE `assessment`
   ADD PRIMARY KEY (`id_am`);
 
 --
--- Indexes for table `citt`
+-- Indeks untuk tabel `citt`
 --
 ALTER TABLE `citt`
   ADD PRIMARY KEY (`id_ciit`);
 
 --
--- Indexes for table `continuesimprovement`
+-- Indeks untuk tabel `continuesimprovement`
 --
 ALTER TABLE `continuesimprovement`
   ADD PRIMARY KEY (`id_ci`);
 
 --
--- Indexes for table `departement`
+-- Indeks untuk tabel `departement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id_dep`);
 
 --
--- Indexes for table `grade`
+-- Indeks untuk tabel `grade`
 --
 ALTER TABLE `grade`
   ADD PRIMARY KEY (`id_grade`);
 
 --
--- Indexes for table `grade_kom`
+-- Indeks untuk tabel `grade_kom`
 --
 ALTER TABLE `grade_kom`
   ADD PRIMARY KEY (`id_grade_kom`);
 
 --
--- Indexes for table `jabatan`
+-- Indeks untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id_jab`);
 
 --
--- Indexes for table `karyawan`
+-- Indeks untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id_kar`);
 
 --
--- Indexes for table `kompetensi`
+-- Indeks untuk tabel `kompetensi`
 --
 ALTER TABLE `kompetensi`
   ADD PRIMARY KEY (`id_kom`);
 
 --
--- Indexes for table `kompetensi_user`
+-- Indeks untuk tabel `kompetensi_user`
 --
 ALTER TABLE `kompetensi_user`
   ADD PRIMARY KEY (`id_kom_user`);
 
 --
--- Indexes for table `level_kom`
+-- Indeks untuk tabel `level_kom`
 --
 ALTER TABLE `level_kom`
   ADD PRIMARY KEY (`id_lp`);
 
 --
--- Indexes for table `nilai_grade`
+-- Indeks untuk tabel `nilai_grade`
 --
 ALTER TABLE `nilai_grade`
   ADD PRIMARY KEY (`id_nilai_grade`);
 
 --
--- Indexes for table `plan`
+-- Indeks untuk tabel `plan`
 --
 ALTER TABLE `plan`
   ADD PRIMARY KEY (`id_plan`);
 
 --
--- Indexes for table `plan_kom`
+-- Indeks untuk tabel `plan_kom`
 --
 ALTER TABLE `plan_kom`
   ADD PRIMARY KEY (`id_plan_t`);
 
 --
--- Indexes for table `section`
+-- Indeks untuk tabel `section`
 --
 ALTER TABLE `section`
   ADD PRIMARY KEY (`id_sec`);
 
 --
--- Indexes for table `sub_kom`
+-- Indeks untuk tabel `sub_kom`
 --
 ALTER TABLE `sub_kom`
   ADD PRIMARY KEY (`id_sb`);
 
 --
--- Indexes for table `suggestionsystem`
+-- Indeks untuk tabel `suggestionsystem`
 --
 ALTER TABLE `suggestionsystem`
   ADD PRIMARY KEY (`id_ss`);
 
 --
--- Indexes for table `training`
+-- Indeks untuk tabel `training`
 --
 ALTER TABLE `training`
   ADD PRIMARY KEY (`id_training`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `assessment`
+-- AUTO_INCREMENT untuk tabel `assessment`
 --
 ALTER TABLE `assessment`
   MODIFY `id_am` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `citt`
+-- AUTO_INCREMENT untuk tabel `citt`
 --
 ALTER TABLE `citt`
   MODIFY `id_ciit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `continuesimprovement`
+-- AUTO_INCREMENT untuk tabel `continuesimprovement`
 --
 ALTER TABLE `continuesimprovement`
   MODIFY `id_ci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `departement`
+-- AUTO_INCREMENT untuk tabel `departement`
 --
 ALTER TABLE `departement`
   MODIFY `id_dep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
--- AUTO_INCREMENT for table `grade`
+-- AUTO_INCREMENT untuk tabel `grade`
 --
 ALTER TABLE `grade`
   MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `grade_kom`
+-- AUTO_INCREMENT untuk tabel `grade_kom`
 --
 ALTER TABLE `grade_kom`
   MODIFY `id_grade_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `jabatan`
+-- AUTO_INCREMENT untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
   MODIFY `id_jab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
--- AUTO_INCREMENT for table `karyawan`
+-- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
   MODIFY `id_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3646;
 
 --
--- AUTO_INCREMENT for table `kompetensi`
+-- AUTO_INCREMENT untuk tabel `kompetensi`
 --
 ALTER TABLE `kompetensi`
   MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `kompetensi_user`
+-- AUTO_INCREMENT untuk tabel `kompetensi_user`
 --
 ALTER TABLE `kompetensi_user`
   MODIFY `id_kom_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `level_kom`
+-- AUTO_INCREMENT untuk tabel `level_kom`
 --
 ALTER TABLE `level_kom`
   MODIFY `id_lp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `nilai_grade`
+-- AUTO_INCREMENT untuk tabel `nilai_grade`
 --
 ALTER TABLE `nilai_grade`
   MODIFY `id_nilai_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `plan`
+-- AUTO_INCREMENT untuk tabel `plan`
 --
 ALTER TABLE `plan`
   MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `plan_kom`
+-- AUTO_INCREMENT untuk tabel `plan_kom`
 --
 ALTER TABLE `plan_kom`
   MODIFY `id_plan_t` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `section`
+-- AUTO_INCREMENT untuk tabel `section`
 --
 ALTER TABLE `section`
   MODIFY `id_sec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `sub_kom`
+-- AUTO_INCREMENT untuk tabel `sub_kom`
 --
 ALTER TABLE `sub_kom`
   MODIFY `id_sb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `suggestionsystem`
+-- AUTO_INCREMENT untuk tabel `suggestionsystem`
 --
 ALTER TABLE `suggestionsystem`
   MODIFY `id_ss` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `training`
+-- AUTO_INCREMENT untuk tabel `training`
 --
 ALTER TABLE `training`
   MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
