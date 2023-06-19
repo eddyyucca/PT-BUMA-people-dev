@@ -95,7 +95,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('admin/data_asesor') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/level_user') ?>">
                             <i class="fas fa-fw fa-thumbs-up"></i>
                             <span>Level User</span></a>
                     </li>

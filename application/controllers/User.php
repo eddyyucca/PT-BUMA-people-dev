@@ -80,19 +80,18 @@ class User extends CI_Controller
 	}
     public function proses_edit_karyawan($nik)
 	{
+		$foto = $this->input->post('foto');
 		$config['upload_path']   = './assets/foto_profil/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			// $config['encrypt_name'] = TRUE;
-			$config['file_name'] = $this->input->post('nik');
+			// $config['file_name'] = $this->input->post('nik');
 			//$config['max_size']      = 100; 
 			//$config['max_width']     = 1024; 
 			//$config['max_height']    = 768;  
 
 			$this->load->library('upload', $config);
-			// script upload file 1
-			$this->upload->do_upload('foto');
-			$file1 = $this->upload->data();
-			if ($file1 == true) {
+			
+			 if (!$this->upload->do_upload('foto')) {
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -106,14 +105,15 @@ class User extends CI_Controller
 				'section' => $this->input->post('section'),
 				'jabatan' => $this->input->post('jabatan'),
 				'departement' => $this->input->post('departement'),
-				'foto' => $this->input->post('foto'),
 			);
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
-			return redirect('user/profil');
+			return redirect('user/profil/' . $nik);
 			}else{
-					unlink(base_url('assets/foto_profil/') . $nik->foto);
+			$get_foto = $this->karyawan_m->get_row_nik($nik);
+// unlink('./public/videos/'.$old_video_path); 
+			$file1 = $this->upload->data();
 			$data = array(
 				'nik' => $this->input->post('nik'),
 				'nama' => $this->input->post('nama_lengkap'),
@@ -127,12 +127,13 @@ class User extends CI_Controller
 				'section' => $this->input->post('section'),
 				'jabatan' => $this->input->post('jabatan'),
 				'departement' => $this->input->post('departement'),
-				'foto' => $this->input->post('foto'),
+				'foto' => $file1['orig_name'],
 			);
 			$this->db->where('nik', $nik);
 			$this->db->update('karyawan', $data);
 			$this->session->set_flashdata('pesan', 'ubah');
-			return redirect('user/profil');
+		return redirect('user/profil/' . $nik);
+			
 			}
 			
 	}
