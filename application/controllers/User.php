@@ -112,7 +112,9 @@ class User extends CI_Controller
 			return redirect('user/profil/' . $nik);
 			}else{
 			$get_foto = $this->karyawan_m->get_row_nik($nik);
-// unlink('./public/videos/'.$old_video_path); 
+// unlink('./public/videos/'.$old_video_path)
+
+ 
 			$file1 = $this->upload->data();
 			$data = array(
 				'nik' => $this->input->post('nik'),
