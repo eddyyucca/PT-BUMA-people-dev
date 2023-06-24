@@ -116,13 +116,16 @@ class Karyawan_m extends CI_Model
 
      public function get_data_level()
     {
-        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
-        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
-        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
-
         $this->db->order_by('id_kar', 'DESC');
-$this->db->where('karyawan.level', 'asesor');
+$this->db->where('karyawan.level', 'admin');
         return $this->db->get('karyawan')->result();
+    }
+     public function get_data_level_row($nik)
+    {
+        
+        $this->db->where('nik', $nik);
+        
+        return $this->db->get('karyawan')->row();
     }
     public function get_data_asesor($limit, $offset)
     {

@@ -920,6 +920,16 @@ class Admin extends CI_Controller
 		$this->load->view('level/level_user', $data);
 		$this->load->view('template/footer');
 	}
+	public function ubah_level($nik)
+	{
+		$data['judul'] = 'Level User';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['data'] = $this->karyawan_m->get_data_level_row($nik);
+		$this->load->view('template/header', $data);
+		$this->load->view('level/ubah_level', $data);
+		$this->load->view('template/footer');
+	}
 
 
 	public function ubah_asesor()
@@ -932,46 +942,20 @@ class Admin extends CI_Controller
 		$this->load->view('asesor/ubah_asesor', $data);
 		$this->load->view('template/footer');
 	}
-	public function proses_ubah_asesor()
-	{
-		$data = array(
-			"level" => "asesor"
-		);
-
-		$nik = $this->input->post('nik');
-		$this->db->where('nik', $nik);
-		$this->db->update('karyawan', $data);
-
-		$this->session->set_flashdata('pesan', 'update');
-		return redirect('admin/data_asesor');
-	}
-	public function proses_ubah_admin()
-	{
-		$data = array(
-			"level" => "admin"
-		);
-
-		$nik = $this->input->post('nik');
-		$this->db->where('nik', $nik);
-		$this->db->update('karyawan', $data);
-
-		$this->session->set_flashdata('pesan', 'update');
-		return redirect('admin/data_asesor');
-	}
+	
+	
 	// end asesor
 	// user
-	public function proses_ubah_user()
+	public function proses_ubah_level($nik)
 	{
 		$data = array(
-			"level" => "user"
+			"level" => $this->input->post('level'),
 		);
-		// 10034026
-		$nik = $this->input->post('nik');
 		$this->db->where('nik', $nik);
 		$this->db->update('karyawan', $data);
 
 		$this->session->set_flashdata('pesan', 'update');
-		return redirect('admin/data_asesor');
+		return redirect('admin/level_user');
 	}
 	// end user
 

@@ -73,6 +73,15 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
+                            <div class="col-sm-12">
+                                <a class="btn btn-success"
+                                    href="<?= base_url('admin/edit_karyawan/') . $data->nik ?>">Edit Akun</a>
+                                     | <a class="btn btn-success"
+                                    href="<?= base_url('admin/ubah_level/') . $data->nik ?>">Level Akun</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
@@ -168,13 +177,6 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <?= $data->alamat ?>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <a class="btn btn-success"
-                                    href="<?= base_url('admin/edit_karyawan/') . $data->nik ?>">Edit</a>
                             </div>
                         </div>
                     </div>

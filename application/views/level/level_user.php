@@ -10,12 +10,7 @@
             <h6 class="m-0 font-weight-bold ">Data Admin</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <div class="container">
-                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambah Kompetensi</a>
-                    <a href="<?= base_url('admin/create_task_kompetensi') ?>" class="btn btn-success"><i class="fas fa-plus-circle"></i> Asesor</a>
-                    <hr>
-                </div>
+            <div class="table-responsive">      
                 <?php
                 if ($this->session->flashdata('pesan') == "hapus") { ?>
                     <div class="alert alert-danger" role="alert">Data Berhasil Di Hapus !
@@ -38,7 +33,6 @@
                         <tr>
                             <th>No</th>
                             <th>Karyawan</th>
-                            <th>Jabatan/Section</th>
                             <th>Level</th>
                             <th>Aksi</th>
                         </tr>
@@ -50,13 +44,11 @@
                                <tr>
                                 <td><?= $nomor++?></td>
                                 <td><?= $x->nama?> 
-                             <footer class="blockquote-footer">NIK - <?= $x->nik ?></footer>
-                                
+                             <footer class="">NIK - <?= $x->nik ?></footer>  
                             </td>
-                                <td><?= $x->nama_jab?> / <?=$x->nama_sec?> </td>
                                 <td><?= $x->level?> </td>
                              <td align="center">
-                                    <a href="<?= base_url('admin/create_assessment/') . $x->id_jab ."/".$x->nik ?>" class="btn btn-success"> Ubah Level</i></a>
+                                    <a href="<?= base_url('admin/ubah_level/') .$x->nik ?>" class="btn btn-success"> Ubah Level</i></a>
                                 </td>
                             </tr>
                          <?php  } ?>
