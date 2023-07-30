@@ -34,6 +34,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Grade</th>
+                                 <th>Level Grade</th>
                             <th>Nilai</th>
                         </tr>
                     </thead>
@@ -58,24 +59,22 @@
                             return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
                         }
                         $nomor = 1;
-                        foreach ($data as $x) { 
-                            // if ($x->tanggal_grade == true) { ?>
+                        foreach ($data as $x) {  ?>
                         <tr>
-                            <td><?= $nomor++; ?></td>
-                            <td><?= $x->nama_grade . " " . $x->id_grade?></td>
+                           <td><?= $nomor++; ?></td>
+                                    <td><?= $x->nama_grade; ?></td>
+                                    <td align="center"><?= $x->level_grade; ?></td>
                             <td align="center" id="grade">
                                 <?php 
+                                $nilaix = "Gagal";
                                 foreach ($data_sc as $sc) { 
-                                        // if ($sc->grade == $x->id_grade && $sc->nilai_grade == 1  ) {
-                                        // echo "Lulus";
-                                        
-                                        // }else{
-                                        //     echo "tidak";
-                                        // }
                                         if ($sc->grade == $x->id_grade ) {
-                                        echo "LULUS";
+                                            $nilaix = "Lulus";
+                                            break;
                                         }
-                                    } ?> 
+                                    } 
+                                    echo $nilaix;
+                                    ?> 
                             </td>
                         </tr>
                         <?php   } ?>

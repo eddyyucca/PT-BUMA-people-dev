@@ -39,7 +39,7 @@
                                     <td align="center"><?= $x->level_grade; ?></td>
                                     <td align="center"><?= $x->nama_dep; ?></td>
                                     <td align="center">
-                                        <input type="checkbox" id="subscribeNews" name="nilai[]"
+                                        <input type="checkbox" name="nilai[]"
                                             value="<?= $x->id_grade ?>" />
                                     </td>
                                 </tr>
