@@ -117,7 +117,8 @@ class Karyawan_m extends CI_Model
      public function get_data_level()
     {
         $this->db->order_by('id_kar', 'DESC');
-$this->db->where('karyawan.level', 'admin');
+        $this->db->or_like('karyawan.level', 'admin');
+        $this->db->or_like('karyawan.level', 'asesor');
         return $this->db->get('karyawan')->result();
     }
      public function get_data_level_row($nik)
