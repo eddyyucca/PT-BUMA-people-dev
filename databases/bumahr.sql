@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2023 at 11:34 AM
+-- Generation Time: Sep 25, 2023 at 11:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -275,7 +275,8 @@ CREATE TABLE `grade_kom` (
 --
 
 INSERT INTO `grade_kom` (`id_grade_kom`, `nik`, `grade_sc`, `tanggal_grade`, `kode_nilai`) VALUES
-(2, '10003987', '24', '2023-04-26', '2604202319');
+(2, '10003987', '24', '2023-04-26', '2604202319'),
+(3, '10003987', '24', '2023-07-30', '30072023300');
 
 -- --------------------------------------------------------
 
@@ -4111,7 +4112,9 @@ CREATE TABLE `nilai_grade` (
 INSERT INTO `nilai_grade` (`id_nilai_grade`, `nilai_grade`, `grade`, `grade_kode`) VALUES
 (3, '1', '15', '2604202319'),
 (4, '1', '3', '2604202319'),
-(5, '1', '16', '2604202319');
+(6, '1', '15', '30072023300'),
+(7, '1', '16', '30072023300'),
+(8, '1', '17', '30072023300');
 
 -- --------------------------------------------------------
 
@@ -4260,6 +4263,49 @@ INSERT INTO `training` (`id_training`, `karyawan`, `training`, `penyelenggara`, 
 (6, '10034026', 'JSA', 'BUMA', '2023-03-02', '2023-03-27', 'Belajar JSA', '2023-03-27', '2023-03-27', '123', 'cc3a7c40c612b42c3e22b4d3491e4e8f.jpg'),
 (7, '10030448', 'PKP ', 'SHE BUMA', '2023-03-17', '2023-03-16', 'Belajar Pkp', '2023-03-15', '2023-03-16', '121212', '044e2757f196c2f186ada4cc9de4c16f.png');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `training_int`
+--
+
+CREATE TABLE `training_int` (
+  `id_training_int` int(11) NOT NULL,
+  `karyawan` varchar(20) NOT NULL,
+  `training` varchar(20) NOT NULL,
+  `p_materi` varchar(20) NOT NULL,
+  `mulai_t` varchar(12) NOT NULL,
+  `akhir_t` varchar(12) NOT NULL,
+  `diskripsi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `training_int`
+--
+
+INSERT INTO `training_int` (`id_training_int`, `karyawan`, `training`, `p_materi`, `mulai_t`, `akhir_t`, `diskripsi`) VALUES
+(1, '10007836', '1', '10018001', '2023-09-25', '2023-09-27', 'sasa ok');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `training_opt`
+--
+
+CREATE TABLE `training_opt` (
+  `id_topt` int(11) NOT NULL,
+  `nama_training_opt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `training_opt`
+--
+
+INSERT INTO `training_opt` (`id_topt`, `nama_training_opt`) VALUES
+(1, 'PKP'),
+(3, 'POP'),
+(4, 'POM');
+
 --
 -- Indexes for dumped tables
 --
@@ -4373,6 +4419,18 @@ ALTER TABLE `training`
   ADD PRIMARY KEY (`id_training`);
 
 --
+-- Indexes for table `training_int`
+--
+ALTER TABLE `training_int`
+  ADD PRIMARY KEY (`id_training_int`);
+
+--
+-- Indexes for table `training_opt`
+--
+ALTER TABLE `training_opt`
+  ADD PRIMARY KEY (`id_topt`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -4410,7 +4468,7 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `grade_kom`
 --
 ALTER TABLE `grade_kom`
-  MODIFY `id_grade_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_grade_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -4446,7 +4504,7 @@ ALTER TABLE `level_kom`
 -- AUTO_INCREMENT for table `nilai_grade`
 --
 ALTER TABLE `nilai_grade`
-  MODIFY `id_nilai_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_nilai_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `plan`
@@ -4483,6 +4541,18 @@ ALTER TABLE `suggestionsystem`
 --
 ALTER TABLE `training`
   MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `training_int`
+--
+ALTER TABLE `training_int`
+  MODIFY `id_training_int` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `training_opt`
+--
+ALTER TABLE `training_opt`
+  MODIFY `id_topt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
