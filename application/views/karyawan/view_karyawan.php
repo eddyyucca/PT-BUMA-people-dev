@@ -32,40 +32,38 @@
                 <div class="card mt-3">
                     <!-- <div class="col-sm-6 mb-3"> -->
                     <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="d-flex align-items-center mb-3"><i
-                                    class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                            <small>Training</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!-- <div class="card-body">
+                            <div class="card shadow mb-4"> -->
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Performance</h6>
+                                <div class="dropdown no-arrow">
+
+
+                                </div>
                             </div>
-                            <small>Suggestion System</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
-                                    aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-pie pt-4 pb-2">
+                                    <canvas id="myPieChart"></canvas>
+                                </div>
+                                <div class="mt-4 text-center small">
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle text-primary"></i> Ss
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle text-success"></i> Improv
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle text-info"></i> Ci
+                                    </span>
+                                    <span class="mr-2">
+                                        <i class="fas fa-circle text-info"></i> Assessment
+                                    </span>
+                                </div>
                             </div>
-                            <small>Continues Improvement</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
-                                    aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Kompetensi</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
-                                    aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Assessment</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                    aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Kompetensi Grade</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                    aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                        <!-- </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -78,6 +76,8 @@
                                     href="<?= base_url('admin/edit_karyawan/') . $data->nik ?>">Edit Akun</a>
                                      | <a class="btn btn-success"
                                     href="<?= base_url('admin/ubah_level/') . $data->nik ?>">Level Akun</a>
+                                     |  <a class="btn btn-success"
+                                    href="<?= base_url('admin/ubah_level/') . $data->nik ?>">History Karyawan</a>
                             </div>
                         </div>
                         <hr>

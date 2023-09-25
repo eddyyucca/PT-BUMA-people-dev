@@ -34,7 +34,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Grade</th>
-                                 <th>Level Grade</th>
+                            <th>Level Grade</th>
                             <th>Nilai</th>
                         </tr>
                     </thead>

@@ -19,7 +19,7 @@
 
    <!-- End of Page Wrapper -->
 
-   <!-- Scroll to Top Button-->
+   <!-- Scroll tox Top Button-->
    <a class="scroll-to-top rounded" href="#page-top">
      <i class="fas fa-angle-up"></i>
    </a>
@@ -99,11 +99,11 @@
      var myPieChart = new Chart(ctx, {
        type: 'doughnut',
        data: {
-         labels: ["IT", "PRODUKSI", "MEKANIK"],
+         labels: ["Suggestion System", "Training", "Continues Improvement","Assessment"],
          datasets: [{
-           data: [70, 80, 120],
+           data: [1, 2, 3,2],
            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-           hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+           hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#2c9fae'],
            hoverBorderColor: "rgba(234, 236, 244, 1)",
          }],
        },

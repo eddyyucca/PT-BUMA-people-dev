@@ -51,6 +51,8 @@
             background: purple;
             color: #fff;
         }
+
+        
     </style>
 
 </head>
@@ -88,6 +90,13 @@
                     <!-- Nav Item - Pages Collapse Menu -->
                     <!-- Nav Item - Utilities Collapse Menu -->
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('admin/aprove') ?>">
+                            <i class="fas fa-fw fa-users"></i>
+                            <span>Aprove</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/data_karyawan') ?>">
                             <i class="fas fa-fw fa-users"></i>
                             <span>Karyawan</span>
@@ -100,9 +109,16 @@
                             <span>Level User</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('admin/training') ?>">
-                            <i class="fas fa-fw fa-chart-area"></i>
-                            <span>Training</span></a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#training" aria-expanded="true" aria-controls="training">
+                            <i class="fas fa-database"></i>
+                            <span>Training</span>
+                        </a>
+                        <div id="training" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="<?= base_url('admin/training_int') ?>">Training internal</a>
+                                <a class="collapse-item" href="<?= base_url('admin/training') ?>">Training External</a>
+                              </div>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/suggestionsystem') ?>">
@@ -138,6 +154,7 @@
                         </a>
                         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="<?= base_url('admin/training_opt') ?>">Training Optional</a>
                                 <a class="collapse-item" href="<?= base_url('admin/departement') ?>">Departement</a>
                                 <a class="collapse-item" href="<?= base_url('admin/section') ?>">Section</a>
                                 <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Jabatan</a>

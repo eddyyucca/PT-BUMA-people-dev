@@ -431,7 +431,116 @@ class Admin extends CI_Controller
 		return redirect('admin/departement');
 	}
 	// end departement
+	// Training Optional
+	public function training_opt()
+	{
+		$data['judul'] = 'Data Training Option';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
 
+		$data['data'] = $this->training_m->get_all_topt();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_opt/data_training_opt', $data);
+		$this->load->view('template/footer');
+	}
+	public function create_training_opt()
+	{
+		$data['judul'] = 'Create Training Option';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$this->load->view('template/header', $data);
+		$this->load->view('training_opt/create_training_opt', $data);
+		$this->load->view('template/footer');
+	}
+	public function edit_training_opt($id_topt)
+	{
+		$data['judul'] = 'Update Training Option';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->training_m->get_row_topt($id_topt);
+		$this->load->view('template/header', $data);
+		$this->load->view('training_opt/edit_training_opt', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_training_opt()
+	{
+		$data = array(
+			'nama_training_opt' => $this->input->post('nama_training_opt')
+		);
+		$this->db->insert('training_opt', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/training_opt');
+	}
+	public function proses_edit_training_opt($id_topt)
+	{
+		$data = array(
+			'nama_training_opt' => $this->input->post('nama_training_opt')
+		);
+		$this->db->where('id_topt', $id_topt);
+		$this->db->update('training_opt', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('admin/training_opt');
+	}
+	public function delete_training_opt($id_topt)
+	{
+		$this->db->where('id_topt', $id_topt);
+		$this->db->delete('training_opt');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('admin/training_opt');
+	}
+	// end training_opt
+ 
+	// training_int
+public function training_int()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->training_m->get_all_training_int();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_int/data_training_int', $data);
+		$this->load->view('template/footer');
+	}
+public function create_training_int()
+	{
+		$data['judul'] = 'Create Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['training'] = $this->training_m->get_all_topt();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_int/create_training_int', $data);
+		$this->load->view('template/footer');
+	}
+public function edit_training_int()
+	{
+		$data['judul'] = 'Create Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->training_m->get_all_topt();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_int/edit_training_int', $data);
+		$this->load->view('template/footer');
+	}
+	public function proses_tambah_training_int()
+	{
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'training' => $this->input->post('training'),
+			'p_materi' => $this->input->post('p_materi'),
+			'mulai_t' => $this->input->post('mulai_t'),
+			'akhir_t' => $this->input->post('akhir_t'),
+			'diskripsi' => $this->input->post('diskripsi'),
+		);
+		$this->db->insert('training_int', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/training_int');
+	}
+	// end training_int
 	// section
 	public function section()
 	{
