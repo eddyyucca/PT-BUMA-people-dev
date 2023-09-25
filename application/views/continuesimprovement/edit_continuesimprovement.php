@@ -33,7 +33,6 @@
                                 </select>
                                 <div class="form-group">
                                     <label>Tim Terlibat</label>
-
                                     <select data-placeholder="Begin typing a name to filter..." multiple
                                         class="form-control selectpicker" data-live-search="true" name="kar[]"
                                         multiple="multiple"> <?php foreach ($kar as $karyawan) { ?>

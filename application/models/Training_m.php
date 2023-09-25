@@ -68,6 +68,17 @@ $this->db->where('karyawan', $nik);
         $query = $this->db->get('training_int');
         return $query->result();
     }
+     public function get_row_training_int($id_training_int)
+    {
+        $this->db->join('karyawan', 'karyawan.nik = training_int.karyawan', 'left');
+        $this->db->join('training_opt', 'training_opt.id_topt = training_int.training', 'left');
+        $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
+        $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
+        $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
+        $this->db->where('id_training_int', $id_training_int);
+        $query = $this->db->get('training_int');
+        return $query->row();
+    }
 }
 
 /* End of file Training_m.php */

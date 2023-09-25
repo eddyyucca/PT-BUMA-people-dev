@@ -515,13 +515,14 @@ public function create_training_int()
 		$this->load->view('training_int/create_training_int', $data);
 		$this->load->view('template/footer');
 	}
-public function edit_training_int()
+public function edit_training_int($id_training_int)
 	{
 		$data['judul'] = 'Create Data Training Internal';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
-
-		$data['data'] = $this->training_m->get_all_topt();
+$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['training'] = $this->training_m->get_all_topt();
+		$data['data'] = $this->training_m->get_row_training_int($id_training_int);
 		$this->load->view('template/header', $data);
 		$this->load->view('training_int/edit_training_int', $data);
 		$this->load->view('template/footer');
@@ -538,6 +539,28 @@ public function edit_training_int()
 		);
 		$this->db->insert('training_int', $data);
 		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/training_int');
+	}
+	public function proses_edit_training_int($id_training_int)
+	{
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'training' => $this->input->post('training'),
+			'p_materi' => $this->input->post('p_materi'),
+			'mulai_t' => $this->input->post('mulai_t'),
+			'akhir_t' => $this->input->post('akhir_t'),
+			'diskripsi' => $this->input->post('diskripsi'),
+		);
+		$this->db->where('id_training_int', $id_training_int);
+		$this->db->update('training_int',$data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('admin/training_int');
+	}
+public function delete_training_int($id_training_int)
+	{
+		$this->db->where('id_training_int', $id_training_int);
+		$this->db->delete('training_int');
+		$this->session->set_flashdata('pesan', 'hapus');
 		return redirect('admin/training_int');
 	}
 	// end training_int
