@@ -183,6 +183,7 @@ class Admin extends CI_Controller
 		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
 		$data['tk'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
+		$data['training_int'] = $this->training_m->get_row_training_int_kar($nik);
 		$this->load->view('template/header', $data);
 		$this->load->view('karyawan/view_karyawan');
 		$this->load->view('template/footer');
@@ -504,6 +505,16 @@ public function training_int()
 		$this->load->view('template/header', $data);
 		$this->load->view('training_int/data_training_int', $data);
 		$this->load->view('template/footer');
+	}
+public function export_excel_training_internal()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$data['data'] = $this->training_m->get_all_training_int();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('training_int/export_excel_training_internal', $data);
 	}
 public function f_trainer()
 	{

@@ -140,7 +140,7 @@ function tanggal_indonesia($tanggal)
 
                     <a href="<?= base_url('admin/create_training_int') ?>" class="btn btn-success"><i
                             class="fas fa-plus-circle"></i> Tambah Training</a>
-                    <a href="<?= base_url('admin/create_training_int') ?>" class="btn btn-success"><i
+                    <a href="<?= base_url('admin/export_excel_training_internal') ?>" class="btn btn-success"><i
                             class="fas fa-plus-circle"></i> Export Excel</a>
                     <hr>
                 </div>
