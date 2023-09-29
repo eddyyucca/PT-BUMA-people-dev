@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2023 at 11:56 AM
+-- Generation Time: Sep 29, 2023 at 12:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -4284,7 +4284,8 @@ CREATE TABLE `training_int` (
 --
 
 INSERT INTO `training_int` (`id_training_int`, `karyawan`, `training`, `p_materi`, `mulai_t`, `akhir_t`, `diskripsi`) VALUES
-(1, '10007836', '1', '10018001', '2023-09-25', '2023-09-27', 'sasa ok');
+(1, '10007836', '1', '10018001', '2023-09-25', '2023-09-27', 'sasa ok'),
+(3, '10030448', '4', '10034026', '2023-07-01', '2023-07-03', '-ss');
 
 -- --------------------------------------------------------
 
@@ -4304,7 +4305,8 @@ CREATE TABLE `training_opt` (
 INSERT INTO `training_opt` (`id_topt`, `nama_training_opt`) VALUES
 (1, 'PKP'),
 (3, 'POP'),
-(4, 'POM');
+(4, 'POM'),
+(5, 'PKHD');
 
 --
 -- Indexes for dumped tables
@@ -4546,13 +4548,13 @@ ALTER TABLE `training`
 -- AUTO_INCREMENT for table `training_int`
 --
 ALTER TABLE `training_int`
-  MODIFY `id_training_int` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_training_int` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `training_opt`
 --
 ALTER TABLE `training_opt`
-  MODIFY `id_topt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_topt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
