@@ -498,8 +498,49 @@ public function training_int()
 		$data['judul'] = 'Data Training Internal';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
-
+	$data['training'] = $this->training_m->get_all_topt();
 		$data['data'] = $this->training_m->get_all_training_int();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_int/data_training_int', $data);
+		$this->load->view('template/footer');
+	}
+public function f_trainer()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$nik = $this->input->post('nik');
+		$data['data'] = $this->training_m->get_f_trainer_int($nik);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_int/data_training_int', $data);
+		$this->load->view('template/footer');
+	}
+public function f_training()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$id_training = $this->input->post('id_training');
+		$data['data'] = $this->training_m->get_f_training_int($id_training);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template/header', $data);
+		$this->load->view('training_int/data_training_int', $data);
+		$this->load->view('template/footer');
+	}
+public function f_bulan_tahun()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$data['data'] = $this->training_m->get_f_training_bt($bulan,$tahun);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
 		$this->load->view('template/header', $data);
 		$this->load->view('training_int/data_training_int', $data);
 		$this->load->view('template/footer');
@@ -553,9 +594,11 @@ $data['kar'] = $this->karyawan_m->get_all_kar();
 		);
 		$this->db->where('id_training_int', $id_training_int);
 		$this->db->update('training_int',$data);
-		$this->session->set_flashdata('pesan', 'buat');
+		$this->session->set_flashdata('pesan', 'ubah');
 		return redirect('admin/training_int');
 	}
+
+
 public function delete_training_int($id_training_int)
 	{
 		$this->db->where('id_training_int', $id_training_int);
