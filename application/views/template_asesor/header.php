@@ -103,10 +103,17 @@
                         </a>
 
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('asesor/training') ?>">
-                            <i class="fas fa-fw fa-chart-area"></i>
-                            <span>Training</span></a>
+                   <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#training" aria-expanded="true" aria-controls="training">
+                            <i class="fas fa-database"></i>
+                            <span>Training</span>
+                        </a>
+                        <div id="training" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="<?= base_url('asesor/training_int') ?>">Training internal</a>
+                                <a class="collapse-item" href="<?= base_url('asesor/training') ?>">Training External</a>
+                              </div>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('asesor/suggestionsystem') ?>">

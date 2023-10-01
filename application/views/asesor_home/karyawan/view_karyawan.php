@@ -174,13 +174,64 @@
                 </div>
             </div>
         </div>
-
+ <!-- Training internal-->
+        <div class="row gutters-sm">
+            <div class="col-md-12 mb-3">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold ">Data Training Internal<Section></Section>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Karyawan</th>
+                                        <th>Training</th>
+                                        <th>Tanggal</th>
+                                        <th>Pemberi Materi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                        $nomor = 1;
+                        foreach ($training_int as $x) { ?>
+                                    <tr>
+                                        <td><?= $nomor++; ?></td>
+                                        <td><?= $x->nama; ?>
+                                        </td>
+                                        <td>
+                                            <?= $x->nama_training_opt; ?>
+                                        </td>
+                                        <td><?= tanggal_indonesia($x->mulai_t) . " - " . tanggal_indonesia($x->akhir_t) ?>
+                                        </td>
+                                        <?php
+                                $model = $this->load->model('karyawan_m');
+                                $pm = $this->karyawan_m->get_row_nik($x->p_materi);
+                                ?>
+                                        <td>
+                                            <?php
+                                            echo $pm->nama;
+                                        ?>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <?php   } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Training -->
         <div class="row gutters-sm">
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold ">Data Training<Section></Section>
+                        <h6 class="m-0 font-weight-bold ">Data Training External<Section></Section>
                         </h6>
                     </div>
                     <div class="card-body">

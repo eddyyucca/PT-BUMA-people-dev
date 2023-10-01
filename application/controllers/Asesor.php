@@ -133,10 +133,10 @@ class Asesor extends CI_Controller
 		$karyawan = $this->karyawan_m->get_row_nik($nik);
         $id_jab =  $karyawan->jabatan;
         $data['data'] = $this->karyawan_m->get_view_kar($nik);
-
+		$data['training_int'] = $this->training_m->get_row_training_int_kar($nik);
         $data['judul'] = 'Profil Karyawan';
         $data['nama'] = $this->session->userdata('nama');
-      $data['data_training'] = $this->training_m->get_all_tra_user($nik);
+    	$data['data_training'] = $this->training_m->get_all_tra_user($nik);
 		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
 		$data['tk'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
@@ -275,7 +275,7 @@ class Asesor extends CI_Controller
 		);
 		$this->db->insert('kompetensi', $data);
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/data_jeniskompetensi');
+		return redirect('asesor/data_jeniskompetensi');
 	}
 	public function proses_edit_kom($id_kom)
 	{
@@ -285,14 +285,14 @@ class Asesor extends CI_Controller
 		$this->db->where('id_kom', $id_kom);
 		$this->db->update('kompetensi', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/data_jeniskompetensi');
+		return redirect('asesor/data_jeniskompetensi');
 	}
 	public function delete_kompetensi($id_kom)
 	{
 		$this->db->where('id_kom', $id_kom);
 		$this->db->delete('kompetensi');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/data_jeniskompetensi');
+		return redirect('asesor/data_jeniskompetensi');
 	}
 	// end jenisKompetensi
 
@@ -738,7 +738,7 @@ class Asesor extends CI_Controller
 
 		$this->session->set_flashdata('pesan', 'hapus');
 		
-		return redirect('admin/assessment');
+		return redirect('asesor/assessment');
 	}
 	public function nilai_assessment($id_am,$nik)
 	{
@@ -748,7 +748,7 @@ class Asesor extends CI_Controller
 		$this->db->where('nik', $nik);
 		$query = $this->db->get('karyawan')->row();
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect("admin/create_assessment/".$query->jabatan."/".$query->nik);
+		return redirect("asesor/create_assessment/".$query->jabatan."/".$query->nik);
 	}
 
 	public function proses_tambah_nilaiassessment($nik,$id_plan_t)
@@ -812,7 +812,7 @@ class Asesor extends CI_Controller
 			"target_p" => $this->input->post('target_p'),
 		);
 		$this->db->insert('plan_kom', $data);
-		return redirect('admin/data_plankompetensi');
+		return redirect('asesor/data_plankompetensi');
 	}
 	public function proses_edit_plan($id_plan_t)
 	{
@@ -822,14 +822,14 @@ class Asesor extends CI_Controller
 		);
 		$this->db->where('id_plan_t', $id_plan_t);
 		$this->db->update('plan_kom', $data);
-		return redirect('admin/data_plankompetensi');
+		return redirect('asesor/data_plankompetensi');
 	}
 	public function delete_plan($id_plan_t)
 	{
 		$this->db->where('id_plan_t', $id_plan_t);
 		$this->db->delete('plan_kom');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/data_plankompetensi');
+		return redirect('asesor/data_plankompetensi');
 	}
 
 	// end plantkompetensi
@@ -884,7 +884,7 @@ class Asesor extends CI_Controller
 		);
 		$this->db->insert('plan', $data);
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/data_jenisplan');
+		return redirect('asesor/data_jenisplan');
 	}
 	public function proses_edit_jenisplan($id_plan)
 	{
@@ -895,14 +895,14 @@ class Asesor extends CI_Controller
 		$this->db->where('id_plan', $id_plan);
 		$this->db->update('plan', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/data_jenisplan');
+		return redirect('asesor/data_jenisplan');
 	}
 	public function delete_jenisplan($id_plan)
 	{
 		$this->db->where('id_plan', $id_plan);
 		$this->db->delete('plan');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/data_jenisplan');
+		return redirect('asesor/data_jenisplan');
 	}
 	// end jenisplant
 
@@ -955,11 +955,11 @@ class Asesor extends CI_Controller
         $query = $this->db->get();
         if ($query->num_rows() >= 1) {
 			$this->session->set_flashdata('pesan', 'sudahada');
-			return redirect('admin/data_levelkompetensi');
+			return redirect('asesor/data_levelkompetensi');
         }elseif($query->num_rows() < 1) {
 			$this->db->insert('level_kom', $data);
 			$this->session->set_flashdata('pesan', 'buat');
-		return redirect('admin/data_levelkompetensi');
+		return redirect('asesor/data_levelkompetensi');
 		}
 		// var_dump($query->num_rows());
 	}
@@ -974,14 +974,14 @@ class Asesor extends CI_Controller
 		$this->db->where('id_lp', $id_lp);
 		$this->db->update('level_kom', $data);
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('admin/data_levelkompetensi');
+		return redirect('asesor/data_levelkompetensi');
 	}
 	public function delete_level($id_lp)
 	{
 		$this->db->where('id_lp', $id_lp);
 		$this->db->delete('level_kom');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('admin/data_levelkompetensi');
+		return redirect('asesor/data_levelkompetensi');
 	}
 	// end data_levelkompetensi
 
@@ -1104,6 +1104,131 @@ class Asesor extends CI_Controller
 	}
 	//end grade
 
+	// training_int
+public function training_int()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+	$data['training'] = $this->training_m->get_all_topt();
+		$data['data'] = $this->training_m->get_all_training_int();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_int/data_training_int', $data);
+		$this->load->view('template_asesor/footer');
+	}
+public function export_excel_training_internal()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$data['data'] = $this->training_m->get_all_training_int();
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('asesor_home/training_int/export_excel_training_internal', $data);
+	}
+public function f_trainer()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$nik = $this->input->post('nik');
+		$data['data'] = $this->training_m->get_f_trainer_int($nik);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_int/data_training_int', $data);
+		$this->load->view('template_asesor/footer');
+	}
+public function f_training()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$id_training = $this->input->post('id_training');
+		$data['data'] = $this->training_m->get_f_training_int($id_training);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_int/data_training_int', $data);
+		$this->load->view('template_asesor/footer');
+	}
+public function f_bulan_tahun()
+	{
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['training'] = $this->training_m->get_all_topt();
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$data['data'] = $this->training_m->get_f_training_bt($bulan,$tahun);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_int/data_training_int', $data);
+		$this->load->view('template_asesor/footer');
+	}
+public function create_training_int()
+	{
+		$data['judul'] = 'Create Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['training'] = $this->training_m->get_all_topt();
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_int/create_training_int', $data);
+		$this->load->view('template_asesor/footer');
+	}
+public function edit_training_int($id_training_int)
+	{
+		$data['judul'] = 'Create Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+$data['kar'] = $this->karyawan_m->get_all_kar();
+		$data['training'] = $this->training_m->get_all_topt();
+		$data['data'] = $this->training_m->get_row_training_int($id_training_int);
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_int/edit_training_int', $data);
+		$this->load->view('template_asesor/footer');
+	}
+	public function proses_tambah_training_int()
+	{
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'training' => $this->input->post('training'),
+			'p_materi' => $this->input->post('p_materi'),
+			'mulai_t' => $this->input->post('mulai_t'),
+			'akhir_t' => $this->input->post('akhir_t'),
+			'diskripsi' => $this->input->post('diskripsi'),
+		);
+		$this->db->insert('training_int', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('asesor/training_int');
+	}
+	public function proses_edit_training_int($id_training_int)
+	{
+		$data = array(
+			'karyawan' => $this->input->post('karyawan'),
+			'training' => $this->input->post('training'),
+			'p_materi' => $this->input->post('p_materi'),
+			'mulai_t' => $this->input->post('mulai_t'),
+			'akhir_t' => $this->input->post('akhir_t'),
+			'diskripsi' => $this->input->post('diskripsi'),
+		);
+		$this->db->where('id_training_int', $id_training_int);
+		$this->db->update('training_int',$data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('asesor/training_int');
+	}
+
+
+public function delete_training_int($id_training_int)
+	{
+		$this->db->where('id_training_int', $id_training_int);
+		$this->db->delete('training_int');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('asesor/training_int');
+	}
+	// end training_int
 
 	// 
 }
