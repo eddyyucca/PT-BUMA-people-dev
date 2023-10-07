@@ -115,7 +115,7 @@
                         </a>
                         <div id="training" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="<?= base_url('admin/training_int') ?>">Training internal</a>
+                                <a class="collapse-item" href="<?= base_url('admin/training_int') ?>">Training Internal</a>
                                 <a class="collapse-item" href="<?= base_url('admin/training') ?>">Training External</a>
                               </div>
                         </div>

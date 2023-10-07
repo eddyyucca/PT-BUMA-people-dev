@@ -1230,5 +1230,65 @@ public function delete_training_int($id_training_int)
 	}
 	// end training_int
 
+		// Training Optional
+	public function training_opt()
+	{
+		$data['judul'] = 'Data Training Option';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->training_m->get_all_topt();
+	$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_opt/data_training_opt', $data);
+		$this->load->view('template_asesor/footer');
+	}
+	public function create_training_opt()
+	{
+		$data['judul'] = 'Create Training Option';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_opt/create_training_opt', $data);
+		$this->load->view('template_asesor/footer');
+	}
+	public function edit_training_opt($id_topt)
+	{
+		$data['judul'] = 'Update Training Option';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+
+		$data['data'] = $this->training_m->get_row_topt($id_topt);
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/training_opt/edit_training_opt', $data);
+		$this->load->view('template_asesor/footer');
+	}
+	public function proses_tambah_training_opt()
+	{
+		$data = array(
+			'nama_training_opt' => $this->input->post('nama_training_opt')
+		);
+		$this->db->insert('training_opt', $data);
+		$this->session->set_flashdata('pesan', 'buat');
+		return redirect('asesor/training_opt');
+	}
+	public function proses_edit_training_opt($id_topt)
+	{
+		$data = array(
+			'nama_training_opt' => $this->input->post('nama_training_opt')
+		);
+		$this->db->where('id_topt', $id_topt);
+		$this->db->update('training_opt', $data);
+		$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('asesor/training_opt');
+	}
+	public function delete_training_opt($id_topt)
+	{
+		$this->db->where('id_topt', $id_topt);
+		$this->db->delete('training_opt');
+		$this->session->set_flashdata('pesan', 'hapus');
+		return redirect('asesor/training_opt');
+	}
+	// end training_opt
 	// 
 }

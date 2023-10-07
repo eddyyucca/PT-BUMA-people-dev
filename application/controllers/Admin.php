@@ -79,7 +79,7 @@ class Admin extends CI_Controller
 	public function data_karyawan($num = '')
 	{
 
-		$perpage = 9;
+		$perpage = 8;
 		$offset = $this->uri->segment(3);
 		$data['data'] = $this->karyawan_m->get_data($perpage, $offset)->result();
 		$config['base_url'] = site_url('admin/data_karyawan/');

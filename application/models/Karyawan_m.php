@@ -149,6 +149,7 @@ class Karyawan_m extends CI_Model
         $this->db->limit($limit, $offset);
         $this->db->order_by('id_kar', 'ASC');
         $this->db->like('nama', $cari);
+        $this->db->or_like('nik',$cari); 
 
         return $this->db->get();
     }
