@@ -51,16 +51,16 @@
                             </div>
                             <div class="mt-4 text-center small">
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-primary"></i> Ss
+                                    <i class="fas fa-circle text-primary"></i> -
                                 </span>
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-success"></i> Improv
+                                    <i class="fas fa-circle text-success"></i> -
                                 </span>
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-info"></i> Ci
+                                    <i class="fas fa-circle text-info"></i> -
                                 </span>
                                 <span class="mr-2">
-                                    <i class="fas fa-circle text-info"></i> Assessment
+                                    <i class="fas fa-circle text-info"></i> -
                                 </span>
                             </div>
                         </div>

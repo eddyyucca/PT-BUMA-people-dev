@@ -802,7 +802,7 @@ public function delete_training_int($id_training_int)
 			$this->db->insert('citt', $data2);
 		}
 		$this->session->set_flashdata('pesan', 'buat');
-		return redirect('asesor/continuesimprovement');
+		return redirect('admin/continuesimprovement');
 	}
 	public  function proses_edit_ci($kode_tim)
 	{
@@ -826,7 +826,7 @@ public function delete_training_int($id_training_int)
 			$this->db->insert('citt', $data2);
 		}
 		$this->session->set_flashdata('pesan', 'ubah');
-		return redirect('asesor/continuesimprovement');
+		return redirect('admin/continuesimprovement');
 	}
 
 	public  function delete_continuesimprovement($kode_tim)
@@ -836,7 +836,7 @@ public function delete_training_int($id_training_int)
 		$this->db->where('kode_tim', $kode_tim);
 		$this->db->delete('citt');
 		$this->session->set_flashdata('pesan', 'hapus');
-		return redirect('asesor/continuesimprovement');
+		return redirect('admin/continuesimprovement');
 	}
 	// end continuesImprovement
 
@@ -1220,6 +1220,7 @@ public function delete_training_int($id_training_int)
 		$file1 = $this->upload->data();
 		if ($file1['file_name'] == true) {
 			$data = array(
+				'training' => $this->input->post('training'),
 				'karyawan' => $this->input->post('karyawan'),
 				'penyelenggara' => $this->input->post('penyelenggara'),
 				'mulai_training' => $this->input->post('mulai_training'),
@@ -1234,6 +1235,7 @@ public function delete_training_int($id_training_int)
 			unlink($_SERVER['DOCUMENT_ROOT'] . '/assets/sertifikat_training/' . $get->training_foto);
 		} elseif ($file1['file_name'] ==  false) {
 			$data = array(
+				'training' => $this->input->post('training'),
 				'karyawan' => $this->input->post('karyawan'),
 				'penyelenggara' => $this->input->post('penyelenggara'),
 				'mulai_training' => $this->input->post('mulai_training'),

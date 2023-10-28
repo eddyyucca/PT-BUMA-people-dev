@@ -61,7 +61,7 @@
                                 <?php
                                    if ($x_assessment == true) { ?>
                                     <a href="<?= base_url('admin/nilai_assessment/') . $x_assessment->id_am."/".$nikkar;?>" class="btn btn-danger">Hapus</a>
-                                       <a href="<?= base_url('admin/edit_plan/') . $x_assessment->id_am."/".$nikkar; ?>" class="btn btn-primary">Edit</a>  
+                                       <a href="<?= base_url('admin/edit_nilaiassessment/') . $x_assessment->id_am."/".$nikkar; ?>" class="btn btn-primary">Edit</a>  
                                   <? }elseif($x_assessment == false){?>
                                     
                                  <?php  }
