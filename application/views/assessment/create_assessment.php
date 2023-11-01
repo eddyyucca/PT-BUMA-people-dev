@@ -31,7 +31,7 @@
                             <th>Level Kompetensi</th>
                             <th>Nilai Level</th>
                             <th>Nilai Karyawan</th>
-                            <th>Tambah Nilai</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -18,8 +18,8 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/proses_tambah_grade')  ?>" method="POST" enctype="multipart/form-data">
-                                                            <table class="table">
+                                                        <form action="<?= base_url('admin/proses_edit_grade/'). $id_grade ?>" method="POST" enctype="multipart/form-data">   
+                                                        <table class="table">
                                                                 <tr>
                                                                     <td width=20%>Nama Grade</td>
                                                                     <td><input type="text" name="nama_grade" value="<?= $data->nama_grade ?>" aria-describedby="basic-addon1" class="form-control" required placeholder="Nama Grade"></td>

@@ -1681,8 +1681,9 @@ public function delete_training_int($id_training_int)
 		$data['judul'] = 'Update Grade';
 		$data['nama'] = $this->session->userdata('nama');
 		$data['nik'] = $this->session->userdata('nik');
-
+		$data['dep'] = $this->departement_m->get_all_dep();
 		$data['data'] = $this->grade_m->get_row_grade($id_grade);
+		$data['id_grade'] = $id_grade;
 		$this->load->view('template/header', $data);
 		$this->load->view('grade/edit_grade', $data);
 		$this->load->view('template/footer');
