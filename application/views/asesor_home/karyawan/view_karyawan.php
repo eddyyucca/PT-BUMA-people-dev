@@ -3,8 +3,8 @@
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= base_url('admin/data_karyawan/') ?>">User</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('asesor') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('asesor/data_karyawan/') ?>">User</a></li>
                 <li class="breadcrumb-item active" aria-current="">User Profile</li>
             </ol>
         </nav>
@@ -14,12 +14,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                           <?php if ($data->foto == false) { ?>
-                                                    <img src="<?= base_url('assets') ?>/profil_default.png" class="rounded" width="150" height="150" alt="Foto Profil">
-                                                <?php  } elseif ($data->foto == true) { ?>
+                            <?php if ($data->foto == false) { ?>
+                            <img src="<?= base_url('assets') ?>/profil_default.png" class="rounded" width="150"
+                                height="150" alt="Foto Profil">
+                            <?php  } elseif ($data->foto == true) { ?>
 
-                                                    <img src="<?= base_url('assets/foto_profil/') . $data->foto ?>" class="rounded" width="150" height="150" alt="Foto Profil">
-                                                <?php  } ?>
+                            <img src="<?= base_url('assets/foto_profil/') . $data->foto ?>" class="rounded" width="150"
+                                height="150" alt="Foto Profil">
+                            <?php  } ?>
                             <div class="mt-3">
                                 <h4><?= $data->nama ?></h4>
                                 <p class="text-secondary mb-1"> <?= $data->nama_jab ?></p>
@@ -32,40 +34,38 @@
                 <div class="card mt-3">
                     <!-- <div class="col-sm-6 mb-3"> -->
                     <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="d-flex align-items-center mb-3"><i
-                                    class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                            <small>Training</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Suggestion System</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
-                                    aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Continues Improvement</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
-                                    aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Kompetensi</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
-                                    aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Assessment</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                    aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Kompetensi Grade</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                    aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!-- <div class="card-body">
+                            <div class="card shadow mb-4"> -->
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Performance</h6>
+                            <div class="dropdown no-arrow">
+
+
                             </div>
                         </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="chart-pie pt-4 pb-2">
+                                <canvas id="myPieChart"></canvas>
+                            </div>
+                            <div class="mt-4 text-center small">
+                                <span class="mr-2">
+                                    <i class="fas fa-circle text-primary"></i> -
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle text-success"></i> -
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle text-info"></i> -
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fas fa-circle text-info"></i> -
+                                </span>
+                            </div>
+                        </div>
+                        <!-- </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                                 <h6 class="mb-0">Jenis Kelamin</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= $data->tempat ?> - <?= $data->jk ?>
+                                <?= $data->jk ?>
                             </div>
                         </div>
                         <hr>
@@ -140,7 +140,7 @@
                                 <h6 class="mb-0">Agama</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= $data->agama ?> - <?= $data->jk ?>
+                                <?= $data->agama ?>
                             </div>
                         </div>
                         <hr>
@@ -174,7 +174,8 @@
                 </div>
             </div>
         </div>
- <!-- Training internal-->
+
+        <!-- Training internal-->
         <div class="row gutters-sm">
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
@@ -185,48 +186,55 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Karyawan</th>
-                                        <th>Training</th>
-                                        <th>Tanggal</th>
-                                        <th>Pemberi Materi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Peserta</th>
+                            <th>Training</th>
+                            <th>Teori & Praktik</th>
+                            <th>Status</th>
+                            <th>Tanggal</th>
+                            <th>Trainer</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
                         $nomor = 1;
                         foreach ($training_int as $x) { ?>
-                                    <tr>
-                                        <td><?= $nomor++; ?></td>
-                                        <td><?= $x->nama; ?>
-                                        </td>
-                                        <td>
-                                            <?= $x->nama_training_opt; ?>
-                                        </td>
-                                        <td><?= tanggal_indonesia($x->mulai_t) . " - " . tanggal_indonesia($x->akhir_t) ?>
-                                        </td>
-                                        <?php
-                                $model = $this->load->model('karyawan_m');
-                                $pm = $this->karyawan_m->get_row_nik($x->p_materi);
-                                ?>
-                                        <td>
-                                            <?php
-                                            echo $pm->nama;
-                                        ?>
-                                        </td>
-                                        </td>
-                                    </tr>
-                                    <?php   } ?>
-                                </tbody>
-                            </table>
+                        <tr>
+                            <td><?= $nomor++; ?></td>
+                            <td><?= $x->nama; ?>
+                            </td>
+                            <td>
+                                <?= $x->nama_training_opt; ?>
+                            </td>
+                           
+                            <td align="center"><?= $x->n_teori . "/". $x->n_praktik ?></td>
+                            <td align="center">
+                                <?= $x->status_training; ?>
+                            </td>
+                            <td><?= tanggal_indonesia($x->mulai_t) . " - " . tanggal_indonesia($x->akhir_t) ?></td>
+                        </td>
+                                 <?php
+                                     $model = $this->load->model('karyawan_m');
+                                     $pm = $this->karyawan_m->get_row_nik($x->p_materi);
+                                     ?>
+                                 <td>
+                                     <?php echo $pm->nama; ?>
+                                 </td>
+                           
+                        </tr>
+                        <?php   } ?>
+                    </tbody>
+                </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Training -->
+
+        <!-- Training external-->
         <div class="row gutters-sm">
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
@@ -298,7 +306,7 @@
         </div>
 
         <!-- ss -->
-         <div class="row gutters-sm">
+        <div class="row gutters-sm">
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -307,38 +315,38 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Judul</th>
-                            <th>Tanggal Implementasi</th>
-                            <th>Tim Terlibat</th>
-                            <th>Yang Melakukan</th>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>Tanggal Implementasi</th>
+                                        <th>Tim Terlibat</th>
+                                        <th>Yang Melakukan</th>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                         $nomor = 1;
                         foreach ($ss as $ssdata) { ?>
-                            <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td><?= $ssdata->judul_ss; ?></td>
-                                <td><?= $ssdata->t_implementasi_ss; ?></td>
-                                <td><?= $ssdata->nama_sec; ?></td>
-                                <td><?= $ssdata->nama; ?></td>                   
-                            </tr>
-                        <?php   } ?>
-                    </tbody>
-                </table>
+                                    <tr>
+                                        <td><?= $nomor++; ?></td>
+                                        <td><?= $ssdata->judul_ss; ?></td>
+                                        <td><?= $ssdata->t_implementasi_ss; ?></td>
+                                        <td><?= $ssdata->nama_sec; ?></td>
+                                        <td><?= $ssdata->nama; ?></td>
+                                    </tr>
+                                    <?php   } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- ci -->
-         <div class="row gutters-sm">
+        <div class="row gutters-sm">
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -347,163 +355,107 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Judul</th>
-                            <th>pembuat</th>
-                            <th>Tanggal Implementasi</th>
-                            <th>Tim Terlibat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>pembuat</th>
+                                        <th>Tanggal Implementasi</th>
+                                        <th>Tim Terlibat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                         $nomor = 1;
                         foreach ($continuesimprovement as $x) { ?>
-                            <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td><?= $x->judul; ?></td>
-                                <td><?= $x->nama; ?></td>
-                                <td><?= $x->t_implementasi; ?></td>
-                                <?php
+                                    <tr>
+                                        <td><?= $nomor++; ?></td>
+                                        <td><?= $x->judul; ?></td>
+                                        <td><?= $x->nama; ?></td>
+                                        <td><?= $x->t_implementasi; ?></td>
+                                        <?php
                                 $model = $this->load->model('ci_m');
                                 $citt = $this->ci_m->get_tim_ci($x->tim);
                                 ?>
-                                <td> <?php
+                                        <td> <?php
                                         foreach ($citt as $ok) {
                                             echo $ok->nama_tim;
                                             echo "
                                     <hr>";
                                         }
                                         ?>
-                                </td>
-                            </tr>
-                        <?php   } ?>
-                    </tbody>
-                </table>
+                                        </td>
+                                    </tr>
+                                    <?php   } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- ki -->
-         <div class="row gutters-sm">
+        <div class="row gutters-sm">
             <div class="col-md-12 mb-3">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold ">Kompetensi<Section></Section>
+                        <h6 class="m-0 font-weight-bold ">Assessment<Section></Section>
                         </h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Asesor</th>
-                            <th>Karyawan</th>
-                            <th>Jabatan</th>
-                            <th>Section</th>
-                            <th>Tanggal</th>
-                            <th>View Kompetensi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Asesor</th>
+                                        <th>Karyawan</th>
+                                        <th>Jabatan</th>
+                                        <th>Section</th>
+                                        <th>Tanggal</th>
+                                        <th>View Kompetensi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                         
                         $nomor = 1;
                         foreach ($tk as $xtk) { 
                             if ($xtk->date_kom == true) { ?>
-                                <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td>
-                                <?php  
+                                    <tr>
+                                        <td><?= $nomor++; ?></td>
+                                        <td>
+                                            <?php  
                                 $model = $this->load->model('karyawan_m');
                                 $asesor = $this->karyawan_m->get_row_nik($xtk->asesor);
-                                 ?>      
-                                <?= $asesor->nama ?>
-                                <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
-                            </td>
-                                <td><?= $xtk->nama; ?>
-                                <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
-                            </td>
-                                <td><?= $xtk->nama_jab; ?></td>
-                                <td><?= $xtk->nama_sec; ?></td>
-                                <td><?= tanggal_indonesia($xtk->date_kom); ?></td>
-                              <td align="center">
-                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $xtk->id_jab; ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                                </td>
-                            </tr>
-                         <?php   }else{
+                                 ?>
+                                            <?= $asesor->nama ?>
+                                            <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
+                                        </td>
+                                        <td><?= $xtk->nama; ?>
+                                            <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
+                                        </td>
+                                        <td><?= $xtk->nama_jab; ?></td>
+                                        <td><?= $xtk->nama_sec; ?></td>
+                                        <td><?= tanggal_indonesia($xtk->date_kom); ?></td>
+                                        <td align="center">
+                                            <a href="<?= base_url('asesor/view_taskkompetensi/') . $xtk->id_jab; ?>"
+                                                class="btn btn-success"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php   }else{
 
                             }
                              } ?>
-                    </tbody>
-                </table>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- ki -->
-         <div class="row gutters-sm">
-            <div class="col-md-12 mb-3">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold ">Kompetensi<Section></Section>
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Asesor</th>
-                            <th>Karyawan</th>
-                            <th>Jabatan</th>
-                            <th>Section</th>
-                            <th>Tanggal</th>
-                            <th>View Kompetensi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        
-                        $nomor = 1;
-                        foreach ($tk as $xtk) { 
-                            if ($xtk->date_kom == true) { ?>
-                                <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td>
-                                <?php  
-                                $model = $this->load->model('karyawan_m');
-                                $asesor = $this->karyawan_m->get_row_nik($xtk->asesor);
-                                 ?>      
-                                <?= $asesor->nama ?>
-                                <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
-                            </td>
-                                <td><?= $xtk->nama; ?>
-                                <footer class="blockquote-footer">NIK - <?= $xtk->nik ?></footer>
-                            </td>
-                                <td><?= $xtk->nama_jab; ?></td>
-                                <td><?= $xtk->nama_sec; ?></td>
-                                <td><?= tanggal_indonesia($xtk->date_kom); ?></td>
-                              <td align="center">
-                                    <a href="<?= base_url('admin/view_taskkompetensi/') . $xtk->id_jab; ?>" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                                </td>
-                            </tr>
-                         <?php   }else{
 
-                            }
-                             } ?>
-                    </tbody>
-                </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

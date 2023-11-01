@@ -67,26 +67,33 @@
                             <i class="fas fa-user-alt"></i>
                             <span>Profil</span></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/suggestionsystem') ?>">
                             <i class="fas fa-sort-amount-up-alt"></i>
                             <span>Suggestion system</span></a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
                             <i class="fas fa-fw fa-chart-area"></i>
                             <span>Cont. Improvement</span></a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('user/continuesimprovement') ?>">
-                            <i class="fas fa-fw fa-chart-area"></i>
-                            <span>Training</span></a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#training" aria-expanded="true" aria-controls="training">
+                            <i class="fas fa-database"></i>
+                            <span>Training</span>
+                        </a>
+                        <div id="training" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="<?= base_url('user/training_int') ?>">Training Internal</a>
+                                <!-- <a class="collapse-item" href="<?= base_url('user/training') ?>">Training External</a> -->
+                              </div>
+                        </div>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/assessment') ?>">
                             <i class="fas fa-tasks"></i>
                             <span>Assessment</span></a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('user/password') ?>">
                             <i class="fas fa-unlock-alt"></i>

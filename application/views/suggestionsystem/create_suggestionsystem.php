@@ -50,7 +50,6 @@
 
                             <button class="btn btn-success">Simpan</button>
 
-
                         </div>
                         </table>
                     </form>

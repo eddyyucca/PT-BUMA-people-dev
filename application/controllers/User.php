@@ -43,6 +43,18 @@ class User extends CI_Controller
         $this->load->view('user/home', $data);
         $this->load->view('template_user/footer');
     }
+    public function training_int()
+	{  $nik =  $this->session->userdata('nik');
+		$data['judul'] = 'Data Training Internal';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+	$data['training'] = $this->training_m->get_all_topt();
+		$data['data'] = $this->training_m->get_row_training_int_kar($nik);
+		$data['kar'] = $this->karyawan_m->get_all_kar();
+		$this->load->view('template_user/header', $data);
+		$this->load->view('user/training_int/data_training_int', $data);
+		$this->load->view('template_user/footer');
+	}
     public function profil()
     {
         $nik =  $this->session->userdata('nik');
@@ -52,7 +64,7 @@ class User extends CI_Controller
 
         $data['judul'] = 'Profil Karyawan';
         $data['nama'] = $this->session->userdata('nama');
- 
+ 	$data['training_int'] = $this->training_m->get_row_training_int_kar($nik);
        $data['data_training'] = $this->training_m->get_all_tra_user($nik);
 		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);

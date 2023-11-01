@@ -2,12 +2,12 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= base_url('user_karyawan/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+            <a href="<?= base_url('asesor/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <form action="<?= base_url('user/proses_ubah_password/') . $data->nik ?>" method="POST">
+                    <form action="<?= base_url('asesor/proses_ubah_password/') . $data->nik ?>" method="POST">
                         <table class="table">
                             <!-- <?= $pesan; ?> -->
                             <?php

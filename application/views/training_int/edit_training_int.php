@@ -18,7 +18,7 @@
                         enctype="multipart/form-data">
                         <table class="table">
                             <div class="form-group">
-                                <label>Yang Melakukan Training</label>
+                                <label>Peserta</label>
                                 <select name="karyawan" class="form-control  selectpicker" data-live-search="true">
                                     <option value="">--PILIH KARYAWAN--</option>
                                     <?php foreach ($kar as $karyawan) { ?>
@@ -39,7 +39,6 @@
                             </div>
                             <div class="form-group">
                                 <label> Tanggal Traininig</label>
-
                                 <div class="input-group">
                                     <input type="date" aria-label="First name" class="form-control"
                                         name="mulai_t"  value="<?= $data->mulai_t ?>">
@@ -48,7 +47,7 @@
                                 </div>
                             </div>
                              <div class="form-group">
-                                <label>Yang Memberi Training</label>
+                                 <label>Trainer</label>
                                 <select name="p_materi" class="form-control  selectpicker" data-live-search="true">
                                     <option value="">--PILIH KARYAWAN--</option>
                                     <?php foreach ($kar as $karyawan) { ?>
@@ -57,6 +56,26 @@
                                     <?php } ?>
                                 </select>
                             </div>
+                            <div class="form-group">
+                            <label>Nilai Teori</label>
+                            <input type="number" name="n_teori" class="form-control" required placeholder="Nilai Teori"
+                                min="1" max="100" value="<?= $data->n_teori?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Nilai Praktik</label>
+                            <input type="number" name="n_praktik" class="form-control" required
+                                placeholder="Nilai Praktik" min="1" max="100" value="<?= $data->n_praktik?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="status_training" class="form-control" data-live-search="true" required>
+                                <option value="">--PILIH STATUS--</option>
+                                <option value="Lulus"<?= "Lulus" == $data->status_training ? 'selected=selected' : ''; ?>>
+                                        Lulus</option>
+                            <option value="Tidak Lulus"<?= "Tidak Lulus" == $data->status_training ? 'selected=selected' : ''; ?>>
+                                        Tidak Lulus</option>
+                            </select>
+                        </div>
                             <div class="form-group">
                                 <label> Diskripsi Training</label>
 

@@ -323,18 +323,18 @@ class Admin extends CI_Controller
 
 					$nik = $sheetData[$i][0];
 					$nama = $sheetData[$i][1];
-					$section = $sheetData[$i][3];
-					$jabatan = $sheetData[$i][5];
-					$departement = $sheetData[$i][7];
+					// $section = $sheetData[$i][3];
+					// $jabatan = $sheetData[$i][5];
+					// $departement = $sheetData[$i][7];
 					// looping insert data
 					$cek = $this->karyawan_m->cek_nik(($sheetData[$i][0]));
 					if ($cek == false) {
 						$data = array(
 							'nik' => $nik,
 							'nama' => $nama,
-							'section' => $section,
-							'jabatan' => $jabatan,
-							'departement' => $departement,
+							// 'section' => $section,
+							// 'jabatan' => $jabatan,
+							// 'departement' => $departement,
 							'password' => md5('12345678'),
 							'level' => 'user',
 						);
@@ -343,9 +343,9 @@ class Admin extends CI_Controller
 						$data2 = array(
 							'nik' => $nik,
 							'nama' => $nama,
-							'section' => $section,
-							'jabatan' => $jabatan,
-							'departement' => $departement,
+							// 'section' => $section,
+							// 'jabatan' => $jabatan,
+							// 'departement' => $departement,
 						);
 						$this->db->where('$nik', $nik);
 						$this->db->update('karyawan', $data2);
@@ -587,7 +587,11 @@ $data['kar'] = $this->karyawan_m->get_all_kar();
 			'p_materi' => $this->input->post('p_materi'),
 			'mulai_t' => $this->input->post('mulai_t'),
 			'akhir_t' => $this->input->post('akhir_t'),
+			'n_praktik' => $this->input->post('n_praktik'),
+			'n_teori' => $this->input->post('n_teori'),
+			'status_training' => $this->input->post('status_training'),
 			'diskripsi' => $this->input->post('diskripsi'),
+			'date_create_training_int' => date('Y-m-d H:i:s'),
 		);
 		$this->db->insert('training_int', $data);
 		$this->session->set_flashdata('pesan', 'buat');
@@ -601,7 +605,11 @@ $data['kar'] = $this->karyawan_m->get_all_kar();
 			'p_materi' => $this->input->post('p_materi'),
 			'mulai_t' => $this->input->post('mulai_t'),
 			'akhir_t' => $this->input->post('akhir_t'),
+			'n_praktik' => $this->input->post('n_praktik'),
+			'n_teori' => $this->input->post('n_teori'),
+			'status_training' => $this->input->post('status_training'),
 			'diskripsi' => $this->input->post('diskripsi'),
+			'date_update_training_int' => date('Y-m-d H:i:s'),
 		);
 		$this->db->where('id_training_int', $id_training_int);
 		$this->db->update('training_int',$data);

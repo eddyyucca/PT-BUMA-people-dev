@@ -64,7 +64,7 @@ $this->db->where('karyawan', $nik);
         $this->db->join('jabatan', 'jabatan.id_jab = karyawan.jabatan', 'left');
         $this->db->join('section', 'section.id_sec = karyawan.section', 'left');
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
-
+        $this->db->order_by('id_training_int', 'DESC');
         $query = $this->db->get('training_int');
         return $query->result();
     }
@@ -77,7 +77,7 @@ $this->db->where('karyawan', $nik);
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
 
         $this->db->where('karyawan', $nik);
-
+ $this->db->order_by('id_training_int', 'DESC');
         $query = $this->db->get('training_int');
         return $query->result();
     }
@@ -90,6 +90,7 @@ $this->db->where('karyawan', $nik);
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
 
          $this->db->where('p_materi', $nik);
+          $this->db->order_by('id_training_int', 'DESC');
         $query = $this->db->get('training_int');
         return $query->result();
     }
@@ -102,6 +103,7 @@ $this->db->where('karyawan', $nik);
         $this->db->join('departement', 'departement.id_dep = karyawan.departement', 'left');
 
          $this->db->where('training', $id_training);
+          $this->db->order_by('id_training_int', 'DESC');
         $query = $this->db->get('training_int');
         return $query->result();
     }
@@ -115,7 +117,7 @@ $this->db->where('karyawan', $nik);
 
         $this->db->where('MONTH(mulai_t)',$bulan);
         $this->db->where('YEAR(mulai_t)',$tahun);
-
+ $this->db->order_by('id_training_int', 'DESC');
         $query = $this->db->get('training_int');
         return $query->result();
     }

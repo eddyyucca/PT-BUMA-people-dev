@@ -140,6 +140,7 @@ class Asesor extends CI_Controller
 		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
 		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
 		$data['tk'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
+		$data['training_int'] = $this->training_m->get_row_training_int_kar($nik);
 		$this->load->view('template_asesor/header', $data);
 		$this->load->view('asesor_home/karyawan/view_karyawan',$data);
 		$this->load->view('template_asesor/footer');
@@ -1198,7 +1199,11 @@ $data['kar'] = $this->karyawan_m->get_all_kar();
 			'p_materi' => $this->input->post('p_materi'),
 			'mulai_t' => $this->input->post('mulai_t'),
 			'akhir_t' => $this->input->post('akhir_t'),
+			'n_praktik' => $this->input->post('n_praktik'),
+			'n_teori' => $this->input->post('n_teori'),
+			'status_training' => $this->input->post('status_training'),
 			'diskripsi' => $this->input->post('diskripsi'),
+			'date_create_training_int' => date('Y-m-d H:i:s'),
 		);
 		$this->db->insert('training_int', $data);
 		$this->session->set_flashdata('pesan', 'buat');
@@ -1212,7 +1217,11 @@ $data['kar'] = $this->karyawan_m->get_all_kar();
 			'p_materi' => $this->input->post('p_materi'),
 			'mulai_t' => $this->input->post('mulai_t'),
 			'akhir_t' => $this->input->post('akhir_t'),
+			'n_praktik' => $this->input->post('n_praktik'),
+			'n_teori' => $this->input->post('n_teori'),
+			'status_training' => $this->input->post('status_training'),
 			'diskripsi' => $this->input->post('diskripsi'),
+			'date_update_training_int' => date('Y-m-d H:i:s'),
 		);
 		$this->db->where('id_training_int', $id_training_int);
 		$this->db->update('training_int',$data);
@@ -1290,5 +1299,139 @@ public function delete_training_int($id_training_int)
 		return redirect('asesor/training_opt');
 	}
 	// end training_opt
-	// 
+	// Profil
+	public function profil()
+    {
+        $nik =  $this->session->userdata('nik');
+        $data['nik'] =  $this->session->userdata('nik');
+        $id_jab =  $this->session->userdata('jabatan');
+        $data['data'] = $this->karyawan_m->get_view_kar($nik);
+
+        $data['judul'] = 'Profil Karyawan';
+        $data['nama'] = $this->session->userdata('nama');
+ 
+       $data['data_training'] = $this->training_m->get_all_tra_user($nik);
+		$data['ss'] = $this->suggestionsystem_m->get_all_ss_user($nik);
+		$data['continuesimprovement'] = $this->ci_m->get_all_ci_user($nik);
+		$data['tk'] = $this->task_kompetensi_m->get_all_tk_kar($nik);
+$data['training_int'] = $this->training_m->get_row_training_int_kar($nik);
+       $this->load->view('template_asesor/header', $data);
+        $this->load->view('asesor_home/profil/data_karyawan');
+     $this->load->view('template_asesor/footer');
+    }
+    public function update_karyawan()
+	{
+        $nik =  $this->session->userdata('nik');
+		$data['judul'] = 'Update Karyawan';
+		$data['nama'] = $this->session->userdata('nama');
+		$data['nik'] = $this->session->userdata('nik');
+		$data['data'] = $this->karyawan_m->get_view_kar($nik);
+		
+		$data['dep'] = $this->departement_m->get_all_dep();
+		$data['sec'] = $this->section_m->get_all_sec();
+		$data['jab'] = $this->jabatan_m->get_all_jab();
+
+		$this->load->view('template_asesor/header', $data);
+		$this->load->view('asesor_home/profil/ubah_profil', $data);
+		$this->load->view('template_asesor/footer');
+	}
+    public function proses_edit_karyawan($nik)
+	{
+		$foto = $this->input->post('foto');
+		$config['upload_path']   = './assets/foto_profil/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			// $config['encrypt_name'] = TRUE;
+			// $config['file_name'] = $this->input->post('nik');
+			//$config['max_size']      = 100; 
+			//$config['max_width']     = 1024; 
+			//$config['max_height']    = 768;  
+
+			$this->load->library('upload', $config);
+			
+			 if (!$this->upload->do_upload('foto')) {
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+			);
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+			return redirect('user/profil/' . $nik);
+			}else{
+			$get_foto = $this->karyawan_m->get_row_nik($nik);
+// unlink('./public/videos/'.$old_video_path)
+
+ 
+			$file1 = $this->upload->data();
+			$data = array(
+				'nik' => $this->input->post('nik'),
+				'nama' => $this->input->post('nama_lengkap'),
+				'jk' => $this->input->post('jk'),
+				'tempat' => $this->input->post('tempat'),
+				'tanggal_lahir' => $this->input->post('ttl'),
+				'alamat' => $this->input->post('alamat'),
+				'agama' => $this->input->post('agama'),
+				'email' => $this->input->post('email'),
+				'telpon' => $this->input->post('telpon'),
+				'section' => $this->input->post('section'),
+				'jabatan' => $this->input->post('jabatan'),
+				'departement' => $this->input->post('departement'),
+				'foto' => $file1['orig_name'],
+			);
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan', $data);
+			$this->session->set_flashdata('pesan', 'ubah');
+		return redirect('user/profil/' . $nik);
+			
+			}
+			
+	}
+    public function password()
+    {
+        $data['nik'] =  $this->session->userdata('nik');
+        $nik = $this->session->userdata('nik');
+        $data['data'] = $this->karyawan_m->get_row_nik($nik);
+        $data['judul'] = 'Setting Password';
+        $data['nama'] = $this->session->userdata('nama');
+       $this->load->view('template_asesor/header', $data);
+        $this->load->view('asesor_home/profil/ubah_password', $data);
+     $this->load->view('template_asesor/footer');
+    }
+    public function proses_ubah_password($nik)
+    {
+        $password = md5($this->input->post('password_lama'));
+        $cek = $this->karyawan_m->cek_pass($password, $nik);
+        $pass1 = $this->input->post('password_baru');
+        $pass2 = $this->input->post('u_password');
+
+        if ($pass1 == $pass2) {
+            if ($cek == true) {
+                $data_update = array(
+                    "password" => md5($this->input->post('password_baru'))
+                );
+                $this->db->where('nik', $nik);
+                $this->db->update('karyawan', $data_update);
+                $this->session->set_flashdata('pesan', 'update');
+                return redirect('asesor/password');
+            } else {
+
+                $this->session->set_flashdata('pesan', 'salah');
+                return redirect('asesor/password');
+            }
+        } else {
+            $this->session->set_flashdata('pesan', 'mtc');
+            return redirect('asesor/password');
+        }
+    }
+    //  suggest
 }

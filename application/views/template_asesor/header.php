@@ -95,7 +95,11 @@
                     </div>
                     <!-- Nav Item - Pages Collapse Menu -->
                     <!-- Nav Item - Utilities Collapse Menu -->
-
+<li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('asesor/profil') ?>">
+                            <i class="fas fa-user-alt"></i>
+                            <span>Profil</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('asesor/data_karyawan') ?>">
                             <i class="fas fa-fw fa-users"></i>
@@ -115,22 +119,22 @@
                               </div>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('asesor/suggestionsystem') ?>">
                             <i class="fas fa-sort-amount-up-alt"></i>
                             <span>Suggestion System</span></a>
-                    </li>
-                    <li class=" nav-item">
+                    </li> -->
+                    <!-- <li class=" nav-item">
                         <a class="nav-link" href="<?= base_url('asesor/continuesimprovement') ?>">
                             <i class="fas fa-fw fa-chart-area"></i>
                             <span>Cont. Improvement</span></a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('asesor/task_kompetensi') ?>">
                             <i class="fas fa-list-alt"></i>
                             <span>Kompetensi</span></a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('asesor/assessment') ?>">
                             <i class="fas fa-tasks"></i>
                             <span>Assessment</span></a>
@@ -139,7 +143,7 @@
                         <a class="nav-link" href="<?= base_url('asesor/kompetensi_grade') ?>">
                             <i class="fas fa-tasks"></i>
                             <span>Kompetensi Grade</span></a>
-                    </li>
+                    </li> -->
 
  <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -151,6 +155,11 @@
                                 <a class="collapse-item" href="<?= base_url('asesor/training_opt') ?>">Training Optional</a>
                             </div>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('asesor/password') ?>">
+                            <i class="fas fa-unlock-alt"></i>
+                            <span>Password</span></a>
                     </li>
                     <!-- Sidebar Toggler (Sidebar) -->
                     <div class="text-center d-none d-md-inline">
@@ -215,7 +224,7 @@
                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Keluar
                                         </a>
-                                        <a class="dropdown-item" href="<?= base_url('') ?>" data-toggle="modal" data-target="#">
+                                        <a class="dropdown-item" href="<?= base_url('asesor/password') ?>">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i></i>
                                             Setting
                                         </a>

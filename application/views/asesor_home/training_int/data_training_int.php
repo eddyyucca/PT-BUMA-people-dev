@@ -29,7 +29,7 @@ function tanggal_indonesia($tanggal)
 <div class="container-fluid">
     <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('asesor') ?>">Home</a></li>
             <li class="breadcrumb-item active" aria-current="">Traning</li>
         </ol>
     </nav>
@@ -56,7 +56,7 @@ function tanggal_indonesia($tanggal)
                         enctype="multipart/form-data">
                                         <label>Nama Training</label>
                                         <select name="id_training" class="form-control  selectpicker"
-                                            data-live-search="true">
+                                            data-live-search="true" required>
                                             <option value="">--PILIH TRAINING--</option>
                                             <?php foreach ($training as $tra) { ?>
                                             <option value="<?= $tra->id_topt ?>"><?= $tra->nama_training_opt ?>
@@ -84,7 +84,7 @@ function tanggal_indonesia($tanggal)
                                         <label>Pilih Bulan & Tahun</label>
                                         <div class="input-group">
                                             <select name="bulan" class="form-control  selectpicker"
-                                                    data-live-search="true">
+                                                    data-live-search="true" required>
                                                     <option value="">--PILIH BULAN--</option>
                                                     <option value="1">Januari</option>
                                                     <option value="2">Februari</option>
@@ -99,8 +99,8 @@ function tanggal_indonesia($tanggal)
                                                     <option value="11">November</option>
                                                     <option value="12">Desember</option>
                                             </select>
-                                    <input type="number" aria-label="Last name" class="form-control"
-                                        name="tahun">
+                                        <input type="number" placeholder="tahun" class="form-control"
+                                        name="tahun" required>
                                 </div>
                             </div>
                             <button class="btn btn-success">Search</button>
@@ -122,7 +122,7 @@ function tanggal_indonesia($tanggal)
                                     <div class="form-group">
                                         <label>Nama Training</label>
                                         <div class="input-group">
-                                            <select name="nik" class="form-control  selectpicker" data-live-search="true">
+                                            <select name="nik" class="form-control  selectpicker" data-live-search="true" required>
                                     <option value="">--PILIH KARYAWAN--</option>
                                     <?php foreach ($kar as $karyawan) { ?>
                                     <option value="<?= $karyawan->nik ?>"><?= $karyawan->nama ?> | <?= $karyawan->nik ?>
@@ -137,11 +137,10 @@ function tanggal_indonesia($tanggal)
                             </div>
                         </div>
                     </div>
-
                     <a href="<?= base_url('asesor/create_training_int') ?>" class="btn btn-success"><i
                             class="fas fa-plus-circle"></i> Tambah Training</a>
                     <a href="<?= base_url('asesor/export_excel_training_internal') ?>" class="btn btn-success"><i
-                            class="fas fa-plus-circle"></i> Export Excel</a>
+                            class="fas fa-plus-circle"></i> Export All Data Excel</a>
                     <hr>
                 </div>
                 <?php
@@ -162,10 +161,12 @@ function tanggal_indonesia($tanggal)
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Karyawan</th>
+                            <th>Nama Peserta</th>
                             <th>Training</th>
+                            <th>Teori & Praktik</th>
+                            <th>Status</th>
                             <th>Tanggal</th>
-                            <th>Pemberi Materi</th>
+                            <th>Trainer</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -176,24 +177,24 @@ function tanggal_indonesia($tanggal)
                         <tr>
                             <td><?= $nomor++; ?></td>
                             <td><?= $x->nama; ?>
-                                <br>
-                                <footer class="blockquote-footer">Section - <?= $x->nama_sec ?></footer>
-                                <footer class="blockquote-footer">Jabatan - <?= $x->nama_jab ?></footer>
                             </td>
                             <td>
                                 <?= $x->nama_training_opt; ?>
                             </td>
+                           
+                            <td align="center"><?= $x->n_teori . "/". $x->n_praktik ?></td>
+                            <td align="center">
+                                <?= $x->status_training; ?>
+                            </td>
                             <td><?= tanggal_indonesia($x->mulai_t) . " - " . tanggal_indonesia($x->akhir_t) ?></td>
-                            <?php
-                                $model = $this->load->model('karyawan_m');
-                                $pm = $this->karyawan_m->get_row_nik($x->p_materi);
-                                ?>
-                            <td>
-                                <?php
-                                            echo $pm->nama;
-                                        ?>
-                            </td>
-                            </td>
+                        </td>
+                                 <?php
+                                     $model = $this->load->model('karyawan_m');
+                                     $pm = $this->karyawan_m->get_row_nik($x->p_materi);
+                                     ?>
+                                 <td>
+                                     <?php echo $pm->nama; ?>
+                                 </td>
                             <td align="center">
                                 <a href="<?= base_url('asesor/delete_training_int/') . $x->id_training_int; ?>"
                                     class="btn btn-danger"> <i class="fas fa-trash"></i></a>

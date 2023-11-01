@@ -1,7 +1,7 @@
 <?php
 header("Content-type: application/vnd-ms-excel");
-$date = date('Y-m-d');
-header("Content-Disposition: attachment; filename=Data Training Internal.xls");
+$date = date('d-m-Y');
+header("Content-Disposition: attachment; filename=Data Training Internal $date.xls");
 ?>
 
 <?php
@@ -37,11 +37,12 @@ function tanggal_indonesia($tanggal)
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Karyawan</th>
-                            <th>Nik</th>
+                            <th>Nama Peserta</th>
                             <th>Training</th>
-                            <th>Tanggal/Bulan/Tahun</th>
-                            <th>Pemberi Materi</th>
+                            <th>Teori & Praktik</th>
+                            <th>Status</th>
+                            <th>Tanggal</th>
+                            <th>Trainer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,23 +51,25 @@ function tanggal_indonesia($tanggal)
                         foreach ($data as $x) { ?>
                         <tr>
                             <td><?= $nomor++; ?></td>
-                            <td><?= $x->nama; ?></td>
-                            <td><?= $x->nik; ?></td>
+                            <td><?= $x->nama; ?>
+                            </td>
                             <td>
                                 <?= $x->nama_training_opt; ?>
                             </td>
+                           
+                            <td align="center"><?= $x->n_teori . "/". $x->n_praktik ?></td>
+                            <td align="center">
+                                <?= $x->status_training; ?>
+                            </td>
                             <td><?= tanggal_indonesia($x->mulai_t) . " - " . tanggal_indonesia($x->akhir_t) ?></td>
-                            <?php
-                                $model = $this->load->model('karyawan_m');
-                                $pm = $this->karyawan_m->get_row_nik($x->p_materi);
-                                ?>
-                            <td>
-                                <?php
-                                            echo $pm->nama;
-                                        ?>
-                            </td>
-                            </td>
-                          
+                        </td>
+                                 <?php
+                                     $model = $this->load->model('karyawan_m');
+                                     $pm = $this->karyawan_m->get_row_nik($x->p_materi);
+                                     ?>
+                                 <td>
+                                     <?php echo $pm->nama; ?>
+                                 </td>
                         </tr>
                         <?php   } ?>
                     </tbody>
